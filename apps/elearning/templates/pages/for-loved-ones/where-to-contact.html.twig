@@ -1,0 +1,18 @@
+{#{% set _headerClass = 'header--sticky' %}#}
+
+{% extends 'base.html.twig' %}
+
+{% set pageTitle = 'Kam se obrátit | Perinatal' %}
+{% set pageDescription = 'Je možné, že vaše partnerka zažívá duševní problémy, kterým ne zcela rozumíte a nevíte, jak byste jí mohl pomoct.' %}
+
+{% block main %}
+  {% include 'components/for-loved-ones/where-to-contact/hero.html.twig' %}
+  {% include 'components/for-loved-ones/where-to-contact/main-box.html.twig' %}
+  {% include 'components/for-loved-ones/where-to-contact/main.html.twig' %}
+{#  {% include 'components/for-loved-ones/where-to-contact/author.html.twig' %}#}
+{#  {% include 'components/for-loved-ones/where-to-contact/story.html.twig' %}#}
+{#  {% include 'components/for-loved-ones/where-to-contact/reviews.html.twig' %}#}
+  {% include 'components/pageComponents/share.html.twig' %}
+  {% include 'components/for-loved-ones/where-to-contact/other-articles.html.twig' %}
+  {% include 'components/for-loved-ones/where-to-contact/signpost.html.twig' %}
+{% endblock %}

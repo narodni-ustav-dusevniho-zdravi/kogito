@@ -1,0 +1,149 @@
+interface Item {
+    id: ID!
+    name: String!
+    subTitle: String
+    image: String
+    locked: Boolean!
+    options: String
+    progress: Int
+}
+
+type AudioItem implements Item {
+    id: ID!
+    name: String!
+    subTitle: String
+    image: String
+    locked: Boolean!
+    options: String
+    progress: Int
+
+    duration: Int!
+    link: String!
+
+    transcript: String
+
+    previous: ID
+    next: ID
+}
+
+type ArticleContentItem {
+    content: String!
+    continue: String!
+}
+
+type ArticleItem implements Item {
+    id: ID!
+    name: String!
+    subTitle: String
+    image: String
+    locked: Boolean!
+    options: String
+    progress: Int
+
+    content: [ArticleContentItem!]!
+}
+
+type VideoItem implements Item {
+    id: ID!
+    name: String!
+    subTitle: String
+    image: String
+    locked: Boolean!
+    options: String
+    progress: Int
+    link: String!
+}
+
+type JourneyLevel {
+    id: ID!
+    level: Int!
+    progress: Int!
+    unlocked: Boolean!
+    phase: [Item!]!
+    relaxation: [Item!]!
+    tools: [Item!]!
+    tasks: [Item!]!
+}
+
+type Journey {
+    id: ID!
+    name: String!
+    unlocked: Boolean!
+    currentLevel: Int!
+    currentLevelProgress: Int!
+    levels: [JourneyLevel!]!
+}
+
+type Story {
+    id: ID!
+    published: DateTime!
+    title: String!
+    videoLink: String
+    content: String!
+}
+
+type Task {
+    id: ID!
+    name: String!
+    completed: Boolean!
+}
+
+type DailySchedule {
+    morning: [Task!]!
+    afternoon: [Task!]!
+    evening: [Task!]!
+}
+
+type JourneyRelaxation {
+    id: ID!
+    name: String!
+    unlocked: Boolean!
+    relaxation: [Item!]!
+}
+
+type Content {
+    stories: [Story!]!
+    userJourney: Journey!
+    currentRelaxation: [Item!]!
+    bonusRelaxation: [Item!]!
+    todaySchedule: DailySchedule!
+    journeyRelaxation: [JourneyRelaxation!]!
+}
+
+type Query {
+    content: Content!
+
+    journey(id: ID!): Journey!
+    itemDetail(id: ID!): Item!
+    audioDetail(id: ID!): AudioItem!
+
+    storyDetail(id: ID!): Story!
+
+    testContent: String
+}
+
+input TrackProgressInput {
+    id: ID!
+    progress: Int!
+}
+
+type TrackProgressResult {
+    success: Boolean!
+}
+
+input TrackScheduleInput {
+    id: ID!
+    checked: Boolean!
+}
+
+type TrackScheduleResult {
+    success: Boolean!
+}
+
+
+type Mutation {
+    trackProgress(input: TrackProgressInput): TrackProgressResult!
+    trackSchedule(input: TrackScheduleInput!): TrackScheduleResult!
+    selectJourney(id: ID): Boolean!
+    switchJourney(id: ID!): Boolean!
+}

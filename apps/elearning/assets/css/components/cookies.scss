@@ -1,0 +1,35 @@
+.window-cookies {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 6;
+  width: 100%;
+  padding: 12px 0;
+  color: #fff;
+  background: $color_main;
+  &--wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+  }
+  p {
+    margin: 0;
+  }
+  .button {
+    flex: 1 0 auto;
+    span {
+      display: none;
+      &:first-child {
+        display: block;
+      }
+    }
+  }
+  @media (max-width: 767px) {
+    text-align: center;
+    &--wrapper {
+      flex-direction: column;
+    }
+  }
+}

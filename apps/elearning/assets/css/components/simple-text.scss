@@ -1,0 +1,14 @@
+.simple-text {
+  &--wrapper {
+    max-width: 576px;
+    margin: auto;
+  }
+  h3 {
+    margin-top: 64px;
+  }
+  @media (max-width: 767px) {
+    h3 {
+      margin-top: 48px;
+    }
+  }
+}

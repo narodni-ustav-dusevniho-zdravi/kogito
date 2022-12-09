@@ -1,0 +1,35 @@
+{% block image_file_with_preview_widget %}
+  <div class="row">
+    <div class="col-xs-3">
+      {%- set type = 'file' -%}
+      {{- block('form_widget_simple') -}}
+    </div>
+    <div class="col-xs-9">
+
+      {% if data_attribute is defined and form.parent.vars.data is defined and attribute(form.parent.vars.data, data_attribute) is defined %}
+        <img src="{{ attribute(form.parent.vars.data, data_attribute) }}" class="img-responsive admin-preview" style="max-height: 200px;max-width: 200px;" alt="">
+      {% endif %}
+    </div>
+  </div>
+  <hr>
+  <script>
+    $(document).ready(function () {
+      function readURL(input) {
+        if (input.files && input.files[0]) {
+          var reader = new FileReader();
+
+          reader.onload = function(e) {
+            $(input).parent().parent().find('.admin-preview').attr('src', e.target.result);
+          };
+
+          reader.readAsDataURL(input.files[0]); // convert to base64 string
+        }
+      }
+
+      var uploads = $('.upload');
+      uploads.on('change', function (e) {
+        readURL(this);
+      });
+    });
+  </script>
+{% endblock %}

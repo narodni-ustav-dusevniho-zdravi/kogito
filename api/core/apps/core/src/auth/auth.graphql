@@ -1,0 +1,30 @@
+input InitLoginInput {
+    phoneNumber: String!
+    platform: String
+}
+
+type InitLoginResult {
+    usePassword: Boolean!
+    useSmsCode: Boolean!
+}
+
+input LoginInput {
+    phoneNumber: String!
+    password: String!
+}
+
+type TokensResult {
+    accessToken: String!
+    refreshToken: String!
+}
+
+input RefreshTokensInput {
+    accessToken: String!
+    refreshToken: String!
+}
+
+type Mutation {
+    initLogin(input: InitLoginInput!): InitLoginResult!
+    login(input: LoginInput!): TokensResult!
+    refreshAccessToken(input: RefreshTokensInput!): TokensResult!
+}

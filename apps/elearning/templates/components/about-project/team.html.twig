@@ -1,0 +1,113 @@
+{% trans_default_domain 'about' %}
+{% set locale = app.request.locale %}
+<div id="tym"></div>
+<section class="reviews">
+  <div class="container">
+    <div class="reviews--wrapper">
+      <h2 data-aos="fade-up" class="reviews--headline">
+        <small data-aos="fade-down" data-aos-delay="300">{% trans %}team.title.0{% endtrans%}</small>
+        {% trans %}team.title.0{% endtrans%}
+      </h2>
+      <div class="reviews--slider--wrapper">
+        <div class="reviews--slider reviews--slider--2">
+          <div class="reviews--slider--item">
+            <div class="reviews--box">
+              <div class="reviews--slider--thumbnail">
+                <img src="{{ asset('build/img/team-veronika-sismova.png') }}" alt="">
+              </div>
+              <h3>
+                <small>{% trans %}team.sismova.title{% endtrans%}</small>
+                {% trans %}team.sismova.name{% endtrans%}
+              </h3>
+              {% if locale == 'cs' %}
+                <p>{% trans %}team.sismova.text{% endtrans%}
+              {% endif %}
+              </p>
+            </div>
+          </div>
+          <div class="reviews--slider--item">
+            <div class="reviews--box">
+              <div class="reviews--slider--thumbnail">
+                <img src="{{ asset('build/img/team-lucie-kocova.jpg') }}" alt="">
+              </div>
+              <h3>
+                <small>{% trans %}team.kocova.title{% endtrans%}</small>
+                {% trans %}team.kocova.name{% endtrans%}
+              </h3>
+              {% if locale == 'cs' %}
+                <p>{% trans %}team.kocova.text{% endtrans%}</p>
+              {% endif %}
+            </div>
+          </div>
+          <div class="reviews--slider--item">
+            <div class="reviews--box">
+              <div class="reviews--slider--thumbnail">
+                <img src="{{ asset('build/img/team-renata-banasova.png') }}" alt="">
+              </div>
+              <h3>
+                <small>{% trans %}team.banasova.title{% endtrans%}</small>
+                {% trans %}team.banasova.name{% endtrans%}
+              </h3>
+              {% if locale == 'cs' %}
+                <p>{% trans %}team.banasova.text{% endtrans%}</p>
+              {% endif %}
+            </div>
+          </div>
+          <div class="reviews--slider--item">
+            <div class="reviews--box">
+              <div class="reviews--slider--thumbnail">
+                <img src="{{ asset('build/img/team-kristyna-hrdlickova.jpg') }}" alt="">
+              </div>
+              <h3>
+                <small>{% trans %}team.hrdlickova.title{% endtrans%}</small>
+                {% trans %}team.hrdlickova.name{% endtrans%}
+              </h3>
+              {% if locale == 'cs' %}
+                <p>{% trans %}team.hrdlickova.text{% endtrans%}</p>
+              {% endif %}
+            </div>
+          </div>
+          <div class="reviews--slider--item">
+            <div class="reviews--box">
+              <div class="reviews--slider--thumbnail">
+                <img src="{{ asset('build/img/team-kubrichtova.jpg') }}" alt="">
+              </div>
+              <h3>
+                <small>{% trans %}team.kubrichtova.title{% endtrans%}</small>
+                {% trans %}team.kubrichtova.name{% endtrans%}
+              </h3>
+              {% if locale == 'cs' %}
+                <p>{% trans %}team.kubrichtova.text{% endtrans%}</p>
+              {% endif %}
+            </div>
+          </div>
+          <div class="reviews--slider--item">
+            <div class="reviews--box">
+              <div class="reviews--slider--thumbnail">
+                <img src="{{ asset('build/img/team-sebela.jpg') }}" alt="">
+              </div>
+              <h3>
+                <small>{% trans %}team.sebela.title{% endtrans%}</small>
+                {% trans %}team.sebela.name{% endtrans%}
+              </h3>
+              {% if locale == 'cs' %}
+                <p>{% trans %}team.sebela.text{% endtrans%}</p>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+        <button class="slick-prev slick-arrow" aria-label="Previous" type="button">
+          <span class="icon icon--icon-chevron-simple-circle-left-stroked-color">
+            <svg class="icon__svg"><use xlink:href="#icon-chevron-simple-circle-left-stroked-color"></use></svg>
+          </span>
+        </button>
+        <button class="slick-next slick-arrow" aria-label="Next" type="button">
+          <span class="icon icon--icon-chevron-simple-circle-right-stroked-color">
+            <svg class="icon__svg"><use xlink:href="#icon-chevron-simple-circle-right-stroked-color"></use></svg>
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

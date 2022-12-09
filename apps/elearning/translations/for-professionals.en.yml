@@ -1,0 +1,28 @@
+title:
+  0: Poskytuji péči
+  1: Perinatální duševní poruchy a možnosti jejich psychofarmakologické léčby
+
+modal:
+  0: "Obsah je určen odborným pracovníkům ve&nbsp;zdravotnictví. Informace nejsou určeny pro&nbsp;laickou veřejnost."
+  1: Potvrzuji, že jsem odborníkem ve smyslu §2a Zákona č. 40/1995 Sb., o regulaci reklamy, ve znění pozdějších předpisů, čili osobou oprávněnou předepisovat léčivé přípravky nebo osobou oprávněnou léčivé přípravky vydávat.
+  2: Beru na vědomí, že informace obsažené dále na těchto stránkách nejsou určeny laické veřejnosti, nýbrž zdravotnickým odborníkům, a to se všemi riziky a důsledky z toho plynoucími pro laickou veřejnost.
+  3: Pro pokračování je potřeba souhlasit s výše uvedenými podmínkami.
+  4: Potvrdit
+
+main:
+  text:
+    0: Připravená témata se věnují specifikům duševního zdraví v těhotenství a po porodu a zahrnují i poznatky o bezpečnostních profilech dílčích skupin psychofarmak v graviditě a při laktaci.
+    1: Textové informace jsou doplněny o přehledné tabulky i zdroje literatury.
+    2: Připravená témata jsme rozšířili o sérii edukačních videí o perinatální psychiatrii lektorovaná MUDr. Janem Hankou z Národního ústavu duševního zdraví.
+
+content:
+  text:
+    0: Cílem těchto stránek je rozšířit znalosti o perinatálních duševních poruchách a možnostech jejich psychofarmakologické léčby mezi psychiatry, gynekology-porodníky a porodní asistentky.  Během naší klinické praxe se totiž setkáváme s těhotnými či kojícími ženami, a často tak řešíme, zda u pacientky léčbu zahájit, přerušit či nějak změnit.
+    1: I přes svoji relativní četnost a neoddiskutovatelné negativní dopady na zdraví žen, jejich dětí a přeneseně celé rodiny, jsou perinatální duševní poruchy v ČR stále na okraji odborného zájmu.
+
+videoSection:
+  title:
+    0: Video lekce
+    1: 'Vybrané kapitoly z&nbsp;perinatální psychiatrie'
+  disclaimer:
+    0: "<strong>Upozornění:</strong> Informace zde prezentované nejsou míněny jako náhrada za odborný úsudek ošetřujícího lékaře / lékařky. Doporučení ohledně těhotenství a kojení týkající se vaší konkrétní situace byste měli konzultovat se svým poskytovatelem zdravotní péče. Nezaručujeme ani nepřebíráme žádnou zodpovědnost nebo odpovědnost za přesnost nebo úplnost informací na této stránce."

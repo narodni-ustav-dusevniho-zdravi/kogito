@@ -1,0 +1,123 @@
+.our-team {
+  margin: 94px 0 120px;
+  text-align: center;
+  &--wrapper {
+  }
+  &--headline {
+    max-width: 550px;
+    margin: auto;
+  }
+  &--inner {
+    position: relative;
+    z-index: 2;
+    max-width: 786px;
+    margin-left: auto;
+  }
+  &--text {
+    max-width: 452px;
+    margin: 24px auto 32px;
+    p {
+      font-size: 18px;
+    }
+  }
+  &--grid {
+    position: relative;
+    display: grid;
+    align-items: flex-end;
+    grid-template-columns: auto auto;
+    grid-gap: 48px;
+    justify-content: space-between;
+    margin-top: -100px;
+    &--left {
+      display: grid;
+      align-items: flex-end;
+      grid-template-columns: auto auto;
+      grid-gap: 48px;
+      justify-content: space-between;
+    }
+    &--right {
+      margin-bottom: 70px;
+    }
+    &--img {
+      &--3 {
+        grid-column: span 2;
+      }
+    }
+    div:not(.video__content) {
+      position: relative;
+    }
+    &--shape {
+      &--1 {
+        position: absolute;
+        right: -14px;
+        bottom: -12px;
+        z-index: 1;
+      }
+      &--2 {
+        position: absolute;
+        top: 187px;
+        right: 180px;
+        z-index: 1;
+      }
+    }
+    img {
+      display: block;
+      //max-width: none;
+    }
+  }
+  @media (max-width: 1199px) {
+    &--grid {
+      zoom: 0.8;
+      justify-content: center;
+    }
+  }
+  @media (max-width: 1023px) {
+    &--inner {
+      max-width: 580px;
+    }
+    &--grid {
+      zoom: 0.6;
+    }
+  }
+  @media (max-width: 767px) {
+    display: flex;
+    flex-direction: column-reverse;
+    &--grid {
+      zoom: 1;
+      grid-gap: 4vw;
+      margin: 0 0 32px;
+      &--left {
+        grid-gap: 4vw;
+      }
+      &--right {
+        margin-bottom: 5vw;
+      }
+      &--shape {
+        &--1 {
+          right: -1.4vw;
+          bottom: -1.2vw;
+          width: 2vw;
+        }
+        &--2 {
+          top: 7vw;
+          right: 10vw;
+          width: 11vw;
+        }
+      }
+      &--img {
+        &--1 {
+          width: 34vw;
+        }
+        &--2 {
+          width: 18vw;
+        }
+        &--3 {
+          width: 100%;
+        }
+        &--4 {
+          width: 41vw;
+        }
+      }
+    }
+  }
+}

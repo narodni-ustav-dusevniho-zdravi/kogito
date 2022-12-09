@@ -1,0 +1,12 @@
+{#{% set _headerClass = 'header--sticky' %}#}
+
+{% extends 'base.html.twig' %}
+
+{% set pageTitle = 'Důležitá témata spojená s&nbsp;psychikou v těhotenství | Perinatal' %}
+{% set pageDescription = 'Těhotenství bývá často vyplněno radostí a pěknými pocity a pozitivním očekáváním. Avšak není to pravidlem, a ne vždy je těhotenství tak růžové, jak ho vybarvují média nebo sociální sítě.' %}
+
+{% block main %}
+  {% include 'components/for-woman/pregnancy/default/hero.html.twig' %}
+  {% include 'components/for-woman/pregnancy/default/main.html.twig' %}
+  {% include 'components/for-woman/pregnancy/default/signpost.html.twig' %}
+{% endblock %}

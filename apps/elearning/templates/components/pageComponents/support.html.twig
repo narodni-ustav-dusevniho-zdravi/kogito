@@ -1,0 +1,29 @@
+{% set locale = app.request.locale %}
+{% trans_default_domain 'homepage' %}
+<section class="support">
+  <div class="container container--bigger">
+    <div class="support--wrapper">
+      <h2 data-aos="fade-up" class="support--headline">{% trans %}support.text{% endtrans%}</h2>
+      <div class="support--grid">
+        <div>
+          <img data-aos="fade-left" src="{{ asset('build/img/logo-support-3.png') }}" alt="">
+        </div>
+        <div>
+          <img data-aos="fade-left" src="{{ asset('build/img/logo-support-4.png') }}" alt="">
+        </div>
+        <div>
+          <img data-aos="fade-left" src="{{ asset('build/img/eea-grants@2x.png') }}" alt="">
+        </div>
+        <div>
+          <img data-aos="fade-left" src="{{ asset('build/img/logo-azv-cr.png') }}" alt="">
+        </div>
+        <div>
+          <img data-aos="fade-left" src="{{ asset('build/img/logo-tacr@3.5x.png') }}" alt="">
+        </div>
+        <div>
+          <img data-aos="fade-left" src="{{ asset('build/img/logo-kooperativa-nadace.png') }}" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

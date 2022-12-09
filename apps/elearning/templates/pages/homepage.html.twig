@@ -1,0 +1,112 @@
+{#{% set _headerClass = 'header--sticky' %}#}
+
+{% extends 'base.html.twig' %}
+
+{% set pageTitle = 'Pomáháme ženám, které zažívají psychosociální stres v&nbsp;těhotenství nebo po porodu | Perinatal' %}
+{% set pageDescription = 'O těžkých chvílích v&nbsp;životě žen v&nbsp;perinatálním období málokdo otevřeně mluví. Pomáháme ženám v perinatálním období od psychosociálního stresu.' %}
+
+{% block main %}
+  {% include 'components/homepage/hero.html.twig' %}
+  {% include 'components/homepage/goals.html.twig' %}
+  {% include 'components/homepage/our-team.html.twig' %}
+  {% include 'components/pageComponents/videoHero.html.twig' %}
+  {% include 'components/homepage/for-mothers.html.twig' %}
+  {% include 'components/homepage/providers.html.twig' %}
+  {% include 'components/homepage/mobile-app.html.twig' %}
+  {# {% include 'components/pageComponents/videoSection.html.twig' %} #}
+  {% include 'components/homepage/reviews.html.twig' %}
+  {% include 'components/pageComponents/support.html.twig' %}
+  {% include 'components/pageComponents/protection.html.twig' %}
+{% endblock %}
+
+{% block pageModals %}
+  {{ parent() }}
+
+  <div class="modal-video-on-load">
+  <div class="modal" id="video-1" role="dialog">
+    <div class="modal__wrapper">
+      <div class="modal__close js-modal-close">
+        <span class="icon icon--icon-close-color">
+          <svg class="icon__svg">
+            <use xlink:href="#icon-close-color"></use>
+          </svg>
+        </span>
+      </div>
+      <div class="modal__body modal__body--video-lg">
+        <div class="modal__content">
+          <iframe width="100%" height="100%" src="https://www.youtube.com/embed/DBWW0PT3Xmc" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="video-2" role="dialog">
+    <div class="modal__wrapper">
+      <div class="modal__close js-modal-close">
+        <span class="icon icon--icon-close-color">
+          <svg class="icon__svg">
+            <use xlink:href="#icon-close-color"></use>
+          </svg>
+        </span>
+      </div>
+      <div class="modal__body modal__body--video-lg">
+        <div class="modal__content">
+          <iframe width="100%" height="100%" src="https://www.youtube.com/embed/5pDeLyrYE4U" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="video-3" role="dialog">
+    <div class="modal__wrapper">
+      <div class="modal__close js-modal-close">
+        <span class="icon icon--icon-close-color">
+          <svg class="icon__svg">
+            <use xlink:href="#icon-close-color"></use>
+          </svg>
+        </span>
+      </div>
+      <div class="modal__body modal__body--video-lg">
+        <div class="modal__content">
+          <iframe width="100%" height="100%" src="https://www.youtube.com/embed/_z0UXt_LWFQ" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="video-4" role="dialog">
+    <div class="modal__wrapper">
+      <div class="modal__close js-modal-close">
+        <span class="icon icon--icon-close-color">
+          <svg class="icon__svg">
+            <use xlink:href="#icon-close-color"></use>
+          </svg>
+        </span>
+      </div>
+      <div class="modal__body modal__body--video-lg">
+        <div class="modal__content">
+          <iframe width="100%" height="100%" src="https://www.youtube.com/embed/tk5gERtOyIM" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="video-5" role="dialog">
+    <div class="modal__wrapper">
+      <div class="modal__close js-modal-close">
+        <span class="icon icon--icon-close-color">
+          <svg class="icon__svg">
+            <use xlink:href="#icon-close-color"></use>
+          </svg>
+        </span>
+      </div>
+      <div class="modal__body modal__body--video-lg">
+        <div class="modal__content">
+          <iframe width="100%" height="100%" src="https://www.youtube.com/embed/mmFLjkrakOY" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+{% endblock %}

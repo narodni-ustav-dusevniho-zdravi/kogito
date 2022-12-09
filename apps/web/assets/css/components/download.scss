@@ -1,0 +1,153 @@
+.download {
+  margin: 300px 0 330px;
+  color: #fff;
+  &--wrapper {
+  }
+  &--box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 38px;
+  }
+  &--bg {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    left: 0;
+    z-index: -1;
+    height: 248px;
+    border-radius: 350px;
+    background: #ff7158;
+    transform: translate(0, -50%);
+    &--shape {
+      &--1 {
+        position: absolute;
+        top: -170px;
+        left: 336px;
+      }
+      &--2 {
+        position: absolute;
+        bottom: -66px;
+        left: 181px;
+        mix-blend-mode: multiply;
+      }
+    }
+  }
+  &--text {
+    flex: 0 0 311px;
+    margin: 0 0 0 104px;
+    h2 {
+      font-size: 56px;
+    }
+  }
+  &--mobile {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 24px;
+    &--item {
+    }
+  }
+  &--picture {
+    margin: -110px -180px 0 -160px;
+    pointer-events: none;
+    &--img {
+      max-width: none;
+    }
+  }
+  @media (max-width: 1199px) {
+    margin: 160px 0;
+    &--text {
+      flex: 0 0 auto;
+    }
+    &--picture {
+      margin-left: -200px;
+    }
+  }
+  @media (max-width: 1023px) {
+    &--text {
+      margin-left: 60px;
+    }
+  }
+  @media (max-width: 959px) {
+    &--bg {
+      &--shape {
+        &--1 {
+          left: 100px;
+        }
+        &--2 {
+          left: 120px;
+        }
+      }
+    }
+    &--mobile {
+      flex-direction: column;
+
+      gap: 12px;
+    }
+  }
+  @media (max-width: 767px) {
+    margin: 160px 0 100px;
+    &--bg {
+      &--shape {
+        &--1 {
+          mix-blend-mode: multiply;
+        }
+        &--2 {
+          left: 120px;
+        }
+      }
+    }
+    &--text {
+      h2 {
+        font-size: 32px;
+      }
+    }
+    &--picture {
+      margin-right: -120px;
+      &--img {
+        max-width: 430px;
+      }
+    }
+  }
+  @media (max-width: 666px) {
+    &--text {
+      margin: 0;
+      h2 {
+        margin: 0;
+      }
+      br {
+        display: none;
+      }
+    }
+    &--bg {
+      top: -60px;
+      height: 295px;
+      border-radius: 90px;
+      transform: none;
+      &--shape {
+        &--1 {
+          display: none;
+        }
+        &--2 {
+          bottom: -30px;
+          left: 0;
+        }
+      }
+    }
+    &--box {
+      flex-direction: column;
+    }
+    &--mobile {
+      flex-direction: row;
+      padding: 0 15px;
+    }
+    &--picture {
+      margin: -42px 0 0;
+    }
+  }
+}

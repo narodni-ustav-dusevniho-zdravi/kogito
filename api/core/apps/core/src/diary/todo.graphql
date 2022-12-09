@@ -1,0 +1,38 @@
+enum DayPart {
+    MORNING
+    AFTERNOON
+    EVENING
+}
+
+type Todo {
+    id: ID!
+    title: String!
+    checked: Boolean!
+    dayPart: DayPart!
+}
+
+type TodoEditResult {
+    todo: Todo!
+    viewer: Viewer!
+}
+
+input TodoInput {
+    id: ID
+    title: String!
+    dayPart: DayPart!
+}
+
+input TrackTodoInput {
+    id: ID!
+    checked: Boolean!
+}
+
+extend type Viewer {
+    todayTodos: [Todo!]!
+}
+
+type Mutation {
+    editTodo(input: TodoInput!): Viewer!
+    removeTodo(id: ID!): Viewer!
+    trackTodo(input: TrackTodoInput!): Viewer!
+}

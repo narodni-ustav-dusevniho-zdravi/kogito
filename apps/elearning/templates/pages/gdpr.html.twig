@@ -1,0 +1,13 @@
+{#{% set _headerClass = 'header--sticky' %}#}
+
+{% extends 'base.html.twig' %}
+
+{% set pageTitle = 'Ochrana osobních údajů| Perinatal' %}
+{% set pageDescription = 'Národní ústav duševního zdraví (dále jen NUDZ) bude nakládat s Vašimi daty v souladu se zákonem č. 110/2019 Sb. Zákon o zpracování osobních údajů.' %}
+
+{% block main %}
+  {% include 'components/gdpr/hero.html.twig' %}
+  {% include 'components/gdpr/main.html.twig' %}
+  {% include 'components/pageComponents/support.html.twig' %}
+  {% include 'components/pageComponents/protection.html.twig' %}
+{% endblock %}

@@ -1,0 +1,24 @@
+{#{% set _headerClass = 'header--sticky' %}#}
+
+{% extends 'base.html.twig' %}
+
+{% set pageTitle = 'Porodní sál – moje dítě | Perinatal' %}
+{% set pageDescription = '„Všechna ta klišé, která jste slyšeli o porodu a mateřství – to všechno je pravda. A to všechno jsou ty nejkrásnější věci, které kdy zažijete.“' %}
+
+{% block main %}
+  {% include 'components/for-professionals/postpartum/my-baby/hero.html.twig' %}
+  {% include 'components/for-professionals/postpartum/my-baby/main-box.html.twig' %}
+  {% include 'components/for-professionals/postpartum/my-baby/main.html.twig' %}
+  {% include 'components/for-professionals/postpartum/my-baby/author.html.twig' %}
+{#  {% include 'components/for-professionals/postpartum/my-baby/story.html.twig' %}#}
+{#  {% include 'components/for-professionals/postpartum/my-baby/reviews.html.twig' %}#}
+  {% include 'components/pageComponents/share.html.twig' %}
+  {% include 'components/for-professionals/postpartum/my-baby/other-articles.html.twig' %}
+  {% include 'components/for-professionals/postpartum/my-baby/signpost.html.twig' %}
+{% endblock %}
+
+{% block pageModals %}
+  {{ parent() }}
+
+  {% include 'components/for-professionals/confirmation-modal.html.twig' %}
+{% endblock %}

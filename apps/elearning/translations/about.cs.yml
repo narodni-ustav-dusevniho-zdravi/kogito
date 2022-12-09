@@ -1,0 +1,65 @@
+title:
+  0: O projektu - Zpráva všem ženám
+  1: Duševní pohoda mámy je důležitá pro ženu, pro miminko i pro nás
+
+main:
+  text: Období těhotenství a po porodu bývá naplněno radostným očekáváním, zároveň se ale u maminek ve zvýšené míře objevují psychické potíže. On-line screening psychosociálního stresu a program „Máma podporuje mámu“ přibližuje ženám, u nichž se potíže projeví, včasnou pomoc.
+
+project:
+  text:
+    0: žen nevyhledává v případě psychických potíží žádnou pomoc,
+    1: řada z nich pak dlouhé měsíce strádá, bojí se se svými pocity svěřit a často popisují počátky svého mateřství jako „zahalené v mlze“. Včasná pomoc šetří stovky hodin trápení, které může maminka věnovat svému miminku. Pro dítě je ostatně psychická „přítomnost“ matky velmi důležitým aspektem jeho zdárného duševního vývoje.
+    2: Pro ženy bývá těžké o jejich pocitech a stavech hovořit, protože předpokládají, že se jim děje něco ojedinělého a nepatřičného. Testováním jim ukážeme, že jsou psychické potíže běžné a není důvod se za ně stydět. I to jim přiblíží tolik potřebnou pomoc.
+
+video:
+  title:
+    0: Nebuďte jednou z nich
+    1: První krok k systematické péči o duševní pohodu matek v ČR
+  text: V České republice zatím neexistuje systematická péče o ženy, u nichž se objeví psychické obtíže v těhotenství nebo po porodu. Projekt, který propojuje plošný screening a na něj napojenou vícestupňovou péči, je tak prvním krůčkem k rozvinuté péči o mateřskou psychiku, kterou známe například z Velké Británie nebo Austrálie.
+  screening1:
+    title: Jak probíhá screening?
+    text: V ideálním případě vyplní všechny těhotné ženy (nebo novopečené matky) jednoduchý test, který vypočítá riziko, že se u nich mohou objevit psychické potíže. V našem projektu tak činí jen ženy ve vybraných gynekologických ordinacích.
+  screening2:
+    title: Co po screeningu?
+    text: Ženy, u nichž je výsledek testu pozitivní, jsou aktivně osloveny s nabídkou pomoci. Jedním z cílů projektu je ověřit integrovaný krokový systém péče, kde první stupeň tvoří tzv. peer podpora. Ta je součástí programu „Máma podporuje mámu“ a poskytují ji proškolené ženy s vlastní zkušeností, které v případě potřeby napojí ženu v riziku na další odbornou péči.
+  ongoing:
+    title: Kde projekt probíhá?
+    text: Ve 20 vybraných gynekologických ordinacích ve třech krajích – v Praze, ve Středočeském a Olomouckém kraji. Týmy, které poskytují prvotní pomoc a napojují ženy na další odbornou péči, pak máme v Praze a v Olomouci.
+    button: Zobrazit na mapě
+    text2: Projekt navazuje na již probíhající screening ve vybraných českých porodnicích. Setkat se s ním můžete třeba ve FN Olomouc, FN Bulovka, Fakultní Thomayerově nemocnici nebo v Nemocnici Nymburk.
+  started:
+    title: Kde se projekt vzal?
+    text: Na začátku stál <strong>MUDr. Antonín Šebela, PhD.</strong>, český psychiatr a odborník na mateřskou psychiku, který průkopnicky přivedl screening psychosociálního stresu do prvních českých porodnic. Ve spolupráci s Úsměvem mámy pak vznikl i návazný systém péče, který se snaží přiblížit maminkám v riziku podporu i odbornou pomoc. Obojí je součástí projektu, který realizuje <a href="https://www.nudz.cz/" target="_blank" class="link">Národní ústav duševního zdraví</a> ve spolupráci s
+      <a href="https://www.usmevmamy.cz" target="_blank" class="link">Úsměvem mámy</a>.
+  financed:
+    title: Kdo projekt financuje?
+    text: Projekt je realizován díky podpoře grantu z Islandu, Lichtenštejnska a Norska v rámci Fondů EHP.
+
+team:
+  title:
+    0: Seznamte se s týmem
+    1: S námi jste v těch nejlepších rukou
+  sismova:
+    title: Informačně – destigmatizační aktivity
+    name: Veronika Šišmová
+    text: 'Veronika Šišmová po narození dcery Kristýnky prožila vážné psychické obtíže, které ji dovedly až k třítýdenní hospitalizaci na psychiatrickém oddělení. <br>Na základě této osobní zkušenosti se Veronika v roce 2018 zapojila do činnosti organizace Úsměv mámy.<br>Na projektu se věnuje komunikačním a informačním aktivitám, správě sociálních sítí, grafické práci, a jako peer konzultantka také přímé podpoře maminek.'
+  kocova:
+    title: Koordinátorka peer podpory
+    name: Lucie Kočová
+    text: Lucka se spolu se svým týmem peer konzultantek věnuje klientkám, které v ambulancích a porodnicích v Praze a Středočeském kraji zachytí screening psychosociálního stresu v těhotenství a po porodu. V Úsměvu mámy působí od roku 2017 jako peer konzultantka, od roku 2020 vede jeho pražské centrum.
+  banasova:
+    title: Koordinátorka peer podpory
+    name: Renata Banášová
+    text: Renata se spolu se svým týmem peer konzultantek věnuje klientkám, které v ambulancích a porodnicích v Olomouckém kraji zachytí screening psychosociálního stresu v těhotenství a po porodu.
+  hrdlickova:
+    title: Projektová manažerka
+    name: Kristýna Hrdličková
+    text: Kristýna studuje jednooborovou psychologii na Univerzitě Karlově a dramatickou výchovu na DAMU. Pracovala ve školce, jako terapeutka dětí s autismem a na stáži byla např. ve vývojové ambulanci v porodnici v Podolí. S dětmi je moc ráda, ale zatím si je jenom půjčuje :) Má na starost financování a projektové vedení.
+  kubrichtova:
+    title: Informačně – destigmatizační aktivity
+    name: Veronika Kubrichtová
+    text: Veronika Kubrichtová si tak moc přála stát se matkou, až ji po vytouženém porodu zaskočily urputné poporodní úzkosti. Snažila se je překonat silou vůle, aby ve finále zjistila, že to nejde. Pomoc našla až v ordinaci psychiatričky, kam by dříve nevkročila. Nakonec se vyrovnala se svými úzkostmi i s pocitem vlastního selhání a rozhodla se, že bude podporovat další ženy, které potkalo něco podobného. Založila organizaci Úsměv mámy, kterou už sedmým rokem vede. Její hlavní parketou na projektu jsou komunikační aktivity.
+  sebela:
+    title: Garant projektu
+    name: Antonín Šebela
+    text: Antonín vystudoval 2. lékařskou fakultu Univerzity Karlovy. Pracuje v Národním ústavu duševního zdraví, kde se klinicky i výzkumně věnuje perinatálnímu duševnímu zdraví. Má za sebou řadu zahraničních stáží (např. Yale University) a podílí se i na výuce psychiatrie na 3. LF UK. Na projektu působí jako odborný garant a má na starost, aby byl projekt úspěšně dotažen do konce.

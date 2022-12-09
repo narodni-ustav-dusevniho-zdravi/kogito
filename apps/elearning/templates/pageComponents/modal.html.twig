@@ -1,0 +1,1095 @@
+<div class="modal" id="video-vice-o-screeningu" role="dialog">
+  <div class="modal__wrapper">
+    <div class="modal__close js-modal-close">
+      <span class="icon icon--icon-close-color">
+        <svg class="icon__svg"><use xlink:href="#icon-close-color"></use></svg>
+      </span>
+    </div>
+    <div class="modal__body modal__body--video">
+      <div class="modal__content">
+        <video width="100%" controls>
+          <source src="{{ asset('build/video/about-project-1-vice-o-screeningu.mp4') }}" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal" id="video-nas-screening-v-praxi" role="dialog">
+  <div class="modal__wrapper">
+    <div class="modal__close js-modal-close">
+      <span class="icon icon--icon-close-color">
+        <svg class="icon__svg"><use xlink:href="#icon-close-color"></use></svg>
+      </span>
+    </div>
+    <div class="modal__body modal__body--video">
+      <div class="modal__content">
+        <video width="100%" controls>
+          <source src="{{ asset('build/video/about-project-2-nas-screening-v-praxi.mp4') }}" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal" id="video-po-screeningu" role="dialog">
+  <div class="modal__wrapper">
+    <div class="modal__close js-modal-close">
+      <span class="icon icon--icon-close-color">
+        <svg class="icon__svg"><use xlink:href="#icon-close-color"></use></svg>
+      </span>
+    </div>
+    <div class="modal__body modal__body--video">
+      <div class="modal__content">
+        <video width="100%" controls>
+          <source src="{{ asset('build/video/about-project-3-po-screeningu.mp4') }}" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal" id="video-peer-podpora" role="dialog">
+  <div class="modal__wrapper">
+    <div class="modal__close js-modal-close">
+      <span class="icon icon--icon-close-color">
+        <svg class="icon__svg"><use xlink:href="#icon-close-color"></use></svg>
+      </span>
+    </div>
+    <div class="modal__body modal__body--video">
+      <div class="modal__content">
+        <video width="100%" controls>
+          <source src="{{ asset('build/video/about-project-4-peer-podpora.mp4') }}" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal modal__map" id="mapa-vsechny" role="dialog">
+  <div class="modal__wrapper">
+    <div class="modal__close js-modal-close">
+      <span class="icon icon--icon-close-color">
+        <svg class="icon__svg"><use xlink:href="#icon-close-color"></use></svg>
+      </span>
+    </div>
+    <div class="modal__body">
+      <div class="modal__content">
+        <div id="all-maps" class="modal--map"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal modal__map" id="mapa-porodnice" role="dialog">
+  <div class="modal__wrapper">
+    <div class="modal__close js-modal-close">
+      <span class="icon icon--icon-close-color">
+        <svg class="icon__svg"><use xlink:href="#icon-close-color"></use></svg>
+      </span>
+    </div>
+    <div class="modal__body">
+      <div class="modal__content">
+        <div id="all-maps-maternity" class="modal--map"></div>
+      </div>
+    </div>
+  </div>
+</div>
+{# EPDS modal #}
+<div class="modal modal__full" id="test-epds" role="dialog">
+  <div class="modal__wrapper">
+    <div class="modal__close js-modal-close">
+      <span class="icon icon--icon-user-interface-close-simple">
+        <svg class="icon__svg"><use xlink:href="#icon-user-interface-close-simple"></use></svg>
+      </span>
+    </div>
+    <div class="modal__wrapper--inner">
+      {# TODO: Intro #}
+      <div class="modal__body questionnaire questionnaire__intro">
+        <div class="modal__content">
+          <div class="hero-subpage--wrapper">
+            <img src="{{ asset('build/img/logo.svg') }}" width="40" alt="hero-subpage--img">
+            <div class="breadcrumb">
+              <span class="breadcrumb--text">EPDS</span>
+              <span class="breadcrumb--text">Uvítání</span>
+            </div>
+            <h1>Jdeme na to!</h1>
+          </div>
+          <div class="questionnaire--main">
+            <p>Nyní před sebou máte několik otázek a prosíme Vás, abyste u&nbsp;každé zvolila tu odpověď, která nejlépe
+              vyjadřuje, jak jste se cítila <strong>v posledním týdnu.</strong> Nejde tedy o to, jak se cítíte právě v&nbsp;tento
+              okamžik, ale o přibližnou hodnotu, jak jste se cítila v průběhu posledního týdne.</p>
+            <p>Snažte se prosím, aby Vaše odpovědi byly co nejpřesnější a vyjadřovaly daný stav. Odpovězte prosím na
+              každou otázku a vždy zaškrtněte pouze jednu odpověď, která Váš stav nejlépe vyjadřuje.</p>
+            <p>
+              <button class="button button--bigger" onclick="startQuestionnaire('epds')">Vyplnit dotazník</button>
+            </p>
+            <img src="{{ asset('build/img/logo-tacr.png') }}" alt="">
+          </div>
+        </div>
+      </div>
+      {% set epdsQuestions = {
+        1 : {
+          'question': 'Byla jsem veselá a viděla převážně veselé stránky života.',
+          'answers': {
+            0: 'Ano, ve stejné míře jako vždycky',
+            1: 'Ano, ale ne v takové míře jak vždycky',
+            2: 'Definitivně méně, než vždycky',
+            3: 'Vůbec ne',
+          }
+        },
+        2: {
+          'question': 'Hleděla jsem do budoucnosti s radostí a nadějí.',
+          'answers': {
+            0: 'Ano, ve stejné míře jako vždycky',
+            1: 'Spíš méně než vždycky',
+            2: 'Definitivně méně než vždycky',
+            3: 'Vůbec ne',
+          }
+        },
+        3: {
+          'question': 'Nepřiměřeně jsem se na sebe zlobila a vyčítala si, když se něco nedařilo.',
+          'answers': {
+            3: 'Ano, většinu času',
+            2: 'Ano, ale jen někdy',
+            1: 'Nepříliš často',
+            0: 'Vůbec ne',
+          }
+        },
+        4: {
+          'question': 'Byla jsem úzkostná a ustaraná, aniž by k tomu byly rozumné důvody.',
+          'answers': {
+            0: 'Vůbec ne',
+            1: 'Ne, jen výjimečně',
+            2: 'Ano, někdy',
+            3: 'Ano velmi často',
+          }
+        },
+        5: {
+          'question': 'Cítila jsem se vyděšená, až trochu v panice, a to bez vážných důvodů.',
+          'answers': {
+            3: 'Ano, velmi často',
+            2: 'Ano, ale jen někdy',
+            1: 'Nepříliš často',
+            0: 'Vůbec ne',
+          }
+        },
+        6: {
+          'question': 'Mnoho věcí se mě nepříjemně dotýkalo.',
+          'answers': {
+            3: 'Ano, většinou jsem nebyla schopna se s nesnázemi vyrovnat',
+            2: 'Ano, někdy jsem se s nesnázemi vyrovnávala hůře než obvykle',
+            1: 'Ne většinou jsem se se vším dobře vyrovnávala',
+            0: 'Ne, vyrovnávala jsem se se vším bez potíží',
+          }
+        },
+        7: {
+          'question': 'Byla jsem tak znepokojená, že jsem špatně spala. ',
+          'answers': {
+            3: 'Ano, většinu času',
+            2: 'Ano, ale jen někdy',
+            1: 'Nepříliš často',
+            0: 'Vůbec ne',
+          }
+        },
+        8: {
+          'question': 'Měla jsem špatnou a mizernou náladu.',
+          'answers': {
+            3: 'Ano, většinu času',
+            2: 'Ano, někdy',
+            1: 'Nepříliš často',
+            0: 'Vůbec ne',
+          }
+        },
+        9: {
+          'question': 'Byla jsem tak nešťastná, že jsem plakala.',
+          'answers': {
+            3: 'Ano, většinu času',
+            2: 'Ano, častěji než jindy',
+            1: 'Ano, ale jen výjimečně',
+            0: 'Ne nikdy',
+          }
+        },
+        10: {
+          'question': 'Napadaly mě myšlenky, že si ublížím.',
+          'answers': {
+            3: 'Ano, velmi často',
+            2: 'Ano, ale jen někdy',
+            1: 'Zcela výjimečně',
+            0: 'Ne nikdy',
+          }
+        },
+      } %}
+
+      <div class="is-hidden modal__body questionnaire questionnaire__questions">
+        <form action="#" id="epds-form" onsubmit="return false;" method="post">
+          {% for questionKey,question in epdsQuestions %}
+            <div class="modal__content questionnaire--questions-1" id="questionnaire-epds-{{ questionKey }}">
+              <div class="hero-subpage--wrapper">
+                <img src="{{ asset('build/img/logo.svg') }}" width="40" alt="hero-subpage--img">
+                <div class="breadcrumb">
+                  <span class="breadcrumb--text">EPDS</span>
+                  <span class="breadcrumb--text">{{ questionKey }}. Otázka</span>
+                  <span class="breadcrumb--text">Zbývá {{ epdsQuestions|length - questionKey }} otázek</span>
+                </div>
+                <h2>
+                  <small>V posledním týdnu:</small>
+                  {{ question['question'] }}
+                </h2>
+              </div>
+              <div class="questionnaire--main">
+                <div class="questionnaire--form">
+                  {% for key,answer in question['answers'] %}
+                    <div class="questionnaire--form--row form-radio">
+                      <input type="radio" name="epds-question-{{ questionKey }}"
+                             id="epds-answer-{{ questionKey }}-{{ key }}" value="{{ key }}" required>
+                      <span class="form-radio__box"></span>
+                      <label class="form-label" for="epds-answer-{{ questionKey }}-{{ key }}">{{ answer }}</label>
+                    </div>
+                  {% endfor %}
+                  <div class="questionnaire--form--row--buttons">
+                    <p class="is-error">Musíte vybrat jednu odpověď.</p>
+                    <a href="" class="button button--bigger js-button-next"
+                       onclick="nextQuestionnaire('epds')">{% if questionKey == 10 %}Hotovo{% else %}Pokračovat{% endif %}</a>
+                    {% if questionKey > 1 %}
+                      <a href="" class="button button--simple-border button--bigger"
+                         onclick="prevQuestionnaire('epds')">Krok zpět</a>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </form>
+      </div>
+      {# TODO: Vyhodnocení #}
+      <div class="is-hidden modal__body questionnaire questionnaire__evaluation">
+        <div class="modal__content">
+          <div class="hero-subpage--wrapper">
+            <img src="{{ asset('build/img/logo.svg') }}" width="40" alt="hero-subpage--img">
+            <div class="breadcrumb">
+              <span class="breadcrumb--text">EPDS</span>
+              <span class="breadcrumb--text">Hotovo!</span>
+            </div>
+            <h2>Výborně máme hotovo!</h2>
+          </div>
+          <div class="questionnaire--main">
+            <div class="questionnaire--main--inner">
+              <h3>Váš výsledek:</h3>
+              <p><small>Test je anonymní a výsledek testu se neukládá.</small></p>
+              <div id="epdsResult">
+              </div>
+              <button class="button button--bigger js-modal-close">Děkuji, zavřít test</button>
+              <img src="{{ asset('build/img/babies-1.svg') }}" alt="" class="questionnaire__evaluation--img-1">
+            </div>
+          </div>
+          <div class="questionnaire--footer">
+            <img src="{{ asset('build/img/mother-n-baby-1.svg') }}" class="questionnaire__evaluation--img-2" alt="">
+            <div class="social social--white">
+              <h4>Společně jsme silnější</h4>
+              <div class="social--grid">
+                <a href="https://www.facebook.com/Perinatal.cz" class="social--button social--button--facebook"
+                   target="_blank">
+            <span class="icon icon--icon-facebook">
+              <svg class="icon__svg"><use xlink:href="#icon-facebook"></use></svg>
+            </span>
+                  <span>Facebook</span>
+                </a>
+                <a href="https://www.instagram.com/perinatal.cz/" class="social--button social--button--instagram"
+                   target="_blank">
+            <span class="icon icon--icon-instagram">
+              <svg class="icon__svg"><use xlink:href="#icon-instagram"></use></svg>
+            </span>
+                  <span>Instagram</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{# PASS modal #}
+<div class="modal modal__full" id="test-pass" role="dialog">
+  <div class="modal__wrapper">
+    <div class="modal__close js-modal-close">
+      <span class="icon icon--icon-user-interface-close-simple">
+        <svg class="icon__svg"><use xlink:href="#icon-user-interface-close-simple"></use></svg>
+      </span>
+    </div>
+    <div class="modal__wrapper--inner">
+      <div class="modal__body questionnaire questionnaire__intro">
+        <div class="modal__content">
+          <div class="hero-subpage--wrapper">
+            <img src="{{ asset('build/img/logo.svg') }}" width="40" alt="hero-subpage--img">
+            <div class="breadcrumb" >
+              <span class="breadcrumb--text">PASS</span>
+              <span class="breadcrumb--text">Uvítání</span>
+            </div>
+            <h1>Jdeme na to!</h1>
+          </div>
+          <div class="questionnaire--main">
+            <p>Prosíme Vás, abyste u každé zvolila tu odpověď, která nejlépe vyjadřuje, jak jste se <strong>cítila v
+                posledním měsíci</strong> a zda a jak často jste prožívala níže uvedené příznaky.</p>
+            <p>Snažte se prosím, aby Vaše odpovědi byly co nejpřesnější a vyjadřovaly daný stav. Odpovězte prosím na
+              každou otázku a vždy zaškrtněte pouze jednu odpověď, která Váš stav nejlépe vyjadřuje. Vyplňte prosím
+              všechny otázky, i kdybyste si nebyla zcela jistá.</p>
+            <p>
+              <button class="button button--bigger" onclick="startQuestionnaire('pass')">Vyplnit dotazník</button>
+            </p>
+            <img src="{{ asset('build/img/logo-tacr.png') }}" alt="">
+          </div>
+        </div>
+      </div>
+      {% set passQuestions = {
+        1 : {
+          'question': 'Mívám obavy o dítě, či o průběh těhotenství.',
+          'answers': {
+            0: 'Nikdy',
+            1: 'Zřídka',
+            2: 'Často',
+            3: 'Téměř stále',
+          }
+        },
+        2 : {
+          'question': 'Mívám strach, že mé dítě bude ohroženo.',
+          'answers': {
+            0: 'Nikdy',
+            1: 'Zřídka',
+            2: 'Často',
+            3: 'Téměř stále',
+          }
+        },
+        3 : {
+          'question': 'Mívám pocit, že se stane něco špatného.',
+          'answers': {
+            0: 'Nikdy',
+            1: 'Zřídka',
+            2: 'Často',
+            3: 'Téměř stále',
+          }
+        },
+        4 : {
+          'question': 'Obávám se mnoha věcí.',
+          'answers': {
+            0: 'Nikdy',
+            1: 'Zřídka',
+            2: 'Často',
+            3: 'Téměř stále',
+          }
+        },
+        5 : {
+          'question': 'Obávám se budoucnosti.',
+          'answers': {
+            0: 'Nikdy',
+            1: 'Zřídka',
+            2: 'Často',
+            3: 'Téměř stále',
+          }
+        },
+        6 : {
+          'question': 'Připadám si často přetížená.',
+          'answers': {
+            0: 'Nikdy',
+            1: 'Zřídka',
+            2: 'Často',
+            3: 'Téměř stále',
+          }
+        },
+        7 : {
+          'question': 'Mívám veliký strach z věcí, jako jsou jehly, krev, porod, bolest apod.',
+          'answers': {
+            0: 'Nikdy',
+            1: 'Zřídka',
+            2: 'Často',
+            3: 'Téměř stále',
+          }
+        },
+        8 : {
+          'question': 'Mívám náhlé stavy velikého strachu a celkové nepohody.',
+          'answers': {
+            0: 'Nikdy',
+            1: 'Zřídka',
+            2: 'Často',
+            3: 'Téměř stále',
+          }
+        },
+        9 : {
+          'question': 'Přepadají mě opakující se nepříjemné myšlenky, které je těžké zastavit nebo kontrolovat.',
+          'answers': {
+            0: 'Nikdy',
+            1: 'Zřídka',
+            2: 'Často',
+            3: 'Téměř stále',
+          }
+        },
+        10 : {
+          'question': 'Mívám problém se spánkem i přesto, že mám možnost jít spát.',
+          'answers': {
+            0: 'Nikdy',
+            1: 'Zřídka',
+            2: 'Často',
+            3: 'Téměř stále',
+          }
+        },
+        11 : {
+          'question': 'Stává se mi, že musím některé věci udělat přesně podle určitého sledu.',
+          'answers': {
+            0: 'Nikdy',
+            1: 'Zřídka',
+            2: 'Často',
+            3: 'Téměř stále',
+          }
+        },
+        12 : {
+          'question': 'Chci mít vše udělané perfektně.',
+          'answers': {
+            0: 'Nikdy',
+            1: 'Zřídka',
+            2: 'Často',
+            3: 'Téměř stále',
+          }
+        },
+        13 : {
+          'question': 'Potřebuji mít věci zcela pod kontrolou.',
+          'answers': {
+            0: 'Nikdy',
+            1: 'Zřídka',
+            2: 'Často',
+            3: 'Téměř stále',
+          }
+        },
+        14 : {
+          'question': 'Mívám problém přestat kontrolovat vykonané úkoly, případně se mi stává, že některé činnosti opakuji stále a stále dokola.',
+          'answers': {
+            0: 'Nikdy',
+            1: 'Zřídka',
+            2: 'Často',
+            3: 'Téměř stále',
+          }
+        },
+        15 : {
+          'question': 'Velmi snadno, někdy i z ničeho nic, se v poslední době vylekám.',
+          'answers': {
+            0: 'Nikdy',
+            1: 'Zřídka',
+            2: 'Často',
+            3: 'Téměř stále',
+          }
+        },
+        16 : {
+          'question': 'Koncentruji se na opakující se nepříjemné myšlenky.',
+          'answers': {
+            0: 'Nikdy',
+            1: 'Zřídka',
+            2: 'Často',
+            3: 'Téměř stále',
+          }
+        },
+        17 : {
+          'question': 'Zabezpečuji se a vyhýbám se určitým věcem, či situacím.',
+          'answers': {
+            0: 'Nikdy',
+            1: 'Zřídka',
+            2: 'Často',
+            3: 'Téměř stále',
+          }
+        },
+        18 : {
+          'question': 'Rozhodí mě opakovaně vzpomínky, sny nebo noční můry.',
+          'answers': {
+            0: 'Nikdy',
+            1: 'Zřídka',
+            2: 'Často',
+            3: 'Téměř stále',
+          }
+        },
+        19 : {
+          'question': 'Obávám se, že se před ostatními lidmi ztrapním.',
+          'answers': {
+            0: 'Nikdy',
+            1: 'Zřídka',
+            2: 'Často',
+            3: 'Téměř stále',
+          }
+        },
+        20 : {
+          'question': 'Obávám se, že mě ostatní lidé budou negativně hodnotit.',
+          'answers': {
+            0: 'Nikdy',
+            1: 'Zřídka',
+            2: 'Často',
+            3: 'Téměř stále',
+          }
+        },
+        21 : {
+          'question': 'Cítím se velmi nejistě ve větší skupině lidí, či v davu.',
+          'answers': {
+            0: 'Nikdy',
+            1: 'Zřídka',
+            2: 'Často',
+            3: 'Téměř stále',
+          }
+        },
+        22 : {
+          'question': 'Vyhýbám se sociálním situacím, protože by mi přinesly velkou nervozitu.',
+          'answers': {
+            0: 'Nikdy',
+            1: 'Zřídka',
+            2: 'Často',
+            3: 'Téměř stále',
+          }
+        },
+        23 : {
+          'question': 'Vyhýbám se svým koníčkům a zálibám.',
+          'answers': {
+            0: 'Nikdy',
+            1: 'Zřídka',
+            2: 'Často',
+            3: 'Téměř stále',
+          }
+        },
+        24 : {
+          'question': 'Mívám pocit odtažení od sebe, jako bych se na sebe dívala v nějakém filmu.',
+          'answers': {
+            0: 'Nikdy',
+            1: 'Zřídka',
+            2: 'Často',
+            3: 'Téměř stále',
+          }
+        },
+        25 : {
+          'question': 'Ztrácím se v časové posloupnosti a mívám problém zapamatovat si, co se stalo.',
+          'answers': {
+            0: 'Nikdy',
+            1: 'Zřídka',
+            2: 'Často',
+            3: 'Téměř stále',
+          }
+        },
+        26 : {
+          'question': 'Obtížně si nyní zvykám na změny.',
+          'answers': {
+            0: 'Nikdy',
+            1: 'Zřídka',
+            2: 'Často',
+            3: 'Téměř stále',
+          }
+        },
+        27 : {
+          'question': 'Úzkostné prožívání mi brání ve schopnosti cokoliv dělat.',
+          'answers': {
+            0: 'Nikdy',
+            1: 'Zřídka',
+            2: 'Často',
+            3: 'Téměř stále',
+          }
+        },
+        28 : {
+          'question': 'Myšlenky, které mi probíhají hlavou mi způsobují problémy se dostatečně koncentrovat na jakoukoliv jinou činnost.',
+          'answers': {
+            0: 'Nikdy',
+            1: 'Zřídka',
+            2: 'Často',
+            3: 'Téměř stále',
+          }
+        },
+        29 : {
+          'question': 'Mám strach, že nad sebou ztratím kontrolu.',
+          'answers': {
+            0: 'Nikdy',
+            1: 'Zřídka',
+            2: 'Často',
+            3: 'Téměř stále',
+          }
+        },
+        30 : {
+          'question': 'Pociťuji paniky.',
+          'answers': {
+            0: 'Nikdy',
+            1: 'Zřídka',
+            2: 'Často',
+            3: 'Téměř stále',
+          }
+        },
+        31 : {
+          'question': 'Pociťuji nervozitu.',
+          'answers': {
+            0: 'Nikdy',
+            1: 'Zřídka',
+            2: 'Často',
+            3: 'Téměř stále',
+          }
+        },
+
+      } %}
+
+      <div class="is-hidden modal__body questionnaire questionnaire__questions">
+        <form action="#" id="pass-form" onsubmit="return false;" method="post">
+          {% for questionKey,question in passQuestions %}
+            <div class="modal__content questionnaire--questions-2" id="questionnaire-pass-{{ questionKey }}">
+              <div class="hero-subpage--wrapper">
+                <img src="{{ asset('build/img/logo.svg') }}" width="40" alt="hero-subpage--img">
+                <div class="breadcrumb">
+                  <span class="breadcrumb--text">PASS</span>
+                  <span class="breadcrumb--text">{{ questionKey }}. Otázka</span>
+                  <span class="breadcrumb--text">Zbývá {{ passQuestions|length - questionKey }} otázek</span>
+                </div>
+                <h2>
+                  <small>V posledním týdnu:</small>
+                  {{ question['question'] }}
+                </h2>
+              </div>
+              <div class="questionnaire--main">
+                <div class="questionnaire--form">
+                  {% for key,answer in question['answers'] %}
+                    <div class="questionnaire--form--row form-radio">
+                      <input type="radio" name="pass-question-{{ questionKey }}"
+                             id="pass-answer-{{ questionKey }}-{{ key }}" value="{{ key }}">
+                      <span class="form-radio__box"></span>
+                      <label class="form-label" for="pass-answer-{{ questionKey }}-{{ key }}">{{ answer }}</label>
+                    </div>
+                  {% endfor %}
+                  <div class="questionnaire--form--row--buttons">
+                    <p class="is-error">Musíte vybrat jednu odpověď.</p>
+                    <a href="" class="button button--bigger js-button-next"
+                       onclick="nextQuestionnaire('pass')">{% if questionKey == 31 %}Hotovo{% else %}Pokračovat{% endif %}</a>
+                    {% if questionKey > 1 %}
+                      <a href="" class="button button--simple-border button--bigger"
+                         onclick="prevQuestionnaire('pass')">Krok zpět</a>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </form>
+      </div>
+      {# TODO: Vyhodnocení #}
+      <div class="is-hidden modal__body questionnaire questionnaire__evaluation">
+        <div class="modal__content">
+          <div class="hero-subpage--wrapper">
+            <img src="{{ asset('build/img/logo.svg') }}" width="40" alt="hero-subpage--img">
+            <div class="breadcrumb">
+              <span class="breadcrumb--text">PASS</span>
+              <span class="breadcrumb--text">Hotovo!</span>
+            </div>
+            <h2>Výborně máme hotovo!</h2>
+          </div>
+          <div class="questionnaire--main">
+            <div class="questionnaire--main--inner">
+              <h3>Váš výsledek:</h3>
+              <p><small>Test je anonymní a výsledek testu se neukládá.</small></p>
+              <div id="passResult"></div>
+              <button class="button button--bigger js-modal-close">Děkuji, zavřít test</button>
+              <img src="{{ asset('build/img/babies-1.svg') }}" alt="" class="questionnaire__evaluation--img-1">
+            </div>
+          </div>
+          <div class="questionnaire--footer">
+            <img src="{{ asset('build/img/mother-n-baby-1.svg') }}" class="questionnaire__evaluation--img-2" alt="">
+            <div class="social social--white">
+              <h4>Společně jsme silnější</h4>
+              <div class="social--grid">
+                <a href="https://www.facebook.com/Perinatal.cz" class="social--button social--button--facebook"
+                   target="_blank">
+            <span class="icon icon--icon-facebook">
+              <svg class="icon__svg"><use xlink:href="#icon-facebook"></use></svg>
+            </span>
+                  <span>Facebook</span>
+                </a>
+                <a href="https://www.instagram.com/perinatal.cz/" class="social--button social--button--instagram"
+                   target="_blank">
+            <span class="icon icon--icon-instagram">
+              <svg class="icon__svg"><use xlink:href="#icon-instagram"></use></svg>
+            </span>
+                  <span>Instagram</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal" id="jsem-poskytovatel-pece" role="dialog" aria-labelledby="dialog-title-2">
+  <div class="modal__wrapper">
+    <div class="modal__close js-modal-close">
+      <span class="icon icon--icon-close-color">
+        <svg class="icon__svg"><use xlink:href="#icon-close-color"></use></svg>
+      </span>
+    </div>
+    <div class="modal__body">
+      <div class="modal__content">
+        <h2 id="dialog-title-2">Jsem poskytovatel péče</h2>
+        <p>Obsah této sekce teprve připravujeme. Hotová bude koncem roku 2021.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal" id="pribeh-moje-zkušenost-s-ptds" role="dialog" aria-labelledby="dialog-title-3">
+  <div class="modal__wrapper">
+    <div class="modal__close js-modal-close">
+      <span class="icon icon--icon-close-color">
+        <svg class="icon__svg"><use xlink:href="#icon-close-color"></use></svg>
+      </span>
+    </div>
+    <div class="modal__body">
+      <div class="modal__content">
+        <h2 id="dialog-title-3">
+          Porodní trauma:
+          <br>moje zkušenost s PTSD
+        </h2>
+        <p>Naše miminko vzniklo z lásky hned na první pokus. Měli jsme chvíli před svatbou a původně jsme chtěli ještě
+          chvíli počkat. Nicméně jsme si miminko moc přáli, takže po prvotním šoku jsme se začali těšit. Zrušili jsme
+          exotickou dovolenou a přestěhovali se do nového bytu blíž k prarodičům. A doufali, že všechno dobře
+          dopadne.</p>
+        <h3>Bezproblémové těhotenství s náročným koncem</h3>
+        <p>Těhotenství pobíhalo bez problému, chodila jsem do práce, lehce cvičila a vstřebávala informace o porodu a
+          péči o dítě. Protože pocházím z lékařské rodiny, od mala jsem slýchala tragické porodní příběhy. Porodu jsem
+          se tedy strašně bála. Ne bolesti, ale trvalých následků u dítěte i u mě. Proto jsme s manželem absolvovali
+          kurz hypnoporodu, který mě celkem uklidnil. Chtěla jsem, aby porod proběhl co nejpřirozeněji, s co nejmenšími
+          zásahy, bez vyvolávání. Vyloženě jsem se na něj netěšila, ale snažila jsem se si nepřipouštět rizika. Raději
+          jsem si domluvila dulu, aby mě k porodu doprovodila a podpořila mě u něj.</p>
+        <p>Když se začal blížit termín porodu, byla jsem čím dál víc ve stresu. Na porod to vůbec nevypadalo a už od 38.
+          týdne se řešilo vyvolávání. Cítila jsem se špatně, měla jsem strach a začaly mi přicházet divné myšlenky.
+          Třeba jsem šla po venku a najednou jsem měla utkvělou představu, že moje dítě zemře. Jasně jsem před sebou
+          viděla náhrobní kámen s&nbsp;dceřiným jménem. Neměla jsem žádné nutkání hnízdit. Připravila jsem pro miminko jen
+          absolutní základ. Děsila mě představa, že přijdu do nachystaného pokojíčku s&nbsp;prázdnou. Už tehdy jsem asi měla
+          vyhledat pomoc, ale všude jsem četla, že špatná nálada je před porodem normální. Nemám žádnou historii
+          psychických problémů, takže mě nenapadlo to nějak řešit, ani jsem nevěděla jak. Nikomu jsem o tom neřekla.</p>
+        <p>Navíc se začala rozjíždět pandemie koronaviru. V&nbsp;Itálii umírali lidé, v&nbsp;Česku byly první případy, nebyly
+          roušky ani respirátory. Nikdo nevěděl, co se děje. Nebylo mi z&nbsp;toho dobře. A pak zakázali otce u porodu. Už
+          nebyl čas měnit plány. Na domácí porod jsem nebyla připravená, ani jsem ho nechtěla. Dny před plánovaným
+          vyvoláváním jsem dělala vše proto, abych porod vyvolala sama, což samo o sobě bylo dost psychicky i fyzicky
+          náročné. A nakonec se to povedlo. V&nbsp;den nástupu jsem konečně začala cítit menstruační bolesti a postupně se
+          zpravidelňovaly a zintenzivňovaly, takže jsem vyvolání odmítla. Možná to byla chyba, protože i tak mě čekal
+          48hodinový porod bez podpory.</p>
+        <h3>Porod v&nbsp;době koronavirové </h3>
+        <p>Porod byly nejhorší dva dny v&nbsp;mém životě. Přirovnala bych to k&nbsp;bad tripu. Část toho špatného se odehrávala
+          reálně a část se odehrávala v&nbsp;mé hlavě, což bylo nepříznivým prostředím jedině podpořeno. Pravidelné kontrakce
+          od 10 do 2 minut jsem měla bez přestávky 48 hodin. Třicet hodin jsem byla doma a poté jsem považovala porod za
+          natolik rozběhlý, že jsem jela do porodnice. Ukázalo se, že jsem otevřená jen na 1 cm a po sérii reverzů
+          odjela zpět domů. Za další 4 hodiny (o půlnoci) jsem se vrátila do porodnice s&nbsp;kontrakcemi, jejichž síla se až
+          do samotného porodu dramaticky nezměnila a trvaly dalších 14 hodin. Od té doby, co jsem byla přijatá do
+          porodnice, jsem ztratila nad sebou veškerou kontrolu. Byla jsem tak vyčerpaná, v&nbsp;bolestech a ve strachu, že
+          porod vůbec nepostupuje, že jsem byla paralyzovaná a nebyla schopná pořádně komunikovat. Kromě pravidelného
+          monitorování dítěte, bezpočtu vaginálních vyšetření a kapaček antibiotik se mnou nikdo nic neřešil. Žádná
+          slovní ani fyzická podpora. Byla jsem zoufalá, neměla jsem sílu, měla jsem hrozný strach o dítě. Byla jsem čím
+          dál víc zmatená a když jsem se konečně v&nbsp;10 ráno dostala na porodní sál, pořádně jsem nechápala, kde jsem a co
+          mám dělat. Nevěděla jsem, jak dýchat, jak si ulevit od bolesti. Při přípravě jsem počítala s&nbsp;tím, že mi pomůže
+          dula, ale ta tam být nemohla. Nenapadlo mě ani jí zavolat, protože jsem měla problém komunikovat. Byla jsem
+          prostě v&nbsp;jiném stavu vědomí. Asi v poledne jsem dostala kapačku na bolest a začala jsem mít halucinace. Seděla
+          jsem na záchodě, aby dítě sestoupilo, a vzor na linoleu na sebe bral podobu zvířátek a postaviček, které
+          divoce tancovaly. Po kapačce oxytocinu, tlačení na břicho a rotování dítěte zevnitř, se dcera krátce po 1
+          hodině odpoledne narodila. Byla v&nbsp;pořádku! </p>
+        <h3>Místo euforie přišel lockdown, derealizace a flashbacky </h3>
+        <p>Byla jsem ráda, že jsme s&nbsp;dcerou v&nbsp;pořádku, ale hlavně jsem byla šťastná, že je to konečně za mnou a že už
+          nepřijde žádná bolest. Žádné velké štěstí se nekonalo. Pobyt na šestinedělí byl hodně náročný. Na pokoji jsme
+          byly tři, ostatní miminka hodně plakala, nesměly jsme zhasnout, takže o nějakém spánku se nedalo mluvit. Dceru
+          jsem chtěla mít u sebe, takže jsem po dvou probděných nocích při porodu nespala ani tu další, protože jsem
+          hlídala, jestli dcera dýchá, a celkově to nešlo. Zpětně jsem si pročetla zprávy, co jsem psala manželovi
+          z&nbsp;porodnice, a vidím, že první dva dny jsem psala, jak je dcera krásná a jak jsem ráda. Třetí den, s&nbsp;nástupem
+          laktace, se tón změnil. Dcera se nechtěla přisávat, trochu plakala a já chtěla soukromí a být doma. Domů jsme
+          šly až 4 dny po porodu, přestože jsme neměly jediný problém. Myslela jsem, že se to doma zlepší. Ale
+          nezlepšilo.</p>
+        <p>Zpětně si uvědomuju, že jsem nemohla spát, a byla kvůli tomu úplně mimo. Myslela jsem si, že je to
+          s&nbsp;novorozencem normální. Do jisté míry ano, ale já nemohla usnout, i když dcera spinkala. Také jsem byla
+          strašně zmatená a derealizovaná. Přišlo mi, že se všechno děje mimo mě. Připadalo mi zvláštní, že venku
+          pokračuje život, jezdí auta, lidi se baví. Vůbec jsem nevěděla, co mám dělat. Neuměla jsem třeba naskládat
+          nádobí do myčky, nevěděla jsem, jak tam patří, a přišlo mi, že je to strašně náročná a komplexní činnost, na
+          kterou jsem se nedokázala soustředit.</p>
+        <p>Kromě celkového zmatení a neschopnosti se soustředit mě začaly provázet flashbacky. Jak křičím na porodním
+          sále a doufám, že někdo přijde a aspoň na chvíli tam bude se mnou, ale nikdo nepřichází. Jak paní doktorka
+          tahá za pupeční šňůru a vyndává ze mě placentu. Jak dcera brečí na vyšetřovacím stolečku, kouká na mě a já se
+          zmůžu jen na slova: „Miminko, miminko.“ Flashbacky přicházely několikrát denně, nejčastěji v&nbsp;noci a při krmení
+          dcery a byly jedním z&nbsp;důvodů, proč jsem nemohla spát. Po každém jsem brečela a tisíckrát si přehrávala
+          v&nbsp;hlavě, co všechno jsem udělala špatně.</p>
+        <p>Do toho začal nejpřísnější lockdown, potraviny byly vyprodané a stály se na ně fronty, obchody s&nbsp;oblečením
+          byly zavřené. Já potřebovala třeba dokoupit kojící podprsenku, protože mi byla ta moje malá, ale trvalo 14
+          dní, než dorazila. Tahle nejistota, nemožnost si pořídit pomůcky a strach ze zákeřné nemoci mě deptaly. </p>
+        <h3>Retraumatizující kojení přineslo sebevražedné myšlenky </h3>
+        <p>Porod byl náročný, doprovázený infuzemi „oblbováků“, oxytocinu a antibiotik, přesto se kojení zezačátku hezky
+          dařilo. Po pár dnech však dcera začala prso odmítat a doteď nevím, co v&nbsp;této slepice-vejce situaci přišlo
+          dřív. Já jsem nebyla v&nbsp;dobrém psychickém stavu hned od začátku. Cítila jsem se ublíženě, zrazeně, skoro
+          znásilněně a byla jsem dezorientovaná. Možná to dcera cítila a nechtěla proto u mě být. Čím víc však odmítala
+          prso, ničila mi bradavky a následně brečela hlady, tím jsem na tom byla psychicky hůř. Hrozně jsem chtěla
+          kojit. Je to přece pro dítě to nejlepší, nejúžasnější, potřebuje to, nic jiného ho neuklidní a umělé mléko je
+          zlo. A tak jsem to zkoušela pořád dál a odmítala jí dát umělé mléko. Laktační poradkyně mě zahltila spoustou
+          rad, jak mám dítě nosit a přikládat a masírovat si prsa a větrat si jizvu po epiziotomii. Ani jsem si všechny
+          její rady nebyla schopná zapamatovat. Navíc jsem dostala zánět prsu, takže mě kojení nesnesitelně bolelo.
+          K&nbsp;tomu jsem měla horečky, bradavky do krve, antibiotika a následně vyrážku. Začala jsem to dítě nesnášet za
+          všechnu tu bolest, co mi způsobuje. Snažila jsem se být co nejlepší máma, kojit ji, chovat, ulevovat od
+          prdíků, ale moje snahy přicházely vniveč a bylo to jen horší. Už jsem to nezvládala a většinu péče obstarával
+          manžel. Po pár dnech padal únavou i on.</p>
+        <p>V necelých 2 týdnech se dcera odmítla přisát úplně. Laktační poradkyně už nechtěla přijít, že se musí věnovat
+          vlastním dětem. Sehnala jsem jinou, ale nic kromě toho, že mateřské mlíčko je nejlepší, mi neporadila. Zrovna
+          u nás byla moje máma. Ten den od narození vnučky poprvé. Nechodila k&nbsp;nám totiž kvůli koronaviru, ale vycítila,
+          že je něco špatně. Bránila mě, své dítě, a trochu se kvůli tomu nepohodla s&nbsp;laktační poradkyní. Snažila se jí
+          totiž říct, že psychické zdraví matky je důležitější než kojení, ale ona to brala jako narušování mateřských
+          kompetencí, přestože já jsem to tak nevnímala. Máma kontaktovala svou kamarádku psychiatričku, která mi
+          následně předepsala antidepresiva. Já se jich ale bála a zatím je nezačala brát, i když se s&nbsp;nimi může kojit.
+          Já jsem kojit chtěla, ale dcera ne. Manžel ji nakrmil umělým mlékem a konečně se trochu uklidnila. Já jsem
+          však dál mléko odstříkávala do láhve, abych udržela laktaci a doufala, že se ke kojení vrátíme.</p>
+        <p>Necítila jsem z&nbsp;dítěte radost a nechápala, co na ní ostatní vidí. Kdyby k&nbsp;nám přišla kojící paní s&nbsp;tím, že si
+          dceru vezme a vychová, dala bych jí ji. Když jsem venku zahlédla jiné děti, měla jsem jakoby halucinace.
+          Viděla jsem je jako malé démony, co vysávají z&nbsp;rodičů život. Asi pět týdnů po porodu jsem se šla sama projít.
+          O dceru se staral manžel. Už jsem nedokázala být s&nbsp;ní v&nbsp;jedné místnosti, ani v&nbsp;jednom bytě. Když jsem šla přes
+          silnici, problesklo mi hlavou, že kdyby mě přejelo auto, všechno by skončilo. Já bych měla konečně klid a
+          manžel by si našel novou paní, která by byla lepší maminkou.</p>
+        <p>Chvíli jsem s&nbsp;tou myšlenkou koketovala a pak si řekla, že mít sebevražedné myšlenky opravdu není normální a
+          že je to asi laktací a rozhodla se přestat odstříkávat mléko a snažit se o kojení. Předepsali mi Dostinex a já
+          strávila víkend odpočinkem v&nbsp;posteli. Manžel i moji rodiče viděli, že jsem úplně v&nbsp;háji, a převzali na víkend
+          veškerou péči o dítě. Manžel mi dceru občas nosil ukázat a pomazlit, já jsem ale nechtěla. Připadala jsem si
+          nejhůř na světě. Ale užívala jsem si chvíle, kdy nic nemusím a ležím pod dekou.</p>
+        <h3>Zastavení laktace, terapie a antidepresiva mi vrátily život </h3>
+        <p>Od té doby, co jsem měla zastavenou laktaci, jsem se začala cítit trochu lépe. Přestaly mě trápit bolesti
+          v&nbsp;prsou, vyléčil se zánět a bradavky a já si mohla bez obav z&nbsp;bolesti brát dítě do náruče. Krmení z&nbsp;lahvičky
+          dceři celkem vyhovovalo a začala se více hlásit o jídlo.</p>
+        <p>Pomaličku jsem se s&nbsp;velkou pomocí manžela i rodičů vzpamatovávala a začínala se zase víc starat o dceru.
+          Pořád jsem ale nebyla ani zdaleka ve své kůži, přetrvávaly flashbacky, potíže se spaním a epizody nevím čeho
+          přesně, možná panické ataky, kdy jsem nebyla schopná základních činností jako se obléct a jít s&nbsp;dcerou
+          ven.</p>
+        <p>Cítila jsem už v šestinedělí, že špatný porod by mě mohl ovlivnit do budoucna a začala jsem hledat i
+          psychologickou pomoc. Na Instagramu jsem viděla odkaz na zkušební režim americké aplikace Feel Better, kde si
+          můžete chatovat s&nbsp;psychologem. Princip mi moc nevyhovoval, tak jsem to po 14 dnech zrušila. Už tehdy ale
+          psycholožka navrhovala, že moje příznaky znějí jako PTSD. Moc jsem ale nevěděla, co s&nbsp;tím dělat. Věděla jsem,
+          že u léčby PTSD se testují účinky MDMA, což mě celkem zajímalo, a říkala jsem si, jestli bych to třeba nemohla
+          vyzkoušet. Zkusila jsem kontaktovat známou lékařku, která se o toto téma zajímá a ona mi doporučila
+          terapeutku. Necítila jsem se ale na stokilometrovou cestu za ní, tak jsem návštěvu odložila.</p>
+        <p>Asi 4 měsíce po porodu jsem zvládla k&nbsp;terapeutce dojet. Napoprvé jsem u ní strávila asi 2,5 hodiny, protože
+          jsem byla dost disociovaná. Později také mluvila o tom, že mám příznaky PTSD a že bychom mohly integrovat
+          trauma pomocí EMI techniky. Navštěvovala jsem ji jednou za 14 dní. Sice jsem už byla schopná jakž takž
+          fungovat, ale pořád jsem mívala záchvaty, které přišly třeba jednou, dvakrát za týden, kdy mi všechno přišlo
+          neřešitelné. Strašně těžké a že to nezvládnu. Musela jsem se z&nbsp;toho vždycky vyspat.</p>
+        <p>Po 7 měsících od porodu se zhoršilo počasí, já jsem dostala první menstruaci a zažila jsem velký propad.
+          Ležela jsem hodinu v&nbsp;koupelně, hystericky brečela a nebyla schopná se obléct, sednout do auta a jet na
+          naplánované sezení s&nbsp;terapeutkou. Manžel mi nejdřív vynadal, pak mě ale podpořil a já na sezení dojela. Cestou
+          jsem si řekla, že můj stav už by neměl být takhle špatný a ještě před sezením zavolala psychiatričce.
+          Terapeutka se mi snažila navrhnout různé metody na uklidnění, ale já už řekla, že nic dělat nechci. Že už
+          nemůžu, že nemám sílu ani důvod vstát z&nbsp;postele, učesat se a cokoliv dělat. Hned druhý den jsem začala brát
+          Zoloft.</p>
+        <p>Zoloft mi zabral fantasticky. Pár týdnů jsem měla návaly horka, jinak žádné vedlejší účinky. Po pár týdnech
+          jsem se natolik zlepšila, že jsem mohla začít pracovat na vyrovnávacích mechanismech. Začala jsem cvičit,
+          získala kondici, posílila svaly a získala jistotu v&nbsp;těle. Postupně jsem začala žít skoro normálně. Zapojila
+          jsem se do podpůrné skupiny Úsměvu mámy. Další zlepšení jsem pocítila s&nbsp;1. narozeninami, počínajícím jarem a
+          rozvolněním.</p>
+        <p>Nyní je konec léta a dceři skoro rok a půl. Už vím, že ji miluju, dokonce jsem nedávno prožila první „stojí
+          to za to“ moment. Párkrát jsem brečela dojetím, jak je šikovná a krásná, a jsem strašně vděčná, že ji mám.
+          Věřím, že se nám podaří ty první měsíce společně zpracovat a co nejvíc přepsat. Snažím se jí být co nejlepší
+          mámou, ale už ne za každou cenu. Musím být hlavně v&nbsp;pohodě já a pak bude v&nbsp;pohodě i ona. Cíl terapie byl
+          naplněn a už mě čeká asi jen nějaké uzavírací sezení. Vysazování léků jsme zatím neřešili, ale možná už brzy
+          bude čas. </p>
+        <h3>Shrnutí </h3>
+        <h4>Co mi nepomohlo </h4>
+        <h5>Zákaz otce u porodu </h5>
+        <p>Zákaz otce u porodu dramaticky zhoršil moje postavení v&nbsp;porodnici a většina problémů by se pravděpodobně
+          nestala, kdyby byl manžel se mnou. Možná bych neměla vůbec žádnou PTSD. Podle mě je to zásah do lidských práv
+          a i Vláda si to zřejmě uvědomila, když nařízení po pár týdnech zrušila. </p>
+        <h5>Laktační poradkyně </h5>
+        <p>Po porodu u mě byly doma dvě laktační poradkyně, z&nbsp;toho jedna porodní asistentka a jedna dula. Ani jedna
+          nepoznala, že můj psychický stav není běžný a nenavrhla nějaké řešení. Neustále jen opakovaly, že musím kojit
+          a že kojení je nejdůležitější. Vzhledem k&nbsp;tomu, že mě retraumatizovala bolest při kojení a celkově kontakt
+          s&nbsp;nespokojeným dítětem, tak to prostě pro nás nebyla v&nbsp;dané situaci cesta.</p>
+        <h4>A co mi naopak pomohlo </h4>
+        <h5>Přestat kojit</h5>
+        <p>Jednak se ustálily hormony, jednak spadl obrovský tlak a mohla jsem odpočívat, když krmil manžel. Kojení nám
+          stejně nešlo, takže si myslím, že to byl dobrý krok. Kojení zřejmě není souzeno každému, i když jsem pro to
+          udělala maximum. Pokud bych měla další dítě, kojit určitě zkusím, ale ne za každou cenu.</p>
+        <h5>Pomoc manžela</h5>
+        <p>Manžel v&nbsp;pandemii přišel o práci, takže první týdny se věnoval naplno rodině, pečoval o malou, o mně a vařil.
+          Do teď se o nás stará nadstandardně, zastane veškerou péči, co je potřeba, a podporuje mě v&nbsp;léčbě.</p>
+        <h5>Moji rodiče</h5>
+        <p>Poznali, že můj stav není jen baby blues, a pomohli mi kontaktovat psychiatra. Netlačili mě však do léčby a
+          počkali, až budu sama chtít. Navíc nám hrozně moc pomáhají s&nbsp;péčí o miminko i celkově se vším.</p>
+        <h5>Terapeutka</h5>
+        <p>Pomohly mi její metody zpracování traumatu i ona jako osobnost. Představuje pro mě vzor starší ženy, zkušené
+          matky, která sama zažila ošklivé porody, a čas s&nbsp;ní strávený mě naplňuje klidem.</p>
+        <h5>Psychiatr a antidepresiva</h5>
+        <p>Zoloft mi krásně zabral bez jediného problému. I psychiatr potvrdil PTSD. Díky kombinaci terapie a
+          antidepresiv jsem si mohla obnovit svoje vlastní přizpůsobovací mechanismy a upravovat si chemii v&nbsp;mozku
+          cvičením apod.</p>
+        <h5>Nošení v&nbsp;nosítku</h5>
+        <p>Jak jsem se cítila lépe, mohla jsem se více věnovat dítěti a budovat ten vztah, který se mi na začátku marně
+          snažili vnutit. V&nbsp;zimě jsem dceru každý den nosila na procházku v&nbsp;nosítku a užívala si její přítomnost a jak
+          mi krásně klidně spinká na hrudi. Musel na to ale přijít správný čas. Nestačilo, že chci já, musela chtít i
+          dcera.</p>
+        <h5>Úsměv mámy</h5>
+        <p>Úsměv mámy jsem objevila až jako zaléčená. Přesto mi pomohlo vidět, že nejsem jediná, kdo se setkal po porodu
+          s&nbsp;psychickými potížemi. Díky podpůrné skupině jsem si mohla některá svá témata zpracovat.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal" id="pribeh-pani-jitky" role="dialog" aria-labelledby="dialog-title-4">
+  <div class="modal__wrapper">
+    <div class="modal__close js-modal-close">
+      <span class="icon icon--icon-close-color">
+        <svg class="icon__svg"><use xlink:href="#icon-close-color"></use></svg>
+      </span>
+    </div>
+    <div class="modal__body">
+      <div class="modal__content">
+        <h2 id="dialog-title-4">
+          Příběh Paní Jitky
+        </h2>
+        <p>Mám dvě krásné, zdravé děti, jsem šťastná a normálně fungující žena. Nic není ideální, chodím do práce a jako
+          každá máma řeším spoustu běžných starostí a jsem za ně vlastně šťastná. Protože moje cesta k&nbsp;mateřství byla
+          možná o něco trnitější, než tomu obvykle bývá… </p>
+        <h3>Příběh první: <br>Porodnice, před 11 lety po narození syna </h3>
+        <p>Pobíhám zmateně po pokoji, beru miminko z&nbsp;postýlky, podle instrukcí sestřiček ho musím přebalit a nakojit. Je
+          to tedy pořádná věda, nesmíme používat vlhčené ubrousky, ale máme nakázáno mu umývat zadeček pod tekoucí vodou
+          a změřit mu při přebalování v&nbsp;zadečku teplotu. Pak ho musíme zvážit před kojením, nakojit a znovu zvážit a vše
+          zapsat. Musela jsem si na ty všechny činnosti udělat seznam, protože jinak se to nedalo zvládnout udržet
+          v&nbsp;hlavě. Po těžkém porodu, ale s&nbsp;velikou radostí z&nbsp;vytouženého chlapečka, jsem se snažila (jako vždycky) dělat
+          všechno správně a co možná nejlíp. Kochala jsem se pocitem, že se mi konečně něco v&nbsp;životě opravdu povedlo,
+          pocitem, že jsem výborně připravená – měla jsem skvělý předporodní kurz - vím snad úplně všechno, a budu
+          skvělá maminka. V nešťastné&nbsp;kombinaci nadšení, vyčerpání, přístupu personálu na oddělení a velmi vyčerpávající
+          spolubydlící se plíživě ocitám v&nbsp;bludném kruhu. 1. noc jsem rodila, 2. noc jsem nemohla usnout množstvím
+          prožitků, co se mi honily hlavou, 3. noc zase nadšením, že mám konečně miminko u sebe. 4. noc už jsem
+          pochopila, že bych měla spát, byla jsem vyčerpaná, ale už prostě usnout nešlo… Začala jsem vnímat, že mám
+          problém, tančila jsem po pokoji, neustále jsem mluvila, neustále jsem něco řešila, že budu studovat, vydám
+          knihu a budu slavná. Personál naštěstí zaregistroval problém relativně včas a po ambulantním vyšetření na
+          psychiatrii byla stanovena diagnóza: poporodní psychóza – hypomanický stav. S&nbsp;předepsanou medikací
+          (antipsychotika) a nařízenou zástavou laktace mě z&nbsp;ambulance psychiatra vrátili na 2 dny zpět do porodnice.
+          Tam se podařilo zařídit něco, co bych přála každé mamince v&nbsp;takové situaci: byl mi poskytnut nadstandardní
+          pokoj, byla jsem izolována od miminka, které bylo v&nbsp;péči sester, ale rodina dostala právo na neomezené
+          návštěvy a mně bylo dovoleno se v&nbsp;jejich přítomnosti o syna starat a krmit ho z lahvičky. V&nbsp;zásadě jsme tedy
+          strávili dva dny společně se synem a manželem společně na pokoji, jen večer jsem dala syna k&nbsp;sestřičkám, vzala
+          si prášek a šla si lehnout. Synova přítomnost mě zklidnila, cítila jsem se dobře, medikace zabrala, prospala
+          jsem na dvakrát celou noc, přestala jsem mluvit z&nbsp;cesty. Bohužel nebylo možné takto pokračovat po delší dobu,
+          k&nbsp;setrvání na oddělení šestinedělí neexistoval medicínský důvod. Kontrola na psychiatrii vedla k&nbsp;doporučení
+          hospitalizace, izolace od dítěte a zástavě laktace – byla to jediná systémově možná cesta, protože „můj stav
+          nebyl ještě stabilizován natolik, abych mohla být propuštěna a zvládla péči o dítě“. Tyto kroky moje rodina
+          odmítla. Zpětně to považuji za veliký risk, který ale pro mě v&nbsp;tu chvíli naštěstí dobře dopadl.</p>
+        <p>Odešla jsem na revers z&nbsp;nemocnice a v&nbsp;domácím prostředí jsem se s&nbsp;podporou rodiny dokázala o syna starat.
+          Večer jsem si, stejně jako v&nbsp;nemocnici, vzala prášek a šla spát, v&nbsp;noci k&nbsp;synovi vstával manžel – 9 dlouhých
+          nocí. Můj počáteční hypomanický stav byl provázen nadšením z&nbsp;toho, že jsem máma. Vůbec si neumím představit,
+          co by se mnou a mou mateřskou rolí udělalo, kdyby mě od syna na několik týdnů izolovala hospitalizace
+          v&nbsp;psychiatrické léčebně. Jsem velmi vděčná za možnost stabilizace v&nbsp;nemocnici a podporu rodiny doma v&nbsp;nelehkém
+          období. Velkým riskem bylo určitě i to, že jsem se rozhodla neužít léky proti zástavě laktace, mléko jsem do
+          úlevy odstříkávala a vylévala. Antipsychotické léky jsem užívala předepsaným způsobem a kojení bylo s&nbsp;nimi
+          neslučitelné. Ale já se nechtěla připravit o naději, že třeba někdy později kojit budu. To se skutečně
+          podařilo. V&nbsp;6 týdnech jsem postupně, ale zpětně viděno velmi rychle vysadila postupným snížením léky, dětská
+          lékařka pomohla s&nbsp;výpočtem, kdy by mateřské mléko mělo být již bezpečné pro miminko a já jsem začala postupně
+          svého syna znovu kojit. Pustila jsem se do toho, protože jsem měla pocit, že jedině pak budu opravdu zdravá a
+          normální máma. Nemožný cíl se podařil, skutečně jsem se asi po měsíci dokrmování a vážení plně rozkojila a své
+          dítě do 14 měsíců kojila. Tenkrát jsem z&nbsp;toho měla radost, z&nbsp;dnešního pohledu mi to přijde jako nesmyslný a
+          iracionální risk. Zátěž spojená s&nbsp;odsáváním mléka, s&nbsp;rozkojením a nočním vstáváním hrozila spustit znovu
+          kolotoč psychických potíží. Vlastně se tak do určité míry stalo, začala jsem pociťovat skleslost, pak asi i
+          depresi, ale kvůli strachu ze zástavy laktace a z&nbsp;hospitalizace jsem nevyhledala odbornou pomoc a hledala
+          různé alternativní metody. V&nbsp;danou chvíli mi přinesla úlevu kineziologie, začala jsem se cítit dobře a
+          uvažovat o druhém miminku. Zcela určitě ale bylo chybou vyhýbat se odborné péči lékařů a spoléhat v&nbsp;dané
+          situaci jen na alternativní metody. </p>
+        <h3>Příběh druhý: <br>Druhé očekávání, před 9 lety. </h3>
+        <p>Druhé miminko se mělo narodit 2 a čtvrt roku po prvním, měla jsem v&nbsp;sobě obavy, aby se nešťastná situace
+          neopakovala. Načetla jsem spoustu informací a učinila pro sebe závěr, že si musím zajistit co nejvíce péče a
+          odpočinku, abych druhý porod a šestinedělí dobře zvládla. Snažila jsem se domluvit si v&nbsp;porodnici, abych měla
+          možnost dát miminko k&nbsp;sestrám a odpočinout si v&nbsp;případě potřeby. Tato žádost byla už dopředu zamítnuta –
+          zdravé mámy prý se o zdravé děti v&nbsp;této porodnici starají samy – a můj gynekolog, zcela znalý toho, co se mi
+          po prvním porodu stalo, mi napsal do těhotenské průkazky, že první porod byl spontánní a bez komplikací.
+          Rozhodla jsem se tedy na poslední chvíli změnit porodnici a šla jinam, kde moje obavy nebrali na lehkou váhu,
+          následoval veliký vykřičník do karty hned při příjmu a skutečně mi bylo umožněno, abych si v&nbsp;případě potřeby
+          odpočinula a dala miminko k&nbsp;sestřičkám. Po snadném a přirozeném porodu se mi narodila krásná holčička, i přes
+          problémy s&nbsp;krmením – co to všechno bylo proti kolotoči rozkojování po prvním porodu – jsme po týdnu odcházely
+          šťastné domů – ZVLÁDLY JSME TO. Byla jsem nadšená, pravda, možná opět více, než maminky v&nbsp;šestinedělí obvykle
+          bývají, ale jakékoli myšlenky, které by mě bývaly rušily od spaní, jsem si zapisovala do sešitu, který jsem
+          pak vždy zavřela do šuplete, myšlenky byly venku, já nad nimi nemusela přemýšlet a mohla jsem v&nbsp;klidu spát.
+          Začal krásný a veselý kolotoč péče o dvě malinké děti, ale vše se zdála v&nbsp;pořádku. Užívala jsem si své
+          mateřství i život jako takový.</p>
+        <p>Když bylo dcerce půl roku, rozhodla jsem se, že se chci zapsat na kurz kineziologie – přece mi tolik pomohla
+          a bylo by krásné, po ročním kurzu moci zase pomáhat jiným. Cítila jsem, že svou mateřskou roli dobře zvládám a
+          že bych se ráda realizovala i jinak a jinde než doma u plínek. Nikdo mi dopředu neřekl, že období kojení je
+          velmi křehké období v&nbsp;životě ženy, nikdo mi neřekl, že kineziologie je sice velmi účinná, ale také invazivní a
+          určitě ne pro každého vhodná a bezpečná metoda. Jak jsem později pochopila, výcvik byl veden neodborně, během
+          jediného víkendu se mi v&nbsp;hlavě po několika neodborných „odblocích“ otevřelo asi milion témat a myšlenek, které
+          jako lavina vyvolávaly další a další myšlenky. A valná většina z&nbsp;nich byla nějakým způsobem spjatá s&nbsp;mojí
+          předchozí psychózou a tématy těhotenství a porodů.</p>
+        <p>Nešťastnou shodou náhod manžel právě odjel na služební cestu a já po víkendovém kurzu zůstala sama doma
+          s&nbsp;půlroční dcerkou a synem, kterému bylo dva a tři čtvrtě roku. Sama jsem cítila, že se začalo zvláštním
+          způsobem měnit moje chování, myšlení a prožívání. Vše jsem ale z&nbsp;počátku považovala za žádoucí změny po
+          prodělaném kurzu. Bohužel nebyl se mnou nikdo, kdo by si mohl všimnout, že se děje něco zlého. Bylo velké
+          štěstí, že se mně ani dětem v&nbsp;kritickém týdnu, kdy jsme byli sami doma jen s&nbsp;mou propukající duševní nemocí,
+          nic nestalo. Z&nbsp;tohoto období si pamatuji spousty myšlenek, bláznivých nápadů (čokoláda místo večeře), dlouhé
+          telefonáty a zprávy všem možným kamarádkám a udivené pohledy syna, který určitě vnímal, že se s&nbsp;maminkou něco
+          děje. Zpětně jsem se dozvěděla, že kamarádky, se kterými jsem telefonovala, měly divný pocit, měly o mne
+          strach, ale nikoho nenapadlo, že opravdu potřebuji pomoct, že se něco opravdu zlého děje. Manžel pochopil
+          závažnost situace po svém příjezdu, ale asi také jen z&nbsp;části. Nikdo mi neviděl do hlavy, kde už se děly
+          opravdu podivné věci a probíhala spousta paranoidních strachů. Protože moje rodina měla pocit, že i minulou
+          situaci jsme v&nbsp;pořádku zvládli, přesvědčili mého muže, ať v&nbsp;klidu odjede na další služební cestu, že se o mně
+          ve spolupráci se známým&nbsp;ambulantním psychiatrem, postarají. Vím, že mě chtěli ochránit před izolací od dítěte
+          a před stigmatem psychiatrické léčby a hospitalizace, vím, že to mysleli dobře, jen neodhadli situaci, do
+          hlavy mi opravdu vidět nedokázali. Trvám na tom, že to nejlepší, co v&nbsp;té chvíli měli udělat, je zavolat mi
+          sanitu a nechat mě odvézt do nemocnice. To se bohužel stalo až asi o dva týdny později, kdy už jsem vůbec
+          nevěděla, kdo jsem a kde jsem, nepoznávala jsem svého muže a tvrdila mu, že spolu nemáme žádné děti, a kromě
+          léků jsem začala odmítat i jídlo a pití.</p>
+        <p>V&nbsp;tu chvíli jsem opravdu v&nbsp;kritickém stavu skončila v&nbsp;nemocnici na uzavřeném psychiatrickém oddělení, kde
+          jsem, zbavena svéprávnosti, strávila pět týdnů. Z&nbsp;těch pěti týdnů si pamatuji naprosté útržky – jak cloumám
+          zamčenou lednicí (zamkli ji kvůli mně, protože jsem po lécích měla nezřízenou chuť k&nbsp;jídlu a jedla vše, co
+          jsem našla), jak lomcuji mřížkami klecového lůžka (strávila jsem tam prý pět dní, ze kterých si ale můj
+          zrychlený mozek pamatoval asi tak pět minut, a vzkazuji všem kritikům toho to „nehumánního“ zařízení, že pro
+          mě v&nbsp;tu chvíli nebylo bezpečnějšího místa). Dále si vybavuji, jak stojím ve frontě na prášky, (které musíme
+          před zraky personálu polknout), jak sedím na komunitním sezení (a vůbec nechápu, co se po mně chce), jak se
+          cpu sušenkami, co mi donesl manžel po kilech, abych nechala cizí jídlo na pokoji (a pak po pěti týdnech
+          zjistím, že mám o 15 kilo víc než před tím). Z&nbsp;těch příjemnějších vzpomínek potom, jak tančím po chodbě
+          v&nbsp;přesvědčení, že jsem známá herečka a tanečnice a připravuji se na natáčení nového filmu… Rozhodně ale
+          hodnotím psychiatrické oddělení jako místo, kde už jsem se vlastně cítila v&nbsp;bezpečí a poměrně dobře.</p>
+        <p>A pak si pamatuji, že se proberu, zjistím, že nejsem herečka a tanečnice, že to celé není jedna velká show,
+          ale velký životní průšvih. Že je 26. prosince, že tedy právě skončily Vánoce. Že mám se svým mužem, který za
+          mnou denně trpělivě jezdil, dvě krásné děti, které jsem pět týdnů neviděla, a že moje dcerka strávila své
+          první Vánoce bez maminky. Že už nekojím a kojit nebudu a že mě čeká ještě velmi dlouhá léčba. Bylo mi sděleno,
+          že vzhledem k&nbsp;tomu, že jsem do nemocnice přišla pozdě, nezabíraly maximální možné dávky léků, a nebylo možné
+          déle čekat na zázrak. Hrozilo, že bych se ze svého chorobného světa už nikdy neprobudila. Zároveň jsem se
+          dozvěděla, že jsem se neprobrala jen tak, ale vlivem druhého elektrošoku (elektrokonvulzivní léčba) a že mě
+          čekají ještě dva až šest dalších zákroků.</p>
+        <p>Dostala jsem strach, ale nechala si vysvětlit, že dnes se zákrok provádí v&nbsp;narkóze a že si z&nbsp;něm nebudu nic
+          pamatovat. Opravdu, pamatuji si pouze svůj strach z&nbsp;toho, co se bude dít ve vykachlíčkované místnosti chvilku
+          před tím, než jsem před zákrokem usnula. Léčbu v&nbsp;nemocnici jsem úspěšně dokončila, a po šesté
+          elektrokonvulzivní terapii, jsem byla se silnou medikací propuštěna domů. Hospitalizace na tomto oddělení mi
+          přinesla obrovský respekt k&nbsp;psychiatrii a jejím možnostem a obrovský obdiv k&nbsp;lékařům a sestrám, kteří dělají
+          tak nelehkou práci často proti vůli pacientů odmítajících pomoc. V&nbsp;mém případě lékaři dokázali doslova nemožné
+          – vrátili mě z&nbsp;bludných dálek zpět do života.</p>
+        <p>Po propuštění jsem brala maximální přípustné dávky antipsychotik a ještě léky proti halucinacím a bludům.
+          Léky byly tak silné, že mi je museli rozdělit na ráno a večer, protože jinak se mi dělalo zle. Vzhledem
+          k&nbsp;jejich tlumivým účinkům jsem po ranní dávce už v&nbsp;deset hodin padala únavou. Ztratila jsem mimiku v&nbsp;obličeji
+          a dostala další léky na její obnovení. Byla jsem chodící tělo bez duše, vůbec nechápu, jak jsem to tenkrát
+          zvládla, ale zvládla jsem to. Moje děti byly důvodem, proč každé ráno vstát, proč to nevzdat, proč bojovat.
+          Úžasná byla i podpora rodiny. A já naprosto jasně věděla, že tentokrát lékaře poslouchat budu na slovo
+          navzdory alternativním kamarádkám doporučujících mi třeba relaxace nebo Reiki. Když mi říkaly, ať neberu léky,
+          po kterých se cítím špatně, opravdu netušily, čím jsem prošla a nevěděly o čem mluví.</p>
+        <p>Brala jsem léky dalších 4 a půl roku. Po podrobném psychologickém vyšetření mi po postupném snižování dávek
+          na minimum bylo umožněno léky zkusit vysadit. Poslední rok před vysazením léků jsem se vrátila na půl úvazku
+          do práce a začala chodit na pravidelné terapie. Návrat do práce přinesl stres a přechodné zhoršení stavu a
+          zvýšení dávky léků. Po roce terapií jsem se ale stabilizovala natolik, že jsem byla schopná fungovat v&nbsp;práci a
+          léky vysadit.</p>
+        <p>Myslím, že jsem dnes někdo úplně jiný, terapie mě přivedly k&nbsp;mnoha poznáním. Byla jsem nucená vystavět svůj
+          život znovu od základů. Ale troufám si říct, že to stálo za to. Jsem dnes vyrovnanější, šťastnější a zdravější
+          než před svou nemocí. Jsem moc ráda, že dnes existuje organizace jako Úsměv mámy a že se maminkám v&nbsp;podobné
+          situaci dnes včas může dostat kompetentní pomoci. Moc bych si přála, aby se pomoc maminkám s&nbsp;psychickými
+          potížemi stala v&nbsp;Česku naprosto běžnou systémově podporovanou záležitostí. Aby maminka měla možnost, při léčbě
+          zůstat v&nbsp;kontaktu s&nbsp;miminkem, pokud je to možné, jako se mi poštěstilo na první dva dny v&nbsp;porodnici. Aby
+          psychická prevence byla stejně běžná jako všechna screeningová vyšetření v&nbsp;těhotenství a aby se lékař
+          v&nbsp;porodnici při vizitě maminky zeptal, jak se cítí a zda dobře spala. A také aby maminky, které jsou vystaveny
+          hospitalizaci, měly možnost podpory po propuštění domů. Bylo absurdní, že jeden den jsem byla nesvéprávná a
+          zavřená na uzavřeném oddělení a druhý den jsem se měla teoreticky sama a bez pomoci starat o dvě malé
+          děti.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal" id="modal" role="dialog" aria-labelledby="dialog-title-1">
+  <div class="modal__wrapper">
+    <div class="modal__close js-modal-close">
+      <span class="icon icon--icon-close-color">
+        <svg class="icon__svg"><use xlink:href="#icon-close-color"></use></svg>
+      </span>
+    </div>
+    <div class="modal__body">
+      <div class="modal__content">
+        <h2 id="dialog-title-1">Modal headline</h2>
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam ligula pede, sagittis quis, interdum
+          ultricies, scelerisque eu. Nulla quis diam. Pellentesque arcu. Proin mattis lacinia justo. Mauris dictum
+          facilisis augue. Maecenas lorem. Pellentesque ipsum</p>
+        <p>
+          <button class="btn btn--md js-modal-close">Close</button>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

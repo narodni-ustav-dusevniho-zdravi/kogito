@@ -1,0 +1,45 @@
+.support {
+  margin: 132px 0 68px;
+  text-align: center;
+  &--wrapper {
+  }
+  &--headline {
+    font-size: 16px;
+    font-weight: 500;
+  }
+  &--grid {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 17px -15px 0;
+    > div {
+      flex: 0 0 180px;
+      margin: 15px;
+    }
+  }
+  @media (max-width: 1199px) {
+    &--grid {
+      > div {
+        flex: 0 0 140px;
+      }
+    }
+  }
+  @media (max-width: 1023px) {
+    &--grid {
+      > div {
+        flex-basis: 160px;
+      }
+    }
+  }
+  @media (max-width: 959px) {
+    &--grid {
+      > div {
+        flex-basis: 130px;
+      }
+    }
+  }
+  @media (max-width: 767px) {
+    margin: 100px 0 60px;
+  }
+}

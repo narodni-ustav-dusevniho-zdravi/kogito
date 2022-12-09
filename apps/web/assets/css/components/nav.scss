@@ -1,0 +1,95 @@
+// navigace
+.nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: $index_menu;
+  flex: 1 1 auto;
+  display: flex;
+  overflow: auto;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 95vw;
+  height: 100vh;
+  padding: 40px 0 10px 0;
+  text-align: center;
+  background: $color_secondary;
+  transition: $transition;
+  transform: translate(100%, 0);
+  pointer-events: none;
+  ul {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0 10px;
+    list-style-type: none;
+    @media (min-width: $mq_menu) {
+      display: flex;
+      align-items: center;
+      width: auto;
+      padding: 0;
+    }
+  }
+  li {
+    position: relative;
+    display: block;
+    padding: 0;
+    &:hover,
+    &:focus {
+      ul {
+        visibility: visible;
+        opacity: 1;
+        transform: none;
+      }
+    }
+    @media (min-width: $mq_menu) {
+      display: inline-block;
+      margin: 0 10px 0 0;
+      &:last-child {
+        margin: 0;
+      }
+    }
+    @media (min-width: $mqlg) {
+      margin: 0 20px 0 0;
+    }
+  }
+  a {
+    position: relative;
+    display: block;
+    padding: 10px;
+    color: $text_color;
+    font-size: 16px;
+    text-decoration: none;
+    @media (min-width: $mq_menu) {
+      display: inline-block;
+    }
+  }
+  &.is-open {
+    display: flex;
+    box-shadow: 0  0 2.5rem 1.25rem rgba(0, 0, 0, 0.18);
+    transform: translate(0, 0);
+    pointer-events: auto;
+  }
+  @media (max-width: $mq_menu - 1) and (orientation: landscape) {
+    justify-content: flex-start;
+  }
+  @media (min-width: $mq_menu) {
+    position: static;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    overflow: initial;
+    align-items: center;
+    flex-direction: row;
+    flex-grow: 0;
+    justify-content: space-between;
+    width: auto;
+    height: auto;
+    padding: 0;
+    background: transparent;
+    transform: none;
+    pointer-events: all;
+  }
+}

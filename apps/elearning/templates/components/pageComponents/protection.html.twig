@@ -1,0 +1,29 @@
+{% set locale = app.request.locale %}
+{% trans_default_domain 'homepage' %}
+<section class="protection">
+  <div class="container container--bigger">
+    <div class="protection--wrapper" data-aos="fade">
+      <div class="protection--grid">
+        <div>
+          <img data-aos="fade-down" src="{{ asset('build/img/logo.svg') }}" alt="" width="48">
+          <h2 data-aos="fade-down" class="protection--headline">
+            {% trans %}title.2{% endtrans%}
+            <br>
+            {% trans %}title.3{% endtrans%}
+          </h2>
+          <div class="button__grid">
+            <div data-aos="fade-right">
+              <a href="{{ path('app_default_pageAction', {'slug':'pro-zeny'}) }}" class="button">{% trans %}title.button.0{% endtrans%}</a>
+            </div>
+            <div data-aos="fade-right">
+              <a href="{{ path('app_default_pageAction', {'slug':'pro-odborniky'}) }}" class="button button--transparent js-modal-open">{% trans %}title.button.1{% endtrans%}</a>
+            </div>
+          </div>
+        </div>
+        <div class="protection--img--wrapper">
+          <img data-aos="fade-up" src="{{ asset('build/img/mother-4.svg') }}" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

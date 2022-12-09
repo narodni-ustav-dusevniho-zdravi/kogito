@@ -1,0 +1,99 @@
+{% extends 'SonataAdminBundle:CRUD:base_edit.html.twig' %}
+
+{% block javascripts %}
+  {{ parent() }}
+  <script src="{{ asset('/js/ckeditor/ckeditor.js') }}" type="text/javascript"></script>
+  <script type="text/javascript">
+    $(function () {
+      const ckconfig = {
+        ckfinder: {
+          uploadUrl: '/admin/upload-file'
+        },
+        toolbar: {
+          items: [
+            'heading',
+            '|',
+            'bold',
+            'italic',
+            'link',
+            'bulletedList',
+            'numberedList',
+            '|',
+            'indent',
+            'outdent',
+            '|',
+            'alignment',
+            'horizontalLine',
+            '|',
+            'fontBackgroundColor',
+            'fontColor',
+            'fontSize',
+            'strikethrough',
+            '|',
+            'imageUpload',
+            'mediaEmbed',
+            '|',
+            'blockQuote',
+            'insertTable',
+            'specialCharacters',
+            '|',
+            'undo',
+            'redo',
+          ]
+        },
+        language: 'cs',
+        image: {
+          toolbar: [
+            'imageTextAlternative',
+            'imageStyle:full',
+            'imageStyle:side'
+          ]
+        },
+        table: {
+          contentToolbar: [
+            'tableColumn',
+            'tableRow',
+            'mergeTableCells'
+          ]
+        },
+        licenseKey: '',
+      };
+      var areas = $('textarea.ckeditor');
+      areas.each(function (i, element) {
+        ClassicEditor.create(element, ckconfig);
+        element.classList.add('ckeditor-initialized');
+      });
+
+      $('.sonata-collection-add').each(function (i, element) {
+        element.addEventListener('click', function () {
+          setTimeout(function () {
+
+            var areas = $('textarea.ckeditor');
+            areas.each(function (i, element) {
+              if (!element.classList.contains('ckeditor-initialized')) {
+                ClassicEditor.create(element, ckconfig);
+                element.classList.add('ckeditor-initialized');
+                $(element).prop('required', false);
+              }
+            });
+
+            // solveDescriptionRowTypes();
+          }, 750);
+        });
+      });
+
+      $('.ckeditor-initialized').prop('required', false);
+
+    });
+  </script>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+  <style>
+    img.admin-preview {
+      max-height: 200px;
+      max-width: 200px;
+    }
+  </style>
+{% endblock %}

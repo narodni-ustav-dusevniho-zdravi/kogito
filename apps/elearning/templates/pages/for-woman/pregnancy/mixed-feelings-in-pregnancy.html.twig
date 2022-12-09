@@ -1,0 +1,18 @@
+{#{% set _headerClass = 'header--sticky' %}#}
+
+{% extends 'base.html.twig' %}
+
+{% set pageTitle = 'Smíšené pocity v těhotenství | Perinatal' %}
+{% set pageDescription = 'Těhotenství může být v životě ženy velmi krásné, ale také náročné a stresující období. Hormonální změny s sebou přináší zvýšenou citlivost, změny nálad, problémy se spánkem nebo třeba měnící se chutě.' %}
+
+{% block main %}
+  {% include 'components/for-woman/pregnancy/mixed-feelings-in-pregnancy/hero.html.twig' %}
+  {% include 'components/for-woman/pregnancy/mixed-feelings-in-pregnancy/main-box.html.twig' %}
+  {% include 'components/for-woman/pregnancy/mixed-feelings-in-pregnancy/main.html.twig' %}
+  {% include 'components/for-woman/pregnancy/mixed-feelings-in-pregnancy/author.html.twig' %}
+{#  {% include 'components/for-woman/pregnancy/mixed-feelings-in-pregnancy/story.html.twig' %}#}
+  {% include 'components/for-woman/pregnancy/mixed-feelings-in-pregnancy/reviews.html.twig' %}
+  {% include 'components/pageComponents/share.html.twig' %}
+  {% include 'components/for-woman/pregnancy/mixed-feelings-in-pregnancy/other-articles.html.twig' %}
+  {% include 'components/for-woman/pregnancy/mixed-feelings-in-pregnancy/signpost.html.twig' %}
+{% endblock %}

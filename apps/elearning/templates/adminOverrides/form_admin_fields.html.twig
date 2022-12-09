@@ -1,0 +1,55 @@
+{% extends '@SonataDoctrineORMAdmin/Form/form_admin_fields.html.twig' %}
+
+{% block sonata_type_native_collection_widget_row %}
+    {% apply spaceless %}
+        <div class="sonata-collection-row">
+            {% if allow_delete %}
+            <div class="row">
+                <div class="col-xs-1">
+                    <a href="#" class="btn btn-link sonata-collection-delete">
+                        <i class="fa fa-minus-circle" aria-hidden="true"></i>
+                    </a>
+                    {% if attr.class is defined and attr.class == 'change-order' %}
+                    <br>
+                    <a href="#" class="collection-up btn btn-default" title="Move up"><span class="glyphicon glyphicon-arrow-up"></span></a>
+                    <a href="#" class="collection-down btn btn-default" title="Move down"><span class="glyphicon glyphicon-arrow-down"></span></a>
+                    {% endif %}
+                </div>
+                <div class="col-xs-11">
+            {% endif %}
+            {{ form_row(child, { label: false }) }}
+            {% if allow_delete %}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    {% endapply %}
+{% endblock sonata_type_native_collection_widget_row %}
+
+{% block sonata_type_native_collection_widget %}
+    {% apply spaceless %}
+        {% if prototype is defined %}
+            {% set child = prototype %}
+            {% set allow_delete_backup = allow_delete %}
+            {% set allow_delete = true %}
+            {% set attr = attr|merge({'data-prototype': block('sonata_type_native_collection_widget_row'), 'data-prototype-name': prototype.vars.name, 'class': attr.class|default('') }) %}
+            {% set allow_delete = allow_delete_backup %}
+        {% endif %}
+        {% set attr = attr|merge({'data-name-prefix': full_name}) %}
+        <div {{ block('widget_container_attributes') }}>
+            {{ form_errors(form) }}
+            {% for child in form %}
+                {{ block('sonata_type_native_collection_widget_row') }}
+            {% endfor %}
+            {{ form_rest(form) }}
+            {% if allow_add %}
+                <div>
+                    <a href="#" class="btn btn-link sonata-collection-add"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+                    <a href="#" class="collection-up" title="Move up" style="display: none;"></a>
+                    <a href="#" class="collection-down" title="Move down" style="display: none;"></a>
+                </div>
+            {% endif %}
+        </div>
+    {% endapply %}
+{% endblock sonata_type_native_collection_widget %}
+

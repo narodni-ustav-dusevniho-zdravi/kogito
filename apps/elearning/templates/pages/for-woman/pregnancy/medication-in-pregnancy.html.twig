@@ -1,0 +1,18 @@
+{#{% set _headerClass = 'header--sticky' %}#}
+
+{% extends 'base.html.twig' %}
+
+{% set pageTitle = 'Léky v těhotenství | Perinatal' %}
+{% set pageDescription = 'Pokud již užíváte nějaká psychofarmaka (například antidepresiva) a plánujete těhotenství, je dobré konzultovat vaši medikaci s lékařem nebo lékařkou, která vám je předepisuje, ještě předtím, než otěhotníte.' %}
+
+{% block main %}
+  {% include 'components/for-woman/pregnancy/medication-in-pregnancy/hero.html.twig' %}
+  {% include 'components/for-woman/pregnancy/medication-in-pregnancy/main-box.html.twig' %}
+  {% include 'components/for-woman/pregnancy/medication-in-pregnancy/main.html.twig' %}
+  {% include 'components/for-woman/pregnancy/medication-in-pregnancy/author.html.twig' %}
+  {% include 'components/for-woman/pregnancy/medication-in-pregnancy/story.html.twig' %}
+{#  {% include 'components/for-woman/pregnancy/medication-in-pregnancy/reviews.html.twig' %}#}
+  {% include 'components/pageComponents/share.html.twig' %}
+  {% include 'components/for-woman/pregnancy/medication-in-pregnancy/other-articles.html.twig' %}
+  {% include 'components/for-woman/pregnancy/medication-in-pregnancy/signpost.html.twig' %}
+{% endblock %}

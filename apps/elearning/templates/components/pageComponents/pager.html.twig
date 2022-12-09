@@ -1,0 +1,46 @@
+<div class="pagination">
+    {% set currentRoute = app.request.attributes.get('_route') %}
+    {% set currentParameters = app.request.query.all %}
+
+    <ul>
+    {% if pagerObject.displayBeforeButton %}
+      <li>
+        <a  href="{{ path(currentRoute, pagerObject.prepareRouteParameters(currentParameters, searchFormName, pagerObject.getCurrentPage() - 1)) }}">
+            <span class="icon icon--arrow-left">
+              <svg class="icon__svg">
+                <use xlink:href="#arrow-left"></use>
+              </svg>
+            </span>
+        </a>
+      </li>
+    {% endif %}
+
+    {% for page in pagerObject.getPagesToDisplay %}
+      <li>
+        {% if pagerObject.getCurrentPage == page %}
+            <a class="is-open" href="{{ path(currentRoute, pagerObject.prepareRouteParameters(currentParameters, searchFormName, page)) }}">
+                {{ page }}
+            </a>
+        {% elseif page == '-' %}
+            <a><span class="pagination__separator">...</span></a>
+        {% else %}
+            <a href="{{ path(currentRoute, pagerObject.prepareRouteParameters(currentParameters, searchFormName, page)) }}">
+                {{ page }}
+            </a>
+        {% endif %}
+      </li>
+    {% endfor %}
+
+    {% if pagerObject.displayNextButton %}
+      <li>
+        <a href="{{ path(currentRoute, pagerObject.prepareRouteParameters(currentParameters, searchFormName, pagerObject.getCurrentPage() + 1)) }}">
+            <span class="icon icon--arrow-right">
+              <svg class="icon__svg">
+                <use xlink:href="#arrow-right"></use>
+              </svg>
+            </span>
+        </a>
+      </li>
+    {% endif %}
+    </ul>
+</div>

@@ -1,0 +1,30 @@
+.page-sub-headline {
+  text-align: center;
+  img {
+    display: block;
+    margin: 0 auto 24px;
+  }
+  h2 {
+    display: flex;
+    flex-direction: column-reverse;
+    max-width: 800px;
+    margin: auto;
+  }
+  small {
+  }
+  p {
+    max-width: 666px;
+    margin: 24px auto 0;
+    font-size: 18px;
+  }
+  @media (max-width: 959px) {
+    h2 {
+      max-width: 666px;
+    }
+  }
+  @media (max-width: 767px) {
+    h2 {
+      max-width: 440px;
+    }
+  }
+}

@@ -1,0 +1,72 @@
+title:
+  0: Our goal is to provide available help
+  1: to women who are pregnant or postpartum and experiencing psychosocial stress.
+  2: Motherhood is beautiful,
+  3: but it also brings difficult moments
+  button:
+   0: I'm pregnant or postpartum
+   1: I'm a care provider
+
+goals:
+  aboutProject:
+    title: About the project
+    text: Few people talk openly about the difficult moments in women's lives during the perinatal period. The perinatal period from a psychological perspective includes the time from the beginning of pregnancy to one year of the child. It is during this time that parents may be exposed to psychosocial stress that also affects their child. Then, when psychological difficulties come unexpectedly, it is easy to get the impression that we are the only ones in the world who cannot cope. But this is a false impression.
+    button: More about the project
+  goal:
+    title: Goals
+    text: Our goal is to raise awareness of psychological difficulties in women in the perinatal period. We also want to bring a tested model of accessible care for women who have been betrayed by their psyche during pregnancy or after childbirth. The aim is also to prevent the negative effects of psychosocial stress on their children.
+    button: Who's behind the project
+  vision:
+    title: Vision
+    text: In the Czech Republic there is a system of early detection of women who are at risk of psychosocial stress in the perinatal period. Stepped mental health care is also offered to interested women. The issue of perinatal mental health is widespread, both among women themselves and among obstetricians, midwives and psychiatrists in the country. There are a minimum of children in the country who are negatively affected by psychosocial stress in their parents from a young age.
+    button: More about the vision
+
+team:
+  title:
+    0: Our team
+    1: Behind the project is a
+    2: wonderful team of people
+  text: Our team can be found across the country comprising over 30 midwives and midwifery nurses, 10 peer consultants and other key people.
+  button: Meet the team
+
+women:
+  title:
+    0: For women
+    1: Educational materials, for understanding motherhood
+  text: Information on perinatal mental health, for understanding the psyche in pregnancy and after birth.
+  button: Open topic
+  materials: Educational Materials
+  tips:
+    title: Tips for mental well-being
+    text: We offer tips on what you can do when feeling mental discomfort in the perinatal period.
+  informations:
+    title: Information for professionals
+    text: An educated professional = a happy woman. We are building a database of educational materials for professionals caring for women in the perinatal period.
+  stories:
+    title: Real stories
+    text: An important source of information for us is you. We bring you stories written by women who are not afraid to talk about their psyche.
+
+providers:
+  title:
+    0: Together we are stronger
+    1: All materials in one place
+  birth:
+    title: After giving birth
+    button: Open the topic
+  pregnancy:
+    title: Pregnancy
+    button: Open the topic
+  closePeople:
+    title: For loved ones
+    button: Open the topic
+
+mobile:
+  title: Learn how to work with depressive and anxious thoughts.
+  text: Our goal is to make perinatal mental health care accessible to as many people as possible. That's why we developed the Kogito mobile app, which incorporates elements of cognitive behavioural therapy, support from other women and relaxation techniques.
+
+reviews:
+  title: Where we're talked about
+  button: Read all the media
+
+support:
+  text: It couldn't have been done without your support. Thank you.

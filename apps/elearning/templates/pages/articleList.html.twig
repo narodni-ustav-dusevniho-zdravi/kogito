@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+{% set locale = app.request.locale %}
+
+{% block body %}
+<main role="main" class="main">
+
+  <section class="section">
+
+    <div class="article-list">
+      <article class="container container--lg" role="article">
+        <div class="indent">
+          {% set blogHeader = getComponent('blogHeader') %}
+          <h1 class="title">{{ blogHeader.data.headline[locale]}}</h1>
+          <div class="row row--start article-list__top">
+            {% for item in headerArticles %}
+              <div class="col col--2">
+                <a href="{{ path('app_blog_detail', {'id':item.id, 'categorySlug': item.category.getSlugByLocale(locale), 'slug':item.getSlugByLocale(locale)}) }}" class="article-list__main">
+                  <img src="{{ item.image }}" width="" height="" alt="{{ item.getTitleByLocale(locale) }}">
+                  <h2>{{ item.getTitleByLocale(locale) }}</h2>
+                  <p><strong>{{ item.published|date('d/m/Y') }}</strong></p>
+                </a>
+              </div>
+            {% endfor %}
+          </div>
+
+          <div class="filter">
+            {% form_theme blogSearchForm 'formThemes/blogSearch.html.twig' %}
+            {{ form_start(blogSearchForm, {attr:{id: 'blog-search-form'}}) }}
+            <p>Kategorie:</p>
+            {{ form_end(blogSearchForm) }}
+          </div>
+
+          <div class="row row--start article-list__list">
+            {% for article in blogSearchResult.objects %}
+              <div class="col col--3">
+                <a href="{{ path('app_blog_detail', {'id':article.id, 'categorySlug': article.category.getSlugByLocale(locale), 'slug':article.getSlugByLocale(locale)}) }}" class="article-list__item">
+                  <img loading="lazy" src="{{ article.image }}" width="" height="" alt="{{ article.getTitleByLocale(locale) }}">
+                  <h2>{{ article.getTitleByLocale(locale) }}</h2>
+                  <p><strong>{{ article.published|date('d/m/Y') }}</strong>
+                  </p>
+                  <button class="btn btn--sm">Číst dále</button>
+                </a>
+              </div>
+            {% endfor %}
+          </div>
+
+          {% set pagerObject = blogSearchResult %}
+          {% if pagerObject is defined %}
+            {% if pagerObject.getPagesToDisplay|length > 1 %}
+              {% include "components/pageComponents/pager.html.twig" with {pagerObject: blogSearchResult, searchFormName: blogSearchForm.vars.name} only %}
+            {% endif %}
+          {% endif %}
+        </div>
+      </article>
+    </div>
+
+  </section>
+
+</main>
+{% endblock %}

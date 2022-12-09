@@ -1,0 +1,18 @@
+{#{% set _headerClass = 'header--sticky' %}#}
+
+{% extends 'base.html.twig' %}
+
+{% set pageTitle = 'Benzodiazepiny, z-hypnotika a kojení | Perinatal' %}
+{% set pageDescription = 'Nová životní role a obtížná adaptace na ni, změny v&nbsp;denním rytmu, spánkový deficit po porodu, s&nbsp;tím vším i dalšími faktory souvisí vyšší prevalence úzkostných poruch u žen v&nbsp;tomto období. ' %}
+
+{% block main %}
+  {% include 'components/for-woman/postpartum/benzodiazepines-from-hypnotics-and-breastfeeding/hero.html.twig' %}
+  {% include 'components/for-woman/postpartum/benzodiazepines-from-hypnotics-and-breastfeeding/main-box.html.twig' %}
+  {% include 'components/for-woman/postpartum/benzodiazepines-from-hypnotics-and-breastfeeding/main.html.twig' %}
+  {% include 'components/for-woman/postpartum/benzodiazepines-from-hypnotics-and-breastfeeding/author.html.twig' %}
+{#  {% include 'components/for-woman/postpartum/benzodiazepines-from-hypnotics-and-breastfeeding/story.html.twig' %}#}
+{#  {% include 'components/for-woman/postpartum/benzodiazepines-from-hypnotics-and-breastfeeding/reviews.html.twig' %}#}
+  {% include 'components/pageComponents/share.html.twig' %}
+{#  {% include 'components/for-woman/postpartum/benzodiazepines-from-hypnotics-and-breastfeeding/other-articles.html.twig' %}#}
+  {% include 'components/for-woman/postpartum/benzodiazepines-from-hypnotics-and-breastfeeding/signpost.html.twig' %}
+{% endblock %}

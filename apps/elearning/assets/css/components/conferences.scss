@@ -1,0 +1,150 @@
+.conferences {
+  margin: 94px auto 0;
+  @media (max-width: $mqxs) {
+    margin: 70px auto 0;
+  }
+  .container {
+    max-width: 678px;
+  }
+  &--info-box {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding-bottom: 29px;
+    border-bottom: 1px solid #e2e2e2;
+    @media (max-width: $mqxs) {
+      align-items: center;
+      flex-direction: column;
+
+      gap: 20px;
+    }
+  }
+  &--info-item {
+    @media (max-width: $mqxs) {
+      text-align: center;
+    }
+  }
+  &--info-text {
+    margin-top: 15px;
+    color: #000;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: 0.01em;
+    opacity: 0.4;
+    @media (max-width: $mqxs) {
+      text-align: center;
+    }
+  }
+  &--info-title {
+    margin-bottom: 6px;
+    color: $color_black;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: 0.01em;
+    opacity: 0.5;
+  }
+  &--info-content {
+    color: $color_black;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: 0.01em;
+    @media (max-width: $mqsm) {
+      font-size: 19px;
+    }
+  }
+  &--program-heading {
+    margin-bottom: 32px;
+    font-size: 24px;
+    line-height: 1.25;
+    letter-spacing: 0.02em;
+  }
+  &--program-title {
+    margin: 40px 0 16px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: 0.02em;
+    opacity: 0.4;
+  }
+  &--program-item {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 24px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 4px;
+    @media (max-width: $mqxs) {
+      align-items: center;
+      flex-direction: column;
+
+      gap: 10px;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  &--program-time {
+    min-width: 150px;
+    color: $color_main;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    @media (max-width: $mqxs) {
+      text-align: center;
+    }
+  }
+  &--program-content {
+    @media (max-width: $mqxs) {
+      display: block;
+      text-align: center;
+    }
+    &-name {
+      display: block;
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1.4;
+      letter-spacing: 0.01em;
+    }
+    &-author {
+      display: block;
+      margin-top: 8px;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.4;
+      letter-spacing: 0.01em;
+    }
+  }
+  &--program-item-full {
+    margin: 48px 0;
+    color: $color_white;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: linear-gradient(44.64deg, #af4ba2 -5.07%, #8340e8 65.18%);
+  }
+  &--program-time-full {
+    color: $color_white;
+    @media (max-width: $mqxs) {
+      text-align: center;
+    }
+  }
+  p {
+    margin: 0 0 20px;
+    font-size: 16px;
+    line-height: 32px;
+  }
+  small {
+    position: relative;
+    top: 8px;
+    color: $color_black;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: 0.01em;
+    opacity: 0.5;
+  }
+}

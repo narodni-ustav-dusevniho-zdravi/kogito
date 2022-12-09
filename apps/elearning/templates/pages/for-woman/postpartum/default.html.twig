@@ -1,0 +1,12 @@
+{#{% set _headerClass = 'header--sticky' %}#}
+
+{% extends 'base.html.twig' %}
+
+{% set pageTitle = 'Důležitá témata spojená s psychikou po porodu | Perinatal' %}
+{% set pageDescription = 'Období po porodu je často vyplněno radostí a pěknými pocity. Avšak není to pravidlem, a ne vždy vypadá doba po porodu tak růžově, jak ji vybarvují média nebo sociální sítě.' %}
+
+{% block main %}
+  {% include 'components/for-woman/postpartum/default/hero.html.twig' %}
+  {% include 'components/for-woman/postpartum/default/main.html.twig' %}
+  {% include 'components/for-woman/postpartum/default/signpost.html.twig' %}
+{% endblock %}

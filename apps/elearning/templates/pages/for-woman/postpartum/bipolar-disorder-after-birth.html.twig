@@ -1,0 +1,18 @@
+{#{% set _headerClass = 'header--sticky' %}#}
+
+{% extends 'base.html.twig' %}
+
+{% set pageTitle = 'Bipolární porucha po porodu | Perinatal' %}
+{% set pageDescription = 'Bipolární afektivní porucha (BAP) je chronické závažné psychiatrické onemocnění s&nbsp;odhadovanou prevalencí 1 %. Incidence je stejná u&nbsp;mužů i&nbsp;žen. ' %}
+
+{% block main %}
+  {% include 'components/for-woman/postpartum/bipolar-disorder-after-birth/hero.html.twig' %}
+  {% include 'components/for-woman/postpartum/bipolar-disorder-after-birth/main-box.html.twig' %}
+  {% include 'components/for-woman/postpartum/bipolar-disorder-after-birth/main.html.twig' %}
+  {% include 'components/for-woman/postpartum/bipolar-disorder-after-birth/author.html.twig' %}
+{#  {% include 'components/for-woman/postpartum/bipolar-disorder-after-birth/story.html.twig' %}#}
+{#  {% include 'components/for-woman/postpartum/bipolar-disorder-after-birth/reviews.html.twig' %}#}
+  {% include 'components/pageComponents/share.html.twig' %}
+{#  {% include 'components/for-woman/postpartum/bipolar-disorder-after-birth/other-articles.html.twig' %}#}
+  {% include 'components/for-woman/postpartum/bipolar-disorder-after-birth/signpost.html.twig' %}
+{% endblock %}

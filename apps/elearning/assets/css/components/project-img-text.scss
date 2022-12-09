@@ -1,0 +1,18 @@
+.project-img-text {
+  margin: 120px 0;
+  &--wrapper {
+  }
+  &--grid {
+    display: grid;
+    grid-template-columns: 1fr 331px;
+    grid-gap: 60px;
+    max-width: 747px;
+    margin: auto;
+  }
+  @media (max-width: 666px) {
+    &--grid {
+      grid-template-columns: 1fr;
+      grid-gap: 12px;
+    }
+  }
+}

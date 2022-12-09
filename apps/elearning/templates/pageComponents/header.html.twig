@@ -1,0 +1,127 @@
+<header class="header {{ _headerClass|default() }}" role="banner">
+  {% set locale = app.request.locale %}
+  {% if getComponent('commonBannerTop') %}
+    {% set banner = getComponent('commonBannerTop').data %}
+    {% if banner['displayDesktopBanner'] or banner['displayMobileBanner'] %}
+      <div class="toolbar show-desktop">
+        <div class="container">
+          <p><span id="banner-desktop" href="{{ banner['slides']|first['bannerLink'][locale] }}" data-values="{% for slide in banner['slides'] %}{{ slide['desktopBanner'][locale] }}{% if not loop.last %};{% endif %}{% endfor %}" data-time="{{ banner['time'] }}" data-href="{% for slide in banner['slides'] %}{{ slide['bannerLink'][locale] }}{% if not loop.last %};{% endif %}{% endfor %}">{{ banner['slides']|first['desktopBanner'][locale] }}</span></p>
+        </div>
+      </div>
+    {% endif %}
+  {% endif %}
+
+  <div class="container">
+    <div class="header--wrapper">
+      <a data-aos="fade-left" href="{{ path('app_default_default') }}" class="header__logo">
+        <svg class="header__logo--icon" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path class="header__logo--1" d="M13.304 16.715c1.495-.376 3.474-1.362 4.48-2.23 2.585-2.232 3.271-5.135 2.05-8.673-.65-1.886-2.134-3.582-3.936-4.497C14.338.522 12.79.179 10.415.1 8.565.04 8.152.067 7.113.317 3.167 1.27.533 3.754.068 6.964-.114 8.227.082 10.36.5 11.65c.811 2.504 2.761 4.197 5.698 4.946 1.677.427 5.618.494 7.106.119z" fill="#fff"/>
+          <path class="header__logo--2" opacity=".5" d="M27.753 16.922c1.84-.55 3.053-2.114 3.79-4.886 1.05-3.949.226-8.928-1.807-10.92C28.839.238 28.226 0 26.877 0c-.994.001-1.247.055-2.072.443-2.082.977-3.002 2.963-3.153 6.804-.123 3.129.256 5.468 1.183 7.287 1.046 2.052 2.948 2.975 4.918 2.388z" fill="#fff"/>
+          <path class="header__logo--3" opacity=".25" d="M9.149 31.928c2.973-.386 4.757-1.535 5.646-3.637.474-1.12.579-3.277.229-4.733-.64-2.666-2.213-4.328-4.831-5.104-1.12-.332-3.8-.404-5.122-.137-2.495.502-4.186 1.898-4.84 3.996-.309.99-.307 3.311.002 4.538.488 1.933 1.835 3.558 3.6 4.344 1.478.657 3.621.953 5.316.733z" fill="#fff"/>
+          <path class="header__logo--4" d="M25.856 31.928c3.004-.386 4.806-1.535 5.704-3.637.479-1.12.584-3.277.231-4.733-.646-2.666-2.235-4.328-4.88-5.104-1.13-.332-3.837-.404-5.174-.137-2.52.502-4.227 1.898-4.888 3.996-.312.99-.31 3.311.002 4.538.493 1.933 1.854 3.558 3.636 4.344 1.493.657 3.658.953 5.37.733z" fill="#fff"/>
+        </svg>
+      </a>
+      <nav class="nav" role="navigation">
+{#        {% if getMenu('main-menu') %}#}
+{#        <ul>#}
+{#            {% set menu = getMenu('main-menu') %}#}
+{#            {% for menuItem in menu.menuItems if menuItem.enabled %}#}
+{#              {% if menuItem.type == 0 and ((menuItem.targetPage and menuItem.targetPage.enabled) or menuItem.getTargetHrefForLanguage(locale) != '') %}#}
+{#                <li>#}
+{#                  <a href="{{ generatePathToPage(menuItem) }}" {% if menuItem.openInTargetBlank %}target="_blank"{% endif %}>{{ menuItem.name }}</a>#}
+{#                </li>#}
+{#              {% elseif menuItem.type == 1 %}#}
+{#                <li>#}
+{#                  <a {% if menuItem.openInTargetBlank %}target="_blank"{% endif %} href="{{ menuItem.targetHref }}">{{ menuItem.name }}</a>#}
+{#                </li>#}
+{#              {% endif %}#}
+{#            {% endfor %}#}
+{#        </ul>#}
+{#        {% endif %}#}
+        <ul>
+          {% if locale == 'cs' %}
+          <li data-aos="fade-left" data-aos-delay="150" tabindex="0">
+            <ul>
+              <li><a href="{{ path('app_default_pageAction', {'slug':'o-projektu'}) }}#screening">Screening</a></li>
+              <li><a href="{{ path('app_default_pageAction', {'slug':'o-projektu'}) }}#kde-projekt-probiha">Kde projekt probíhá</a></li>
+              <li><a href="{{ path('app_default_pageAction', {'slug':'o-projektu'}) }}#vznik-projektu">Vznik projektu</a></li>
+              <li><a href="{{ path('app_default_pageAction', {'slug':'o-projektu'}) }}#tym">Náš tým</a></li>
+            </ul>
+            <a href="{{ path('app_default_pageAction', {'slug':'o-projektu'}) }}">O projektu</a>
+          </li>
+          {% else %}
+            <li data-aos="fade-left" data-aos-delay="150" tabindex="0">
+              <ul>
+                <li><a href="{{ path('app_default_pageAction', {'slug':'about-project'}) }}#screening">Screening</a></li>
+                <li><a href="{{ path('app_default_pageAction', {'slug':'about-project'}) }}#kde-projekt-probiha">Kde projekt probíhá</a></li>
+                <li><a href="{{ path('app_default_pageAction', {'slug':'about-project'}) }}#vznik-projektu">Vznik projektu</a></li>
+                <li><a href="{{ path('app_default_pageAction', {'slug':'about-project'}) }}#tym">Náš tým</a></li>
+              </ul>
+              <a href="{{ path('app_default_pageAction', {'slug':'about-project'}) }}">O projektu</a>
+            </li>
+          {% endif %}
+          <li data-aos="fade-left" data-aos-delay="300" tabindex="0">
+            <ul>
+              <li><a href="{{ path('app_default_pageAction', {'slug':'o-nas'}) }}#media">Média</a></li>
+              <li><a href="{{ path('app_default_pageAction', {'slug':'o-nas'}) }}#recenze-uzivatelek">Recenze uživatelek</a></li>
+            </ul>
+            <a href="{{ path('app_default_pageAction', {'slug':'o-nas'}) }}">Napsali o nás</a>
+          </li>
+          <li data-aos="fade-left" data-aos-delay="450" tabindex="0"><a href="{{ path('app_default_pageAction', {'slug':'kontakt'}) }}">Kontakt</a></li>
+        </ul>
+        <ul class="nav--right">
+          <li data-aos="fade-right" data-aos-delay="600" tabindex="0">
+            <ul>
+              <li><a href="#test-epds" class="js-modal-open">Deprese</a></li>
+              <li><a href="#test-pass" class="js-modal-open">Úzkost</a></li>
+            </ul>
+            <a href="{{ path('app_default_pageAction', {'slug':'otestuj-se'}) }}">Otestuj se</a>
+          </li>
+          <li data-aos="fade-right" data-aos-delay="750" tabindex="0">
+            <ul>
+              <li><a href="{{ path('app_default_pageAction_forWomen', {'slug':'tehotenstvi'}) }}">Těhotenství</a></li>
+              <li><a href="{{ path('app_default_pageAction_forWomen', {'slug':'po-porodu'}) }}">Po porodu</a></li>
+            </ul>
+            <a href="{{ path('app_default_pageAction', {'slug':'pro-zeny'}) }}">Pro ženy</a>
+          </li>
+          <li data-aos="fade-right" data-aos-delay="750" tabindex="0">
+            <ul>
+              <li><a href="{{ path('app_default_pageAction_forProfessionals', {'slug':'tehotenstvi'}) }}">Těhotenství</a></li>
+              <li><a href="{{ path('app_default_pageAction_forProfessionals', {'slug':'po-porodu'}) }}">Po porodu</a></li>
+            </ul>
+            <a href="{{ path('app_default_pageAction', {'slug':'pro-odborniky'}) }}">Pro odborníky</a>
+          </li>
+          <li data-aos="fade-right" data-aos-delay="900" tabindex="0">
+            <ul>
+              <li><a href="{{ path('app_default_pageAction_forLovedOnes', {'slug':'co-mohu-delat'}) }}">Co mohu dělat</a></li>
+              <li><a href="{{ path('app_default_pageAction_forLovedOnes', {'slug':'kam-se-obratit'}) }}">Kam se obrátit</a></li>
+              <li><a href="{{ path('app_default_pageAction_forLovedOnes', {'slug':'dusevni-zdravi-otcu'}) }}">Duševní zdraví otců</a></li>
+            </ul>
+            <a href="{{ path('app_default_pageAction', {'slug':'pro-blizke'}) }}">Pro blízké</a>
+          </li>
+          <li data-aos="fade-right" data-aos-delay="1050" tabindex="0">
+            <a href="{{ path('app_default_pageAction', {'slug':'konference'}) }}">Konference</a>
+          </li>
+          <li data-aos="fade-left" data-aos-delay="1050" tabindex="0">
+            {% if locale == 'cs' %}
+              <a href="{{ path('app_locale',{'locale':'en'}) }}">English</a>
+            {% else %}
+              <a href="{{ path('app_locale',{'locale':'cs'}) }}">Czech</a>
+            {% endif %}
+          </li>
+        </ul>
+      </nav>
+      <div class="nav-switcher" tabindex="0" aria-label="Menu" role="button" aria-controls="navigation">
+        <span class="nav-switcher--bg icon icon--icon-menu-bg">
+          <svg class="icon__svg"><use xlink:href="#icon-menu-bg"></use></svg>
+        </span>
+        <span class="nav-switcher--hamburger icon icon--icon-hamburger">
+          <svg class="icon__svg"><use xlink:href="#icon-hamburger"></use></svg>
+        </span>
+        <span class="nav-switcher--close icon icon--icon-user-interface-close-simple">
+          <svg class="icon__svg"><use xlink:href="#icon-user-interface-close-simple"></use></svg>
+        </span>
+      </div>
+    </div>
+  </div>
+</header>

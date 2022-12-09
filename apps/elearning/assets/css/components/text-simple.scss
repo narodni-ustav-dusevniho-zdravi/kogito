@@ -1,0 +1,7 @@
+.text-simple {
+  max-width: 576px;
+  margin: 45px auto;
+  @media (min-width: $mqsm) {
+    margin: 75px auto;
+  }
+}

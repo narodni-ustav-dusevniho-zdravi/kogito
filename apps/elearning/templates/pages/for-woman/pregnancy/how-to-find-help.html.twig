@@ -1,0 +1,18 @@
+{#{% set _headerClass = 'header--sticky' %}#}
+
+{% extends 'base.html.twig' %}
+
+{% set pageTitle = 'Jak vyhledat pomoc | Perinatal' %}
+{% set pageDescription = 'O svých pocitech se nemusíte stydět mluvit. Naopak, sdílet to, co vás trápí, a vyhledat odbornou pomoc je velmi důležité a odvážné.' %}
+
+{% block main %}
+  {% include 'components/for-woman/pregnancy/how-to-find-help/hero.html.twig' %}
+  {% include 'components/for-woman/pregnancy/how-to-find-help/main-box.html.twig' %}
+  {% include 'components/for-woman/pregnancy/how-to-find-help/main.html.twig' %}
+  {% include 'components/for-woman/pregnancy/how-to-find-help/author.html.twig' %}
+{#  {% include 'components/for-woman/pregnancy/how-to-find-help/story.html.twig' %}#}
+{#  {% include 'components/for-woman/pregnancy/how-to-find-help/reviews.html.twig' %}#}
+  {% include 'components/pageComponents/share.html.twig' %}
+{#  {% include 'components/for-woman/pregnancy/how-to-find-help/other-articles.html.twig' %}#}
+  {% include 'components/for-woman/pregnancy/how-to-find-help/signpost.html.twig' %}
+{% endblock %}

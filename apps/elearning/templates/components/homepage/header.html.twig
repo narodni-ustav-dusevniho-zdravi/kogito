@@ -1,0 +1,23 @@
+{% set globalInformation = getComponent('commonGlobalInformation') %}
+<section id="o-nas" class="hero">
+  <h1>{{ data.headline }}</h1>
+  <div class="container">
+    <div class="hero--wrapper">
+      <div class="hero--slider-wrapper">
+        <div class="hero-slider">
+          {% for item in data.sliderItems %}
+            <div class="hero-slider--slide">
+              <div class="hero-slider--headline">{{ item.headline }}</div>
+              <img src="{{ item.image }}" alt="{{ item.imageName }}" class="hero-slider--img-main" width="900" height="532">
+              {{ item.text|raw }}
+            </div>
+          {% endfor %}
+        </div>
+        <div class="hero-slider-nav--wrapper">
+          <button class="slick-prev slick-arrow" aria-label="Previous" type="button"><span class="icon icon--icon-chevron-down icon--rotate-90"><svg class="icon__svg"><use xlink:href="#icon-chevron-down"></use></svg></span></button>
+          <button class="slick-next slick-arrow" aria-label="Next" type="button"><span class="icon icon--icon-chevron-down icon--rotate-270"><svg class="icon__svg"><use xlink:href="#icon-chevron-down"></use></svg></span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

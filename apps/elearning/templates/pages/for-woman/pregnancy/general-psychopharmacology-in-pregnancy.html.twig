@@ -1,0 +1,18 @@
+{#{% set _headerClass = 'header--sticky' %}#}
+
+{% extends 'base.html.twig' %}
+
+{% set pageTitle = 'Obecná psychofarmakologie v&nbsp;těhotenství  | Perinatal' %}
+{% set pageDescription = 'Těhotenství je období, ve kterém probíhají fyziologické a psychologické procesy připravující ženu na budoucí mateřství.' %}
+
+{% block main %}
+  {% include 'components/for-woman/pregnancy/general-psychopharmacology-in-pregnancy/hero.html.twig' %}
+  {% include 'components/for-woman/pregnancy/general-psychopharmacology-in-pregnancy/main-box.html.twig' %}
+  {% include 'components/for-woman/pregnancy/general-psychopharmacology-in-pregnancy/main.html.twig' %}
+  {% include 'components/for-woman/pregnancy/general-psychopharmacology-in-pregnancy/author.html.twig' %}
+{#  {% include 'components/for-woman/pregnancy/general-psychopharmacology-in-pregnancy/story.html.twig' %}#}
+{#  {% include 'components/for-woman/pregnancy/general-psychopharmacology-in-pregnancy/reviews.html.twig' %}#}
+  {% include 'components/pageComponents/share.html.twig' %}
+{#  {% include 'components/for-woman/pregnancy/general-psychopharmacology-in-pregnancy/other-articles.html.twig' %}#}
+  {% include 'components/for-woman/pregnancy/general-psychopharmacology-in-pregnancy/signpost.html.twig' %}
+{% endblock %}

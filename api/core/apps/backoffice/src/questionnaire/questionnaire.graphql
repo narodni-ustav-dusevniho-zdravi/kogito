@@ -1,0 +1,53 @@
+type Answer {
+    answer: String!
+}
+
+type UserAnswer {
+    questionId: ID!
+    answerIndex: Int!
+}
+
+type Question implements NodeType {
+    id: ID!
+    question: String!
+    answers: [Answer!]!
+}
+
+type Questionnaire implements NodeType {
+    id: ID!
+    name: String!
+    questions: [Question!]!
+    isDefaultAfterRegistration: Boolean!
+}
+
+type QuestionnaireListMeta {
+    count: Float!
+}
+
+input AnswerInput {
+    answer: String!
+}
+
+input QuestionInput {
+    id: ID
+    question: String!
+    answers: [AnswerInput!]
+}
+
+type Query {
+    Questionnaire(id: ID!): Questionnaire!
+    allQuestionnaires: [Questionnaire!]!
+    _allQuestionnairesMeta: QuestionnaireListMeta!
+}
+
+type Mutation {
+    createQuestionnaire(
+        name: String!
+        questions: [QuestionInput!]
+    ): Questionnaire
+    updateQuestionnaire(
+        id: ID!
+        name: String!
+        questions: [QuestionInput!]
+    ): Questionnaire
+}

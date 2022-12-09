@@ -1,0 +1,57 @@
+// tlačítko
+.btn,
+a.btn {
+  display: inline-block;
+  padding: 18px 32px;
+  color: $color_white;
+  font: inherit; // pro sladění vzhledu buttonu a odkazu
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 18px; // pro sladění výšky tlačítka
+  text-decoration: none;
+  border: none;
+  border-radius: $radius_button;
+  background-color: $color_main;
+  cursor: pointer;
+  @media (min-width: $mqmd) {
+    padding: 20px 40px;
+  }
+  b {
+    font-family: 'New York Extra Large', serif;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  &:hover,
+  &:focus {
+    background-color: $color_main_dark;
+  }
+  &--secondary {
+    color: $color_main;
+    background: $color_secondary;
+    &:hover,
+    &:focus {
+      background: $color_secondary_light;
+    }
+  }
+  &--success {
+    background: $color_success;
+    &:hover,
+    &:focus {
+      background: lighten($color_success, 10%);
+    }
+  }
+  &--info {
+    background: $color_info;
+    &:hover,
+    &:focus {
+      background: lighten($color_info, 10%);
+    }
+  }
+  &--danger {
+    background: $color_danger;
+    &:hover,
+    &:focus {
+      background: lighten($color_danger, 10%);
+    }
+  }
+}

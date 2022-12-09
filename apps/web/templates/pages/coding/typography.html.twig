@@ -1,0 +1,229 @@
+{% extends 'base.html.twig' %}
+{% set _headerClass = 'header--sticky' %}
+
+{% block stylesheets %}
+  {{ parent() }}
+  <style type="text/css">
+    /* STYLY POUZE PRO STYLEGUIDE - NEPOUŽÍVAT NA PRODUKCI */
+    br + h2 {
+      color: #fff !important;
+      background: #064352;
+      line-height: normal;
+      font-size: 14px;
+      margin: 40px 0 20px 0;
+      padding: 7px 7px 5px 7px;
+      text-transform: uppercase;
+    }
+  </style>
+{% endblock %}
+
+{% block body %}
+<main role="main" class="main">
+
+  <section class="section">
+
+    <div class="container">
+
+      <br>
+      <h2>Pages & modals</h2>
+
+      <div class="row">
+        <div class="col col--2">
+          <ul>
+            <li><a href="{{ path('app_default_default') }}">Homepage</a></li>
+            <li><a href="{{ path('app_coding_typography') }}">Typography (this page)</a></li>
+          </ul>
+        </div>
+        <div class="col col--2">
+          <ul>
+            <li><a href="#modal" class="js-modal-open">Simple modal</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <br>
+      <h2>SVG Icons</h2>
+
+      {% include 'pageComponents/icons.html.twig' %}
+
+      <br>
+      <h2>Typography</h2>
+
+      <h1>HTML Ipsum Presents</h1>
+
+      <p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
+
+      <h2>Header Level 2</h2>
+
+      <ol>
+        <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+        <li>Aliquam tincidunt mauris eu risus.</li>
+      </ol>
+
+      <blockquote>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. Ut a est eget ligula molestie gravida. Curabitur massa. Donec eleifend, libero at sagittis mollis, tellus est malesuada tellus, at luctus turpis elit sit amet quam. Vivamus pretium ornare est.</p>
+      </blockquote>
+
+      <h3>Header Level 3</h3>
+
+      <ul>
+        <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+        <li>
+          Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+          <ul>
+            <li>dolor sit amet, consectetuer</li>
+            <li>dolor sit amet</li>
+            <li>dolor sit amet, consectetuer</li>
+          </ul>
+        </li>
+        <li>Aliquam tincidunt mauris eu risus.</li>
+      </ul>
+
+      <ul class="list">
+        <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+        <li>Aliquam tincidunt mauris eu risus.</li>
+      </ul>
+
+      <h4>Header level 4</h4>
+
+      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione aperiam dolore modi, deserunt vitae iusto nesciunt? Obcaecati sint fuga commodi similique culpa cumque adipisci, velit tenetur dicta laborum impedit numquam.</p>
+
+      <br>
+      <h2>Buttons</h2>
+
+      <p>
+        <input type="submit" class="btn" value="Button">
+        <button class="btn">Button</button>
+        <a class="btn">Button</a>
+      </p>
+
+      <br>
+      <h2>Alerts</h2>
+
+      <div class="alert alert--success">
+        <p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas.</p>
+      </div>
+      <div class="alert alert--info">
+        <p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas.</p>
+      </div>
+      <div class="alert alert--danger">
+        <p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas.</p>
+      </div>
+
+      <br>
+      <h2>Tables</h2>
+
+      <table class="table" cellpadding="0" cellspacing="0" border="1">
+        <tr>
+          <th>item</th>
+          <th>item</th>
+          <th>item</th>
+          <th>item</th>
+        </tr>
+        <tr>
+          <td>item</td>
+          <td>item</td>
+          <td>item</td>
+          <td>item</td>
+        </tr>
+        <tr>
+          <td>item</td>
+          <td>item</td>
+          <td>item</td>
+          <td>item</td>
+        </tr>
+      </table>
+
+      <br>
+      <h2>Forms</h2>
+
+      <form action="#" method="post">
+
+        <p>
+          <label for="name">Name:</label>
+          <input type="text" id="name" value="Value">
+          <input type="text2" id="name2" value="Value" class="is-success">
+          <input type="text3" id="name3" value="Value" class="is-danger">
+        </p>
+
+        <p>
+          <label for="email">Email:</label>
+          <input type="email" id="email" value="Value">
+          <input type="email" id="email2" value="Value" class="is-success">
+          <input type="email" id="email3" value="Value" class="is-danger">
+        </p>
+
+        <p>
+          <label for="password">Password:</label>
+          <input type="password" id="password" value="Value">
+          <input type="password" id="password2" value="Value" class="is-success">
+          <input type="password" id="password3" value="Value" class="is-danger">
+        </p>
+
+        <p>
+          <label for="message">Message:</label><br>
+          <textarea id="message" rows="4" cols="50">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, reprehenderit adipisci, rem officiis ut quaerat alias illo.</textarea>
+        </p>
+
+        <p>
+          <input type="submit" value="Odeslat formulář" class="btn">
+        </p>
+
+        <div class="form-checkbox">
+          <input type="checkbox" name="checkbox" id="checkbox">
+          <span class="form-checkbox__box"></span>
+          <label class="form-label" for="checkbox">Checkbox</label>
+        </div>
+
+        <div class="form-checkbox">
+          <input type="checkbox" name="checkbox2" id="checkbox2" checked="checked">
+          <span class="form-checkbox__box"></span>
+          <label class="form-label" for="checkbox2">Checkbox <a href="#">checked</a></label>
+        </div>
+
+        <div class="form-checkbox">
+          <input type="checkbox" name="checkbox3" id="checkbox3" disabled="disabled">
+          <span class="form-checkbox__box"></span>
+          <label class="form-label" for="checkbox3">Checkbox disabled</label>
+        </div>
+
+        <div class="form-checkbox">
+          <input type="checkbox" name="checkbox4" id="checkbox4">
+          <span class="form-checkbox__box"></span>
+          <label class="form-label" for="checkbox4">Multiple lines checkbox: Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi dolorum eveniet fuga repellendus illo hic aliquid suscipit assumenda quam distinctio autem neque, dolores maiores recusandae iste sequi, blanditiis quia cumque.</label>
+        </div>
+
+        <div class="form-radio">
+          <input type="radio" name="radio-choice" id="radio-choice-1" value="choice-1" checked="checked">
+          <span class="form-radio__box"></span>
+          <label class="form-label" for="radio-choice-1">Option 1</label>
+        </div>
+
+        <div class="form-radio">
+          <input type="radio" name="radio-choice" id="radio-choice-2" value="choice-2">
+          <span class="form-radio__box"></span>
+          <label class="form-label" for="radio-choice-2">Option 2</label>
+        </div>
+
+      </form>
+
+      <br>
+      <h2>Plugins</h2>
+
+      <p><a href="#" class="js-video-start" data-video-id="tX1KM8WJcjc">Promo Youtube video into modal</a></p>
+      <p class="gallery">
+        <a href="{{ asset('/build/img/aimgroup.jpg') }}">SimpleLightBox gallery item</a>
+      </p>
+
+      <br>
+
+    </div>
+
+  </section>
+
+</main>
+{% endblock %}
+
+{% block components %}
+  {% include 'pageComponents/modal.html.twig' %}
+{% endblock %}

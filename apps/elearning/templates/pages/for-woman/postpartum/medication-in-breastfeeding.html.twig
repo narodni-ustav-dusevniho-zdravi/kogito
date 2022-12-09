@@ -1,0 +1,18 @@
+{#{% set _headerClass = 'header--sticky' %}#}
+
+{% extends 'base.html.twig' %}
+
+{% set pageTitle = 'Léky a kojení | Perinatal' %}
+{% set pageDescription = 'Pokud již užíváte nějaká psychofarmaka (například antidepresiva) v těhotenství, tak je dobré konzultovat vhodnost vaší medikaci s lékařem nebo lékařkou, která Vám je předepisuje s časovým předstihem od Vašeho termínu porodu.' %}
+
+{% block main %}
+  {% include 'components/for-woman/postpartum/medication-in-breastfeeding/hero.html.twig' %}
+  {% include 'components/for-woman/postpartum/medication-in-breastfeeding/main-box.html.twig' %}
+  {% include 'components/for-woman/postpartum/medication-in-breastfeeding/main.html.twig' %}
+  {% include 'components/for-woman/postpartum/medication-in-breastfeeding/author.html.twig' %}
+  {% include 'components/for-woman/postpartum/medication-in-breastfeeding/story.html.twig' %}
+{#  {% include 'components/for-woman/postpartum/medication-in-breastfeeding/reviews.html.twig' %}#}
+  {% include 'components/pageComponents/share.html.twig' %}
+  {% include 'components/for-woman/postpartum/medication-in-breastfeeding/other-articles.html.twig' %}
+  {% include 'components/for-woman/postpartum/medication-in-breastfeeding/signpost.html.twig' %}
+{% endblock %}

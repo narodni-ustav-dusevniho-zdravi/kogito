@@ -1,0 +1,20 @@
+{% trans_default_domain 'homepage' %}
+<section class="video-hero">
+  <div class="container">
+    <h2 data-aos="fade-up" class="video-hero__headline"><small data-aos="fade-down" data-aos-delay="300">{% trans %}videoHero.title.0{% endtrans%}</small>{% trans %}videoHero.title.1{% endtrans%}</h2>
+    <div data-aos="fade-up" class="video-hero__wrap">
+      <div class="video-hero__video js-video-start" data-video-id="mmFLjkrakOY">
+        <div class="video-hero__video-play">
+          <span class="icon icon--icon-play-filled">
+            <svg class="icon__svg">
+              <use xlink:href="#icon-play-filled"></use>
+            </svg>
+          </span>
+        </div>
+        <div class="video-hero__video-image">
+          <img src="{{ asset('build/img/video-img-4.jpg') }}" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

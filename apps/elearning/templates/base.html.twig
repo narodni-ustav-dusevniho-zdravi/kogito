@@ -1,0 +1,147 @@
+{% set dumpCSS = '33' %}
+{% set dumpJS = '33' %}
+{% set dumpSVG = '33' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% if app.environment != 'dev' %}
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script type="text/plain" data-cookiecategory="analytics" async src="https://www.googletagmanager.com/gtag/js?id=G-M1W5JJEGJ8"></script>
+    <script type="text/plain" data-cookiecategory="analytics">
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-M1W5JJEGJ8');
+    </script>
+
+    <!-- Facebook Pixel Code -->
+    <script type="text/plain" data-cookiecategory="analytics">
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '3124037871160637');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=3124037871160637&ev=PageView&noscript=1"/></noscript>
+    <!-- End Facebook Pixel Code -->
+  {% endif %}
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <meta name="facebook-domain-verification" content="dvtuwwohwzqjfu7xz4hk2fqjhrybrr" />
+
+  {% block metaPageOverride %}
+    {% if page is defined %}
+      {% set seoParams = page.getSeoParamsByLocale(app.request.locale) %}
+      <meta name="robots" content="{{ seoParams.robots }}">
+      <meta name="googlebot" content="index,follow,snippet,archive">
+      <meta name="description" content="{{ pageDescription|default() }}">
+
+      <title>{{ pageTitle|default() }}</title>
+
+      <meta property="og:url" content="{{ url(app.request.attributes.get("_route"), app.request.attributes.get("_route_params")) }}">
+      <meta property="og:title" content="{{ pageTitle|default() }}">
+      <meta property="og:type" content="website"/>
+      <meta property="og:image:width" content="279">
+      <meta property="og:image:height" content="279">
+      <meta property="og:image" content="{{ absolute_url(asset('/build/img/og-img.jpg')) }}">
+      <meta property="og:description" content="{{ pageDescription|default() }}">
+    {% endif %}
+  {% endblock %}
+
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/build/favicon/apple-touch-icon.png') }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('/build/favicon/favicon-32x32.png') }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('/build/favicon/favicon-16x16.png') }}">
+  <link rel="manifest" href="{{ asset('/build/favicon/site.webmanifest') }}">
+  <link rel="mask-icon" href="{{ asset('/build/favicon/safari-pinned-tab.svg') }}" color="#8540ED">
+  <link rel="shortcut icon" href="{{ asset('/build/favicon/favicon.ico') }}">
+  <meta name="msapplication-TileColor" content="#8540ED">
+  <meta name="msapplication-config" content="{{ asset('/build/favicon/browserconfig.xml') }}">
+  <meta name="theme-color" content="#8540ED">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/build/favicon/apple-touch-icon.png') }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('/build/favicon/favicon-32x32.png') }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('/build/favicon/favicon-16x16.png') }}">
+  <link rel="manifest" href="{{ asset('/build/favicon/site.webmanifest') }}">
+  <link rel="mask-icon" href="{{ asset('/build/favicon/safari-pinned-tab.svg') }}" color="#8540ed">
+  <meta name="msapplication-TileColor" content="#8540ed">
+  <meta name="theme-color" content="#8540ed">
+
+  {% block stylesheets %}
+{#    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" type="text/css">#}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" type="text/css">
+    <link rel="stylesheet" href="{{ asset('/build/css/styles.css') }}?v={{ dumpCSS }}" type="text/css">
+  {% endblock %}
+
+  <script type="text/javascript" src="https://api.mapy.cz/loader.js"></script>
+  <script type="text/javascript">Loader.load();</script>
+</head>
+<body>
+  <script defer src="build/js/libs/cookieconsent.js"></script>
+  <script defer src="build/js/libs/cookieconsent-init.js"></script>
+
+{% block header %}
+  {% include 'pageComponents/header.html.twig' %}
+{% endblock %}
+
+{% block body %}
+  <main role="main" class="main">
+
+    {% block main %}
+      {% for component in page.components %}
+        {{ renderComponent(component) }}
+      {% endfor %}
+    {% endblock %}
+
+  </main>
+{% endblock %}
+
+{% include 'pageComponents/modal.html.twig' %}
+
+{% block extraComponents %}
+  {% include 'pageComponents/float-contact-us.html.twig' %}
+{% endblock %}
+
+{% block footer %}
+  {% include 'pageComponents/footer.html.twig' %}
+{% endblock %}
+
+{% block pageModals %}
+  {% for modal in page.pageModals %}
+    {{ displayModal(modal, app.request) }}
+  {% endfor %}
+  {{ displayModalOnAllPages(app.request) }}
+{% endblock %}
+
+{% block components %}{% endblock %}
+
+{% block javascripts %}
+  <script>
+    let ajax = new XMLHttpRequest();
+    ajax.open('GET', '{{ asset('/build/img/symbol/icons.svg') }}?v={{ dumpSVG }}', true);
+    ajax.send();
+    ajax.onload = function (e) {
+      let div = document.createElement('div');
+      div.innerHTML = ajax.responseText;
+      div.style.position = 'absolute';
+      div.style.right = '100%';
+      document.body.insertBefore(div, document.body.childNodes[0]);
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+{#  <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>#}
+{#  <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>#}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  <script src="{{ asset('/build/js/scripts.js') }}?v={{ dumpJS }}"></script>
+{% endblock %}
+</body>
+</html>

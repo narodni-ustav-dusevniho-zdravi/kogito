@@ -1,0 +1,102 @@
+{
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "apps/core/src",
+  "monorepo": true,
+  "root": "apps/core",
+  "compilerOptions": {
+    "webpack": true,
+    "tsConfigPath": "apps/core/tsconfig.app.json"
+  },
+  "projects": {
+    "app": {
+      "type": "library",
+      "root": "libs/app",
+      "entryFile": "index",
+      "sourceRoot": "libs/app/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/app/tsconfig.lib.json"
+      }
+    },
+    "user": {
+      "type": "library",
+      "root": "libs/user",
+      "entryFile": "index",
+      "sourceRoot": "libs/user/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/user/tsconfig.lib.json"
+      }
+    },
+    "questionnaire": {
+      "type": "library",
+      "root": "libs/questionnaire",
+      "entryFile": "index",
+      "sourceRoot": "libs/questionnaire/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/questionnaire/tsconfig.lib.json"
+      }
+    },
+    "auth": {
+      "type": "library",
+      "root": "libs/auth",
+      "entryFile": "index",
+      "sourceRoot": "libs/auth/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/auth/tsconfig.lib.json"
+      }
+    },
+    "configuration": {
+      "type": "library",
+      "root": "libs/configuration",
+      "entryFile": "index",
+      "sourceRoot": "libs/configuration/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/configuration/tsconfig.lib.json"
+      }
+    },
+    "diary": {
+      "type": "library",
+      "root": "libs/diary",
+      "entryFile": "index",
+      "sourceRoot": "libs/diary/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/diary/tsconfig.lib.json"
+      }
+    },
+    "neogate": {
+      "type": "library",
+      "root": "libs/neogate",
+      "entryFile": "index",
+      "sourceRoot": "libs/neogate/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/neogate/tsconfig.lib.json"
+      }
+    },
+    "content": {
+      "type": "library",
+      "root": "libs/content",
+      "entryFile": "index",
+      "sourceRoot": "libs/content/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/content/tsconfig.lib.json"
+      }
+    },
+    "core": {
+      "type": "application",
+      "root": "apps/core",
+      "entryFile": "main",
+      "sourceRoot": "apps/core/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/core/tsconfig.app.json"
+      }
+    },
+    "backoffice": {
+      "type": "application",
+      "root": "apps/backoffice",
+      "entryFile": "main",
+      "sourceRoot": "apps/backoffice/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/backoffice/tsconfig.app.json"
+      }
+    }
+  }
+}

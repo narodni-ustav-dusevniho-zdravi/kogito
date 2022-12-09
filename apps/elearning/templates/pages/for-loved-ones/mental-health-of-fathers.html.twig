@@ -1,0 +1,18 @@
+{#{% set _headerClass = 'header--sticky' %}#}
+
+{% extends 'base.html.twig' %}
+
+{% set pageTitle = 'Duševní zdraví otců | Perinatal' %}
+{% set pageDescription = 'Většina informací ohledně perinatálního duševního zdraví cílí hlavně na duševní zdraví žen, to stejné můžeme říct i o výzkumu.' %}
+
+{% block main %}
+  {% include 'components/for-loved-ones/mental-health-of-fathers/hero.html.twig' %}
+  {% include 'components/for-loved-ones/mental-health-of-fathers/main-box.html.twig' %}
+  {% include 'components/for-loved-ones/mental-health-of-fathers/main.html.twig' %}
+  {% include 'components/for-loved-ones/mental-health-of-fathers/author.html.twig' %}
+{#  {% include 'components/for-loved-ones/mental-health-of-fathers/story.html.twig' %}#}
+{#  {% include 'components/for-loved-ones/mental-health-of-fathers/reviews.html.twig' %}#}
+  {% include 'components/pageComponents/share.html.twig' %}
+{#  {% include 'components/for-loved-ones/mental-health-of-fathers/other-articles.html.twig' %}#}
+  {% include 'components/for-loved-ones/mental-health-of-fathers/signpost.html.twig' %}
+{% endblock %}

@@ -1,0 +1,166 @@
+# This file is the entry point to configure your own services.
+# Files in the packages/ subdirectory configure your dependencies.
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+  locale: 'cs'
+  app_locales: 'cs|en'
+
+  editor_file_upload_folder: '%kernel.root_dir%/../public/uploads/'
+  editor_file_upload_url: '/uploads/'
+
+  file_resizer_setting:
+    base_dir: '%kernel.root_dir%/../public'
+    target_path: '%kernel.root_dir%/../public/uploads'
+    web_path: '/uploads'
+
+  file_uploader_setting:
+    target_path: '%kernel.root_dir%/../public/uploads'
+    web_path: '/uploads'
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+    # makes classes in src/ available to be used as services
+    # this creates a service per class whose id is the fully-qualified class name
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
+            - '../src/Tests/'
+
+    # controllers are imported separately to make sure services can be injected
+    # as action arguments even if you don't extend any base controller class
+    App\Controller\:
+        resource: '../src/Controller/'
+        tags: ['controller.service_arguments']
+
+    # add more service definitions when explicit configuration is needed
+    # please note that last definitions always *replace* previous ones
+
+    App\Service\FileResizer:
+      class: App\Service\FileResizer
+      arguments: [ '%file_resizer_setting%' ]
+
+    App\Service\FileUploader:
+      class: App\Service\FileUploader
+      arguments: [ '%file_uploader_setting%' ]
+
+    App\Service\StringCrypter:
+      class: App\Service\StringCrypter
+      arguments: [ 'SwixzkBgjiQnyJ7' ]
+
+    App\Twig\HelperExtension:
+      class: App\Twig\HelperExtension
+      arguments: [ '@router' ]
+
+    App\Service\GlobalSettingsService:
+      class: App\Service\GlobalSettingsService
+      public: true
+
+    App\Service\ResenderService:
+      class: App\Service\ResenderService
+      tags:
+        - { name: doctrine.event_listener, event: postPersist }
+
+    App\Admin\PageAdmin:
+      class: App\Admin\PageAdmin
+      arguments: [ ~, App\Entity\Page, App\Controller\PageAdminController, '@doctrine' ]
+      tags:
+        - { name: sonata.admin, manager_type: orm, group: 'Obsah', label: 'Stránky' }
+      public: true
+      calls:
+        - [ addChild, [ '@App\Admin\ComponentAdmin','page' ] ]
+
+    App\Admin\ComponentAdmin:
+      class: App\Admin\ComponentAdmin
+      arguments: [ ~, App\Entity\Component, ~ ]
+      tags:
+        - { name: sonata.admin, manager_type: orm, group: 'Obsah', label: 'Obsah stránky' }
+      public: true
+
+    App\Service\ComponentManager:
+      class: App\Service\ComponentManager
+      public: true
+
+    App\Admin\MenuAdmin:
+      class: App\Admin\MenuAdmin
+      arguments: [ ~, App\Entity\Menu, ~ ]
+      tags:
+        - { name: sonata.admin, manager_type: orm, group: 'Obsah', label: 'Menu' }
+      public: true
+      calls:
+        - [ addChild, [ '@App\Admin\MenuItemAdmin','menu' ] ]
+
+    App\Admin\MenuItemAdmin:
+      class: App\Admin\MenuItemAdmin
+      arguments: [ ~, App\Entity\MenuItem, ~ ]
+      tags:
+        - { name: sonata.admin, manager_type: orm, group: 'Obsah', label: 'Položka menu' }
+      public: true
+
+    App\Admin\CommonComponentAdmin:
+      class: App\Admin\CommonComponentAdmin
+      arguments: [ ~, App\Entity\Component, ~ ]
+      tags:
+        - { name: sonata.admin, manager_type: orm, group: 'Obsah', label: 'Globální komponenty' }
+      public: true
+
+    App\Form\Item\TranslatableProperty:
+      class: App\Form\Item\TranslatableProperty
+      arguments: [ '%locale%', '%app_locales%' ]
+
+    App\Admin\FrequentlyAskedQuestionAdmin:
+      class: App\Admin\FrequentlyAskedQuestionAdmin
+      arguments: [ ~, App\Entity\Content\FrequentlyAskedQuestion, ~ ]
+      tags:
+        - { name: sonata.admin, manager_type: orm, group: 'Obsah', label: 'FAQ' }
+      public: true
+
+    App\Admin\GlobalSettingsAdmin:
+      class: App\Admin\GlobalSettingsAdmin
+      arguments: [ ~, App\Entity\GlobalSettings, App\Controller\GlobalSettingsAdminController, '@App\Service\GlobalSettingsService' ]
+      tags:
+        - { name: sonata.admin, manager_type: orm, group: 'Nastavení', label: 'Nastavení aplikace' }
+      public: true
+
+    App\Admin\QuestionAdmin:
+      class: App\Admin\QuestionAdmin
+      arguments: [ ~, App\Entity\Contact\Question, ~ ]
+      tags:
+        - { name: sonata.admin, manager_type: orm, group: 'Formuláře' , label: 'Otázky' }
+      public: true
+
+    App\Admin\Blog\BlogCategoryAdmin:
+      class: App\Admin\Blog\BlogCategoryAdmin
+      arguments: [ ~, App\Entity\Blog\BlogCategory, ~ ]
+      tags:
+        - { name: sonata.admin, manager_type: orm, group: 'Blog', label: 'Kategorie' }
+      public: true
+
+    App\Admin\Blog\BlogArticleAdmin:
+      class: App\Admin\Blog\BlogArticleAdmin
+      arguments: [ ~, App\Entity\Blog\BlogArticle, ~ ]
+      tags:
+        - { name: sonata.admin, manager_type: orm, group: 'Blog', label: 'Články' }
+      public: true
+
+    App\Admin\Blog\BlogAuthorAdmin:
+      class: App\Admin\Blog\BlogAuthorAdmin
+      arguments: [ ~, App\Entity\Blog\BlogAuthor, ~ ]
+      tags:
+        - { name: sonata.admin, manager_type: orm, group: 'Blog', label: 'Autoři' }
+      public: true
+
+    App\Admin\PageModalAdmin:
+      class: App\Admin\PageModalAdmin
+      arguments: [ ~, App\Entity\PageModal\PageModal, ~ ]
+      tags:
+        - { name: sonata.admin, manager_type: orm, group: 'Obsah', label: 'Modaly' }
+      public: true

@@ -1,0 +1,24 @@
+{#{% set _headerClass = 'header--sticky' %}#}
+
+{% extends 'base.html.twig' %}
+
+{% set pageTitle = 'Poporodní deprese | Perinatal' %}
+{% set pageDescription = 'Deprese je nejvíce studovanou duševní nemocí v&nbsp;poporodním období. Depresivní symptomy se po porodu vyskytují přibližně u&nbsp;10–15&nbsp;% rodiček, přičemž u&nbsp;5&nbsp;% z&nbsp;nich dosahují klinického obrazu těžké depresivní fáze (16).' %}
+
+{% block main %}
+  {% include 'components/for-professionals/postpartum/postpartum-depression/hero.html.twig' %}
+  {% include 'components/for-professionals/postpartum/postpartum-depression/main-box.html.twig' %}
+  {% include 'components/for-professionals/postpartum/postpartum-depression/main.html.twig' %}
+  {% include 'components/for-professionals/postpartum/postpartum-depression/author.html.twig' %}
+  {% include 'components/for-professionals/postpartum/postpartum-depression/story.html.twig' %}
+  {% include 'components/for-professionals/postpartum/postpartum-depression/reviews.html.twig' %}
+  {% include 'components/pageComponents/share.html.twig' %}
+  {% include 'components/for-professionals/postpartum/postpartum-depression/other-articles.html.twig' %}
+  {% include 'components/for-professionals/postpartum/postpartum-depression/signpost.html.twig' %}
+{% endblock %}
+
+{% block pageModals %}
+  {{ parent() }}
+
+  {% include 'components/for-professionals/confirmation-modal.html.twig' %}
+{% endblock %}

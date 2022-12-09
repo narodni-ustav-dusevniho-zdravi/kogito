@@ -1,0 +1,9 @@
+.idea
+apps/mobile/android/app/key.jks
+apps/mobile/android/gradle.properties
+!files/static/.gitkeep
+files
+update.sh
+!.env.example
+.env
+.env.*

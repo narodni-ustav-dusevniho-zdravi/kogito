@@ -1,0 +1,24 @@
+{#{% set _headerClass = 'header--sticky' %}#}
+
+{% extends 'base.html.twig' %}
+
+{% set pageTitle = 'Psychotické poruchy a těhotenství | Perinatal' %}
+{% set pageDescription = 'Pojem psychóza je používán jako obecný popisný termín pro soubor příznaků zahrnující psychotické příznaky: halucinace, bludy a vážné abnormality v&nbsp;chování.' %}
+
+{% block main %}
+  {% include 'components/for-professionals/pregnancy/psychotic-disorders-and-pregnancy/hero.html.twig' %}
+  {% include 'components/for-professionals/pregnancy/psychotic-disorders-and-pregnancy/main-box.html.twig' %}
+  {% include 'components/for-professionals/pregnancy/psychotic-disorders-and-pregnancy/main.html.twig' %}
+  {% include 'components/for-professionals/pregnancy/psychotic-disorders-and-pregnancy/author.html.twig' %}
+{#  {% include 'components/for-professionals/pregnancy/psychotic-disorders-and-pregnancy/story.html.twig' %}#}
+{#  {% include 'components/for-professionals/pregnancy/psychotic-disorders-and-pregnancy/reviews.html.twig' %}#}
+  {% include 'components/pageComponents/share.html.twig' %}
+{#  {% include 'components/for-professionals/pregnancy/psychotic-disorders-and-pregnancy/other-articles.html.twig' %}#}
+  {% include 'components/for-professionals/pregnancy/psychotic-disorders-and-pregnancy/signpost.html.twig' %}
+{% endblock %}
+
+{% block pageModals %}
+  {{ parent() }}
+
+  {% include 'components/for-professionals/confirmation-modal.html.twig' %}
+{% endblock %}

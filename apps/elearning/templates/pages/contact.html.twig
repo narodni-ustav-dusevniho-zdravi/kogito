@@ -1,0 +1,15 @@
+{#{% set _headerClass = 'header--sticky' %}#}
+{% import 'pageModal/contactModal.html.twig' as contactMacro %}
+{% extends 'base.html.twig' %}
+
+{% set pageTitle = 'Kontaktní informace | Perinatal' %}
+{% set pageDescription = 'Jste poskytovatel péče, student nebo studentka, či žena s&nbsp;vlastní zkušeností? Zajímá vás téma duševního zdraví v&nbsp;perinatálním období? Třeba najdeme možnosti jak spolupracovat.' %}
+
+{% block main %}
+  {% include 'components/contact/hero.html.twig' %}
+  {% include 'components/contact/main-box.html.twig' %}
+  {% include 'components/contact/map.html.twig' %}
+  {% include 'components/pageComponents/support.html.twig' %}
+  {% include 'components/pageComponents/protection.html.twig' %}
+  {{ contactMacro.printContactModal(form) }}
+{% endblock %}

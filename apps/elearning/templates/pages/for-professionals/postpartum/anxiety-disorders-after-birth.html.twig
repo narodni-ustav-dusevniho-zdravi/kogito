@@ -1,0 +1,24 @@
+{#{% set _headerClass = 'header--sticky' %}#}
+
+{% extends 'base.html.twig' %}
+
+{% set pageTitle = 'Úzkostné poruchy po porodu | Perinatal' %}
+{% set pageDescription = 'Ve studii 260 partnerských párů byla popsána přítomnost závažných úzkostných symptomů v&nbsp;raném poporodním období u&nbsp;13&nbsp;% žen a&nbsp;u&nbsp;10&nbsp;% procent mužů. ' %}
+
+{% block main %}
+  {% include 'components/for-professionals/postpartum/anxiety-disorders-after-birth/hero.html.twig' %}
+  {% include 'components/for-professionals/postpartum/anxiety-disorders-after-birth/main-box.html.twig' %}
+  {% include 'components/for-professionals/postpartum/anxiety-disorders-after-birth/main.html.twig' %}
+  {% include 'components/for-professionals/postpartum/anxiety-disorders-after-birth/author.html.twig' %}
+{#  {% include 'components/for-professionals/postpartum/anxiety-disorders-after-birth/story.html.twig' %}#}
+{#  {% include 'components/for-professionals/postpartum/anxiety-disorders-after-birth/reviews.html.twig' %}#}
+  {% include 'components/pageComponents/share.html.twig' %}
+{#  {% include 'components/for-professionals/postpartum/anxiety-disorders-after-birth/other-articles.html.twig' %}#}
+  {% include 'components/for-professionals/postpartum/anxiety-disorders-after-birth/signpost.html.twig' %}
+{% endblock %}
+
+{% block pageModals %}
+  {{ parent() }}
+
+  {% include 'components/for-professionals/confirmation-modal.html.twig' %}
+{% endblock %}

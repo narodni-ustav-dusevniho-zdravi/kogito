@@ -1,0 +1,18 @@
+{#{% set _headerClass = 'header--sticky' %}#}
+
+{% extends 'base.html.twig' %}
+
+{% set pageTitle = 'Smíšené pocity po porodu | Perinatal' %}
+{% set pageDescription = 'Může se stát, že u vás ihned po porodu nenaskočila ta mateřská láska, o které se všude v médiích mluví. Nebojte, zažívat několik dní po porodu smíšené pocity není známkou toho, že jste špatná matka a žena.' %}
+
+{% block main %}
+  {% include 'components/for-woman/postpartum/mixed-feelings-after-childbirth/hero.html.twig' %}
+  {% include 'components/for-woman/postpartum/mixed-feelings-after-childbirth/main-box.html.twig' %}
+  {% include 'components/for-woman/postpartum/mixed-feelings-after-childbirth/main.html.twig' %}
+  {% include 'components/for-woman/postpartum/mixed-feelings-after-childbirth/author.html.twig' %}
+{#  {% include 'components/for-woman/postpartum/mixed-feelings-after-childbirth/story.html.twig' %}#}
+  {% include 'components/for-woman/postpartum/mixed-feelings-after-childbirth/reviews.html.twig' %}
+  {% include 'components/pageComponents/share.html.twig' %}
+  {% include 'components/for-woman/postpartum/mixed-feelings-after-childbirth/other-articles.html.twig' %}
+  {% include 'components/for-woman/postpartum/mixed-feelings-after-childbirth/signpost.html.twig' %}
+{% endblock %}

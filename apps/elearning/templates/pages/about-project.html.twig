@@ -1,0 +1,16 @@
+{#{% set _headerClass = 'header--sticky' %}#}
+
+{% extends 'base.html.twig' %}
+
+{% set pageTitle = 'Duševní pohoda mámy je důležitá pro ženu, pro miminko i pro nás | Perinatal' %}
+{% set pageDescription = 'Našim cílem je rozšířit povědomí o psychických obtížích u žen v&nbsp;perinatálním období. Přinášíme do ČR dostupnou péči pro ženy, které v&nbsp;těhotenství nebo po porodu zradila psychika.' %}
+
+{% block main %}
+  {% include 'components/about-project/hero.html.twig' %}
+  {% include 'components/about-project/main-box.html.twig' %}
+  {% include 'components/about-project/project-img-text.html.twig' %}
+  {% include 'components/about-project/project-video.html.twig' %}
+  {% include 'components/about-project/team.html.twig' %}
+  {% include 'components/pageComponents/support.html.twig' %}
+  {% include 'components/pageComponents/protection.html.twig' %}
+{% endblock %}

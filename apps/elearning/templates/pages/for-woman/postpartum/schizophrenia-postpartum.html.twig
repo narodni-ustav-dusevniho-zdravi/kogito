@@ -1,0 +1,18 @@
+{#{% set _headerClass = 'header--sticky' %}#}
+
+{% extends 'base.html.twig' %}
+
+{% set pageTitle = 'Schizofrenie po porodu | Perinatal' %}
+{% set pageDescription = 'Díky stále se zvyšující úrovni péče o&nbsp;pacientky se schizofrenií roste i&nbsp;počet těch, které otěhotní a&nbsp;chtějí dítě donosit.' %}
+
+{% block main %}
+  {% include 'components/for-woman/postpartum/schizophrenia-postpartum/hero.html.twig' %}
+  {% include 'components/for-woman/postpartum/schizophrenia-postpartum/main-box.html.twig' %}
+  {% include 'components/for-woman/postpartum/schizophrenia-postpartum/main.html.twig' %}
+  {% include 'components/for-woman/postpartum/schizophrenia-postpartum/author.html.twig' %}
+{#  {% include 'components/for-woman/postpartum/schizophrenia-postpartum/story.html.twig' %}#}
+{#  {% include 'components/for-woman/postpartum/schizophrenia-postpartum/reviews.html.twig' %}#}
+  {% include 'components/pageComponents/share.html.twig' %}
+{#  {% include 'components/for-woman/postpartum/schizophrenia-postpartum/other-articles.html.twig' %}#}
+  {% include 'components/for-woman/postpartum/schizophrenia-postpartum/signpost.html.twig' %}
+{% endblock %}

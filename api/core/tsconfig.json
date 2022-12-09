@@ -1,0 +1,68 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "ES6",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "incremental": true,
+    "lib": [
+      "es2019.array"
+    ],
+    "paths": {
+      "@app/app": [
+        "libs/app/src"
+      ],
+      "@app/app/*": [
+        "libs/app/src/*"
+      ],
+      "@app/user": [
+        "libs/user/src"
+      ],
+      "@app/user/*": [
+        "libs/user/src/*"
+      ],
+      "@app/questionnaire": [
+        "libs/questionnaire/src"
+      ],
+      "@app/questionnaire/*": [
+        "libs/questionnaire/src/*"
+      ],
+      "@app/auth": [
+        "libs/auth/src"
+      ],
+      "@app/auth/*": [
+        "libs/auth/src/*"
+      ],
+      "@app/configuration": [
+        "libs/configuration/src"
+      ],
+      "@app/configuration/*": [
+        "libs/configuration/src/*"
+      ],
+      "@app/neogate": [
+        "libs/neogate/src"
+      ],
+      "@app/neogate/*": [
+        "libs/neogate/src/*"
+      ],
+      "@app/content": [
+        "libs/content/src"
+      ],
+      "@app/content/*": [
+        "libs/content/src/*"
+      ],
+      "@app/diary": [
+        "libs/diary/src"
+      ],
+      "@app/diary/*": [
+        "libs/diary/src/*"
+      ]
+    }
+  }
+}

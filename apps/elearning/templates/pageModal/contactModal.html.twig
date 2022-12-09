@@ -1,0 +1,39 @@
+{% macro printContactModal(form) %}
+<div class="modal" id="kontakt" role="dialog" aria-labelledby="dialog-title-1">
+  <div class="modal__wrapper">
+    <div class="modal__close js-modal-close">
+      <span class="icon icon--icon-close-color">
+        <svg class="icon__svg"><use xlink:href="#icon-close-color"></use></svg>
+      </span>
+    </div>
+    <div class="modal__body">
+      <div class="modal__content">
+        <h2 id="dialog-title-1">Napište nám</h2>
+        {{ form_start(form, {'attr': {'class': 'forms'}}) }}
+          <div class="forms--grid">
+            <div>
+              {{ form_label(form.fullName) }}
+              {{ form_widget(form.fullName) }}
+            </div>
+            <div>
+              {{ form_label(form.email) }}
+              {{ form_widget(form.email) }}
+            </div>
+          </div>
+          <div>
+            {{ form_label(form.message) }}
+            {{ form_widget(form.message) }}
+          </div>
+          <div>
+            <input type="hidden" id="phoneInput">
+          </div>
+          <div class="center">
+            <button type="submit" id="question_submit" name="question[submit]" class="button button--gradient button--bigger forms--submit"><span>Odeslat zprávu</span></button>
+          </div>
+        {{ form_row(form._token) }}
+        {{ form_end(form, {'render_rest': false}) }}
+      </div>
+    </div>
+  </div>
+</div>
+{% endmacro %}

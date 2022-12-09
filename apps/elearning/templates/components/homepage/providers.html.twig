@@ -1,0 +1,44 @@
+{% trans_default_domain 'homepage' %}
+<section class="providers">
+  <div class="container container--bigger">
+    <div class="providers--wrapper" data-aos="fade">
+      <img src="{{ asset('build/img/bg-2.svg') }}" alt="" class="providers--shape">
+      <span data-aos="fade-down" data-aos-delay="350" class="providers--star-1 icon icon--icon-star-4-color">
+        <svg class="icon__svg"><use xlink:href="#icon-star-4-color"></use></svg>
+      </span>
+      <span data-aos="fade-down" data-aos-delay="450" class="providers--star-2 icon icon--icon-star-5-2-color">
+        <svg class="icon__svg"><use xlink:href="#icon-star-5-2-color"></use></svg>
+      </span>
+      <div class="providers--inner">
+        <img data-aos="fade-down" data-aos-delay="200" src="{{ asset('build/img/mother-3.svg') }}" alt="">
+        <h2 data-aos="fade-down" class="providers--headline">
+          <small data-aos="fade-down" data-aos-delay="500">{% trans %}providers.title.0{% endtrans%}</small>
+          {% trans %}providers.title.1{% endtrans%}
+        </h2>
+        <div class="providers--box--grid">
+          <div class="providers--box">
+            <h3 data-aos="fade-left">{% trans %}providers.birth.title{% endtrans%}</h3>
+            <div class="button--border--wrapper providers--box--button">
+              <a href="{{ path('app_default_pageAction_forWomen', {'slug':'po-porodu'}) }}" class="button button--border">{% trans %}providers.birth.button{% endtrans%}</a>
+            </div>
+            <img src="{{ asset('build/img/mother-5-white.svg') }}" alt="" class="providers--box--img">
+          </div>
+          <div class="providers--box">
+            <h3 data-aos="fade-left">{% trans %}providers.pregnancy.title{% endtrans%}</h3>
+            <div class="button--border--wrapper providers--box--button">
+              <a href="{{ path('app_default_pageAction_forWomen', {'slug':'tehotenstvi'}) }}" class="button button--border">{% trans %}providers.pregnancy.button{% endtrans%}</a>
+            </div>
+            <img src="{{ asset('build/img/mother-2-white.svg') }}" alt="" class="providers--box--img">
+          </div>
+          <div class="providers--box">
+            <h3 data-aos="fade-left">{% trans %}providers.closePeople.title{% endtrans%}</h3>
+            <div class="button--border--wrapper providers--box--button">
+              <a href="{{ path('app_default_pageAction', {'slug':'pro-blizke'}) }}" class="button button--border">{% trans %}providers.closePeople.button{% endtrans%}</a>
+            </div>
+            <img src="{{ asset('build/img/hands-1-white.svg') }}" alt="" class="providers--box--img">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

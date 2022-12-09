@@ -1,0 +1,14 @@
+{#{% set _headerClass = 'header--sticky' %}#}
+
+{% extends 'base.html.twig' %}
+
+{% set pageTitle = 'O nás - Nejdůležitějším faktorem naší práce jste vy | Perinatal' %}
+{% set pageDescription = 'Součástí projektu jsou také informační aktivity. Děkujeme následujícím médiím, že nám pomáhají šířit povědomí o duševním zdraví žen v&nbsp;perinatálním období.' %}
+
+{% block main %}
+  {% include 'components/about-us/hero.html.twig' %}
+  {% include 'components/about-us/media.html.twig' %}
+  {% include 'components/about-us/review.html.twig' %}
+{#  {% include 'components/pageComponents/support.html.twig' %}#}
+  {% include 'components/pageComponents/protection.html.twig' %}
+{% endblock %}

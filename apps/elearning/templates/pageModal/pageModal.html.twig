@@ -1,0 +1,36 @@
+{% set currentLocale = app.request.locale %}
+
+<div class="modal modal-popup
+{% if pageModal.type == 0 and pageModal.delay == 0 %}
+is-open
+{% elseif pageModal.type == 0 and pageModal.delay != 0 %}
+page-modal-delay
+{% else %}
+page-modal-on-exit
+{% endif %}" id="modal-action" role="dialog" aria-labelledby="dialog-title-3" data-page-modal-id="{{ pageModal.pageModalId }}" data-page-modal-delay="{{ pageModal.delay }}">
+
+  <div class="modal__body">
+
+    <div class="modal__close js-modal-close page-modal-close-modal">
+      <div class="icon icon--icon-times">
+        <svg class="icon__svg"><use xlink:href="#icon-times"></use></svg>
+      </div>
+    </div>
+
+    <div class="modal__content">
+
+      <img loading="lazy" src="{{ pageModal.image }}" width="" height="" alt="">
+
+      <h2 id="dialog-title-2">{{ pageModal.getTitleByLocale(currentLocale) }}</h2>
+      {{ pageModal.getContentByLocale(currentLocale)|raw }}
+
+      <p class="center">
+        <button class="o-button o-button--green_infill u-animation_pulse js-modal-close page-modal-close-modal {% if pageModal.type == 1 %}page-modal-close-exit-modal{% endif %}">{{ pageModal.getCloseTextLinkByLocale(currentLocale) }}</button>
+        <a href="{{ pageModal.getLinkByLocale(currentLocale) }}" class="o-button o-button--green_infill u-animation_pulse page-modal-redirect {% if pageModal.type == 1 %}page-modal-close-exit-modal{% endif %}">{{ pageModal.getTextLinkByLocale(currentLocale) }}</a>
+      </p>
+
+    </div>
+
+  </div>
+
+</div>

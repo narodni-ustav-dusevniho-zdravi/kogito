@@ -1,0 +1,66 @@
+type User {
+    id: ID!
+    phoneNumber: String!
+    email: String
+    firstName: String!
+    lastName: String!
+    birthDate: DateTime
+
+    finishedRegistration: Boolean!
+    userInfoCompleted: Boolean!
+    group: String!
+
+    age: Int
+    dateOfBirth: DateTime
+    maritalStatus: Int
+    maritalStatusDescription: String
+    numberOfChildren: Int
+    educationalAttainment: Int
+    population: Int
+    actualState: Int
+}
+
+input FinishRegistrationInput {
+    email: String!
+    firstName: String!
+    lastName: String!
+    age: Int
+    dateOfBirth: DateTime
+    maritalStatus: Int
+    maritalStatusDescription: String
+    numberOfChildren: Int
+    educationalAttainment: Int
+    population: Int
+    actualState: Int
+}
+
+type FinishRegistrationResult {
+    success: Boolean!
+    viewer: Viewer!
+}
+
+input EditProfileInput {
+    firstName: String!
+    lastName: String!
+}
+
+type EditProfileResut {
+    success: Boolean!
+    viewer: Viewer!
+}
+
+type RegistrationStatus {
+    isCompleted: Boolean!
+    userLabel: String!
+    journeysToChoose: [ID!]!
+    group: String!
+}
+
+type Query {
+    registrationStatus: RegistrationStatus!
+}
+
+type Mutation {
+    finishRegistration(input: FinishRegistrationInput!): FinishRegistrationResult!
+    editProfile(input: EditProfileInput!): EditProfileResut!
+}

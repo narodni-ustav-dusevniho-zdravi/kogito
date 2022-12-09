@@ -1,0 +1,18 @@
+{#{% set _headerClass = 'header--sticky' %}#}
+
+{% extends 'base.html.twig' %}
+
+{% set pageTitle = 'Bipolární porucha a těhotenství  | Perinatal' %}
+{% set pageDescription = 'Bipolární afektivní porucha (BAP) je chronické onemocnění charakteristické střídáním depresivních a hypomanických či manických epizod s prevalencí pohybující se mezi 1–3 % (1).  ' %}
+
+{% block main %}
+  {% include 'components/for-woman/pregnancy/bipolar-disorder-and-pregnancy/hero.html.twig' %}
+  {% include 'components/for-woman/pregnancy/bipolar-disorder-and-pregnancy/main-box.html.twig' %}
+  {% include 'components/for-woman/pregnancy/bipolar-disorder-and-pregnancy/main.html.twig' %}
+  {% include 'components/for-woman/pregnancy/bipolar-disorder-and-pregnancy/author.html.twig' %}
+{#  {% include 'components/for-woman/pregnancy/bipolar-disorder-and-pregnancy/story.html.twig' %}#}
+{#  {% include 'components/for-woman/pregnancy/bipolar-disorder-and-pregnancy/reviews.html.twig' %}#}
+  {% include 'components/pageComponents/share.html.twig' %}
+{#  {% include 'components/for-woman/pregnancy/bipolar-disorder-and-pregnancy/other-articles.html.twig' %}#}
+  {% include 'components/for-woman/pregnancy/bipolar-disorder-and-pregnancy/signpost.html.twig' %}
+{% endblock %}

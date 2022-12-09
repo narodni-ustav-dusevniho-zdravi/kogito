@@ -1,0 +1,18 @@
+{#{% set _headerClass = 'header--sticky' %}#}
+
+{% extends 'base.html.twig' %}
+
+{% set pageTitle = 'Poporodní psychóza | Perinatal' %}
+{% set pageDescription = 'Rozvoj poporodní psychózy je náhlý a&nbsp;nečekaný. Obvykle dosahuje&nbsp;vrcholu výskytu během prvních dvou týdnů po porodu. ' %}
+
+{% block main %}
+  {% include 'components/for-woman/postpartum/postpartum-psychosis/hero.html.twig' %}
+  {% include 'components/for-woman/postpartum/postpartum-psychosis/main-box.html.twig' %}
+  {% include 'components/for-woman/postpartum/postpartum-psychosis/main.html.twig' %}
+  {% include 'components/for-woman/postpartum/postpartum-psychosis/author.html.twig' %}
+  {% include 'components/for-woman/postpartum/postpartum-psychosis/story.html.twig' %}
+{#  {% include 'components/for-woman/postpartum/postpartum-psychosis/reviews.html.twig' %}#}
+  {% include 'components/pageComponents/share.html.twig' %}
+  {% include 'components/for-woman/postpartum/postpartum-psychosis/other-articles.html.twig' %}
+  {% include 'components/for-woman/postpartum/postpartum-psychosis/signpost.html.twig' %}
+{% endblock %}

@@ -1,0 +1,69 @@
+.highlight {
+  position: relative;
+  display: block;
+  &:before {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: -10px;
+    z-index: -1;
+    display: block;
+    background: left bottom no-repeat;
+    background-size: contain;
+  }
+  &--1 {
+    &:before {
+      width: 446.5px;
+      height: 69px;
+      background-image: url('#{$imgPath}/highlight-1.svg');
+    }
+  }
+  &--2 {
+    &:before {
+      width: 561px;
+      height: 56px;
+      background-image: url('#{$imgPath}/highlight-2.svg');
+    }
+  }
+  &--3 {
+    &:before {
+      width: 256px;
+      height: 56px;
+      background-image: url('#{$imgPath}/highlight-3.svg');
+    }
+  }
+  @media (max-width: 1023px) {
+    &--1 {
+      &:before {
+        height: 45px;
+      }
+    }
+    &--2 {
+      &:before {
+        height: 35px;
+      }
+    }
+    &--3 {
+      &:before {
+        height: 33px;
+      }
+    }
+  }
+  @media (max-width: 767px) {
+    &--1 {
+      &:before {
+        height: 33px;
+      }
+    }
+    &--2 {
+      &:before {
+        height: 27px;
+      }
+    }
+    &--3 {
+      &:before {
+        height: 26px;
+      }
+    }
+  }
+}

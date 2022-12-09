@@ -1,0 +1,18 @@
+{#{% set _headerClass = 'header--sticky' %}#}
+
+{% extends 'base.html.twig' %}
+
+{% set pageTitle = 'Obecná psychofarmakologie v&nbsp;laktaci | Perinatal' %}
+{% set pageDescription = 'V&nbsp;následujícím textu uvádíme obecné zásady přestupu léků do mateřského mléka, specifika metabolismu léků u&nbsp;novorozence a diskutujeme efekt kojení na zdraví matky a&nbsp;kojeného dítěte. ' %}
+
+{% block main %}
+  {% include 'components/for-woman/postpartum/general-psychopharmacology-in-lactation/hero.html.twig' %}
+  {% include 'components/for-woman/postpartum/general-psychopharmacology-in-lactation/main-box.html.twig' %}
+  {% include 'components/for-woman/postpartum/general-psychopharmacology-in-lactation/main.html.twig' %}
+  {% include 'components/for-woman/postpartum/general-psychopharmacology-in-lactation/author.html.twig' %}
+{#  {% include 'components/for-woman/postpartum/general-psychopharmacology-in-lactation/story.html.twig' %}#}
+{#  {% include 'components/for-woman/postpartum/general-psychopharmacology-in-lactation/reviews.html.twig' %}#}
+  {% include 'components/pageComponents/share.html.twig' %}
+{#  {% include 'components/for-woman/postpartum/general-psychopharmacology-in-lactation/other-articles.html.twig' %}#}
+  {% include 'components/for-woman/postpartum/general-psychopharmacology-in-lactation/signpost.html.twig' %}
+{% endblock %}

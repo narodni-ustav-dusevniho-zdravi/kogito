@@ -1,0 +1,15 @@
+{#{% set _headerClass = 'header--sticky' %}#}
+
+{% extends 'base.html.twig' %}
+
+{% set pageTitle = 'Pro ženy - Je důležité umět naslouchat a také si navzájem pomáhat | Perinatal' %}
+{% set pageDescription = 'Duše žen v těhotenství a po porodu může prožívat po porodu nějaké větší či menší těžkosti. První krok k systematické péči o duševní pohodu začíná zde.' %}
+
+{% block main %}
+  {% include 'components/for-woman/hero.html.twig' %}
+  {% include 'components/for-woman/main-box.html.twig' %}
+  {% include 'components/for-woman/main-text.html.twig' %}
+  {% include 'components/for-woman/signpost.html.twig' %}
+  {% include 'components/pageComponents/support.html.twig' %}
+  {% include 'components/pageComponents/protection.html.twig' %}
+{% endblock %}

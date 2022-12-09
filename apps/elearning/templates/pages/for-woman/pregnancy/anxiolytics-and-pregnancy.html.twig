@@ -1,0 +1,18 @@
+{#{% set _headerClass = 'header--sticky' %}#}
+
+{% extends 'base.html.twig' %}
+
+{% set pageTitle = 'Anxiolytika a těhotenství  | Perinatal' %}
+{% set pageDescription = 'Neléčená úzkostná porucha může negativně ovlivnit psychický stav ženy v těhotenství a může mít vliv i na normální vývoj plodu a poporodní adaptaci novorozence.' %}
+
+{% block main %}
+  {% include 'components/for-woman/pregnancy/anxiolytics-and-pregnancy/hero.html.twig' %}
+  {% include 'components/for-woman/pregnancy/anxiolytics-and-pregnancy/main-box.html.twig' %}
+  {% include 'components/for-woman/pregnancy/anxiolytics-and-pregnancy/main.html.twig' %}
+  {% include 'components/for-woman/pregnancy/anxiolytics-and-pregnancy/author.html.twig' %}
+{#  {% include 'components/for-woman/pregnancy/anxiolytics-and-pregnancy/story.html.twig' %}#}
+{#  {% include 'components/for-woman/pregnancy/anxiolytics-and-pregnancy/reviews.html.twig' %}#}
+  {% include 'components/pageComponents/share.html.twig' %}
+{#  {% include 'components/for-woman/pregnancy/anxiolytics-and-pregnancy/other-articles.html.twig' %}#}
+  {% include 'components/for-woman/pregnancy/anxiolytics-and-pregnancy/signpost.html.twig' %}
+{% endblock %}

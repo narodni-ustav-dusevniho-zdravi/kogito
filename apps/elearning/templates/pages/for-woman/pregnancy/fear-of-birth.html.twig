@@ -1,0 +1,18 @@
+{#{% set _headerClass = 'header--sticky' %}#}
+
+{% extends 'base.html.twig' %}
+
+{% set pageTitle = 'Strach z porodu (tokofobia) | Perinatal' %}
+{% set pageDescription = 'Je normální mít strach a obavy z porodu? Ano, dokonce je to velmi běžné. Těhotenství i samotný porod jsou velké životní události, takže je normální, že v tomto období může žena cítit strach a obavy jak vše dopadne.' %}
+
+{% block main %}
+  {% include 'components/for-woman/pregnancy/fear-of-birth/hero.html.twig' %}
+  {% include 'components/for-woman/pregnancy/fear-of-birth/main-box.html.twig' %}
+  {% include 'components/for-woman/pregnancy/fear-of-birth/main.html.twig' %}
+{#  {% include 'components/for-woman/pregnancy/fear-of-birth/author.html.twig' %}#}
+  {% include 'components/for-woman/pregnancy/fear-of-birth/story.html.twig' %}
+{#  {% include 'components/for-woman/pregnancy/fear-of-birth/reviews.html.twig' %}#}
+  {% include 'components/pageComponents/share.html.twig' %}
+  {% include 'components/for-woman/pregnancy/fear-of-birth/other-articles.html.twig' %}
+  {% include 'components/for-woman/pregnancy/fear-of-birth/signpost.html.twig' %}
+{% endblock %}

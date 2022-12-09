@@ -1,0 +1,18 @@
+{#{% set _headerClass = 'header--sticky' %}#}
+
+{% extends 'base.html.twig' %}
+
+{% set pageTitle = 'Co mohu dělat | Perinatal' %}
+{% set pageDescription = 'Abychom mohli být našim blízkým nápomocní v těžké situaci, je dobré mít o psychických obtížích v perinatálním období co nejvíce informací.' %}
+
+{% block main %}
+  {% include 'components/for-loved-ones/what-can-i-do/hero.html.twig' %}
+  {% include 'components/for-loved-ones/what-can-i-do/main-box.html.twig' %}
+  {% include 'components/for-loved-ones/what-can-i-do/main.html.twig' %}
+{#  {% include 'components/for-loved-ones/what-can-i-do/author.html.twig' %}#}
+{#  {% include 'components/for-loved-ones/what-can-i-do/story.html.twig' %}#}
+{#  {% include 'components/for-loved-ones/what-can-i-do/reviews.html.twig' %}#}
+  {% include 'components/pageComponents/share.html.twig' %}
+  {% include 'components/for-loved-ones/what-can-i-do/other-articles.html.twig' %}
+  {% include 'components/for-loved-ones/what-can-i-do/signpost.html.twig' %}
+{% endblock %}

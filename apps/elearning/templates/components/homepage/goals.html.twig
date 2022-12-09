@@ -1,0 +1,60 @@
+{% trans_default_domain 'homepage' %}
+<section class="goals">
+  <div class="container">
+    <div class="goals--wrapper">
+      <div class="goals--grid">
+        <div>
+          <h2 class="goals--headline h3" data-aos="fade-left">
+            <span data-aos="fade-up" data-aos-delay="350" class="goals--icon icon icon--icon-star-2-color">
+              <svg class="icon__svg"><use xlink:href="#icon-star-2-color"></use></svg>
+            </span>
+            {% trans %}goals.aboutProject.title{% endtrans%}
+          </h2>
+          <p data-aos="fade-left" data-aos-delay="150">{% trans %}goals.aboutProject.text{% endtrans%}</p>
+          <div data-aos="fade" data-aos-delay="500">
+            <a href="{{ path('app_default_pageAction', {'slug':'o-projektu'}) }}" class="button button--arrow">
+              <span>{% trans %}goals.aboutProject.button{% endtrans%}</span>
+              <span class="icon icon--icon-arrows-simple-right-stroked">
+              <svg class="icon__svg"><use xlink:href="#icon-arrows-simple-right-stroked"></use></svg>
+            </span>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h2 class="goals--headline h3" data-aos="fade-left">
+            <span data-aos="fade-up" data-aos-delay="350" class="goals--icon icon icon--icon-star-8-color">
+              <svg class="icon__svg"><use xlink:href="#icon-star-8-color"></use></svg>
+            </span>
+            {% trans %}goals.goal.title{% endtrans%}
+          </h2>
+          <p data-aos="fade-left" data-aos-delay="150">{% trans %}goals.goal.text{% endtrans%}</p>
+          <div data-aos="fade" data-aos-delay="500">
+            <a href="{{ path('app_default_pageAction', {'slug':'o-projektu'}) }}#vznik-projektu" class="button button--arrow">
+              <span>{% trans %}goals.goal.button{% endtrans%}</span>
+              <span class="icon icon--icon-arrows-simple-right-stroked">
+              <svg class="icon__svg"><use xlink:href="#icon-arrows-simple-right-stroked"></use></svg>
+            </span>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h2 class="goals--headline h3" data-aos="fade-left">
+            <span data-aos="fade-up" data-aos-delay="350" class="goals--icon icon icon--icon-star-1-color">
+              <svg class="icon__svg"><use xlink:href="#icon-star-1-color"></use></svg>
+            </span>
+            {% trans %}goals.vision.title{% endtrans%}
+          </h2>
+          <p data-aos="fade-left" data-aos-delay="150">{% trans %}goals.vision.text{% endtrans%}</p>
+          <div data-aos="fade" data-aos-delay="500">
+            <a href="{{ path('app_default_pageAction', {'slug':'pro-zeny'}) }}" class="button button--arrow">
+              <span>{% trans %}goals.vision.button{% endtrans%}</span>
+              <span class="icon icon--icon-arrows-simple-right-stroked">
+              <svg class="icon__svg"><use xlink:href="#icon-arrows-simple-right-stroked"></use></svg>
+            </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,105 @@
+{% set _footerClass = 'footer--clear' %}
+
+{% extends 'base.html.twig' %}
+{% set locale = app.request.locale %}
+
+{% block metaPageOverride %}
+<meta name="robots" content="{{ article.getSeoRobotsByLocale(locale) }}">
+<title>{{ article.getSeoPageTitleByLocale(locale) }}</title>
+<meta property="og:title" content="{{ article.getSeoPageTitleByLocale(locale) }}">
+<meta name="description" content="{{ article.getSeoContentByLocale(locale) }}"/>
+<meta property="og:description" content="{{ article.getSeoContentByLocale(locale) }}"/>
+<meta property="og:image" content="{{ app.request.schemeAndHttpHost }}{{ article.image }}">
+<meta property="og:image:type" content="image/jpeg">
+<meta name="twitter:card" content="summary">
+{% endblock %}
+
+{% block body %}
+<main role="main" class="main">
+
+  <section class="section">
+
+    <div class="article">
+      <article class="container container--lg" role="article">
+        <div class="indent">
+          <div class="article__top">
+            <h1 class="title">{{ article.getTitleByLocale(locale) }}</h1>
+            <div class="article__socials">
+              <a href="https://www.facebook.com/sharer/sharer.php?u=" class="social-share-button" target="_blank">
+                <span class="icon icon--facebook-circle">
+                  <svg class="icon__svg">
+                    <use xlink:href="#facebook-circle"></use>
+                  </svg>
+                </span>
+              </a>
+              <a href="https://twitter.com/home?status=" class="social-share-button" target="_blank">
+                <span class="icon icon--twitter-circle">
+                  <svg class="icon__svg">
+                    <use xlink:href="#twitter-circle"></use>
+                  </svg>
+                </span>
+              </a>
+              <a href="https://www.linkedin.com/shareArticle?mini=true&title=&summary=&source=&url=" class="social-share-button" target="_blank">
+                <span class="icon icon--linkedin-circle">
+                  <svg class="icon__svg">
+                    <use xlink:href="#linkedin-circle"></use>
+                  </svg>
+                </span>
+              </a>
+              {% set globalInformation = getComponent('commonGlobalInformation') %}
+              <a href="mailto:{{ globalInformation.data.contactEmail }}" target="_blank">
+                <span class="icon icon--email-circle">
+                  <svg class="icon__svg">
+                    <use xlink:href="#email-circle"></use>
+                  </svg>
+                </span>
+              </a>
+              <a href="javascript:if(window.print)window.print()">
+                <span class="icon icon--print">
+                  <svg class="icon__svg">
+                    <use xlink:href="#print"></use>
+                  </svg>
+                </span>
+              </a>
+            </div>
+          </div>
+          <div class="article__content">
+            <img class="article__hero-image" src="{{ asset(article.image) }}" width="" height="" alt="">
+            <div class="article__editor">
+              {{ article.getMainTextByLocale(locale)|raw }}
+            </div>
+            <div class="article__info">
+              <h2>Autor článku</h2>
+              <div class="article__info-wrap">
+                <div class="article__author">
+                  <img loading="lazy" src="{{ asset(article.author.image) }}" width="100" height="100" alt="{{ article.author.getNameByLocale(locale) }}">
+                  <h3>{{ article.author.getNameByLocale(locale) }}</h3>
+                  <p>{{ article.author.getDescriptionByLocale(locale) }}</p>
+                </div>
+                <p class="article__issued">Vydáno: <strong>{{ article.published|date('d/m/Y') }}</strong></p>
+              </div>
+            </div>
+            <div class="article__footer">
+              <a href="{{ path('app_blog_detail', {'id':prevArticle.id, 'categorySlug': prevArticle.category.getSlugByLocale(locale), 'slug':prevArticle.getSlugByLocale(locale)}) }}" class="article__link">
+                <h2>Předchozí</h2>
+                <p>{{ prevArticle.getTitleByLocale(locale) }}</p>
+                <button class="btn btn--sm">Číst dále</button>
+              </a>
+              <a href="{{ path('app_blog_detail', {'id':nextArticle.id, 'categorySlug': nextArticle.category.getSlugByLocale(locale), 'slug':nextArticle.getSlugByLocale(locale)}) }}" class="article__link">
+                <h2>Následující</h2>
+                <p>{{ nextArticle.getTitleByLocale(locale) }}</p>
+                <button class="btn btn--sm">Číst dále</button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+  </section>
+
+</main>
+{% for component in page.components %}
+    {{ renderComponent(component) }}
+{% endfor %}
+{% endblock %}

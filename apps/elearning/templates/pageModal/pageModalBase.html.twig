@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% if app.environment != 'dev' %}
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YW8L6NNMGW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-XXXXXXXX');
+    </script>
+  {% endif %}
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  {% block metaPageOverride %}
+    {% if page is defined %}
+      {% set seoParams = page.getSeoParamsByLocale(app.request.locale) %}
+      <meta name="robots" content="{{ seoParams.robots }}">
+      <meta name="googlebot" content="index,follow,snippet,archive">
+      <meta name="description" content="{{ seoParams.ogDescription }}">
+
+      <title>{{ seoParams.pageTitle }}</title>
+
+      <meta property="og:url" content="{{ url(app.request.attributes.get("_route"), app.request.attributes.get("_route_params")) }}">
+      <meta property="og:title" content="{{ seoParams.pageTitle }}">
+      <meta property="og:type" content="website"/>
+      <meta property="og:image" content="{{ absolute_url(asset('/build/favicon/android-chrome-512x512.png')) }}">
+      <meta property="og:description" content="{{ seoParams.ogDescription }}">
+    {% endif %}
+  {% endblock %}
+
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/build/favicon/apple-touch-icon.png') }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('/build/favicon/favicon-32x32.png') }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('/build/favicon/favicon-16x16.png') }}">
+  <link rel="manifest" href="{{ asset('/build/favicon/site.webmanifest') }}">
+  <link rel="mask-icon" href="{{ asset('/build/favicon/safari-pinned-tab.svg') }}" color="#fac102">
+  <link rel="shortcut icon" href="{{ asset('/build/favicon/favicon.ico') }}">
+  <meta name="msapplication-TileColor" content="#064352">
+  <meta name="msapplication-config" content="{{ asset('/build/favicon/browserconfig.xml') }}">
+  <meta name="theme-color" content="#064352">
+
+  {% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('/build/css/styles.css') }}" type="text/css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+  {% endblock %}
+</head>
+<body>
+
+{% block header %}
+  {% include 'pageComponents/header.html.twig' %}
+{% endblock %}
+
+{% block body %}
+  <main role="main" class="main">
+
+    {% block components %}
+    {% endblock %}
+    <!--
+    <section>
+      <div class="container c-pipeline">
+        <div class="c-pipeline__item">
+          <div class="c-pipepine__icon_container">
+            <img class="c-pipeline__icon">
+          </div>
+          <div class="c-pipeline__text_container">
+            <h3 class="c-pipeline__item_title"></h3>
+            <p class="c-pipeline__item_text"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+    -->
+  </main>
+{% endblock %}
+
+
+
+{% block footer %}
+  {% include 'pageComponents/footer.html.twig' %}
+{% endblock %}
+
+{% set currentLocale = app.request.locale %}
+
+<div class="modal modal-popup
+{% if pageModal.type == 0 and pageModal.delay == 0 %}
+is-open
+{% elseif pageModal.type == 0 and pageModal.delay != 0 %}
+page-modal-delay
+{% else %}
+page-modal-on-exit
+{% endif %}" id="modal-action" role="dialog" aria-labelledby="dialog-title-3" data-page-modal-id="{{ pageModal.pageModalId }}" data-page-modal-delay="{{ pageModal.delay }}">
+
+  <div class="modal__body">
+
+    <div class="modal__close js-modal-close page-modal-close-modal">
+      <div class="icon icon--icon-times">
+        <svg class="icon__svg"><use xlink:href="#icon-times"></use></svg>
+      </div>
+    </div>
+
+    <div class="modal__content">
+
+      <img loading="lazy" src="{{ pageModal.image }}" width="" height="" alt="">
+
+      <h2 id="dialog-title-2">{{ pageModal.getTitleByLocale(currentLocale) }}</h2>
+      {{ pageModal.getContentByLocale(currentLocale)|raw }}
+
+      <p class="center">
+        <button class="o-button o-button--green_infill u-animation_pulse js-modal-close page-modal-close-modal {% if pageModal.type == 1 %}page-modal-close-exit-modal{% endif %}">{{ pageModal.getCloseTextLinkByLocale(currentLocale) }}</button>
+        <a href="{{ pageModal.getLinkByLocale(currentLocale) }}" class="o-button o-button--green_infill u-animation_pulse page-modal-redirect {% if pageModal.type == 1 %}page-modal-close-exit-modal{% endif %}">{{ pageModal.getTextLinkByLocale(currentLocale) }}</a>
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
+
+{% block javascripts %}
+  <script src="{{ asset('/build/js/scripts.js') }}" type="text/javascript"></script>
+
+  <!-- Initialize Swiper -->
+  <!--
+    Ok so, there is a catch to it and that is slidesPerView. If you have less slides than
+    slidesPerView, just copy paste whatever content is there otherwise it won't loop indefinitely
+   -->
+  <script>
+    var swiper = new Swiper('.c-references_slider',  {
+      slidesPerView: 6,
+      spaceBetween: 30,
+      loop:true,
+      speed: 8000,
+      allowTouchMove:false,
+      navigation:{
+        hiddenClass: ".dafuq"
+      },
+      autoplay: {
+        delay: 0,
+        disableOnInteraction: false,
+      },
+      breakpoints: {
+        // when window width is >= 320px
+        320: {
+          slidesPerView: 2,
+          spaceBetween: 30
+        },
+        // when window width is >= 480px
+        480: {
+          slidesPerView: 2,
+          spaceBetween: 30
+        },
+        // when window width is >= 640px
+        640: {
+          slidesPerView: 3,
+          spaceBetween: 30
+        },
+
+        800: {
+          slidesPerView: 4,
+          spaceBetween: 30
+        },
+        960: {
+          slidesPerView: 5,
+          spaceBetween: 30
+        }
+      }
+
+    });
+    var swiper = new Swiper('.c-mortgage_calculator__slider', {
+      effect: 'fade',
+      autoplay: {
+        delay: 8000,
+        disableOnInteraction: false,
+      },
+
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+        renderBullet: function (index, className) {
+          return '<span class="c-mortgage_calculator__slider_' + className + ' ' + className +'"></span>';
+        },
+      },
+    });
+    // There should be alternative way to render it (renderCustom), but it didn't work straight away and I am in quite hurry
+    /*
+    renderCustom: function(swiper, current, total) {
+      var names = [];
+      $(".swiper-wrapper .swiper-slide").each(function(i) {
+          names.push($(this).data("name"));
+      });
+      var text = "<ul>";
+      for (let i = 1; i <= total; i++) {
+        if (current == i) {
+          text += `<li class="swiper-pagination-bullet active">${names[i]}</li>`;
+        } else {
+          text += `<li class="swiper-pagination-bullet">${names[i]}</li>`;
+        }
+      }
+      text += "</ul>";
+      return text;
+    }
+    */
+  </script>
+  <!-- Initialize Swiper -->
+  <script>
+    var sliderContainer = document.getElementById("sliderAboveContainer")
+    var sliderContainerStyles = sliderContainer.currentStyle || window.getComputedStyle(sliderContainer);
+    var sliderOffsetA = ((document.body.clientWidth - 1088) / 2)
+    var slidesOffsetBefore = value = Math.max(15, (sliderContainerStyles.marginLeft.slice(0, -2) - 15));
+    var slidesPerView = Math.max(1,Math.floor(document.getElementById("reviewSliderContainer").offsetWidth / 350))
+
+    // It fucks itself up on breakpoints and you cant pass slidesOfferAfter in them so I will probably have to make this by myself via javascript (leave breakpoints and just change after offset)
+    var swiper = new Swiper('.c-client_reviews__slider', {
+      slidesPerView: slidesPerView,
+      spaceBetween: 15,
+      initialSlide: 0,
+      slidesOffsetBefore: slidesOffsetBefore,
+      navigation: {
+        nextEl: '.slider_control__button--right',
+        prevEl: '.slider_control__button--left',
+      }
+    });
+
+  </script>
+{% endblock %}
+
+{% block beforeBodyEnd %}
+{% endblock %}
+</body>
+</html>

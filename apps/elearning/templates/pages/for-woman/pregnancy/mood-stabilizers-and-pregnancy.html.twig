@@ -1,0 +1,18 @@
+{#{% set _headerClass = 'header--sticky' %}#}
+
+{% extends 'base.html.twig' %}
+
+{% set pageTitle = 'Stabilizátory nálady a těhotenství | Perinatal' %}
+{% set pageDescription = 'Stres a hormonální změny v&nbsp;těhotenství mohou u žen působit rozkolísání nálady. Přibližně u jedné čtvrtiny těhotných žen léčících se s&nbsp;bipolární afektivní poruchou (BAP) dojde během těhotenství k&nbsp;relapsu onemocnění.' %}
+
+{% block main %}
+  {% include 'components/for-woman/pregnancy/mood-stabilizers-and-pregnancy/hero.html.twig' %}
+  {% include 'components/for-woman/pregnancy/mood-stabilizers-and-pregnancy/main-box.html.twig' %}
+  {% include 'components/for-woman/pregnancy/mood-stabilizers-and-pregnancy/main.html.twig' %}
+  {% include 'components/for-woman/pregnancy/mood-stabilizers-and-pregnancy/author.html.twig' %}
+{#  {% include 'components/for-woman/pregnancy/mood-stabilizers-and-pregnancy/story.html.twig' %}#}
+{#  {% include 'components/for-woman/pregnancy/mood-stabilizers-and-pregnancy/reviews.html.twig' %}#}
+  {% include 'components/pageComponents/share.html.twig' %}
+{#  {% include 'components/for-woman/pregnancy/mood-stabilizers-and-pregnancy/other-articles.html.twig' %}#}
+  {% include 'components/for-woman/pregnancy/mood-stabilizers-and-pregnancy/signpost.html.twig' %}
+{% endblock %}

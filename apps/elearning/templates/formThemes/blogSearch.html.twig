@@ -1,0 +1,73 @@
+{% extends 'form_div_layout.html.twig' %}
+{%- block form_row -%}
+    <div class="filter--order">
+        {%- set widget_attr = {} -%}
+        {%- if help is not empty -%}
+            {%- set widget_attr = {attr: {'aria-describedby': id ~"_help"}} -%}
+        {%- endif -%}
+        {{- form_label(form) -}}
+        {{- form_errors(form) -}}
+        {{- form_widget(form, widget_attr) -}}
+        {{- form_help(form) -}}
+    </div>
+{%- endblock form_row -%}
+
+{%- block form_widget_simple -%}
+    {%- set type = type|default('text') -%}
+    {% set attr = attr|merge({'class': (attr.class|default('') ~ ' form--input')|trim}) %}
+    {%- if type == 'date' -%}
+        {%- set type = 'text' -%}
+    {%- endif-%}
+    <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}
+           onfocus="this.placeholder = ''"/>
+{%- endblock form_widget_simple -%}
+
+{%- block choice_widget -%}
+    {% if expanded %}
+        {{- block('choice_widget_expanded') -}}
+    {% else %}
+        {{- block('choice_widget_collapsed') -}}
+    {% endif %}
+{%- endblock choice_widget -%}
+
+{%- block choice_widget_expanded -%}
+    <div {{ block('widget_container_attributes') }}>
+        {%- for child in form %}
+            {{- form_widget(child) -}}
+            {{- form_label(child, null, {translation_domain: choice_translation_domain}) -}}
+        {% endfor -%}
+    </div>
+{%- endblock choice_widget_expanded -%}
+
+{%- block choice_widget_options -%}
+    {% for group_label, choice in options %}
+        {%- if choice is iterable -%}
+            <optgroup label="{{ choice_translation_domain is same as(false) ? group_label : group_label|trans({}, choice_translation_domain) }}">
+                {% set options = choice %}
+                {{- block('choice_widget_options') -}}
+            </optgroup>
+        {%- else -%}
+            <option value="{{ choice.value }}"{% if choice.attr %}{% with { attr: choice.attr } %}{{ block('attributes') }}{% endwith %}{% endif %}{% if choice is selectedchoice(value) %} selected="selected"{% endif %}>{{ choice_translation_domain is same as(false) ? choice.label : choice.label|trans({}, choice_translation_domain) }}</option>
+        {%- endif -%}
+    {% endfor %}
+{%- endblock choice_widget_options -%}
+
+{% block _blog_search_category_row %}
+    <ul>
+        {%- for child in form %}
+            {{- form_widget(child) -}}
+            {{- form_label(child, null, {translation_domain: choice_translation_domain}) -}}
+        {% endfor -%}
+    </ul>
+{% endblock %}
+
+{% block _blog_search_category_entry_label %}
+{#    <div class="filter--menu--item blog-category-button" data-id="{{ id }}">{{ label }}</div>#}
+  <li><a data-id="{{ id }}" class="blog-category-button" href="#">{{ label }}</a></li>
+{% endblock %}
+
+{% block _blog_search_category_entry_widget %}
+    {% set attr = attr|merge({hidden: true})%}
+    {% set attr = attr|merge({class: attr.class|default ~ ' blog-category-checkbox'})%}
+    {{ block('checkbox_widget') }}
+{% endblock %}

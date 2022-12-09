@@ -1,0 +1,72 @@
+{% trans_default_domain 'homepage' %}
+<section class="our-team">
+  <div class="container">
+    <div class="our-team--wrapper">
+      <div class="our-team--inner">
+        <h2 class="our-team--headline" data-aos="fade-up">
+          <small data-aos="fade-down" data-aos-delay="300">{% trans %}team.title.0{% endtrans%}</small>
+          {% trans %}team.title.1{% endtrans%}
+          <br>
+          {% trans %}team.title.2{% endtrans%}
+        </h2>
+        <div class="our-team--text" data-aos="fade-up">
+          <p>{% trans %}team.text{% endtrans%}</p>
+        </div>
+        <div data-aos="fade-up">
+          <a href="{{ path('app_default_pageAction', {'slug':'o-projektu'}) }}#tym" class="button button--gradient">
+            <span>{% trans %}team.button{% endtrans%}</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container--big">
+    <div class="our-team--grid">
+      <div class="our-team--grid--left">
+        <div data-aos="fade-right" >
+          <span class="our-team--grid--shape--1 icon icon--icon-star-7-1-color">
+            <svg class="icon__svg"><use xlink:href="#icon-star-7-1-color"></use></svg>
+          </span>
+          <div class="our-team--grid--img--1 video-simple js-video-start" data-video-id="5pDeLyrYE4U">
+            <img class="video-simple__img" src="{{ asset('build/img/video-img-1.jpg') }}" alt="">
+            <div class="video-simple__play">
+              <span class="icon icon--icon-play-filled">
+                <svg class="icon__svg"><use xlink:href="#icon-play-filled"></use></svg>
+              </span>
+            </div>
+          </div>
+        </div>
+        <img data-aos="fade-down" src="{{ asset('build/img/img-project-2.jpg') }}" alt="" class="our-team--grid--img--2">
+        <div data-aos="fade-up" class="our-team--grid--img--3 video js-video-start" data-video-id="_z0UXt_LWFQ">
+          <div class="video__content">
+            <div class="video__play">
+              <span class="icon icon--icon-play-filled">
+                <svg class="icon__svg"><use xlink:href="#icon-play-filled"></use></svg>
+              </span>
+            </div>
+            <div class="video__text">
+              <h2>Pomáháme srdcem. <br>Věří nám přes 5000 žen</h2>
+              <p class="video__link">Přehrát video</p>
+            </div>
+          </div>
+          <img class="video__img" src="{{ asset('build/img/video-img-2.jpg') }}" alt="">
+        </div>
+      </div>
+      <div data-aos="fade-left" class="our-team--grid--right">
+        <div>
+          <span class="our-team--grid--shape--2 icon icon--icon-star-5-1-color">
+            <svg class="icon__svg"><use xlink:href="#icon-star-5-1-color"></use></svg>
+          </span>
+          <div class="our-team--grid--img--4 video-simple js-video-start" data-video-id="tk5gERtOyIM">
+            <img class="video-simple__img" src="{{ asset('build/img/video-img-3.jpg') }}" alt="">
+            <div class="video-simple__play">
+              <span class="icon icon--icon-play-filled">
+                <svg class="icon__svg"><use xlink:href="#icon-play-filled"></use></svg>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

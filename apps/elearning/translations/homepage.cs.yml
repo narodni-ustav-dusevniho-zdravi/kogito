@@ -1,0 +1,83 @@
+title:
+  0: Dostupná pomoc ženám, které v těhotenství
+  1: nebo po porodu zažívají psychosociální stres, je naším cílem.
+  2: Mateřství je krásné,
+  3: ale přináší i těžké chvíle.
+  button:
+   0: Jsem těhotná nebo po porodu
+   1: Jsem poskytovatel péče
+   2: O Perinatal
+
+goals:
+  aboutProject:
+    title: O projektu
+    text: O těžkých chvílích v životě žen v perinatálním období málokdo otevřeně mluví. Perinatální období z psychického pohledu zahrnuje dobu od počátku těhotenství do jednoho roku věku dítěte.  Právě v této době mohou být rodiče vystaveni psychosociálnímu stresu, který ovlivňuje i jejich dítě. Když pak nečekaně přijdou psychické obtíže, snadno nabudeme dojmu, že jsme jediní na světe, kdo to nezvládá. Je to ale zdání mylné.
+    button: Více o projektu
+  goal:
+    title: Cíle
+    text: Naším cílem je rozšířit povědomí o psychických obtížích u žen v perinatálním období. Dále chceme přinést do ČR otestovaný model dostupné péče pro ženy, které v těhotenství nebo po porodu zradila psychika. Cílem je tak i prevence negativních dopadů psychosociálního stresu na jejich děti.
+    button: Kdo za tím stojí
+  vision:
+    title: Vize
+    text: V ČR existuje systém časného záchytu žen, které jsou v perinatálním období v riziku psychosociálního stresu. Ženám, které o to mají zájem, je dále nabízena kroková péče o duševní zdraví. Povědomí o problematice perinatálního duševního zdraví mají jak ženy samotné, tak porodníci, porodní asistentky a psychiatři v ČR. V ČR je minimum dětí, které jsou od mala negativně ovlivněny psychosociálním stresem u svých rodičů.
+    button: Více o vizi
+
+team:
+  title:
+    0: Náš tým
+    1: Za projektem
+    2: stojí báječný tým lidí
+  text: Náš tým čítající přes 30 porodních asistentek a porodních sester, 10 peer konzultantek a dalších odborníků najdete napříč celou republikou.
+  button: Seznamte se
+
+women:
+  title:
+    0: Pro ženy
+    1: Naučné materiály pro pochopení mateřství
+  text: Informace o perinatálním duševním zdraví, pro poznání psychiky v těhotenství a po porodu.
+  button: Otevřít téma
+  materials: Naučných materiálů
+  tips:
+    title: Tipy pro duševní pohodu
+    text: Nabízíme tipy, co můžete dělat, když cítíte v perinatálním období duševní nepohodu.
+  informations:
+    title: Informace pro odborníky
+    text: Edukovaný odborník = spokojená žena. Budujeme databázi edukativních materiálů pro odborníky pečující o ženy v perinatálním období.
+  stories:
+    title: Reálné příběhy
+    text: Důležitým zdrojem informací jste pro nás vy. Přinášíme příběhy psané ženami, které se nebojí mluvit o své psychice.
+
+providers:
+  title:
+    0: Společně jsme silnější
+    1: Všechny materiály na jednom místě
+  birth:
+    title: Po porodu
+    button: Otevřít téma
+  pregnancy:
+    title: Těhotenství
+    button: Otevřít téma
+  closePeople:
+    title: Pro blízké
+    button: Otevřít téma
+
+mobile:
+  title: Naučte se, jak pracovat s depresivními a úzkostnými myšlenkami.
+  text: Našim cílem je, aby péče o perinatální duševní zdraví byla dostupná co nejvíce lidem. Proto jsme vyvinuli mobilní aplikaci Kogito, která obsahuje prvky kognitivně-behaviorální terapie, relaxační techniky a podporu od jiných žen.
+
+reviews:
+  title: Kde se o nás mluví
+  button: Přečíst všechny média
+
+support:
+  text: Bez vaší podpory by to nešlo. Děkujeme.
+
+videoHero:
+  title:
+    0: Jak pomáháme
+    1: Podívejte se jak screening a program Máma podporuje mámu vypadá
+
+videoSection:
+  title:
+    0: Lorem ipsum
+    1: Lorem ipsum dolorsit amet consectetuer elit

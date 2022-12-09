@@ -1,0 +1,31 @@
+{% set locale = app.request.locale %}
+<section class="share">
+  <div class="container container--bigger">
+    <div class="share--wrapper">
+      <img src="{{ asset('build/img/mother-3.svg') }}" alt="">
+      <h2 class="protection--headline">Prosíme, sdílejte tyto poznatky do světa.</h2>
+      <div class="button__grid button__grid--3">
+        <div>
+          <a href="#" onclick="
+    window.open(
+      'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
+      'facebook-share-dialog',
+      'width=626,height=436');
+    return false;" class="button">Sdílet na Facebook</a>
+        </div>
+        <div>
+          <a href="#" onclick="
+    window.open(
+      'http://twitter.com/share?url='+encodeURIComponent(location.href));
+    return false;" class="button">Sdílet na Twitter</a>
+        </div>
+        <div>
+          <a href="#" onclick="
+    window.open(
+      'https://www.linkedin.com/shareArticle?mini=true&url='+encodeURIComponent(location.href));
+    return false;" class="button">Sdílet na LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

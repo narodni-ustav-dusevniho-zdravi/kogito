@@ -1,0 +1,46 @@
+// hlavička
+.header {
+  z-index: $index_menu;
+  overflow: hidden;
+  padding: 80px 0 26px;
+  &--wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &--flex {
+    display: flex;
+    align-items: center;
+  }
+  &--grid {
+    display: grid;
+    align-items: center;
+    grid-template-columns: auto auto;
+    grid-gap: 32px;
+  }
+  @media (max-width: 1199px) {
+    padding: 40px 0;
+  }
+  @media (max-width: 767px) {
+    &--wrapper {
+      align-items: stretch;
+      flex-direction: column;
+    }
+    &--flex {
+      justify-content: space-between;
+    }
+    &--grid {
+      justify-content: center;
+      margin-top: 24px;
+    }
+  }
+}
+.header--sticky {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.header__logo {
+  margin-right: 30px;
+}

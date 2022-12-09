@@ -1,0 +1,24 @@
+{#{% set _headerClass = 'header--sticky' %}#}
+
+{% extends 'base.html.twig' %}
+
+{% set pageTitle = 'Poporodní úzkosti | Perinatal' %}
+{% set pageDescription = 'Je normální, že čerstvé maminky cítí určitou úzkost a obavy o své miminko. Pokud však máte velké obavy a úzkosti po většinu dne, možná potřebujete pomoc odborníka.' %}
+
+{% block main %}
+  {% include 'components/for-professionals/postpartum/postpartum-anxiety/hero.html.twig' %}
+  {% include 'components/for-professionals/postpartum/postpartum-anxiety/main-box.html.twig' %}
+  {% include 'components/for-professionals/postpartum/postpartum-anxiety/main.html.twig' %}
+  {% include 'components/for-professionals/postpartum/postpartum-anxiety/author.html.twig' %}
+  {% include 'components/for-professionals/postpartum/postpartum-anxiety/story.html.twig' %}
+  {% include 'components/for-professionals/postpartum/postpartum-anxiety/reviews.html.twig' %}
+  {% include 'components/pageComponents/share.html.twig' %}
+  {% include 'components/for-professionals/postpartum/postpartum-anxiety/other-articles.html.twig' %}
+  {% include 'components/for-professionals/postpartum/postpartum-anxiety/signpost.html.twig' %}
+{% endblock %}
+
+{% block pageModals %}
+  {{ parent() }}
+
+  {% include 'components/for-professionals/confirmation-modal.html.twig' %}
+{% endblock %}

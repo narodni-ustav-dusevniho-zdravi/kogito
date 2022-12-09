@@ -1,0 +1,118 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<main role="main" class="main">
+  <section class="hero">
+    <div class="container">
+      <div class="hero--wrapper">
+        <div class="hero--text">
+          <h1 data-aos="fade-right">
+            Kradou vám nepříjemné pocity <br>
+            <span class="highlight highlight--1">vaši radost</span>
+            z mateřství?
+          </h1>
+          <p data-aos="fade-right" class="hero--text--inner">
+            Kogito vás naučí hledat a ovládnout negativní myšlenky, které roztáčejí spirálu úzkosti a smutku. <br>
+            <b>Kdykoli a odkudkoli.</b>
+          </p>
+          <br>
+          <a data-aos="fade-right" data-aos-delay="100" href="#stahnout" class="btn btn--secondary">Stáhnout aplikaci <b>Kogito</b></a>
+          <div data-aos="fade-right" data-aos-delay="200">
+            <img src="{{ asset('build/img/tacr@3.5x.png') }}" alt="" class="hero--logo" width="370">
+          </div>
+        </div>
+        <img data-aos="fade-left" data-aos-delay="400" src="{{ asset('build/img/hero-1.svg') }}" alt="" class="hero--img">
+      </div>
+    </div>
+  </section>
+  <section class="text-img">
+    <div class="container">
+      <div class="text-img--wrapper">
+        <span data-aos="fade-up" class="text-img--shape icon icon--icon-shape-2-color">
+          <svg class="icon__svg"><use xlink:href="#icon-shape-2-color"></use></svg>
+        </span>
+        <div class="text-img--grid">
+          <div>
+            <h2 data-aos="fade-left"><span class="highlight highlight--2">Inovativní apka</span> pro duševní hygienu</h2>
+            <p data-aos="fade-left">Kogito propojuje základní techniky kognitivně behaviorálního psychoterapeutického směru a praktické zkušenosti, které jsme načerpali při práci se ženami, jež v těhotenství nebo po porodu potrápila psychika.</p>
+            <p data-aos="fade-left">Jednoduchý program. 5 základních okruhů. Konkrétní příklady. Skutečné příběhy. …</p>
+            <a href="#modal-video-1" class="js-modal-open video-thumbnail">
+              <div data-aos="fade-left" class="video-thumbnail--img-box">
+                <img src="{{ asset('build/img/thumbnail-iva-fruhlingova.png') }}" alt="Iva Frühlingová" class="video-thumbnail--img">
+              </div>
+              <div class="video-thumbnail--text-box">
+                <p data-aos="fade-left" class="video-thumbnail--text">Podporuje <b>Iva Frühlingová</b></p>
+                <div data-aos="fade-left" class="video-thumbnail--button-play">
+                  <span class="icon icon--icon-play-color">
+                    <svg class="icon__svg"><use xlink:href="#icon-play-color"></use></svg>
+                  </span>
+                  <span>Přehrát video</span>
+                </div>
+              </div>
+            </a>
+          </div>
+          <img data-aos="fade-left" width="1249" src="{{ asset('build/img/img-1.png') }}" alt="" class="text-img--img-1">
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="img-text">
+    <div class="container">
+      <div class="img-text--wrapper">
+        <span data-aos="fade-up" class="img-text--shape icon icon--icon-shape-1-color">
+          <svg class="icon__svg"><use xlink:href="#icon-shape-1-color"></use></svg>
+        </span>
+        <div class="img-text--grid">
+          <div data-aos="fade-right" class="img-text--img">
+            <img width="511" src="{{ asset('build/img/img-2.svg') }}" alt="" class="img-text--img-1">
+          </div>
+          <div>
+            <h2 data-aos="fade-left">Nejsi na <span class="highlight highlight--3">to sama</span></h2>
+            <p data-aos="fade-left">Díky příběhům ostatních žen v Kogito zjistíš, že nejsi sama, koho zkouší na mateřské nebo rodičovské psychika.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="download" id="stahnout">
+    <div class="container">
+      <div class="download--wrapper">
+        <div class="download--box">
+          <div class="download--bg">
+            <span class="icon icon--icon-shape-3-color download--bg--shape--1">
+              <svg class="icon__svg"><use xlink:href="#icon-shape-3-color"></use></svg>
+            </span>
+            <span class="icon icon--icon-shape-4-color download--bg--shape--2">
+              <svg class="icon__svg"><use xlink:href="#icon-shape-4-color"></use></svg>
+            </span>
+          </div>
+          <div class="download--text">
+            <h2 data-aos="fade-left" class="aos-init aos-animate">
+              Stáhnout<br>
+              aplikaci
+            </h2>
+          </div>
+          <div class="download--mobile">
+            <div class="download--mobile--item">
+              <h3 data-aos="fade-left" class="aos-init aos-animate">iPhone</h3>
+              <a href="https://apps.apple.com/cz/app/kogito/id1582637411?l=cs" target="_blank"><img src="{{ asset('build/img/appstore.svg') }}" alt=""></a>
+            </div>
+            <div class="download--mobile--item">
+              <h3 data-aos="fade-left" class="aos-init aos-animate">Android</h3>
+              <a href="https://play.google.com/store/apps/details?id=cz.nudz.kogito" target="_blank"><img src="{{ asset('build/img/googleplay.svg') }}" alt=""></a>
+            </div>
+          </div>
+          <div class="download--picture">
+            <img src="{{ asset('build/img/img-3.svg') }}" alt="" class="download--picture--img">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% include 'pageComponents/recent-articles.html.twig' %}
+</main>
+{% endblock %}
+
+{% block components %}
+  {% include 'pageComponents/modal.html.twig' %}
+{% endblock %}

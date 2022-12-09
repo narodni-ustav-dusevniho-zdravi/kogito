@@ -1,0 +1,24 @@
+{#{% set _headerClass = 'header--sticky' %}#}
+
+{% extends 'base.html.twig' %}
+
+{% set pageTitle = 'Stabilizátory nálady a kojení  | Perinatal' %}
+{% set pageDescription = 'Hormonální a režimové změny mohou u žen po porodu způsobit rozkolísání nálady. Obzvláště náchylné jsou pak ženy léčící se s bipolární poruchou nebo schizoafektivní poruchou. ' %}
+
+{% block main %}
+  {% include 'components/for-professionals/postpartum/mood-stabilizers-and-breastfeeding/hero.html.twig' %}
+  {% include 'components/for-professionals/postpartum/mood-stabilizers-and-breastfeeding/main-box.html.twig' %}
+  {% include 'components/for-professionals/postpartum/mood-stabilizers-and-breastfeeding/main.html.twig' %}
+  {% include 'components/for-professionals/postpartum/mood-stabilizers-and-breastfeeding/author.html.twig' %}
+{#  {% include 'components/for-professionals/postpartum/mood-stabilizers-and-breastfeeding/story.html.twig' %}#}
+{#  {% include 'components/for-professionals/postpartum/mood-stabilizers-and-breastfeeding/reviews.html.twig' %}#}
+  {% include 'components/pageComponents/share.html.twig' %}
+{#  {% include 'components/for-professionals/postpartum/mood-stabilizers-and-breastfeeding/other-articles.html.twig' %}#}
+  {% include 'components/for-professionals/postpartum/mood-stabilizers-and-breastfeeding/signpost.html.twig' %}
+{% endblock %}
+
+{% block pageModals %}
+  {{ parent() }}
+
+  {% include 'components/for-professionals/confirmation-modal.html.twig' %}
+{% endblock %}

@@ -1,0 +1,18 @@
+{#{% set _headerClass = 'header--sticky' %}#}
+
+{% extends 'base.html.twig' %}
+
+{% set pageTitle = 'Deprese v těhotenství | Perinatal' %}
+{% set pageDescription = 'Vysoká emotivita a změny nálady jsou v těhotenství normální. Hormony mohou mít vliv na vaše celkové naladění. Stejně tak problémy se spánkem nebo změny chuti k jídlu se během těhotenství objevují zcela běžně.' %}
+
+{% block main %}
+  {% include 'components/for-woman/pregnancy/depression-in-pregnancy/hero.html.twig' %}
+  {% include 'components/for-woman/pregnancy/depression-in-pregnancy/main-box.html.twig' %}
+  {% include 'components/for-woman/pregnancy/depression-in-pregnancy/main.html.twig' %}
+  {% include 'components/for-woman/pregnancy/depression-in-pregnancy/author.html.twig' %}
+  {% include 'components/for-woman/pregnancy/depression-in-pregnancy/story.html.twig' %}
+{#  {% include 'components/for-woman/pregnancy/depression-in-pregnancy/reviews.html.twig' %}#}
+  {% include 'components/pageComponents/share.html.twig' %}
+  {% include 'components/for-woman/pregnancy/depression-in-pregnancy/other-articles.html.twig' %}
+  {% include 'components/for-woman/pregnancy/depression-in-pregnancy/signpost.html.twig' %}
+{% endblock %}

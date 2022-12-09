@@ -1,0 +1,114 @@
+.float-contact-us {
+  position: fixed;
+  bottom: 130px;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+  .container {
+    position: relative;
+    text-align: right;
+  }
+  &--wrapper {
+    position: relative;
+    display: inline-flex;
+    justify-content: flex-end;
+    pointer-events: auto;
+  }
+  &--close {
+    position: absolute;
+    top: -7px;
+    right: -7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    margin: 0;
+    padding: 0;
+    color: $color_white;
+    border: none;
+    border-radius: 100px;
+    background: none;
+    background: $color_black;
+  }
+  &--show {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 72px;
+    height: 72px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 100px;
+    background: $color_black;
+    box-shadow: 0 4px 120px rgba(0, 0, 0, 0.16);
+  }
+  &--hidden {
+    position: absolute;
+    right: 0;
+    bottom: 100%;
+    z-index: 5;
+    width: 358px;
+    padding: 24px;
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 0 4px 48px rgba(0, 0, 0, 0.15);
+    transition: $transition;
+    transform: translate(0, -35px);
+    &:before {
+      content: '';
+      position: absolute;
+      top: 100%;
+      right: 24px;
+      width: 0;
+      height: 0;
+      border-top: 20px solid $color_white;
+      border-right: 15px solid transparent;
+      border-left: 15px solid transparent;
+    }
+    &.js-hidden {
+      opacity: 0;
+      transform: none;
+      pointer-events: none;
+    }
+  }
+  &--call-box {
+    margin: 16px 0;
+    &--row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+      border-top: 1px solid rgba(0, 0, 0, 0.07);
+      &:first-child {
+        border: none;
+      }
+    }
+    a {
+      color: $color_main;
+      font-size: 14px;
+      font-weight: bold;
+      line-height: 1.25;
+    }
+    h3 {
+      margin: 0;
+      font-size: 14px;
+    }
+  }
+  .button {
+    width: 100%;
+  }
+  p {
+    margin: 0;
+    color: rgba(21, 20, 29, 0.5);
+  }
+  @media (max-width: 479px) {
+    &--hidden {
+      width: auto;
+      max-width: 358px;
+    }
+  }
+}

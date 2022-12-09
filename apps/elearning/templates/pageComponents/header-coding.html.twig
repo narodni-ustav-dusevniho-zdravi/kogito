@@ -1,0 +1,16 @@
+<header class="header {{ _headerClass|default() }}" role="banner">
+  <div class="container">
+    <a href="{{ path('app_default_default') }}" class="header__logo"><img src="{{ asset('build/img/logo.svg') }}" alt="logo"></a>
+    <nav class="nav" role="navigation">
+      <ul>
+        <li><a href="#">Link 1</a></li>
+        <li><a href="#">Link 2</a></li>
+        <li><a href="#">Link 3</a></li>
+      </ul>
+    </nav>
+
+    <div class="nav-switcher" tabindex="0" aria-label="Menu" role="button" aria-controls="navigation">
+      <div class="nav-switcher--line"></div>
+    </div>
+  </div>
+</header>

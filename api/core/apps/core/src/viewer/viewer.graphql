@@ -1,0 +1,9 @@
+type Viewer {
+    id: ID!
+    me: User!
+    haveActiveQuestionnaire: Boolean!
+}
+
+type Query {
+    viewer: Viewer!
+}

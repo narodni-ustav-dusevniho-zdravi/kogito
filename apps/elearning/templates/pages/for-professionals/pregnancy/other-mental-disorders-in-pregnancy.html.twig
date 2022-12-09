@@ -1,0 +1,24 @@
+{#{% set _headerClass = 'header--sticky' %}#}
+
+{% extends 'base.html.twig' %}
+
+{% set pageTitle = 'Další duševní potíže v těhotenství | Perinatal' %}
+{% set pageDescription = 'Je možné, že se kromě těch relativně častých perinatálních psychických obtíží jako je deprese nebo úzkostné poruchy, sama potýkáte s jinými stavy, jako je například bipolární afektivní porucha nebo obsedantně kompulzivní porucha.' %}
+
+{% block main %}
+  {% include 'components/for-professionals/pregnancy/other-mental-disorders-in-pregnancy/hero.html.twig' %}
+  {% include 'components/for-professionals/pregnancy/other-mental-disorders-in-pregnancy/main-box.html.twig' %}
+  {% include 'components/for-professionals/pregnancy/other-mental-disorders-in-pregnancy/main.html.twig' %}
+  {% include 'components/for-professionals/pregnancy/other-mental-disorders-in-pregnancy/author.html.twig' %}
+  {% include 'components/for-professionals/pregnancy/other-mental-disorders-in-pregnancy/story.html.twig' %}
+{#  {% include 'components/for-professionals/pregnancy/other-mental-disorders-in-pregnancy/reviews.html.twig' %}#}
+  {% include 'components/pageComponents/share.html.twig' %}
+  {% include 'components/for-professionals/pregnancy/other-mental-disorders-in-pregnancy/other-articles.html.twig' %}
+  {% include 'components/for-professionals/pregnancy/other-mental-disorders-in-pregnancy/signpost.html.twig' %}
+{% endblock %}
+
+{% block pageModals %}
+  {{ parent() }}
+
+  {% include 'components/for-professionals/confirmation-modal.html.twig' %}
+{% endblock %}

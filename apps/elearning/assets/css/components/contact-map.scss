@@ -1,0 +1,30 @@
+.contact-map {
+  position: relative;
+  margin-top: -331px;
+  &--wrapper {
+    text-align: right;
+  }
+  &--content {
+    position: absolute;
+    right: 0;
+    bottom: 72px;
+    left: 0;
+    z-index: 1;
+  }
+  &--map {
+    height: 977px;
+  }
+  &--box {
+    display: inline-block;
+    max-width: 406px;
+    padding: 48px;
+    color: rgba(21, 20, 29, 0.5);
+    text-align: left;
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 0 4px 48px rgba(0, 0, 0, 0.15);
+    b {
+      color: $color_black;
+    }
+  }
+}

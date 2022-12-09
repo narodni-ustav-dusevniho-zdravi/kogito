@@ -1,0 +1,18 @@
+{#{% set _headerClass = 'header--sticky' %}#}
+
+{% extends 'base.html.twig' %}
+
+{% set pageTitle = 'Spánek po porodu | Perinatal' %}
+{% set pageDescription = 'Spánek je jednou ze základních životních potřeb člověka. Je důležitý nejen pro regeneraci organismu, ale také pro naše tělesné i duševní zdraví.' %}
+
+{% block main %}
+  {% include 'components/for-woman/postpartum/sleep-after-childbirth/hero.html.twig' %}
+  {% include 'components/for-woman/postpartum/sleep-after-childbirth/main-box.html.twig' %}
+  {% include 'components/for-woman/postpartum/sleep-after-childbirth/main.html.twig' %}
+  {% include 'components/for-woman/postpartum/sleep-after-childbirth/author.html.twig' %}
+{#  {% include 'components/for-woman/postpartum/sleep-after-childbirth/story.html.twig' %}#}
+{#  {% include 'components/for-woman/postpartum/sleep-after-childbirth/reviews.html.twig' %}#}
+  {% include 'components/pageComponents/share.html.twig' %}
+  {% include 'components/for-woman/postpartum/sleep-after-childbirth/other-articles.html.twig' %}
+  {% include 'components/for-woman/postpartum/sleep-after-childbirth/signpost.html.twig' %}
+{% endblock %}

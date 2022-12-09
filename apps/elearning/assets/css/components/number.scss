@@ -1,0 +1,18 @@
+.number {
+  &--big {
+    display: block;
+    margin-bottom: -15px;
+    color: #af4ba2;
+    font-size: 160px;
+    font-weight: bold;
+    line-height: 1.25;
+    letter-spacing: 0.02em;
+  }
+  &--text {
+  }
+  @media (max-width: 959px) {
+    &--big {
+      font-size: 120px;
+    }
+  }
+}

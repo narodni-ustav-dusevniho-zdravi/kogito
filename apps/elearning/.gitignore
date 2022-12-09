@@ -1,0 +1,36 @@
+.git*
+!.gitignore
+/log
+node_modules/*
+node_modules
+*.sublime-workspace
+*.log
+.htdeployment
+
+assets/css/icons/*.html
+assets/css/icons/icons.scss
+
+public/build/js/*
+!public/build/js/libs/
+public/build/css/*
+!public/build/css/libs/
+public/build/img/*
+
+.idea
+
+###> symfony/framework-bundle ###
+/.env.local
+/.env.local.php
+/.env.*.local
+/config/secrets/prod/prod.decrypt.private.php
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+
+###> symfony/phpunit-bridge ###
+.phpunit
+.phpunit.result.cache
+/phpunit.xml
+###< symfony/phpunit-bridge ###
+

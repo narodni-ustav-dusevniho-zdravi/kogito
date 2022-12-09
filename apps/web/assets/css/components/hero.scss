@@ -1,0 +1,55 @@
+.hero {
+  position: relative;
+  z-index: 1;
+  &--wrapper {
+    display: flex;
+  }
+  &--text {
+    position: relative;
+    z-index: 1;
+    flex: 0 0 auto;
+    max-width: 700px;
+    margin-top: 40px;
+    &--inner {
+      max-width: 420px;
+    }
+  }
+  &--img {
+    max-width: none;
+    margin-left: -170px;
+  }
+  &--logo {
+    margin-top: 40px;
+  }
+  @media (max-width: 1023px) {
+    &--img {
+      max-width: 100%;
+    }
+  }
+  @media (max-width: 767px) {
+    padding: 0 0 24px;
+    &--wrapper {
+      flex-wrap: wrap;
+    }
+    &--text {
+      flex: 1 1 auto;
+      margin: 0;
+    }
+    &--img {
+      position: absolute;
+      top: 25px;
+      right: -110px;
+      z-index: -1;
+      margin: 0;
+      opacity: 0.4;
+      &[data-aos^=fade][data-aos^=fade].aos-animate {
+        opacity: 0.4;
+      }
+    }
+  }
+  @media (max-width: 575px) {
+    &--img {
+      top: 75px;
+    }
+  }
+}

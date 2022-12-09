@@ -1,0 +1,92 @@
+{% set dumpCSS = '4' %}
+{% set dumpJS = '2' %}
+{% set dumpSVG = '3' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% if app.environment != 'dev' %}
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8X4ZCGR8DW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-8X4ZCGR8DW');
+    </script>
+  {% endif %}
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <meta name="robots" content="index,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="description" content="Intovativní apka pro duševní hygienu">
+
+  <title>{% block title %}Welcome!{% endblock %}</title>
+
+  <meta property="og:url" content="{{ url(app.request.attributes.get("_route"), app.request.attributes.get("_route_params")) }}">
+  <meta property="og:title" content="Toto je Kogito.">
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="{{ absolute_url(asset('/build/favicon/android-chrome-512x512.png')) }}">
+  <meta property="og:description" content="Intovativní apka pro duševní hygienu">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/build/favicon/apple-touch-icon.png') }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('/build/favicon/favicon-32x32.png') }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('/build/favicon/favicon-16x16.png') }}">
+  <link rel="manifest" href="{{ asset('/build/favicon/site.webmanifest') }}">
+  <link rel="mask-icon" href="{{ asset('/build/favicon/safari-pinned-tab.svg') }}" color="#ff7961">
+  <link rel="shortcut icon" href="{{ asset('/build/favicon/favicon.ico') }}">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-config" content="{{ asset('/build/favicon/browserconfig.xml') }}">
+  <meta name="theme-color" content="#ffffff">
+
+  {% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('/build/css/styles.css') }}?v={{ dumpCSS }}" type="text/css">
+  {% endblock %}
+</head>
+<body>
+
+{% block header %}
+  {% include 'pageComponents/header.html.twig' %}
+{% endblock %}
+
+{% block body %}
+  <main role="main" class="main">
+
+    <section class="section">
+
+      <article class="container" role="article">
+        <h1>Project starter&hellip;</h1>
+        <a href="{{ path('app_coding_typography') }}">Jump straight to typography page</a>
+      </article>
+
+    </section>
+
+  </main>
+{% endblock %}
+
+{% block footer %}
+  {% include 'pageComponents/footer.html.twig' %}
+{% endblock %}
+
+{% block components %}{% endblock %}
+
+{% block javascripts %}
+  <script>
+    let ajax = new XMLHttpRequest();
+    ajax.open('GET', '{{ asset('/build/img/symbol/icons.svg') }}?v={{ dumpSVG }}', true);
+    ajax.send();
+    ajax.onload = function (e) {
+      let div = document.createElement('div');
+      div.innerHTML = ajax.responseText;
+      div.style.position = 'absolute';
+      div.style.right = '100%';
+      document.body.insertBefore(div, document.body.childNodes[0]);
+    };
+  </script>
+  <script src="{{ asset('/build/js/scripts.js') }}?v={{ dumpJS }}"></script>
+{% endblock %}
+</body>
+</html>

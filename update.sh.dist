@@ -1,0 +1,25 @@
+#!/bin/bash
+
+PROCESS_CORE="prod-kogito-core"
+
+git pull
+
+(cd api/core && npm install)
+(cd api/core && npm run typeorm:migration:run)
+
+(cd api/core && nest build core)
+#(cd api/core && nest build backoffice)
+
+# API - Core
+pm2 stop ${PROCESS_CORE}
+pm2 delete ${PROCESS_CORE}
+
+(cd api/core && pm2 start "npm run start:prod" --name ${PROCESS_CORE})
+
+# API - Backoffice
+#pm2 stop nudz-backoffice
+#pm2 delete nudz-backoffice
+
+#(cd api/core && pm2 start "npm run start:backoffice:prod" --name nudz-backoffice)
+
+#(cd apps/backoffice && npm run build)

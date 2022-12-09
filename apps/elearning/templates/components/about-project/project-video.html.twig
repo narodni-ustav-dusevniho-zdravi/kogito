@@ -1,0 +1,94 @@
+{% trans_default_domain 'about' %}
+<section class="project-video" id="screening">
+  <div class="container">
+    <div class="page-sub-headline">
+      <img src="{{ asset('build/img/hands-1.svg') }}" alt="">
+      <h2>
+        {% trans %}video.title.1{% endtrans%}
+        <small>{% trans %}video.title.0{% endtrans%}</small>
+      </h2>
+      <p>{% trans %}video.text{% endtrans%}</p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="project-video--wrapper">
+
+      <div class="project-video--hr">
+        <div class="project-video--bg"></div>
+      </div>
+      <h3>{% trans %}video.screening1.title{% endtrans%}</h3>
+      <p>{% trans %}video.screening1.text{% endtrans%}</p>
+      <div class="project-video--video--grid">
+        <div>
+          <a href="#video-vice-o-screeningu" class="project-video--video--link js-modal-open">
+            <video width="100%" class="project-video--video">
+              <source src="{{ asset('build/video/about-project-1-vice-o-screeningu.mp4') }}" type="video/mp4">
+            </video>
+            <span class="icon icon--icon-messages-play-color"><svg class="icon__svg"><use xlink:href="#icon-messages-play-color"></use></svg></span>
+          </a>
+        </div>
+        <div>
+          <a href="#video-nas-screening-v-praxi" class="project-video--video--link js-modal-open">
+            <video width="100%" class="project-video--video">
+              <source src="{{ asset('build/video/about-project-2-nas-screening-v-praxi.mp4') }}" type="video/mp4">
+            </video>
+            <span class="icon icon--icon-messages-play-color"><svg class="icon__svg"><use xlink:href="#icon-messages-play-color"></use></svg></span>
+          </a>
+        </div>
+      </div>
+
+      <div class="project-video--hr"></div>
+      <h3>{% trans %}video.screening2.title{% endtrans%}</h3>
+      <p>{% trans %}video.screening2.text{% endtrans%}</p>
+      <div class="project-video--video--grid">
+        <div>
+          <a href="#video-po-screeningu" class="project-video--video--link js-modal-open">
+            <video width="100%" class="project-video--video">
+              <source src="{{ asset('build/video/about-project-3-po-screeningu.mp4') }}" type="video/mp4">
+            </video>
+            <span class="icon icon--icon-messages-play-color"><svg class="icon__svg"><use xlink:href="#icon-messages-play-color"></use></svg></span>
+          </a>
+        </div>
+        <div>
+          <a href="#video-peer-podpora" class="project-video--video--link js-modal-open">
+            <video width="100%" class="project-video--video">
+              <source src="{{ asset('build/video/about-project-4-peer-podpora.mp4') }}" type="video/mp4">
+            </video>
+            <span class="icon icon--icon-messages-play-color"><svg class="icon__svg"><use xlink:href="#icon-messages-play-color"></use></svg></span>
+          </a>
+        </div>
+      </div>
+
+      <div class="project-video--hr"></div>
+      <h3 id="kde-projekt-probiha">{% trans %}video.ongoing.title{% endtrans%}</h3>
+      <p>{% trans %}video.ongoing.text{% endtrans%}</p>
+      <p>
+        <a href="#mapa-vsechny" class="button button--gradient js-modal-open">
+          <span>{% trans %}video.ongoing.button{% endtrans%}</span>
+        </a>
+      </p>
+      <p>{% trans %}video.ongoing.text2{% endtrans%}</p>
+      <p>
+        <a href="#mapa-porodnice" class="button button--gradient js-modal-open">
+          <span>{% trans %}video.ongoing.button{% endtrans%}</span>
+        </a>
+      </p>
+
+      <div class="project-video--hr"></div>
+      <h3 id="vznik-projektu">{% trans %}video.started.title{% endtrans%}</h3>
+      <p>{% trans %}video.started.text{% endtrans%}</p>
+
+      <div class="project-video--hr"></div>
+      <h3>{% trans %}video.financed.title{% endtrans%}</h3>
+      <p>
+        <img src="{{ asset('build/img/eea-grants@2x.png') }}" alt="" width="143">
+      </p>
+      <p class="project-video--alt--1">{% trans %}video.financed.text{% endtrans%}</p>
+      <p>
+        <a href="https://www.eeagrants.cz/" target="_blank" class="link">www.eeagrants.cz</a>
+        <br>
+        <a href="https://eeagrants.org/" target="_blank" class="link">www.eeagrants.org</a>
+      </p>
+    </div>
+  </div>
+</section>

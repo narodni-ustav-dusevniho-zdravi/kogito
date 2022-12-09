@@ -1,0 +1,89 @@
+// patička
+.footer {
+  flex-shrink: 0;
+  padding: 62px 0 92px;
+  color: $color_white;
+  background: $color_main;
+  ul {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 36px -32px;
+    padding: 0;
+    list-style: none;
+    font-weight: 400;
+  }
+  li {
+    margin: 0;
+    padding: 0;
+    a {
+      display: block;
+      padding: 16px 32px;
+      color: $color_white;
+      text-decoration: none;
+    }
+  }
+  h2 {
+    font-size: 48px;
+  }
+  &--wrapper {
+    position: relative;
+  }
+  &--shape {
+    position: absolute;
+    top: -178px;
+    right: 130px;
+  }
+  &--grid {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    gap: 24px;
+  }
+  &--tacr {
+    margin-right: 16px;
+  }
+  &--logo {
+    margin-left: auto;
+  }
+  &--download {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 24px;
+  }
+  @media (max-width: 767px) {
+    padding: 62px 0;
+    ul {
+      display: flex;
+      margin: 16px -12px 24px;
+    }
+    li {
+      a {
+        padding: 8px 16px;
+      }
+    }
+    h2 {
+      text-align: center;
+    }
+    &--grid {
+      justify-content: center;
+    }
+    &--shape {
+      top: -100px;
+      right: 0;
+      width: 100px;
+    }
+    &--download {
+      order: 2;
+    }
+    &--logo {
+      order: 1;
+      margin: 0;
+    }
+  }
+}

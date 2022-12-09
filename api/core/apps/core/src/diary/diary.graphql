@@ -1,0 +1,66 @@
+enum Mood {
+    SATISFIED
+    HAPPY
+    OKAY
+    SAD
+    VERYSAD
+}
+
+type MoodRecord {
+    id: ID!
+    date: DateTime!
+    mood: Mood!
+}
+
+type DiaryRecord {
+    id: ID!
+    date: DateTime!
+    previewText: String!
+    content: String!
+}
+
+type MoodList {
+    records: [MoodRecord!]!
+    moodsCount: [MoodCount!]!
+    havePrev: Boolean!
+    haveNext: Boolean!
+}
+
+type MoodCount {
+    mood: Mood!
+    count: Int!
+}
+
+type DiaryList {
+    records: [DiaryRecord!]!
+    havePrev: Boolean!
+    haveNext: Boolean!
+}
+
+type Query {
+    moodsList(afterId: ID): MoodList!
+
+    diaryList(afterId: ID): DiaryList!
+    diaryEntry(id: ID!): DiaryRecord!
+}
+
+input LogMoodInput {
+    mood: Mood!
+}
+
+type LogMoodResult {
+    last: Mood
+}
+
+input EditDiaryEntryInput {
+    id: ID
+    content: String!
+}
+
+type Mutation {
+    logMood(input: LogMoodInput!): LogMoodResult!
+    removeMoodRecord(id: ID!): Boolean!
+
+    editDiaryEntry(input: EditDiaryEntryInput!): DiaryRecord
+    removeDiaryEntry(id: ID!): Boolean!
+}

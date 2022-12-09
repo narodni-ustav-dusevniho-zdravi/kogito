@@ -1,0 +1,66 @@
+{% trans_default_domain 'footer' %}
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer--wrapper">
+      <div class="social">
+        <h2>
+          <small>{% trans %}social.title.0{% endtrans%}</small>
+          {% trans %}social.title.1{% endtrans%}
+        </h2>
+        <div class="social--grid">
+          <a href="https://www.facebook.com/Perinatal.cz" class="social--button social--button--facebook" target="_blank">
+            <span class="icon icon--icon-facebook">
+              <svg class="icon__svg"><use xlink:href="#icon-facebook"></use></svg>
+            </span>
+            <span>Facebook</span>
+          </a>
+          <a href="https://www.instagram.com/perinatal.cz/" class="social--button social--button--instagram" target="_blank">
+            <span class="icon icon--icon-instagram">
+              <svg class="icon__svg"><use xlink:href="#icon-instagram"></use></svg>
+            </span>
+            <span>Instagram</span>
+          </a>
+        </div>
+      </div>
+      <div class="footer--main">
+        <ul>
+          <li><a href="{{ path('app_default_default') }}">Domů</a></li>
+          <li><a href="{{ path('app_default_pageAction', {'slug':'o-projektu'}) }}">O projektu</a></li>
+          <li><a href="{{ path('app_default_pageAction', {'slug':'o-nas'}) }}">Napsali o nás</a></li>
+          <li><a href="{{ path('app_default_pageAction', {'slug':'kontakt'}) }}">Kontakty</a></li>
+        </ul>
+        <ul>
+          <li><a href="{{ path('app_default_pageAction', {'slug':'otestuj-se'}) }}">Otestuj se</a></li>
+          <li><a href="{{ path('app_default_pageAction', {'slug':'pro-zeny'}) }}">Pro ženy</a></li>
+          <li><a href="{{ path('app_default_pageAction', {'slug':'pro-blizke'}) }}">Pro blízké</a></li>
+          <li><a href="{{ path('app_default_pageAction', {'slug':'pro-odborniky'}) }}">Pro odborníky</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer--bottom--wrapper">
+    <div class="container">
+      <div class="footer--bottom">
+        <p>Vytvořeno s láskou všem ženám 2021 <a href="https://aimgroup.cz/" target="_blank">Aimgroup</a></p>
+        <ul>
+          <li><a href="{{ path('app_default_pageAction', {'slug':'ochrana-osobnich-udaju'}) }}">GDPR</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+{#    &copy; {{ 'now'|date('Y') }} All rights reserved#}
+
+{# {% if not app.request.cookies.has('eu-cookies') %}
+  <div class="window-cookies" id="js-cookies">
+    <div class="container">
+      <div class="window-cookies--wrapper">
+        <p>Tato stránka využívá cookies. Ne, to není žádné cukroví, ale soubory, díky nimž například nemusíte znova zadávat stejné údaje, když už jste je jednou vyplnili.</p>
+        <button class="button" data-target="js-cookies" id="js-cookies-button">
+          <span>Beru na vědomí a souhlasím</span>
+          <span>Ok</span>
+        </button>
+      </div>
+    </div>
+  </div>
+{% endif %} #}

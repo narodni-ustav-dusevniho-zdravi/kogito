@@ -1,0 +1,117 @@
+.recent-articles {
+  margin: 160px 0 180px;
+  &--wrapper {
+  }
+  &--header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &--arrow {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+  }
+  &--slider {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 58px;
+
+    gap: 48px;
+  }
+  &--box {
+    max-width: 456px;
+    padding: 64px 48px 62px;
+    text-decoration: none;
+    border-radius: 48px;
+    background: #fcf8f3;
+    box-shadow: 0 12px 43px rgba(237, 113, 93, 0.08);
+    transition: $transition;
+    &:hover {
+      box-shadow: none;
+    }
+  }
+  &--date {
+    color: #ff7961;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.005em;
+
+    font-feature-settings: 'pnum' on, 'lnum' on;
+  }
+  &--picture {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 63px;
+    margin: 0 0 48px;
+  }
+  &--logo {
+    display: block;
+    max-height: 100%;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+  }
+  &--text {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    white-space: normal;
+    text-overflow: ellipsis;
+  }
+  h2 {
+    margin: 0;
+  }
+  h3 {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    white-space: normal;
+    text-overflow: ellipsis;
+  }
+  .slick-list {
+    overflow: visible;
+    margin: 0 -24px;
+  }
+  .slick-slide {
+    margin: 0 24px;
+    opacity: 0;
+    transition: $transition;
+  }
+  .slick-active {
+    opacity: 1;
+    ~ .slick-slide {
+      opacity: 1;
+    }
+  }
+  @media (max-width: 1199px) {
+    .slick-list {
+      margin: 0;
+    }
+    .slick-slide {
+      margin: 0 24px 0 0;
+    }
+  }
+  @media (max-width: 1023px) {
+  }
+  @media (max-width: 767px) {
+    margin: 60px 0 90px;
+    &--box {
+      max-width: 300px;
+      padding: 32px 24px;
+      border-radius: 32px;
+    }
+    &--slider {
+      margin-top: 48px;
+
+      gap: 24px;
+    }
+    &--picture {
+      height: 42px;
+      margin-bottom: 24px;
+    }
+  }
+}

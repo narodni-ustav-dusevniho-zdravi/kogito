@@ -1,0 +1,10 @@
+.blog-detail-other-articles {
+  margin: 120px 0;
+  &--wrapper {
+    max-width: 576px;
+    margin: auto;
+  }
+  @media (max-width: 767px) {
+    margin: 60px 0;
+  }
+}

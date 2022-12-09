@@ -1,0 +1,18 @@
+{% set locale = app.request.locale %}
+<section class="faq">
+  <div class="container">
+    <div class="faq--wrapper">
+      <div class="faq--top">
+        <h4 data-aos="fade-right" class="big-text">{{ data.headline }}</h4>
+      </div>
+      <div class="faq--faqs">
+        {% for faq in faqs %}
+          <div data-aos="fade-up" class="faq--item">
+            <h5 class="js-faq">{{ faq.getQuestionByLocale(locale) }}</h5>
+            <div class="faq--answer">{{ faq.getAnswerByLocale(locale)|raw }}</div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,38 @@
+type ViciousCircle {
+    id: ID!
+    date: DateTime!
+    name: String!
+
+    trigger: [String!]!
+    negativeThoughts: [String!]!
+    emotions: [String!]!
+    physicalSymptoms: [String!]!
+    behaviour: [String!]!
+}
+
+type ViciousCircleList {
+    records: [ViciousCircle!]!
+    havePrev: Boolean!
+    haveNext: Boolean!
+}
+
+input EditViciousCircleInput {
+    id: ID
+    name: String!
+
+    trigger: [String!]!
+    negativeThoughts: [String!]!
+    emotions: [String!]!
+    physicalSymptoms: [String!]!
+    behaviour: [String!]!
+}
+
+type Query {
+    viciousCircleList(afterId: ID): ViciousCircleList!
+    viciousCircle(id: ID!): ViciousCircle!
+    currentViciousCircle: ViciousCircle!
+}
+
+type Mutation {
+    editViciousCircle(input: EditViciousCircleInput!): ViciousCircle
+}

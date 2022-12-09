@@ -1,0 +1,64 @@
+title:
+  0: About the project - Message to all women
+  1: Mum's mental wellbeing is important for the woman, for the baby and for us
+
+main:
+  text: The period of pregnancy and after childbirth is usually filled with joyful anticipation, but at the same time mothers experience psychological problems to a greater extent. The online screening for psychosocial stress and the "Mum supports Mum" programme bring women who experience difficulties closer to early help.
+
+project:
+  text:
+    0: of women do not seek help for mental health problems,
+    1: many of them languish for months, afraid to share their feelings and often describe the beginnings of their motherhood as "shrouded in fog". Early help saves hundreds of hours of suffering that a mother can devote to her baby. For the child, the mother's psychological "presence" is a very important aspect of his or her healthy mental development.
+    2: It is often difficult for women to talk about their feelings and conditions because they assume that something unique and inappropriate is happening to them. By testing them, we show them that mental health problems are common and nothing to be ashamed of. It will also bring them closer to much-needed help.
+
+video:
+  title:
+    0: Don't be one of them
+    1: The first step towards systematic care for the mental well-being of mothers in the Czech Republic
+  text: In the Czech Republic, there is still no systematic care for women who develop psychological difficulties during pregnancy or after childbirth. The project, which combines universal screening and multi-stage care linked to it, is thus the first step towards developed care for maternal psyche, which we know, for example, from Great Britain or Australia.
+  screening1:
+    title: How is the screening done?
+    text: Ideally, all pregnant women (or new mothers) complete a simple test that calculates their risk of developing psychological problems. In our project, only women in selected gynaecological practices do this.
+  screening2:
+    title: What happens after the screening?
+    text: Women who test positive are actively approached with an offer of help. One of the aims of the project is to test an integrated step system of care, where the first step is peer support. This is part of the 'Mum Support Mum' programme and is provided by trained women with their own experience who, if necessary, link women at risk to further specialist care.
+  ongoing:
+    title: Where does the project take place?
+    text: In 20 selected gynaecological practices in three regions - Prague, Central Bohemia and Olomouc. We have teams providing primary care and connecting women to other specialist care in Prague and Olomouc.
+    button: View on map
+    text2: The project builds on ongoing screening in selected Czech maternity hospitals. You can meet it for example in the Olomouc University Hospital, Bulovka University Hospital, Thomayer University Hospital or Nymburk Hospital.
+  started:
+    title: Where did the project come from?
+    text: At the beginning was <strong>Antonín Šebela, MD, PhD,</strong>a Czech psychiatrist and maternal psychology expert who pioneered the screening of psychosocial stress in the first Czech maternity hospitals. A follow-up care system was then created in cooperation with <a href="https://www.usmevmamy.cz" target="_blank" class="link">Úsměvem mámy</a>.
+  financed:
+    title: Who funds the project?
+    text: The project is supported by a grant from Iceland, Liechtenstein and Norway under the EEA Grants.
+
+team:
+  title:
+    0: Meet the team
+    1: With us you are in the best hands
+  sismova:
+    title: Information and destigmatisation activities
+    name: Veronika Šišmová
+    text:
+  kocova:
+    title: Peer Support Coordinator
+    name: Lucie Kočová
+    text:
+  banasova:
+    title: Peer Support Coordinator
+    name: Renata Banášová
+    text:
+  hrdlickova:
+    title: Project Manager
+    name: Kristýna Hrdličková
+    text:
+  kubrichtova:
+    title: Information and destigmatisation activities
+    name: Veronika Kubrichtová
+    text:
+  sebela:
+    title: Project Principal Investigator
+    name: Antonín Šebela
+    text:

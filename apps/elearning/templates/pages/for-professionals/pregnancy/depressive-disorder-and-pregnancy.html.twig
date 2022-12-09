@@ -1,0 +1,24 @@
+{#{% set _headerClass = 'header--sticky' %}#}
+
+{% extends 'base.html.twig' %}
+
+{% set pageTitle = 'Depresivní porucha a těhotenství | Perinatal' %}
+{% set pageDescription = 'Prevalence depresivní epizody v&nbsp;těhotenství je 12,7 % (95 % interval spolehlivosti: 7,1–20,4), incidence pak 7,5 % (95 % interval spolehlivosti: 3,8–14,2) ' %}
+
+{% block main %}
+  {% include 'components/for-professionals/pregnancy/depressive-disorder-and-pregnancy/hero.html.twig' %}
+  {% include 'components/for-professionals/pregnancy/depressive-disorder-and-pregnancy/main-box.html.twig' %}
+  {% include 'components/for-professionals/pregnancy/depressive-disorder-and-pregnancy/main.html.twig' %}
+  {% include 'components/for-professionals/pregnancy/depressive-disorder-and-pregnancy/author.html.twig' %}
+{#  {% include 'components/for-professionals/pregnancy/depressive-disorder-and-pregnancy/story.html.twig' %}#}
+{#  {% include 'components/for-professionals/pregnancy/depressive-disorder-and-pregnancy/reviews.html.twig' %}#}
+  {% include 'components/pageComponents/share.html.twig' %}
+{#  {% include 'components/for-professionals/pregnancy/depressive-disorder-and-pregnancy/other-articles.html.twig' %}#}
+  {% include 'components/for-professionals/pregnancy/depressive-disorder-and-pregnancy/signpost.html.twig' %}
+{% endblock %}
+
+{% block pageModals %}
+  {{ parent() }}
+
+  {% include 'components/for-professionals/confirmation-modal.html.twig' %}
+{% endblock %}

@@ -1,0 +1,24 @@
+{#{% set _headerClass = 'header--sticky' %}#}
+
+{% extends 'base.html.twig' %}
+
+{% set pageTitle = 'Úzkosti a panické poruchy | Perinatal' %}
+{% set pageDescription = 'Je normální, že během těhotenství cítíte určitou úzkost a obavy. Pokud u vás však úzkostné pocity přetrvávají po většinu času, jen těžko se dokážete zklidnit nebo máte pocit, že své nepříjemné myšlenky nemůžete zastavit, možná potřebujete pomoc odborníka.' %}
+
+{% block main %}
+  {% include 'components/for-professionals/pregnancy/anxiety-and-panic-disorders/hero.html.twig' %}
+  {% include 'components/for-professionals/pregnancy/anxiety-and-panic-disorders/main-box.html.twig' %}
+  {% include 'components/for-professionals/pregnancy/anxiety-and-panic-disorders/main.html.twig' %}
+{#  {% include 'components/for-professionals/pregnancy/anxiety-and-panic-disorders/author.html.twig' %}#}
+  {% include 'components/for-professionals/pregnancy/anxiety-and-panic-disorders/story.html.twig' %}
+  {% include 'components/for-professionals/pregnancy/anxiety-and-panic-disorders/reviews.html.twig' %}
+  {% include 'components/pageComponents/share.html.twig' %}
+  {% include 'components/for-professionals/pregnancy/anxiety-and-panic-disorders/other-articles.html.twig' %}
+  {% include 'components/for-professionals/pregnancy/anxiety-and-panic-disorders/signpost.html.twig' %}
+{% endblock %}
+
+{% block pageModals %}
+  {{ parent() }}
+
+  {% include 'components/for-professionals/confirmation-modal.html.twig' %}
+{% endblock %}

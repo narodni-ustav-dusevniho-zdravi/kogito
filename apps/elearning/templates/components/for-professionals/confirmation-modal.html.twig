@@ -1,0 +1,36 @@
+{% if not app.request.cookies.has('for-professionals-accept') %}
+  <div class="modal modal--confirmation is-open" id="modal-provider-confirmation" role="dialog" aria-labelledby="dialog-title-provider-confirmation">
+    <div class="modal__wrapper">
+      <div class="modal__close js-modal-close-confirmation">
+      <span class="icon icon--icon-close-color">
+        <svg class="icon__svg"><use xlink:href="#icon-close-color"></use></svg>
+      </span>
+      </div>
+      <div class="modal__body">
+        <div class="modal__content">
+          <h3 id="dialog-title-provider-confirmation">Obsah je určen odborným pracovníkům ve&nbsp;zdravotnictví. Informace nejsou určeny pro&nbsp;laickou veřejnost.</h3>
+          <p>
+          <div class="form-checkbox form-checkbox--color">
+            <input type="checkbox" name="for-professionals-checkbox1" id="for-professionals-checkbox1">
+            <span class="form-checkbox__box"></span>
+            <label class="form-label" for="for-professionals-checkbox1">Potvrzuji, že jsem odborníkem ve smyslu §2a Zákona č. 40/1995 Sb., o regulaci reklamy, ve znění pozdějších předpisů, čili osobou oprávněnou předepisovat léčivé přípravky nebo osobou oprávněnou léčivé přípravky vydávat.</label>
+          </div>
+          </p>
+          <p>
+          <div class="form-checkbox form-checkbox--color">
+            <input type="checkbox" name="for-professionals-checkbox2" id="for-professionals-checkbox2">
+            <span class="form-checkbox__box"></span>
+            <label class="form-label" for="for-professionals-checkbox2">Beru na vědomí, že informace obsažené dále na těchto stránkách nejsou určeny laické veřejnosti, nýbrž zdravotnickým odborníkům, a to se všemi riziky a důsledky z toho plynoucími pro laickou veřejnost.</label>
+          </div>
+          </p>
+          <p class="error-message is-hidden js-modal-provider-error">Pro pokračování je potřeba souhlasit s výše uvedenými podmínkami.</p>
+          <p><button class="btn btn--md js-modal-provider-confirmation">Potvrdit</button></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.querySelector('body').classList.add('is-unscrollable');
+  </script>
+{% endif %}

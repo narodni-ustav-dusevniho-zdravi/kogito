@@ -1,0 +1,26 @@
+{% trans_default_domain 'homepage' %}
+<section class="mobile-app">
+  <div class="container">
+    <div class="mobile-app--wrapper">
+      <img data-aos="fade-right" src="{{ asset('build/img/img-2.png') }}" alt="" class="mobile-app--img-1" width="328">
+      <img data-aos="fade-left" src="{{ asset('build/img/img-1.png') }}" alt="" class="mobile-app--img-2" width="328">
+      <div class="mobile-app--inner">
+        <h2 data-aos="fade-up" class="mobile-app--headline">
+{#          <small data-aos="fade-down" data-aos-delay="300">Otestujme se</small>#}
+          {% trans %}mobile.title{% endtrans%}
+        </h2>
+        <div data-aos="fade-up" class="mobile-app--text">
+          <p>{% trans %}mobile.text{% endtrans%}</p>
+        </div>
+        <div class="button__grid">
+          <a data-aos="fade-right" href="https://apps.apple.com/cz/app/kogito/id1582637411?l=cs" target="_blank">
+            <img src="{{ asset('build/img/appstore.svg') }}" alt="">
+          </a>
+          <a data-aos="fade-left" href="https://play.google.com/store/apps/details?id=cz.nudz.kogito" target="_blank">
+            <img src="{{ asset('build/img/googleplay.svg') }}" alt="">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

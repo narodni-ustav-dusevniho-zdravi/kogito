@@ -1,0 +1,78 @@
+type UserQuestionnaireItem {
+    question: String!
+    answer: String!
+}
+
+type UserQuestionnaire {
+    id: ID!
+    name: String!
+    completedAt: DateTime
+    items: [UserQuestionnaireItem!]!
+}
+
+type UserProgress {
+    actualJourney: String!
+}
+
+enum UserGroup {
+    normal
+    control
+}
+
+type User implements NodeType {
+    id: ID!
+    createdAt: DateTime!
+    phoneNumber: String!
+    email: String
+    firstName: String!
+    lastName: String!
+    birthDate: DateTime
+    enabled: Boolean!
+    isAdmin: Boolean!
+    userQuestionnaire: [UserQuestionnaire!]!
+    group: UserGroup!
+    registrationLabel: String
+
+    finishedRegistration: Boolean!
+    userInfoCompleted: Boolean!
+    invitedUser: Boolean!
+
+    age: Int
+    dateOfBirth: DateTime
+    maritalStatus: Int
+    maritalStatusDescription: String
+    numberOfChildren: Int
+    educationalAttainment: Int
+    population: Int
+    actualState: Int
+
+    actualJourney: String!
+}
+
+type UserListMeta {
+    count: Float!
+}
+
+type Query {
+    me: User!
+    User(id: ID!): User!
+
+    allUsers: [User!]!
+    _allUsersMeta: UserListMeta!
+}
+
+type Mutation {
+    createUser(
+        phoneNumber: String!
+    ): User
+    removeUser(
+        id: ID!
+    ): Boolean
+#    updateUser(
+#        id: ID!
+#        firstName: String!
+#        lastName: String!
+#        email: String
+#        phoneNumber: String
+#    ): User
+}

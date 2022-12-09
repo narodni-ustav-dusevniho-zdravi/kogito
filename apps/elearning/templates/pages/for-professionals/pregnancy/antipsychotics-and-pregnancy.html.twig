@@ -1,0 +1,24 @@
+{#{% set _headerClass = 'header--sticky' %}#}
+
+{% extends 'base.html.twig' %}
+
+{% set pageTitle = 'Antipsychotika a těhotenství | Perinatal' %}
+{% set pageDescription = 'I díky deinstitucionalizaci pacientů s duševním onemocněním přibývá těhotných žen diagnostikovaných s&nbsp;psychotickými poruchami či bipolární afektivní poruchou (Gentile, 2010)' %}
+
+{% block main %}
+  {% include 'components/for-professionals/pregnancy/antipsychotics-and-pregnancy/hero.html.twig' %}
+  {% include 'components/for-professionals/pregnancy/antipsychotics-and-pregnancy/main-box.html.twig' %}
+  {% include 'components/for-professionals/pregnancy/antipsychotics-and-pregnancy/main.html.twig' %}
+  {% include 'components/for-professionals/pregnancy/antipsychotics-and-pregnancy/author.html.twig' %}
+{#  {% include 'components/for-professionals/pregnancy/antipsychotics-and-pregnancy/story.html.twig' %}#}
+{#  {% include 'components/for-professionals/pregnancy/antipsychotics-and-pregnancy/reviews.html.twig' %}#}
+  {% include 'components/pageComponents/share.html.twig' %}
+{#  {% include 'components/for-professionals/pregnancy/antipsychotics-and-pregnancy/other-articles.html.twig' %}#}
+  {% include 'components/for-professionals/pregnancy/antipsychotics-and-pregnancy/signpost.html.twig' %}
+{% endblock %}
+
+{% block pageModals %}
+  {{ parent() }}
+
+  {% include 'components/for-professionals/confirmation-modal.html.twig' %}
+{% endblock %}

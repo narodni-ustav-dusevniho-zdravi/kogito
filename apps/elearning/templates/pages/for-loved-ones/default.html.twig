@@ -1,0 +1,12 @@
+{#{% set _headerClass = 'header--sticky' %}#}
+
+{% extends 'base.html.twig' %}
+
+{% set pageTitle = 'Důležitá témata spojená s&nbsp;psychikou po porodu pro blízké | Perinatal' %}
+{% set pageDescription = 'Pokud jste se dostali na tyto stránky tak nejspíš ve svém okolí máte někoho blízkého kdo v&nbsp;těhotenství nebo po porodu zažívá psychické obtíže.' %}
+
+{% block main %}
+  {% include 'components/for-loved-ones/default/hero.html.twig' %}
+  {% include 'components/for-loved-ones/default/main.html.twig' %}
+  {% include 'components/for-loved-ones/default/signpost.html.twig' %}
+{% endblock %}

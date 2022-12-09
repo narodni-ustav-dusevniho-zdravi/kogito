@@ -1,0 +1,12 @@
+// webové fonty
+// doporučuji využít https://google-webfonts-helper.herokuapp.com/fonts
+body,
+input,
+textarea,
+select {
+  font-family: $fontFamily, sans-serif;
+  // tisková verze
+  @media print {
+    font-family: sans-serif;
+  }
+}

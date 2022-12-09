@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  {% for page in pages %}
+    {% if page.seoParams and page.seoParams.robots == 'INDEX, FOLLOW' and page.seoParams.displayInSiteMap %}
+      <url>
+        {% if page.slug != "" %}
+          <loc>{{ url('app_default_pageAction', {slug: page.slug}) }}</loc>
+        {% else %}
+          <loc>{{ url('app_default_default') }}</loc>
+        {% endif %}
+
+        {% if page.seoParams.lastUpdate %}
+          <lastmod>{{ page.seoParams.lastUpdate|date('Y-m-d') }}</lastmod>
+        {% else %}
+          <lastmod>2021-03-03</lastmod>
+        {% endif %}
+        <changefreq>monthly</changefreq>
+        <priority>1.0</priority>
+      </url>
+    {% endif %}
+  {% endfor %}
+
+  {% set locale = app.request.locale %}
+  {% for article in blogArticles %}
+    {% if article.getSeoRobotsByLocale(locale) == 'INDEX, FOLLOW' %}
+      <url>
+        <loc>{{ url('app_blog_detail', {'id': article.id, 'categorySlug': article.category.getSlugByLocale(locale), 'slug': article.getSlugByLocale(locale)}) }}</loc>
+        <lastmod>{{ article.updated|date('Y-m-d') }}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>1.0</priority>
+      </url>
+    {% endif %}
+  {% endfor %}
+</urlset>

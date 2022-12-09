@@ -1,0 +1,21 @@
+.blog-detail-story {
+  margin: 120px 0 80px;
+  &--wrapper {
+    max-width: 676px;
+    margin: auto;
+  }
+  &--box {
+    margin: 48px 0 0;
+    padding: 0 48px;
+    text-align: left;
+    border-left: 2px solid $color_main;
+  }
+  @media (max-width: 767px) {
+    margin: 60px 0 0;
+  }
+  @media (max-width: 666px) {
+    &--box {
+      padding: 0 0 0 20px;
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{% trans_default_domain 'homepage' %}
+<section class="for-mothers">
+  <div class="container">
+    <div class="for-mothers--wrapper">
+      <div class="for-mothers--header">
+        <div>
+          <h2 data-aos="fade-left" class="for-mothers--headline">
+            <small data-aos="fade-left" data-aos-delay="300">{% trans %}women.title.0{% endtrans%}</small>
+            {% trans %}women.title.1{% endtrans%}
+          </h2>
+          <p data-aos="fade-left">{% trans %}women.text{% endtrans%}</p>
+          <div data-aos="fade-left">
+            <a href="{{ path('app_default_pageAction', {'slug':'pro-zeny'}) }}" class="button button--gradient">
+              <span>{% trans %}women.button{% endtrans%}</span>
+            </a>
+          </div>
+        </div>
+        <div class="number right counter">
+          <h3 class="number--text" data-aos="fade-right">
+            <span class="number--big" data-aos="fade-right" data-aos-delay="300">
+              <span class="counter--number" data-number="100">0</span>+
+            </span>
+            {% trans %}women.materials{% endtrans%}
+          </h3>
+        </div>
+      </div>
+      <div class="for-mothers--info">
+        <div>
+          <img data-aos="fade-up" src="{{ asset('build/img/mother-2.svg') }}" alt="" class="for-mothers--img">
+        </div>
+        <div class="for-mothers--box--wrapper">
+          <div class="for-mothers--box">
+            <div class="for-mothers--box--inner">
+            <span data-aos="fade-left" class="icon icon--icon-chat-messages-bubble-heart-color">
+              <svg class="icon__svg"><use xlink:href="#icon-chat-messages-bubble-heart-color"></use></svg>
+            </span>
+            <h3 data-aos="fade-left">{% trans %}women.tips.title{% endtrans%}</h3>
+            <p data-aos="fade-left">{% trans %}women.tips.text{% endtrans%}</p>
+          </div>
+          </div>
+          <div class="for-mothers--box">
+            <div class="for-mothers--box--inner">
+          <span data-aos="fade-left" class="icon icon--icon-medical-hospital-color">
+            <svg class="icon__svg"><use xlink:href="#icon-medical-hospital-color"></use></svg>
+          </span>
+            <h3 data-aos="fade-left">{% trans %}women.informations.title{% endtrans%}</h3>
+            <p data-aos="fade-left">{% trans %}women.informations.text{% endtrans%}</p>
+          </div>
+          </div>
+          <div class="for-mothers--box">
+            <div class="for-mothers--box--inner">
+            <span data-aos="fade-left" class="icon icon--icon-docs-stroked-heart-color"><svg class="icon__svg"><use xlink:href="#icon-docs-stroked-heart-color"></use></svg></span>
+            <h3 data-aos="fade-left">{% trans %}women.stories.title{% endtrans%}</h3>
+            <p data-aos="fade-left">{% trans %}women.stories.text{% endtrans%}</p>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

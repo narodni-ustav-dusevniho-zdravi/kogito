@@ -1,0 +1,123 @@
+.blog-detail {
+  margin: 64px 0;
+  &--wrapper {
+    max-width: 720px;
+    margin: auto;
+    padding: 0 72px;
+  }
+  &--call-box {
+    margin: 48px 0;
+    padding: 32px 32px 8px;
+    background: rgba(21, 20, 29, 0.03);
+    &--row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 0;
+      border-top: 1px solid rgba(0, 0, 0, 0.07);
+      &:first-child {
+        border: none;
+      }
+    }
+    a {
+      color: $color_main;
+      font-size: 18px;
+      font-weight: bold;
+      line-height: 1.25;
+    }
+    h3 {
+      margin: 0;
+      font-size: 18px;
+    }
+  }
+  h2 {
+    @extend .h3;
+    position: relative;
+    margin: 64px 0 32px;
+    .icon {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translate(-72px, -50%);
+    }
+  }
+  h3 {
+    @extend .h4;
+  }
+  ul {
+    margin: 32px 0;
+    padding: 0;
+    list-style: none;
+    ul {
+      margin: 8px 0;
+      li {
+        &:before {
+          content: '\23AF';
+        }
+      }
+    }
+    li {
+      position: relative;
+      padding: 0 0 0 18px;
+      line-height: 1.8;
+      &:before {
+        content: '\2022';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 18px;
+        color: $color_main;
+        font-size: 16px;
+        font-weight: bold;
+      }
+    }
+  }
+  ol {
+    margin: 32px 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: li;
+    ol {
+      margin: 8px 0;
+    }
+    li {
+      position: relative;
+      padding: 0 0 0 20px;
+      line-height: 1.8;
+      counter-increment: li;
+      &:before {
+        content: counter(li) '.';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 18px;
+        color: $color_main;
+        font-size: 16px;
+        font-weight: 600;
+      }
+    }
+  }
+  a {
+    color: $color_main;
+    text-decoration: underline;
+  }
+  @media (max-width: 666px) {
+    &--wrapper {
+      padding: 0;
+    }
+    &--call-box {
+      &--row {
+        display: block;
+      }
+      p {
+        margin: 0;
+      }
+    }
+    h2 {
+      padding-left: 72px;
+      .icon {
+        transform: translate(0, -50%);
+      }
+    }
+  }
+}

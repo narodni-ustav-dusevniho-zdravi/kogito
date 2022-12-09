@@ -1,0 +1,86 @@
+// box sizing
+html {
+  scroll-behavior: smooth;
+  position: relative;
+  box-sizing: border-box;
+  height: 100%;
+  text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-overflow-scrolling: touch;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+
+  scroll-margin-top: 100px;
+  @media (max-width: $mq_menu - 1) {
+    scroll-margin-top: 30px;
+  }
+}
+img {
+  box-sizing: content-box;
+}
+// nastavení velikosti písma
+:root {
+  font-size: 100%;
+}
+// základní definice
+body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  min-height: 100%;
+  margin: 0;
+  color: $color_black;
+  font-family: sans-serif;
+  font-size: 16px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  background: $color_white;
+  -webkit-overflow-scrolling: touch;
+}
+main {
+  flex: 1 0 auto;
+  overflow: hidden;
+  padding-top: 120px;
+  background: url('#{$imgPath}/header-bg.jpg') no-repeat top center/100% 1032px;
+  @media (max-width: 767px) {
+    padding-top: 100px;
+    background-size: auto 953px;
+  }
+}
+// základní nastavení respo
+@-ms-viewport {
+  width: device-width;
+}
+img,
+picture {
+  -ms-interpolation-mode: nearest-neighbor;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  image-rendering: auto;
+}
+img,
+svg {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+  border: none;
+}
+iframe {
+  max-width: 100%;
+}
+label {
+  user-select: none;
+}
+textarea {
+  max-width: 100%;
+}
+video {
+  display: block;
+}

@@ -1,0 +1,24 @@
+{% trans_default_domain 'about' %}
+<section class="project-img-text">
+  <div class="container">
+    <div class="project-img-text--wrapper">
+      <div class="project-img-text--grid">
+        <div>
+          <img src="{{ asset('build/img/mother-5.svg') }}" alt="">
+        </div>
+        <div>
+          <div class="number counter">
+            <h3 class="number--text aos-init aos-animate" data-aos="fade-right">
+            <span class="number--big aos-init aos-animate" data-aos="fade-right" data-aos-delay="300">
+              <span class="counter--number" data-number="75">75</span><span class="counter--number">%</span>
+            </span>
+              {% trans %}project.text.0{% endtrans%}
+            </h3>
+          </div>
+          <p>{% trans %}project.text.1{% endtrans%}</p>
+          <p>{% trans %}project.text.2{% endtrans%}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

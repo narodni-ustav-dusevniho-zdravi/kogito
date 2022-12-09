@@ -1,0 +1,26 @@
+{% extends '@SonataAdmin/standard_layout.html.twig' %}
+
+{% block body_attributes -%}
+  class="sonata-bc skin-blue fixed
+  {% if app.request.cookies.get('sonata_sidebar_hide') -%}
+    sidebar-collapse
+  {%- endif -%}"
+{%- endblock -%}
+
+{% block logo %}
+  {% apply spaceless %}
+    <a class="logo" href="{{ path('sonata_admin_dashboard') }}">
+      {{ sonata_admin.adminPool.title }}
+{#      <img loading="lazy" src="{{ asset(sonata_admin.adminPool.titlelogo) }}" style="width: 100%;max-width: 280px;" alt="{{ sonata_admin.adminPool.title }}">#}
+    </a>
+  {% endapply %}
+{% endblock %}
+
+{% block stylesheets %}
+  {{ parent() }}
+  <style>
+    .logo,.logo:hover,.navbar-static-top{
+      background-color: #231f20 !important;
+    }
+  </style>
+{% endblock %}

@@ -1,0 +1,12 @@
+{#{% set _headerClass = 'header--sticky' %}#}
+
+{% extends 'base.html.twig' %}
+
+{% set pageTitle = 'Konference' %}
+{% set pageDescription = '' %}
+
+{% block main %}
+  {% include 'components/conferences/default/hero.html.twig' %}
+  {% include 'components/conferences/default/main.html.twig' %}
+  {% include 'components/pageComponents/protection.html.twig' %}
+{% endblock %}

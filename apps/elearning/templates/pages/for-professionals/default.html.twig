@@ -1,0 +1,21 @@
+{#{% set _headerClass = 'header--sticky' %}#}
+{% trans_default_domain 'for-professionals' %}
+
+{% extends 'base.html.twig' %}
+
+{% set pageTitle = 'Perinatální duševní poruchy a možnosti jejich psychofarmakologické léčby | Perinatal' %}
+{% set pageDescription = 'Perinatální duševní poruchy a možnosti jejich psychofarmakologické léčby' %}
+
+{% block main %}
+  {% include 'components/for-professionals/hero.html.twig' %}
+  {% include 'components/for-professionals/text-simple.html.twig' %}
+  {% include 'components/for-professionals/main-box.html.twig' %}
+  {% include 'components/for-professionals/video-section.html.twig' %}
+  {% include 'components/for-professionals/signpost.html.twig' %}
+{% endblock %}
+
+{% block pageModals %}
+  {{ parent() }}
+
+  {% include 'components/for-professionals/confirmation-modal.html.twig' %}
+{% endblock %}

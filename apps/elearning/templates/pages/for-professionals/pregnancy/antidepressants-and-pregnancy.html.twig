@@ -1,0 +1,24 @@
+{#{% set _headerClass = 'header--sticky' %}#}
+
+{% extends 'base.html.twig' %}
+
+{% set pageTitle = 'Antidepresiva a těhotenství  | Perinatal' %}
+{% set pageDescription = 'Žen užívajících antidepresiva celosvětově rapidně přibývá. Narůstá tedy i procento těch, u kterých je medikace antidepresivy nutná během těhotenství.  ' %}
+
+{% block main %}
+  {% include 'components/for-professionals/pregnancy/antidepressants-and-pregnancy/hero.html.twig' %}
+  {% include 'components/for-professionals/pregnancy/antidepressants-and-pregnancy/main-box.html.twig' %}
+  {% include 'components/for-professionals/pregnancy/antidepressants-and-pregnancy/main.html.twig' %}
+  {% include 'components/for-professionals/pregnancy/antidepressants-and-pregnancy/author.html.twig' %}
+{#  {% include 'components/for-professionals/pregnancy/antidepressants-and-pregnancy/story.html.twig' %}#}
+{#  {% include 'components/for-professionals/pregnancy/antidepressants-and-pregnancy/reviews.html.twig' %}#}
+  {% include 'components/pageComponents/share.html.twig' %}
+{#  {% include 'components/for-professionals/pregnancy/antidepressants-and-pregnancy/other-articles.html.twig' %}#}
+  {% include 'components/for-professionals/pregnancy/antidepressants-and-pregnancy/signpost.html.twig' %}
+{% endblock %}
+
+{% block pageModals %}
+  {{ parent() }}
+
+  {% include 'components/for-professionals/confirmation-modal.html.twig' %}
+{% endblock %}

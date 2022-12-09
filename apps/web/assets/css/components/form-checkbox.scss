@@ -1,0 +1,66 @@
+// formulář - checkbox
+.form-checkbox {
+  position: relative;
+  padding: 5px 0;
+  line-height: calc(29 / 16);
+  user-select: none;
+
+  // input pole
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+
+    // zaškrtnutý
+    &:checked ~ .form-checkbox__box {
+      border-color: $text_color;
+      background: $text_color url('#{$imgPath}/check.svg') center center no-repeat;
+      background-size: 14px;
+    }
+
+    // vypnutý (disabled)
+    &:disabled ~ .form-checkbox__box {
+      border: 2px solid $color_gray_light;
+      background: $color_gray_light;
+      cursor: default;
+    }
+  }
+  a {
+    color: $text_color;
+  }
+
+  // úprava labelu
+  .form-label {
+    position: relative;
+    z-index: $index_page + 1;
+    margin: 0;
+    padding-left: 30px;
+    font-weight: 400;
+    cursor: pointer;
+    span {
+      display: block;
+      color: $color_gray;
+      font-size: 13px;
+    }
+  }
+}
+
+// element v řádku
+.form-checkbox--inline {
+  display: inline-block;
+  padding-right: 15px;
+}
+
+// slepý checkbox
+.form-checkbox__box {
+  position: absolute;
+  top: 9px;
+  z-index: $index_page + 2;
+  display: block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid $color_gray_light;
+  border-radius: $radius;
+  background-color: $color_white;
+  pointer-events: none;
+}

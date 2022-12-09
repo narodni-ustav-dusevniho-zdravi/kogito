@@ -1,0 +1,13 @@
+{#{% set _headerClass = 'header--sticky' %}#}
+
+{% extends 'base.html.twig' %}
+
+{% set pageTitle = 'Trápí vás deprese? Úzkost? Otestuj se | Perinatal' %}
+{% set pageDescription = 'Zkuste si pomocí standardizovaných dotazníků vyhodnotit své pocity v&nbsp;perinatálním období. Zjistěte co vás trápí.' %}
+
+{% block main %}
+  {% include 'components/test-yourself/hero.html.twig' %}
+  {% include 'components/test-yourself/two-box.html.twig' %}
+  {% include 'components/test-yourself/text.html.twig' %}
+  {% include 'components/pageComponents/protection.html.twig' %}
+{% endblock %}
