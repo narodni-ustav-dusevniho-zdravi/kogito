@@ -24,6 +24,8 @@ end
 target 'KogitoV2' do
   config = use_native_modules!
 
+  pod 'RNSecureStorage', :path => '../node_modules/rn-secure-storage/ios/'
+
   # Flags change depending on the env values.
   flags = get_default_flags()
 
