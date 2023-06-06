@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
 import {SafeAreaView} from 'react-native';
-import * as NativeSplashScreen from 'react-native-splash-screen';
 import {useAuth} from '../modules/auth/useAuth';
 import {useMeQuery} from '../modules/user/useMeQuery';
+import BootSplash from 'react-native-bootsplash';
 
 import {useTerms} from '../modules/user/useTerms';
 import type {AppScreen} from '../navigation/Navigation';
@@ -20,7 +20,7 @@ const SplashScreen: AppScreen<'Splash'> = ({navigation}) => {
         navigation.replace('Terms');
       }
 
-      NativeSplashScreen.default.hide();
+      BootSplash.hide();
     }
   }, [status]);
 
@@ -35,7 +35,7 @@ const SplashScreen: AppScreen<'Splash'> = ({navigation}) => {
         navigation.replace('Dashboard');
       }
 
-      NativeSplashScreen.default.hide();
+      BootSplash.hide();
     }
   }, [me]);
 
