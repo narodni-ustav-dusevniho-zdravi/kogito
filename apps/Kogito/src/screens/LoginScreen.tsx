@@ -14,7 +14,7 @@ import {useApolloClient} from '@apollo/client';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import ColoredSafeAreaView from '../components/primitives/ColoredSafeAreaView';
 import {getReadableVersion} from 'react-native-device-info';
-import {Config} from '../configuration';
+import {ENV} from '../env';
 
 export const LogoFooterWrapper = styled.View`
   margin-top: auto;
@@ -70,7 +70,7 @@ const LoginScreen: React.FC = () => {
           <LogoFooterWrapper>
             <LogoFooter />
             <Text textVariant="textCopy" align={'center'}>
-              {Config.MODE[0]}
+              {ENV.MODE[0]}
               {getReadableVersion()}
             </Text>
           </LogoFooterWrapper>

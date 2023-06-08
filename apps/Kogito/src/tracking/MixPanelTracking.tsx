@@ -1,9 +1,9 @@
 import React, {PropsWithChildren, createContext, useContext} from 'react';
 import {Mixpanel} from 'mixpanel-react-native';
 import AppState from './AppState';
-import {Config} from '../configuration';
+import {ENV} from '../env';
 
-const mixpanel = new Mixpanel(Config.MIXPANEL, true);
+const mixpanel = new Mixpanel(ENV.MIXPANEL_API_KEY, true);
 mixpanel.init();
 
 const TrackingContext = createContext<Mixpanel>({} as Mixpanel);
