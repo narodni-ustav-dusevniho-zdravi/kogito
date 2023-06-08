@@ -1,4 +1,4 @@
-package com.kogitov2;
+package cz.nudz.kogito;
 
 import android.app.Application;
 import com.facebook.react.PackageList;
