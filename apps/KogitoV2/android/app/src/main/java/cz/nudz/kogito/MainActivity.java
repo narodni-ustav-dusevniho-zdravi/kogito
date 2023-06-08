@@ -1,4 +1,4 @@
-package com.kogitov2;
+package cz.nudz.kogito;
 
 import android.os.Bundle;
 import com.facebook.react.ReactActivity;
@@ -16,7 +16,7 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "KogitoV2";
+    return "Kogito";
   }
 
   @Override

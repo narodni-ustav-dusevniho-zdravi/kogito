@@ -21,7 +21,7 @@ if linkage != nil
   use_frameworks! :linkage => linkage.to_sym
 end
 
-target 'KogitoV2' do
+target 'Kogito' do
   config = use_native_modules!
 
   pod 'RNSecureStorage', :path => '../node_modules/rn-secure-storage/ios/'
@@ -45,7 +45,7 @@ target 'KogitoV2' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
-  target 'KogitoV2Tests' do
+  target 'KogitoTests' do
     inherit! :complete
     # Pods for testing
   end

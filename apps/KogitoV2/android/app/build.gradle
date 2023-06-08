@@ -93,9 +93,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.kogitov2"
+    namespace "cz.nudz.kogito"
     defaultConfig {
-        applicationId "com.kogitov2"
+        applicationId "cz.nudz.kogito"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 22
