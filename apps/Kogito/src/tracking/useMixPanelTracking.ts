@@ -25,7 +25,7 @@ const useMixPanelTracking = () => {
     },
     trackRelaxationOpened: (
       relaxationTitle: string,
-      relaxationLevel?: number,
+      relaxationLevel?: string | number,
     ) => {
       track('Relaxation opened', {
         relaxationTitle,

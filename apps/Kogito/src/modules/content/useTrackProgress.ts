@@ -1,22 +1,10 @@
-import {gql, MutationFunction, useMutation} from '@apollo/client';
+import {gql, useMutation} from '@apollo/client';
+import {
+  TrackProgressMutation,
+  TrackProgressMutationVariables,
+} from '../../../gql/__generated__/graphql';
 
-type TrackProgressInput = {
-  id: string;
-  progress: number;
-};
-
-type TrackProgressResult = {
-  success: boolean;
-};
-
-type UseTrackProgress = () => {
-  trackProgressMutation: MutationFunction<
-    TrackProgressResult,
-    {input: TrackProgressInput}
-  >;
-};
-
-export const TrackProgressAction = gql`
+const mutation = gql`
   mutation trackProgress($input: TrackProgressInput!) {
     trackProgress(input: $input) {
       success
@@ -24,11 +12,11 @@ export const TrackProgressAction = gql`
   }
 `;
 
-export const useTrackProgress: UseTrackProgress = () => {
+export const useTrackProgress = () => {
   const [trackProgressMutation] = useMutation<
-    TrackProgressResult,
-    {input: TrackProgressInput}
-  >(TrackProgressAction);
+    TrackProgressMutation,
+    TrackProgressMutationVariables
+  >(mutation);
 
   return {
     trackProgressMutation,

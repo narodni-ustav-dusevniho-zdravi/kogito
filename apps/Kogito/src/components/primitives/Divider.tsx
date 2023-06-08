@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React from 'react';
 import styled from 'styled-components/native';
 
 export const DividerView = styled.View`
@@ -7,7 +7,7 @@ export const DividerView = styled.View`
   margin-bottom: 10px;
 `;
 
-const Divider: FC = () => {
+const Divider: React.FC = () => {
   return <DividerView />;
 };
 

@@ -1,23 +1,44 @@
-import {ApolloError, useQuery} from '@apollo/client';
-import {MeQuery, MeQueryResult} from './graphql';
+import {gql, useQuery} from '@apollo/client';
 
-type UseMeQuery = () => {
-  me: MeQueryResult | null;
-  haveActiveQuestionnaire: boolean;
-  refetch: () => void;
-  loading: boolean;
-  error?: ApolloError;
-  updateCacheValue: (newData: MeQueryResult) => void;
-};
+import {
+  MeQueryQuery,
+  MeQueryQueryVariables,
+} from '../../../gql/__generated__/graphql';
 
-export const useMeQuery: UseMeQuery = () => {
-  const {loading, error, data, refetch} = useQuery<{
-    viewer: {me: MeQueryResult; haveActiveQuestionnaire: boolean};
-  }>(MeQuery);
+export const MeQuery = gql`
+  query MeQuery {
+    viewer {
+      id
+      me {
+        id
+        firstName
+        lastName
+        email
+        finishedRegistration
+        userInfoCompleted
+        age
+        dateOfBirth
+        maritalStatus
+        maritalStatusDescription
+        numberOfChildren
+        educationalAttainment
+        population
+        actualState
+      }
+      haveActiveQuestionnaire
+    }
+  }
+`;
+
+export const useMeQuery = () => {
+  const {loading, error, data, refetch} = useQuery<
+    MeQueryQuery,
+    MeQueryQueryVariables
+  >(MeQuery);
 
   console.log({error, data});
 
-  const updateCacheValue = (newData: MeQueryResult) => {
+  const updateCacheValue = (_: any) => {
     // client.writeQuery({
     //   query: MeQuery,
     //   data: {

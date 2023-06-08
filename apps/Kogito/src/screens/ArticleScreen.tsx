@@ -1,7 +1,6 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {SafeAreaView, ScrollView, useWindowDimensions} from 'react-native';
-import {RouteProp, useRoute} from '@react-navigation/native';
-import {RootStackParamList} from '../navigation/Navigation';
+import type {AppScreen} from '../navigation/Navigation';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import MainContainer from '../components/container/MainContainer/MainContainer';
 import {useItemContent} from '../modules/content/useItemContent';
@@ -9,12 +8,10 @@ import HTML from 'react-native-render-html';
 import ProgressBar from '../components/primitives/ProgressBar/ProgressBar';
 import Text from '../components/primitives/Text';
 import Button from '../components/primitives/Button';
-import {StackScreenProps} from '@react-navigation/stack';
+
 import {useTrackProgress} from '../modules/content/useTrackProgress';
 import useEventListener from '../helpers/useEventListener';
 import useMixPanelTracking from '../tracking/useMixPanelTracking';
-
-export type StoryDetail = RouteProp<RootStackParamList, 'StoryDetail'>;
 
 const styles = {
   p: {
@@ -31,10 +28,9 @@ const styles = {
   },
 };
 
-const StoryDetailScreen: FC<StackScreenProps<any>> = ({navigation}) => {
-  const route = useRoute<StoryDetail>();
+const ArticleScreen: AppScreen<'Article'> = ({navigation, route}) => {
   const {fireEvent} = useEventListener();
-  const {articleItem, loading} = useItemContent(route.params.id);
+  const {articleItem} = useItemContent(route.params.id);
   const windowWidth = useWindowDimensions().width;
   const {trackLessonCompleted} = useMixPanelTracking();
 
@@ -84,7 +80,7 @@ const StoryDetailScreen: FC<StackScreenProps<any>> = ({navigation}) => {
       {articleItem && (
         <MainContainerWrapper color={'white'}>
           <ProgressBar value={position} max={articleItem.content.length} />
-          <MainContainer align={null} page={'subWithoutFooter'} color={'white'}>
+          <MainContainer page={'subWithoutFooter'} color={'white'}>
             <ScrollView contentContainerStyle={{flexGrow: 1}}>
               <Text textVariant={'header'} space={'mainY'}>
                 {articleItem.name}
@@ -113,4 +109,4 @@ const StoryDetailScreen: FC<StackScreenProps<any>> = ({navigation}) => {
   );
 };
 
-export default StoryDetailScreen;
+export default ArticleScreen;

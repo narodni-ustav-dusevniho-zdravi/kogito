@@ -42,7 +42,7 @@ import ImageRelaxScanningOwnBody from '../assets/images/scanningOwnBody.png';
 import ImageRelaxStream from '../assets/images/stream.png';
 import ImageRelaxWoods from '../assets/images/woods.png';
 
-export default function (placing: Placing, image: string | null) {
+export default function (placing: Placing, image: string | null): number {
   if (placing === 'bonusRelaxationOverview') {
     switch (image) {
       case 'bonusRelaxation/rain':
@@ -71,64 +71,62 @@ export default function (placing: Placing, image: string | null) {
         return BoxImg4;
     }
   }
-  if (placing === 'audioDetail') {
-    switch (image) {
-      case 'images/image_1':
-        return Image1;
-      case 'images/image_2':
-        return Image2;
-      case 'images/image_3':
-        return Image3;
-      case 'images/image_4':
-        return Image4;
-      case 'images/image_5':
-        return Image5;
-      case 'images/image_6':
-        return Image6;
-      case 'images/image_7':
-        return Image7;
-      case 'images/image_8':
-        return Image8;
-      case 'images/image_9':
-        return Image9;
-      case 'images/image_10':
-        return Image10;
-      case 'images/image_11':
-        return Image11;
-      case 'images/image_12':
-        return Image12;
-      case 'images/image_13':
-        return Image13;
-      case 'images/image_14':
-        return Image14;
-      case 'images/image_15':
-        return Image15;
+  switch (image) {
+    case 'images/image_1':
+      return Image1;
+    case 'images/image_2':
+      return Image2;
+    case 'images/image_3':
+      return Image3;
+    case 'images/image_4':
+      return Image4;
+    case 'images/image_5':
+      return Image5;
+    case 'images/image_6':
+      return Image6;
+    case 'images/image_7':
+      return Image7;
+    case 'images/image_8':
+      return Image8;
+    case 'images/image_9':
+      return Image9;
+    case 'images/image_10':
+      return Image10;
+    case 'images/image_11':
+      return Image11;
+    case 'images/image_12':
+      return Image12;
+    case 'images/image_13':
+      return Image13;
+    case 'images/image_14':
+      return Image14;
+    case 'images/image_15':
+      return Image15;
 
-      case 'bonusRelaxation/rain':
-        return ImageRelaxRain;
-      case 'bonusRelaxation/fireplace':
-        return ImageRelaxFireplace;
-      case 'bonusRelaxation/woods':
-        return ImageRelaxWoods;
-      case 'bonusRelaxation/meadow':
-        return ImageRelaxMeadow;
-      case 'bonusRelaxation/nightNature':
-        return ImageRelaxNightNature;
-      case 'bonusRelaxation/ocean':
-        return ImageRelaxOcean;
-      case 'bonusRelaxation/stream':
-        return ImageRelaxStream;
-      case 'bonusRelaxation/musicOfBreathingExercises':
-        return ImageRelaxMusicOfBreathingExercises;
-      case 'bonusRelaxation/relaxation':
-        return ImageRelaxRelaxation;
-      case 'bonusRelaxation/musicOfProgressiveMuscleRelaxation':
-        return ImageRelaxMusicOfProgressiveMuscleRelaxation;
-      case 'bonusRelaxation/scanningOwnBody':
-        return ImageRelaxScanningOwnBody;
+    case 'bonusRelaxation/rain':
+      return ImageRelaxRain;
+    case 'bonusRelaxation/fireplace':
+      return ImageRelaxFireplace;
+    case 'bonusRelaxation/woods':
+      return ImageRelaxWoods;
+    case 'bonusRelaxation/meadow':
+      return ImageRelaxMeadow;
+    case 'bonusRelaxation/nightNature':
+      return ImageRelaxNightNature;
+    case 'bonusRelaxation/ocean':
+      return ImageRelaxOcean;
+    case 'bonusRelaxation/stream':
+      return ImageRelaxStream;
+    case 'bonusRelaxation/musicOfBreathingExercises':
+      return ImageRelaxMusicOfBreathingExercises;
+    case 'bonusRelaxation/relaxation':
+      return ImageRelaxRelaxation;
+    case 'bonusRelaxation/musicOfProgressiveMuscleRelaxation':
+      return ImageRelaxMusicOfProgressiveMuscleRelaxation;
+    case 'bonusRelaxation/scanningOwnBody':
+      return ImageRelaxScanningOwnBody;
 
-      default:
-        return Image1;
-    }
+    default:
+      return Image1;
   }
 }

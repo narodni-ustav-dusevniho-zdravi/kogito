@@ -1,7 +1,8 @@
-import {gql, ApolloError, useQuery} from '@apollo/client';
+import {gql, useQuery} from '@apollo/client';
+import {UserQuestionnairesQuery} from '../../../gql/__generated__/graphql';
 
-const UserQuestionnairesQuery = gql`
-  {
+const query = gql`
+  query UserQuestionnaires {
     userQuestionnaires {
       id
       finished
@@ -19,32 +20,11 @@ const UserQuestionnairesQuery = gql`
   }
 `;
 
-type Questionnaire = {
-  id: string;
-  name: string;
-  questionCount: number;
-};
-
-type UserQuestionnaire = {
-  id: string;
-  finished: boolean;
-  questionnaire: Questionnaire;
-};
-
-type UserState = {
-  userInfoCompleted: boolean;
-};
-
-type UserQuestionnaires = () => {
-  userQuestionnaires: UserQuestionnaire[] | null;
-  userState: UserState | null;
-  refetch: () => void;
-  loading: boolean;
-  error?: ApolloError;
-};
-
-export const useUserQuestionnairesQuery: UserQuestionnaires = () => {
-  const {loading, error, data, refetch} = useQuery(UserQuestionnairesQuery, {});
+export const useUserQuestionnairesQuery = () => {
+  const {loading, error, data, refetch} = useQuery<UserQuestionnairesQuery>(
+    query,
+    {},
+  );
 
   return {
     userQuestionnaires: data?.userQuestionnaires,

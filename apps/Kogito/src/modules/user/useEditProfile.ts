@@ -1,6 +1,10 @@
-import {gql, MutationFunction, useMutation} from '@apollo/client';
+import {gql, useMutation} from '@apollo/client';
+import {
+  EditProfileMutation,
+  EditProfileMutationVariables,
+} from '../../../gql/__generated__/graphql';
 
-const EditProfileAction = gql`
+const mutation = gql`
   mutation editProfile($input: EditProfileInput!) {
     editProfile(input: $input) {
       viewer {
@@ -13,25 +17,11 @@ const EditProfileAction = gql`
   }
 `;
 
-export type EditProfileInput = {
-  firstName: string;
-  lastName: string;
-};
-
-type EditProfileResult = {};
-
-type UseEditProfile = () => {
-  editProfileMutation: MutationFunction<
-    EditProfileResult,
-    {input: EditProfileInput}
-  >;
-};
-
-export const useEditProfile: UseEditProfile = () => {
+export const useEditProfile = () => {
   const [editProfileMutation] = useMutation<
-    EditProfileResult,
-    {input: EditProfileInput}
-  >(EditProfileAction);
+    EditProfileMutation,
+    EditProfileMutationVariables
+  >(mutation);
 
   return {
     editProfileMutation,

@@ -1,3 +1,3 @@
-import ChapterHeader from './ChapterHeader;
+import ChapterHeader from './ChapterHeader';
 
 export default ChapterHeader;

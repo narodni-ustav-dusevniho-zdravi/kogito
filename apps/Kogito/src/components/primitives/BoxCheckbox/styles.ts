@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 import {variant} from 'styled-system';
 
 const S = {
-  Container: styled.View`
+  Container: styled.View<{checked: boolean}>`
     border-radius: 10px;
     background-color: #f5f4fa;
     margin-bottom: 6px;
@@ -30,7 +30,7 @@ const S = {
     border-radius: 6px;
     margin-right: 16px;
   `,
-  Title: styled.Text`
+  Title: styled.Text<{checked: boolean}>`
     color: #1c1c1c;
     font-size: 14px;
     font-weight: 500;

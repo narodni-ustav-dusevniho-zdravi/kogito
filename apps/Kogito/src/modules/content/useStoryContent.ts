@@ -1,7 +1,10 @@
 import {gql, useQuery} from '@apollo/client';
-import {Story} from './graphql';
+import {
+  StoryDetailQuery,
+  StoryDetailQueryVariables,
+} from '../../../gql/__generated__/graphql';
 
-export const StoryDetailQuery = gql`
+const query = gql`
   query storyDetail($id: ID!) {
     storyDetail(id: $id) {
       id
@@ -13,16 +16,15 @@ export const StoryDetailQuery = gql`
   }
 `;
 
-type UseStoryContent = (id: string) => {
-  story: Story | null;
-};
-
-export const useStoryContent: UseStoryContent = (id: string) => {
-  const {data, loading} = useQuery(StoryDetailQuery, {
-    variables: {
-      id,
+export const useStoryContent = (id: string) => {
+  const {data, loading} = useQuery<StoryDetailQuery, StoryDetailQueryVariables>(
+    query,
+    {
+      variables: {
+        id,
+      },
     },
-  });
+  );
 
   return {
     story: (data && data.storyDetail) || null,

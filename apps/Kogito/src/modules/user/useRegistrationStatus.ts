@@ -1,7 +1,7 @@
 import {gql, useQuery} from '@apollo/client';
 
 const query = gql`
-  {
+  query RegistrationStatus {
     registrationStatus {
       isCompleted
       userLabel
@@ -13,22 +13,18 @@ const query = gql`
 
 type RegisterStatus = {
   isCompleted: boolean;
-  userLabel: string;
+  userLabel: `V${'a' | 'b' | 'c' | 'd' | 'e' | 'f'}`;
   journeysToChoose: string[];
   group: 'normal' | 'control';
 };
 
-type UseRegistrationStatus = () => {
-  status: RegisterStatus | null;
-  refetch: () => void;
-  loading: boolean;
-};
-
-export const useRegistrationStatus: UseRegistrationStatus = () => {
-  const {loading, refetch, data} = useQuery(query);
+export const useRegistrationStatus = () => {
+  const {loading, refetch, data} = useQuery<{
+    registrationStatus: RegisterStatus;
+  }>(query);
 
   return {
-    status: data?.registrationStatus || null,
+    status: data?.registrationStatus,
     refetch,
     loading,
   };

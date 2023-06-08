@@ -1,20 +1,18 @@
-import React, {FC, useCallback, useEffect, useRef, useState} from 'react';
-import {SafeAreaView, ScrollView, TouchableOpacity, View} from 'react-native';
+import React, {useCallback, useRef} from 'react';
+import {ScrollView, TouchableOpacity, View} from 'react-native';
 import MainContainer from '../components/container/MainContainer/MainContainer';
 import MainHeader from '../components/container/MainHeader/MainHeader';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import Hero from '../components/primitives/Hero';
-import GradientBackground from '../components/primitives/GradientBackground';
 import LevelWidget, {
   LevelWidgetVariant,
 } from '../components/primitives/LevelWidget';
 import {useContent} from '../modules/content/useContent';
-import {StackScreenProps} from '@react-navigation/stack';
 import {useFocusEffect} from '@react-navigation/native';
-import {UserJourney} from '../modules/content/graphql';
 import ColoredSafeAreaView from '../components/primitives/ColoredSafeAreaView';
-import {TextSmall} from '../components/primitives/Hero/styles';
 import Text from '../components/primitives/Text';
+import type {AppScreen} from '../navigation/Navigation';
+import {Journey} from '../../gql/__generated__/graphql';
 
 const solveState = (
   unlocked: boolean,
@@ -27,14 +25,14 @@ const solveState = (
   return 'locked';
 };
 
-const colorFirst = (journey: UserJourney | null) => {
+const colorFirst = (journey: Pick<Journey, 'id'> | undefined) => {
   if (journey && journey.id === 'Sm91cm5leTox') {
     return '#FFCE8F';
   } else {
     return '#BF9BE8';
   }
 };
-const colorSecond = (journey: UserJourney | null) => {
+const colorSecond = (journey: Pick<Journey, 'id'> | undefined) => {
   if (journey && journey.id === 'Sm91cm5leTox') {
     return '#FFA38F';
   } else {
@@ -42,10 +40,9 @@ const colorSecond = (journey: UserJourney | null) => {
   }
 };
 
-const JourneyProgressScreen: FC<StackScreenProps<any>> = ({navigation}) => {
-  const scrollRef = useRef<ScrollView>();
+const JourneyProgressScreen: AppScreen<'JourneyProgress'> = ({navigation}) => {
+  const scrollRef = useRef<ScrollView>(null);
   const {userJourney, refetch} = useContent();
-
   useFocusEffect(
     useCallback(() => {
       console.log('focus efetc');
@@ -60,7 +57,7 @@ const JourneyProgressScreen: FC<StackScreenProps<any>> = ({navigation}) => {
       angle={138}>
       <MainContainerWrapper>
         <MainHeader useTransparent={true} />
-        <MainContainer align={null} page={'dashboard'}>
+        <MainContainer page={'dashboard'}>
           {userJourney && (
             <ScrollView ref={scrollRef} showsVerticalScrollIndicator={false}>
               <Hero
@@ -70,7 +67,7 @@ const JourneyProgressScreen: FC<StackScreenProps<any>> = ({navigation}) => {
                   userJourney.id === 'Sm91cm5leTox' ? 'depression' : 'anxiety'
                 }
               />
-              <MainContainer align={null} page={'sub'}>
+              <MainContainer page={'sub'}>
                 <View>
                   {userJourney.levels.map(level => {
                     return (

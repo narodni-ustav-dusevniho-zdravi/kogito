@@ -1,22 +1,37 @@
 import {
-  FinishRegistrationAction,
-  FinishRegistrationActionInput,
-  FinishRegistrationActionResult,
-} from './graphql';
-import {MutationFunction, useMutation} from '@apollo/client';
+  FinishRegistrationMutation,
+  FinishRegistrationMutationVariables,
+} from '../../../gql/__generated__/graphql';
 
-type UseFinishRegistration = () => {
-  finishRegistrationMutation: MutationFunction<
-    FinishRegistrationActionResult,
-    {input: FinishRegistrationActionInput}
-  >;
-};
-
-export const useFinishRegistration: UseFinishRegistration = () => {
+import {gql, useMutation} from '@apollo/client';
+const mutation = gql`
+  mutation finishRegistration($input: FinishRegistrationInput!) {
+    finishRegistration(input: $input) {
+      success
+      viewer {
+        me {
+          firstName
+          lastName
+          email
+          finishedRegistration
+          userInfoCompleted
+          age
+          dateOfBirth
+          maritalStatus
+          maritalStatusDescription
+          numberOfChildren
+          educationalAttainment
+          population
+        }
+      }
+    }
+  }
+`;
+export const useFinishRegistration = () => {
   const [finishRegistrationMutation] = useMutation<
-    FinishRegistrationActionResult,
-    {input: FinishRegistrationActionInput}
-  >(FinishRegistrationAction);
+    FinishRegistrationMutation,
+    FinishRegistrationMutationVariables
+  >(mutation);
 
   return {
     finishRegistrationMutation,

@@ -1,13 +1,13 @@
-import React, {FC} from 'react';
+import React, {PropsWithChildren} from 'react';
 import {Container} from './styles';
 
 export type Color = 'white' | null;
 
-type MainContainerProps = {
+type MainContainerProps = PropsWithChildren & {
   color?: Color;
 };
 
-const MainContainerWrapper: FC<MainContainerProps> = ({
+const MainContainerWrapper: React.FC<MainContainerProps> = ({
   children,
   color = null,
   ...rest

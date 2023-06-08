@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React from 'react';
 import {StyledButton, Text} from './styles';
 import ReactNative from 'react-native';
 import IconCoin from '../../../assets/icon-coin.svg';
@@ -7,7 +7,7 @@ type ButtonProps = {
   title: string;
 } & ReactNative.TouchableOpacityProps;
 
-const Coin: FC<ButtonProps> = ({title, ...rest}) => {
+const Coin: React.FC<ButtonProps> = ({title, ...rest}) => {
   return (
     <StyledButton {...rest}>
       <IconCoin />

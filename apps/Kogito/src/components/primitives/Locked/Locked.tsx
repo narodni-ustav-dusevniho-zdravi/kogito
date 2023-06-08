@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React from 'react';
 import IconLock from '../../../assets/icon-lock.svg';
 import S from './styles';
 
@@ -6,7 +6,7 @@ type ContainerProps = {
   title: string;
 };
 
-const Locked: FC<ContainerProps> = ({title, ...rest}) => {
+const Locked: React.FC<ContainerProps> = ({title, ...rest}) => {
   return (
     <S.Container {...rest}>
       <S.Wrapper>

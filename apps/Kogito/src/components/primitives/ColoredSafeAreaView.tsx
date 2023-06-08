@@ -1,14 +1,14 @@
-import React, {FC} from 'react';
+import React, {PropsWithChildren} from 'react';
 import {SafeAreaView} from 'react-native';
 import GradientBackground from './GradientBackground';
 
-type GradientProps = {
+type GradientProps = PropsWithChildren & {
   color1?: string;
   color2?: string;
   angle?: number;
 };
 
-const ColoredSafeAreaView: FC<GradientProps> = ({
+const ColoredSafeAreaView: React.FC<GradientProps> = ({
   children,
   color1 = '#ffe7e7',
   color2 = '#fff3e7',

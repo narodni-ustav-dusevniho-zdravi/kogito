@@ -1,6 +1,9 @@
-import React, {FC} from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import React from 'react';
+import {StackScreenProps, createStackNavigator} from '@react-navigation/stack';
+import {
+  BottomTabScreenProps,
+  createBottomTabNavigator,
+} from '@react-navigation/bottom-tabs';
 import LoginScreen from '../screens/LoginScreen';
 import AvailableQuestionnairesScreen from '../screens/AvailableQuestionnairesScreen';
 import QuestionnaireScreen from '../screens/QuestionnaireScreen';
@@ -88,11 +91,44 @@ export type DashboardStackParamList = {
 
 export type StoriesStackParamList = {};
 
+type DashboardTabParamList = Record<
+  'DashboardTab' | 'JourneyProgress' | 'Relaxation' | 'Todos',
+  undefined
+>;
+//TODO: is it actually used?
+type UnusedScreensParamList = {
+  RoadPhase: undefined;
+  RoadTools: undefined;
+  RoadRelaxation: undefined;
+  RoadTodos: undefined;
+  RelaxationLocked: undefined;
+};
+export type AppParamList = DashboardStackParamList &
+  RegistrationStackParamList &
+  RootStackParamList &
+  DashboardTabParamList &
+  UnusedScreensParamList;
+
+export type AppScreenName = keyof AppParamList;
+
+export type AppScreen<T extends AppScreenName> = React.FC<
+  T extends keyof DashboardTabParamList
+    ? BottomTabScreenProps<DashboardTabParamList, T> &
+        StackScreenProps<AppParamList, T>
+    : StackScreenProps<AppParamList, T>
+>;
+
+declare global {
+  namespace ReactNavigation {
+    interface RootParamList extends AppParamList {}
+  }
+}
+
 const Stack = createStackNavigator<RootStackParamList>();
 const RegistrationStack = createStackNavigator<RegistrationStackParamList>();
 const DashboardStack = createStackNavigator<DashboardStackParamList>();
 
-const UnfinishedRegistrationScreens: FC = () => {
+const UnfinishedRegistrationScreens: React.FC = () => {
   return (
     <RegistrationStack.Navigator initialRouteName="Register">
       <RegistrationStack.Screen
@@ -129,7 +165,7 @@ const UnfinishedRegistrationScreens: FC = () => {
   );
 };
 
-const DashboardScreens: FC = () => {
+const DashboardScreens: React.FC = () => {
   return (
     <DashboardStack.Navigator initialRouteName="MyDay">
       <DashboardStack.Screen
@@ -146,32 +182,30 @@ const DashboardScreens: FC = () => {
   );
 };
 
-const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator<DashboardTabParamList>();
 
 const DashboardTabNavigation = () => {
   return (
     <Tab.Navigator
       screenOptions={({route}) => ({
+        tabBarActiveTintColor: '#F2AC33',
+        tabBarInactiveTintColor: '#8e8e93',
+        tabBarStyle: {height: 80, paddingTop: 12, paddingBottom: 22},
         tabBarIcon: ({focused}) => {
           const iconColor = focused ? '#F2AC33' : '#8e8e93';
 
           switch (route.name) {
             case 'DashboardTab':
-              return <IconMyDay style={{color: iconColor}} />;
+              return <IconMyDay color={iconColor} />;
             case 'JourneyProgress':
-              return <IconRoad style={{color: iconColor}} />;
+              return <IconRoad color={iconColor} />;
             case 'Relaxation':
-              return <IconSun style={{color: iconColor}} />;
+              return <IconSun color={iconColor} />;
             case 'Todos':
-              return <IconTodo style={{color: iconColor}} />;
+              return <IconTodo color={iconColor} />;
           }
         },
-      })}
-      tabBarOptions={{
-        activeTintColor: '#F2AC33',
-        inactiveTintColor: '#8e8e93',
-        style: {height: 80, paddingTop: 12, paddingBottom: 22},
-      }}>
+      })}>
       <Tab.Screen
         name="DashboardTab"
         component={DashboardScreens}
@@ -196,7 +230,7 @@ const DashboardTabNavigation = () => {
   );
 };
 
-const Navigation: FC = () => {
+const Navigation: React.FC = () => {
   return (
     <Stack.Navigator initialRouteName="Splash">
       <Stack.Screen

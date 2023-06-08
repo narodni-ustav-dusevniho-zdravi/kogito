@@ -1,5 +1,6 @@
 import styled from 'styled-components/native';
 import {variant} from 'styled-system';
+import {StateVariants} from './Hero';
 
 export const Link = styled.TouchableOpacity``;
 
@@ -9,7 +10,7 @@ export const TextSmall = styled.Text`
   font-size: 16px;
   font-weight: 500;
 `;
-export const TextMain = styled.Text`
+export const TextMain = styled.Text<{state: StateVariants}>`
   text-shadow: 0 0 6px rgba(0, 0, 0, 0.65);
   color: #ffffff;
   font-size: 28px;
@@ -31,7 +32,7 @@ export const TextMain = styled.Text`
   })}
 `;
 
-export const Center = styled.View`
+export const Center = styled.View<{state: StateVariants}>`
   ${variant({
     prop: 'state',
     variants: {
@@ -46,7 +47,7 @@ export const Container = styled.View`
   overflow: hidden;
 `;
 
-export const ContainerInner = styled.View`
+export const ContainerInner = styled.View<{state: StateVariants}>`
   align-items: center;
   text-align: center;
   justify-content: space-between;

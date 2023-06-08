@@ -1,15 +1,16 @@
-import React, {FC, useCallback, useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import {Alert, SafeAreaView, ScrollView} from 'react-native';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import MainHeader from '../components/container/MainHeader';
 import Text from '../components/primitives/Text';
 import MainContainer from '../components/container/MainContainer';
-import {DayPart, Todo, useTodos} from '../modules/diary/useTodos';
+import {useTodos} from '../modules/diary/useTodos';
 import BoxAdd from '../components/primitives/BoxAdd';
 import EditTodoModal from '../modules/diary/modal/EditTodoModal/EditTodoModal';
 import BoxCheckbox from '../components/primitives/BoxCheckbox';
 import useMixPanelTracking from '../tracking/useMixPanelTracking';
 import {useFocusEffect} from '@react-navigation/native';
+import {DayPart, Todo} from '../../gql/__generated__/graphql';
 
 type EditorSettings = {
   id: string | null;
@@ -26,7 +27,7 @@ type DayPartRender = {
   setEditor: (settings: EditorSettings) => void;
 };
 
-const DayPartRender: FC<DayPartRender> = ({
+const DayPartRender: React.FC<DayPartRender> = ({
   title,
   dayPart,
   todos,
@@ -57,9 +58,8 @@ const DayPartRender: FC<DayPartRender> = ({
   );
 };
 
-const TodosScreen: FC = () => {
-  const {todos, refetch, saveTodo, editTodo, trackTodo, removeTodo} =
-    useTodos();
+const TodosScreen: React.FC = () => {
+  const {todos, refetch, saveTodo, trackTodo, removeTodo} = useTodos();
   const [editor, setEditor] = useState<EditorSettings | null>(null);
   const {
     trackTodoScreenOpened,
@@ -130,7 +130,7 @@ const TodosScreen: FC = () => {
       <MainContainerWrapper>
         <MainHeader />
         <ScrollView contentContainerStyle={{flexGrow: 1}}>
-          <MainContainer align={null} page={'subWithoutFooter'} color={'white'}>
+          <MainContainer page={'subWithoutFooter'} color={'white'}>
             <Text textVariant={'bigHeader'} add={true}>
               Plánovač
             </Text>

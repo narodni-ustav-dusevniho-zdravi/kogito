@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React from 'react';
 import styled from 'styled-components/native';
 import {variant} from 'styled-system';
 
@@ -88,7 +88,7 @@ type BoxJourneyProps = {
   onClick: () => void;
 };
 
-const BoxJourney: FC<BoxJourneyProps> = ({
+const BoxJourney: React.FC<BoxJourneyProps> = ({
   highlighted,
   index,
   title,

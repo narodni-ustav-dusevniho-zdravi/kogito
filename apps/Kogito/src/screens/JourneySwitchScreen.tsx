@@ -1,13 +1,14 @@
-import React, {FC, useCallback} from 'react';
+/* eslint-disable no-lone-blocks */
+import React, {useCallback} from 'react';
 import ColoredSafeAreaView from '../components/primitives/ColoredSafeAreaView';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import {useRegistrationStatus} from '../modules/user/useRegistrationStatus';
 import BoxJourney from '../components/primitives/BoxJourney';
 import {useSwitchJourney} from '../modules/content/useSwitchJourney';
 import styled from 'styled-components/native';
-import {useFocusEffect, useNavigation} from '@react-navigation/native';
-import {StackScreenProps} from '@react-navigation/stack';
+import {useFocusEffect} from '@react-navigation/native';
 import useMixPanelTracking from '../tracking/useMixPanelTracking';
+import type {AppScreen} from '../navigation/Navigation';
 
 const S = {
   HeadlineContainer: styled.View`
@@ -44,8 +45,8 @@ const rawTexts = [
   },
 ];
 
-const JourneySwitchScreen: FC<StackScreenProps<any>> = ({navigation}) => {
-  const {status, loading} = useRegistrationStatus();
+const JourneySwitchScreen: AppScreen<'JourneySwitch'> = ({navigation}) => {
+  const {status} = useRegistrationStatus();
   const {switchJourneyMutation} = useSwitchJourney();
 
   const {trackSwitchJourneyScreenOpened, trackSwitchJourney} =
@@ -89,24 +90,27 @@ const JourneySwitchScreen: FC<StackScreenProps<any>> = ({navigation}) => {
           <S.Headline>Vyberte jednu z cest</S.Headline>
         </S.HeadlineContainer>
         <S.BoxWrapper>
-          {texts.map((textData, index) => (
-            <BoxJourney
-              index={index + 1}
-              title={textData.name}
-              description={textData.description}
-              highlighted={index === 0}
-              onClick={() => {
-                trackSwitchJourney(textData.id);
-                switchJourneyMutation({
-                  variables: {
-                    id: textData.id,
-                  },
-                }).then(() => {
-                  navigation.navigate('Dashboard');
-                });
-              }}
-            />
-          ))}
+          {texts.map(
+            (textData, index) =>
+              textData && (
+                <BoxJourney
+                  index={index + 1}
+                  title={textData.name}
+                  description={textData.description}
+                  highlighted={index === 0}
+                  onClick={() => {
+                    trackSwitchJourney(textData.id);
+                    switchJourneyMutation({
+                      variables: {
+                        id: textData.id,
+                      },
+                    }).then(() => {
+                      navigation.navigate('Dashboard');
+                    });
+                  }}
+                />
+              ),
+          )}
         </S.BoxWrapper>
       </MainContainerWrapper>
     </ColoredSafeAreaView>

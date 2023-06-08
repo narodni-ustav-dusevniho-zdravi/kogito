@@ -1,4 +1,4 @@
-import React, {FC, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import {BackHandler, Image} from 'react-native';
 import MainContainer from '../components/container/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
@@ -7,11 +7,11 @@ import terms from '../modules/user/data/terms';
 import {ScrollView} from 'react-native';
 import Button from '../components/primitives/Button';
 import {useTerms} from '../modules/user/useTerms';
-import {StackScreenProps} from '@react-navigation/stack';
 import ColoredSafeAreaView from '../components/primitives/ColoredSafeAreaView';
 import Logo from '../assets/logo.png';
+import type {AppScreen} from '../navigation/Navigation';
 
-const LoginScreen: FC<StackScreenProps<any>> = ({navigation}) => {
+const TermsScreen: AppScreen<'Terms'> = ({navigation}) => {
   const {setSeenTerms, haveSeenTerms} = useTerms();
 
   useEffect(() => {
@@ -54,4 +54,4 @@ const LoginScreen: FC<StackScreenProps<any>> = ({navigation}) => {
   );
 };
 
-export default LoginScreen;
+export default TermsScreen;

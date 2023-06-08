@@ -3,8 +3,8 @@ import {Align, BgColor} from './MainHeader';
 import {variant} from 'styled-system';
 
 type View = {
-  align: Align;
-  bgColor: BgColor;
+  align?: Align;
+  bgColor?: BgColor;
 };
 
 const S = {

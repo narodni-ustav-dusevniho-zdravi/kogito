@@ -1,10 +1,10 @@
-import React, {FC} from 'react';
+import React from 'react';
 import ReactNative from 'react-native';
 import S from './styles';
 
 type TextArea = {} & ReactNative.TextInputProps;
 
-const TextArea: FC<TextArea> = ({...rest}) => {
+const TextArea: React.FC<TextArea> = ({...rest}) => {
   return (
     <S.Container>
       <S.StyledTextArea

@@ -1,12 +1,14 @@
-import React, {FC, useCallback} from 'react';
+import React, {useCallback} from 'react';
 import {SafeAreaView, ScrollView} from 'react-native';
 import MainContainerWrapper from '../components/container/MainContainerWrapper/MainContainerWrapper';
 import MainContainer from '../components/container/MainContainer/MainContainer';
 import Text from '../components/primitives/Text';
 import FinishRegistrationForm from '../modules/auth/form/FinishRegistrationForm';
-import {StackScreenProps} from '@react-navigation/stack';
+import type {AppScreen} from '../navigation/Navigation';
 
-const FinishRegistrationScreen: FC<StackScreenProps<any>> = ({navigation}) => {
+const FinishRegistrationScreen: AppScreen<'FinishRegistrationScreen'> = ({
+  navigation,
+}) => {
   const handleSuccess = useCallback(() => {
     navigation.replace('AvailableQuestionnaires');
   }, [navigation]);
@@ -15,7 +17,6 @@ const FinishRegistrationScreen: FC<StackScreenProps<any>> = ({navigation}) => {
     <SafeAreaView>
       <MainContainerWrapper>
         <MainContainer
-          align={null}
           alignVertical="between"
           style={{paddingTop: 24, paddingBottom: 56}}>
           <ScrollView>

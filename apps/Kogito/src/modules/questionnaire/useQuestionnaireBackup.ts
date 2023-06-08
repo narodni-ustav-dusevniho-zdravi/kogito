@@ -1,10 +1,7 @@
-import {
-  Question,
-  useQuestionnaireDetail,
-  UserAnswer,
-} from './useQuestionnaireDetail';
+import {useQuestionnaireDetail} from './useQuestionnaireDetail';
 import {useCallback, useEffect, useState} from 'react';
 import {useUpdateQuestionnaire} from './useUpdateQuestionnaire';
+import {Question, UserAnswer} from '../../../gql/__generated__/graphql';
 
 export const useQuestionnaireBackup = (id: string) => {
   const {questionnaire} = useQuestionnaireDetail(id);

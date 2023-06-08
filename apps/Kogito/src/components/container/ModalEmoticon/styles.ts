@@ -1,11 +1,12 @@
 import styled from 'styled-components/native';
 import {variant} from 'styled-system';
+import {Mood} from '../../../../gql/__generated__/graphql';
 
 const S = {
   Modal: styled.Modal`
     margin: 0;
   `,
-  ContainerWrap: styled.View`
+  ContainerWrap: styled.View<{type: Mood}>`
     flex: 1;
     flex-direction: row;
     justify-content: space-around;

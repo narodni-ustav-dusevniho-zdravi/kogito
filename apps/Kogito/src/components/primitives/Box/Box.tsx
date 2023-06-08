@@ -1,11 +1,11 @@
-import React, {FC} from 'react';
+import React from 'react';
 import {Container, Text, TextWrapper, Image, Wrapper} from './styles';
 import IconPlay from '../../../assets/icon-play.svg';
 import DropShadow from 'react-native-drop-shadow';
 
 type ContainerProps = {
-  title: string;
-  img: object;
+  title?: string;
+  img: number;
   isDisabled?: boolean;
   isMedia?: boolean;
   isBonus?: boolean;
@@ -13,7 +13,7 @@ type ContainerProps = {
   maxHeight?: boolean;
 };
 
-const Box: FC<ContainerProps> = ({
+const Box: React.FC<ContainerProps> = ({
   title,
   img,
   isDisabled = false,

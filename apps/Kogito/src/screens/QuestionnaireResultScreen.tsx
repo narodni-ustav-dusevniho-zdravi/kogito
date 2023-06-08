@@ -1,16 +1,14 @@
-import React, {FC, useEffect, useState} from 'react';
-import {SafeAreaView, ScrollView} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {ScrollView} from 'react-native';
 import {useRegistrationStatus} from '../modules/user/useRegistrationStatus';
 import HTML from 'react-native-render-html';
 import Button from '../components/primitives/Button';
 import MainContainer from '../components/container/MainContainer';
-import {StackScreenProps} from '@react-navigation/stack';
-import GradientBackground from '../components/primitives/GradientBackground';
 import RegisterImg from '../assets/register-img.svg';
 import {RegisterImgWrapper} from './RegisterScreen';
 import Text from '../components/primitives/Text';
-import {useSelectJourney} from '../modules/content/useSelectJourney';
 import ColoredSafeAreaView from '../components/primitives/ColoredSafeAreaView';
+import type {AppScreen} from '../navigation/Navigation';
 
 const styles = {
   p: {
@@ -124,7 +122,9 @@ const resultTexts = {
   },
 };
 
-const QuestionnaireResultScreen: FC<StackScreenProps<any>> = ({navigation}) => {
+const QuestionnaireResultScreen: AppScreen<'QuestionnaireResultScreen'> = ({
+  navigation,
+}) => {
   const {status, loading} = useRegistrationStatus();
   const [page, setPage] = useState(0);
 
@@ -148,8 +148,8 @@ const QuestionnaireResultScreen: FC<StackScreenProps<any>> = ({navigation}) => {
   }
 
   const showButton =
-    status.group === 'normal' ||
-    (status.group === 'control' &&
+    status?.group === 'normal' ||
+    (status?.group === 'control' &&
       resultTexts[status.group][status.userLabel].length - 1 !== page);
 
   return (
@@ -158,12 +158,14 @@ const QuestionnaireResultScreen: FC<StackScreenProps<any>> = ({navigation}) => {
         <MainContainer align="left">
           <Text textVariant="header">Vyhodnocení</Text>
           <Text />
-          <HTML
-            source={{
-              html: resultTexts[status.group][status.userLabel][page].text,
-            }}
-            tagsStyles={styles}
-          />
+          {status && (
+            <HTML
+              source={{
+                html: resultTexts[status.group][status.userLabel][page].text,
+              }}
+              tagsStyles={styles}
+            />
+          )}
 
           {showButton && (
             <Button

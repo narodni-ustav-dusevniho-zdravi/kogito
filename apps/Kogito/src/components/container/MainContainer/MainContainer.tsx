@@ -1,29 +1,25 @@
-import React, {FC} from 'react';
+import React from 'react';
 import {Container} from './styles';
+import {ViewProps} from 'react-native';
 
-export type Align = 'center' | 'left' | 'right' | 'between' | null;
-export type AlignVertical = 'center' | 'bottom' | 'between' | null;
-export type Page =
-  | 'dashboard'
-  | 'sub'
-  | 'withoutFooter'
-  | 'subWithoutFooter'
-  | null;
-export type Color = 'white' | 'main' | null;
+export type Align = 'center' | 'left' | 'right' | 'between';
+export type AlignVertical = 'center' | 'bottom' | 'between';
+export type Page = 'dashboard' | 'sub' | 'withoutFooter' | 'subWithoutFooter';
+export type Color = 'white' | 'main';
 
-type MainContainerProps = {
+type MainContainerProps = ViewProps & {
   align?: Align;
   alignVertical?: AlignVertical;
   page?: Page;
   color?: Color;
 };
 
-const MainContainer: FC<MainContainerProps> = ({
+const MainContainer: React.FC<MainContainerProps> = ({
   children,
   align = 'center',
-  alignVertical = null,
-  page = null,
-  color = null,
+  alignVertical,
+  page,
+  color,
   ...rest
 }) => {
   return (

@@ -1,26 +1,12 @@
-import {gql, MutationFunction, useMutation, useQuery} from '@apollo/client';
+import {gql, useMutation, useQuery} from '@apollo/client';
+import {
+  CurrentUserQuestionnairesQueryVariables,
+  CurrentViciousCircleQuery,
+  EditViciousCircleMutation,
+  EditViciousCircleMutationVariables,
+} from '../../../gql/__generated__/graphql';
 
-export type ViciousCircle = {
-  id: string;
-  date: string;
-  name: string;
-  trigger: string[];
-  negativeThoughts: string[];
-  emotions: string[];
-  physicalSymptoms: string[];
-  behaviour: string[];
-};
-
-export type ViciousCircleInput = {
-  id: string | null;
-  name: string;
-  trigger: string[];
-  negativeThoughts: string[];
-  emotions: string[];
-  physicalSymptoms: string[];
-  behaviour: string[];
-};
-
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const ViciousCircle = gql`
   query viciousCircle($id: ID!) {
     viciousCircle(id: $id) {
@@ -66,13 +52,7 @@ const ViciousCircleMutation = gql`
   }
 `;
 
-type UseViciousCircle = () => {
-  viciousCircle: ViciousCircle | null;
-  refetch: () => void;
-  save: MutationFunction<ViciousCircle, {input: ViciousCircleInput}>;
-};
-
-export const useViciousCircle: UseViciousCircle = () => {
+export const useViciousCircle = () => {
   // const {data, error, refetch} = useQuery(ViciousCircle, {
   //   authorizedOnly: true,
   //   variables: {
@@ -81,9 +61,15 @@ export const useViciousCircle: UseViciousCircle = () => {
   //   skip: id === null,
   // });
 
-  const {data, refetch} = useQuery(CurrentViciousCircle);
+  const {data, refetch} = useQuery<
+    CurrentViciousCircleQuery,
+    CurrentUserQuestionnairesQueryVariables
+  >(CurrentViciousCircle);
 
-  const [save] = useMutation(ViciousCircleMutation);
+  const [save] = useMutation<
+    EditViciousCircleMutation,
+    EditViciousCircleMutationVariables
+  >(ViciousCircleMutation);
 
   if (data) {
     return {

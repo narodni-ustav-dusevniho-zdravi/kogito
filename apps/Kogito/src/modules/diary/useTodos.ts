@@ -1,16 +1,17 @@
 import {gql, useMutation, useQuery} from '@apollo/client';
+import {
+  EditTodoMutation,
+  EditTodoMutationVariables,
+  RemoveTodoMutation,
+  RemoveTodoMutationVariables,
+  TodosQuery,
+  TodosQueryVariables,
+  TrackTodoMutation,
+  TrackTodoMutationVariables,
+} from '../../../gql/__generated__/graphql';
 
-export type DayPart = 'MORNING' | 'AFTERNOON' | 'EVENING';
-
-export type Todo = {
-  id: string;
-  title: string;
-  checked: boolean;
-  dayPart: DayPart;
-};
-
-export const TodosQuery = gql`
-  {
+const todosQuery = gql`
+  query Todos {
     viewer {
       id
       todayTodos {
@@ -23,7 +24,7 @@ export const TodosQuery = gql`
   }
 `;
 
-export const EditTodoMutation = gql`
+const editTodoMutation = gql`
   mutation editTodo($input: TodoInput!) {
     editTodo(input: $input) {
       id
@@ -37,7 +38,7 @@ export const EditTodoMutation = gql`
   }
 `;
 
-export const TrackTodoMutation = gql`
+const trackTodoMutation = gql`
   mutation trackTodo($input: TrackTodoInput!) {
     trackTodo(input: $input) {
       id
@@ -51,7 +52,7 @@ export const TrackTodoMutation = gql`
   }
 `;
 
-export const RemoveTodoMutation = gql`
+const removeTodoMutation = gql`
   mutation removeTodo($id: ID!) {
     removeTodo(id: $id) {
       todayTodos {
@@ -64,18 +65,20 @@ export const RemoveTodoMutation = gql`
   }
 `;
 
-type TodosQuery = {
-  viewer: {
-    todayTodos: Todo[];
-  };
-};
-
 export const useTodos = () => {
-  const {data, refetch} = useQuery<TodosQuery>(TodosQuery);
+  const {data, refetch} = useQuery<TodosQuery, TodosQueryVariables>(todosQuery);
 
-  const [editTodo] = useMutation(EditTodoMutation);
-  const [trackTodo] = useMutation(TrackTodoMutation);
-  const [removeTodo] = useMutation(RemoveTodoMutation);
+  const [editTodo] = useMutation<EditTodoMutation, EditTodoMutationVariables>(
+    editTodoMutation,
+  );
+  const [trackTodo] = useMutation<
+    TrackTodoMutation,
+    TrackTodoMutationVariables
+  >(trackTodoMutation);
+  const [removeTodo] = useMutation<
+    RemoveTodoMutation,
+    RemoveTodoMutationVariables
+  >(removeTodoMutation);
 
   const saveTodo = async (input: any) => {
     await editTodo({

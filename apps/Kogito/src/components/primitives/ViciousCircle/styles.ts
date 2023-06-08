@@ -1,11 +1,11 @@
 import styled from 'styled-components/native';
 
 const S = {
-  Container: styled.TouchableOpacity`
+  Container: styled.TouchableOpacity<{size: number}>`
     margin: 0 8px;
     width: ${props => `${props.size}px`};
   `,
-  Circle: styled.View`
+  Circle: styled.View<{size: number}>`
     width: ${props => `${props.size}px`};
     height: ${props => `${props.size}px`};
     border-radius: ${props => `${props.size / 2}px`};
@@ -15,7 +15,7 @@ const S = {
     font-size: 20px;
     margin: 0 0 54px;
   `,
-  CircleInner: styled.View`
+  CircleInner: styled.View<{size: number}>`
     width: 90%;
     height: 90%;
     border-radius: ${props => `${props.size / 2}px`};

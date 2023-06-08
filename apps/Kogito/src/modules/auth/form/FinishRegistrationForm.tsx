@@ -1,10 +1,9 @@
-import React, {FC} from 'react';
-import {ScrollView, View} from 'react-native';
+import React from 'react';
+import {View} from 'react-native';
 import {useForm, Controller} from 'react-hook-form';
 import TextInput from '../../../components/form/TextInput/TextInput';
 import Button from '../../../components/primitives/Button/Button';
 import {useFinishRegistration} from '../../user/useFinishRegistration';
-import {FinishRegistrationActionInput} from '../../user/graphql';
 import Text from '../../../components/primitives/Text';
 import {EMAIL_REGEX} from '../../../helpers/regexp';
 import {useMeQuery} from '../../user/useMeQuery';
@@ -48,7 +47,9 @@ const ActualState = [
   {label: 'Od porodu uběhl víc jak rok', value: 4},
 ];
 
-const FinishRegistrationForm: FC<FinishRegistrationForm> = ({onSuccess}) => {
+const FinishRegistrationForm: React.FC<FinishRegistrationForm> = ({
+  onSuccess,
+}) => {
   const {me, updateCacheValue} = useMeQuery();
   const {finishRegistrationMutation} = useFinishRegistration();
   const {
@@ -61,19 +62,18 @@ const FinishRegistrationForm: FC<FinishRegistrationForm> = ({onSuccess}) => {
       firstName: me?.firstName || '',
       lastName: me?.lastName || '',
       email: me?.email || '',
-      age: me && me.age ? me.age.toString() : '',
-      maritalStatus: me?.maritalStatus || '',
+      age: me?.age,
+      maritalStatus: me?.maritalStatus,
       maritalStatusDescription: me?.maritalStatusDescription || '',
-      numberOfChildren:
-        me && me.numberOfChildren ? me.numberOfChildren.toString() : '',
-      educationalAttainment: me?.educationalAttainment || '',
-      population: me?.population || '',
-      actualState: me?.actualState || '',
+      numberOfChildren: me?.numberOfChildren,
+      educationalAttainment: me?.educationalAttainment,
+      population: me?.population,
+      actualState: me?.actualState,
     },
   });
   const maritalStatusValue = watch('maritalStatus');
 
-  const onSubmit = async (input: FinishRegistrationActionInput) => {
+  const onSubmit: Parameters<typeof handleSubmit>[0] = async input => {
     console.log('Submit', input);
     try {
       const result = await finishRegistrationMutation({
@@ -82,8 +82,6 @@ const FinishRegistrationForm: FC<FinishRegistrationForm> = ({onSuccess}) => {
             ...input,
             firstName: '',
             lastName: '',
-            age: parseInt(input.age),
-            numberOfChildren: parseInt(input.numberOfChildren),
           },
         },
       });
@@ -102,7 +100,7 @@ const FinishRegistrationForm: FC<FinishRegistrationForm> = ({onSuccess}) => {
       {/*  control={control}*/}
       {/*  name="firstName"*/}
       {/*  rules={{required: {value: true, message: 'Vyplň prosím své jméno'}}}*/}
-      {/*  render={({onChange, onBlur, value}) => (*/}
+      {/*  render={({field: {onChange, onBlur, value}}) => (*/}
       {/*    <TextInput*/}
       {/*      placeholder="Jméno"*/}
       {/*      style={{marginTop: 16}}*/}
@@ -118,7 +116,7 @@ const FinishRegistrationForm: FC<FinishRegistrationForm> = ({onSuccess}) => {
       {/*  control={control}*/}
       {/*  name="lastName"*/}
       {/*  rules={{required: {value: true, message: 'Vyplň prosím své příjmení'}}}*/}
-      {/*  render={({onChange, onBlur, value}) => (*/}
+      {/*  render={({field: {onChange, onBlur, value}}) => (*/}
       {/*    <TextInput*/}
       {/*      placeholder="Příjmení"*/}
       {/*      style={{marginTop: 16}}*/}
@@ -137,10 +135,11 @@ const FinishRegistrationForm: FC<FinishRegistrationForm> = ({onSuccess}) => {
           required: {value: true, message: 'Vyplň prosím svůj e-mail'},
           pattern: {value: EMAIL_REGEX, message: 'E-mail není validní'},
         }}
-        render={({onChange, onBlur, value}) => (
+        render={({field: {onChange, onBlur, value}}) => (
           <TextInput
             placeholder="E-Mail"
-            autoCompleteType="email"
+            autoComplete="email"
+            textContentType="emailAddress"
             keyboardType="email-address"
             style={{marginTop: 16}}
             onBlur={onBlur}
@@ -155,7 +154,7 @@ const FinishRegistrationForm: FC<FinishRegistrationForm> = ({onSuccess}) => {
         control={control}
         name="age"
         rules={{required: {value: true, message: 'Vyplň prosím svůj věk'}}}
-        render={({onChange, onBlur, value}) => (
+        render={({field: {onChange, onBlur, value}}) => (
           <TextInput
             placeholder="Věk"
             keyboardType="number-pad"
@@ -164,7 +163,7 @@ const FinishRegistrationForm: FC<FinishRegistrationForm> = ({onSuccess}) => {
             onChangeText={value =>
               onChange(parseInt(value.replace(/[^0-9]/g, '')))
             }
-            value={value}
+            value={value?.toString()}
           />
         )}
       />
@@ -176,12 +175,12 @@ const FinishRegistrationForm: FC<FinishRegistrationForm> = ({onSuccess}) => {
         rules={{
           required: {value: true, message: 'Vyplň prosím svůj aktuální stav'},
         }}
-        render={({onChange, onBlur, value}) => (
+        render={({field: {onChange, value}}) => (
           <ChoiceList
             value={value}
             placeholder={{label: 'Aktuálně jsem', value: 0}}
             items={ActualState}
-            onValueChange={value => onChange(value)}
+            onValueChange={onChange}
           />
         )}
       />
@@ -193,7 +192,7 @@ const FinishRegistrationForm: FC<FinishRegistrationForm> = ({onSuccess}) => {
         rules={{
           required: {value: true, message: 'Vyplň prosím svůj rodinný stav'},
         }}
-        render={({onChange, onBlur, value}) => (
+        render={({field: {onChange, value}}) => (
           <ChoiceList
             value={value}
             placeholder={{label: 'Váš rodinný stav', value: 0}}
@@ -209,7 +208,7 @@ const FinishRegistrationForm: FC<FinishRegistrationForm> = ({onSuccess}) => {
           <Controller
             control={control}
             name="maritalStatusDescription"
-            render={({onChange, onBlur, value}) => (
+            render={({field: {onChange, onBlur, value}}) => (
               <TextInput
                 placeholder="Popis Váš rodinný stav zde"
                 style={{marginTop: 16}}
@@ -234,7 +233,7 @@ const FinishRegistrationForm: FC<FinishRegistrationForm> = ({onSuccess}) => {
             message: 'Vyplň prosím počet dětí v domácnosti',
           },
         }}
-        render={({onChange, onBlur, value}) => (
+        render={({field: {onChange, onBlur, value}}) => (
           <TextInput
             placeholder="Počet dětí v domácnosti"
             keyboardType="number-pad"
@@ -243,7 +242,7 @@ const FinishRegistrationForm: FC<FinishRegistrationForm> = ({onSuccess}) => {
             onChangeText={value =>
               onChange(parseInt(value.replace(/[^0-9]/g, '')))
             }
-            value={value}
+            value={value?.toString()}
           />
         )}
       />
@@ -260,7 +259,7 @@ const FinishRegistrationForm: FC<FinishRegistrationForm> = ({onSuccess}) => {
             message: 'Vyplň prosím své dosažené vzdělání',
           },
         }}
-        render={({onChange, onBlur, value}) => (
+        render={({field: {onChange, value}}) => (
           <ChoiceList
             value={value}
             placeholder={{label: 'Dosažené vzdělání', value: 0}}
@@ -282,7 +281,7 @@ const FinishRegistrationForm: FC<FinishRegistrationForm> = ({onSuccess}) => {
             message: 'Vyplň počet obyvatel v místě bydliště',
           },
         }}
-        render={({onChange, onBlur, value}) => (
+        render={({field: {onChange, value}}) => (
           <ChoiceList
             value={value}
             placeholder={{label: 'Počet obyvatel v místě bydliště', value: 0}}
