@@ -19,7 +19,7 @@ const LogoutScreen: FC<StackScreenProps<any>> = ({navigation}) => {
     })();
   }, []);
 
-  return <SafeAreaView></SafeAreaView>;
+  return <SafeAreaView />;
 };
 
 export default LogoutScreen;

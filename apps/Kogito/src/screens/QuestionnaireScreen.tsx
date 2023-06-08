@@ -78,7 +78,7 @@ const QuestionnaireScreen: FC = () => {
                     index={index}
                     selected={actualAnswer === index}
                     answer={answer.answer}
-                    press={(i) => saveAnswer(i)}
+                    press={i => saveAnswer(i)}
                   />
                 ))}
               </AnswerWrapper>

@@ -58,10 +58,8 @@ const modalText = (part: Parts) =>
 
 const ViciousCircleEditScreen: FC<StackScreenProps<any>> = ({}) => {
   const [data, setData] = useState<Data>(defaultData);
-  const {
-    trackViciousCycleOpened,
-    trackViciousCycleEdited,
-  } = useMixPanelTracking();
+  const {trackViciousCycleOpened, trackViciousCycleEdited} =
+    useMixPanelTracking();
 
   const [overview, setOverview] = useState<EditData | null>(null);
   const [editor, setEditor] = useState<EditData | null>(null);

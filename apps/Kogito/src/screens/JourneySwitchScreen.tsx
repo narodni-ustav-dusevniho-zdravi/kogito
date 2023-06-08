@@ -48,10 +48,8 @@ const JourneySwitchScreen: FC<StackScreenProps<any>> = ({navigation}) => {
   const {status, loading} = useRegistrationStatus();
   const {switchJourneyMutation} = useSwitchJourney();
 
-  const {
-    trackSwitchJourneyScreenOpened,
-    trackSwitchJourney,
-  } = useMixPanelTracking();
+  const {trackSwitchJourneyScreenOpened, trackSwitchJourney} =
+    useMixPanelTracking();
 
   const ids = [];
 

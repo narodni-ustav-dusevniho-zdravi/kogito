@@ -27,7 +27,7 @@ const StoriesListScreen: FC<StackScreenProps<any>> = ({navigation}) => {
                 Příběhy
               </Text>
               {stories &&
-                stories.map((story) => (
+                stories.map(story => (
                   <ArticleListBox
                     onPress={() =>
                       navigation.navigate('StoryDetail', {id: story.id})

@@ -42,7 +42,7 @@ const TabbedBox: FC<TabbedBox> = ({items, headerVariant = 'boxed'}) => {
 
   useEffect(() => {
     if (selected) {
-      const sameItem = items.find((item) => item.id === selected.id);
+      const sameItem = items.find(item => item.id === selected.id);
 
       if (sameItem) {
         setSelected(sameItem);
@@ -63,7 +63,7 @@ const TabbedBox: FC<TabbedBox> = ({items, headerVariant = 'boxed'}) => {
         <S.Navigation.Container>
           <S.Navigation.Wrapper>
             {headerVariant === 'boxed' &&
-              items.map((item) => (
+              items.map(item => (
                 <NavigationItem
                   key={item.label}
                   title={item.label}
@@ -72,7 +72,7 @@ const TabbedBox: FC<TabbedBox> = ({items, headerVariant = 'boxed'}) => {
                 />
               ))}
             {headerVariant === 'headers' &&
-              items.map((item) => (
+              items.map(item => (
                 <LinkItem
                   key={item.label}
                   title={item.label}

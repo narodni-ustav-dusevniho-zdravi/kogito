@@ -13,12 +13,8 @@ import ColoredSafeAreaView from '../components/primitives/ColoredSafeAreaView';
 
 const AvailableQuestionnairesScreen: FC = () => {
   const navigation = useNavigation();
-  const {
-    userQuestionnaires,
-    userState,
-    loading,
-    refetch,
-  } = useUserQuestionnairesQuery();
+  const {userQuestionnaires, userState, loading, refetch} =
+    useUserQuestionnairesQuery();
   const {} = useMeQuery();
 
   useFocusEffect(

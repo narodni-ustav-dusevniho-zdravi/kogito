@@ -38,9 +38,7 @@ type EditDiaryEntryInput = {
   content: string;
 };
 
-type UseDiaryEntry = (
-  id: string | null,
-) => {
+type UseDiaryEntry = (id: string | null) => {
   diaryEntry: null | DiaryEntry;
   saveDiaryEntry: MutationFunction<DiaryEntry, {input: EditDiaryEntryInput}>;
   removeDiaryEntry: MutationFunction<boolean, {id: string}>;

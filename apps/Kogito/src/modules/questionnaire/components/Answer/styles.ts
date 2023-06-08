@@ -16,7 +16,7 @@ export const Character = styled.Text<Selected>`
   font-size: 14px;
   text-align: center;
   line-height: 30px;
-  color: ${(props) => (props.selected ? '#ffffff' : '#243936')};
+  color: ${props => (props.selected ? '#ffffff' : '#243936')};
 `;
 
 export const AnswerIndex = styled.View<Selected>`
@@ -41,5 +41,5 @@ export const Text = styled.Text<Selected>`
   text-align: left;
   margin-left: 10px;
   color: #243936;
-  font-weight: ${(props) => (props.selected ? 'bold' : 'normal')};
+  font-weight: ${props => (props.selected ? 'bold' : 'normal')};
 `;

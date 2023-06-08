@@ -58,14 +58,8 @@ const DayPartRender: FC<DayPartRender> = ({
 };
 
 const TodosScreen: FC = () => {
-  const {
-    todos,
-    refetch,
-    saveTodo,
-    editTodo,
-    trackTodo,
-    removeTodo,
-  } = useTodos();
+  const {todos, refetch, saveTodo, editTodo, trackTodo, removeTodo} =
+    useTodos();
   const [editor, setEditor] = useState<EditorSettings | null>(null);
   const {
     trackTodoScreenOpened,

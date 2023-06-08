@@ -13,9 +13,7 @@ export const StoryDetailQuery = gql`
   }
 `;
 
-type UseStoryContent = (
-  id: string,
-) => {
+type UseStoryContent = (id: string) => {
   story: Story | null;
 };
 

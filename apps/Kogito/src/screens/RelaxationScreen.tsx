@@ -18,10 +18,8 @@ import {useFocusEffect} from '@react-navigation/native';
 
 const RelaxationScreen: FC<StackScreenProps<any>> = ({navigation}) => {
   const {bonusRelaxation, journeyRelaxation} = useContent();
-  const {
-    trackRelaxationScreenOpened,
-    trackRelaxationOpened,
-  } = useMixPanelTracking();
+  const {trackRelaxationScreenOpened, trackRelaxationOpened} =
+    useMixPanelTracking();
 
   useFocusEffect(
     useCallback(() => {
@@ -77,7 +75,7 @@ const RelaxationScreen: FC<StackScreenProps<any>> = ({navigation}) => {
                       />
                     ))
                   ) : (
-                    <Locked title={`Nejprve dokončete předchozí cestu`} />
+                    <Locked title={'Nejprve dokončete předchozí cestu'} />
                   );
                 },
               }))}

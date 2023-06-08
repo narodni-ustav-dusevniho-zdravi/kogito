@@ -4,10 +4,10 @@ import MainContainer from '../components/container/MainContainer/MainContainer';
 import MainHeader from '../components/container/MainHeader/MainHeader';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import GradientBackground from '../components/primitives/GradientBackground';
-import Hero from "../components/primitives/Hero/Hero";
-import BoxMediaWrapper from "../components/primitives/BoxMediaWrapper/BoxMediaWrapper";
-import RoadNavigation from "../components/primitives/RoadNavigation/RoadNavigation";
-import BoxCheckbox from "../components/primitives/BoxCheckbox/BoxCheckbox";
+import Hero from '../components/primitives/Hero/Hero';
+import BoxMediaWrapper from '../components/primitives/BoxMediaWrapper/BoxMediaWrapper';
+import RoadNavigation from '../components/primitives/RoadNavigation/RoadNavigation';
+import BoxCheckbox from '../components/primitives/BoxCheckbox/BoxCheckbox';
 
 const TodosScreen: FC = () => {
   return (

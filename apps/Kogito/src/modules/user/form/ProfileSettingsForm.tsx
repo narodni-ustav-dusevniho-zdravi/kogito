@@ -13,7 +13,7 @@ const ProfileSettingsForm: FC<ProfileSettingsForm> = ({
   onSuccess = () => {},
 }) => {
   const {me} = useMeQuery();
-  const {control, handleSubmit } = useForm({
+  const {control, handleSubmit} = useForm({
     defaultValues: {
       firstName: me?.firstName || '',
       lastName: me?.lastName || '',
@@ -45,7 +45,7 @@ const ProfileSettingsForm: FC<ProfileSettingsForm> = ({
             placeholder="Jméno"
             onBlur={onBlur}
             style={{marginTop: 16, marginBottom: 6}}
-            onChangeText={(value) => onChange(value)}
+            onChangeText={value => onChange(value)}
             value={value}
           />
         )}
@@ -59,7 +59,7 @@ const ProfileSettingsForm: FC<ProfileSettingsForm> = ({
             placeholder="Příjmení"
             onBlur={onBlur}
             style={{marginTop: 6, marginBottom: 12}}
-            onChangeText={(value) => onChange(value)}
+            onChangeText={value => onChange(value)}
             value={value}
           />
         )}
