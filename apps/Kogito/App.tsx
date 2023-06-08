@@ -9,7 +9,7 @@ import Moment from 'react-moment';
 import 'moment/locale/cs';
 import LogMoodModal from './src/modules/diary/modal/LogMoodModal/LogMoodModal';
 import MixPanelTrackingProvider from './src/tracking/MixPanelTracking';
-import {Config} from './src/configuration';
+import {ENV} from './src/env';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
 Moment.globalLocale = 'cs';
@@ -19,7 +19,7 @@ Moment.globalFormat = 'Do MMMM YYYY';
 const App = () => {
   console.log('----------------------------------------------------');
   console.log('----------------------------------------------------');
-  console.log(Config);
+  console.log(ENV);
 
   return (
     <GestureHandlerRootView style={{flex: 1}}>

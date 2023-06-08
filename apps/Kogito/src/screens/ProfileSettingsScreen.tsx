@@ -8,7 +8,7 @@ import {getReadableVersion} from 'react-native-device-info';
 import Divider from '../components/primitives/Divider';
 import ProfileSettingsForm from '../modules/user/form/ProfileSettingsForm';
 import type {AppScreen} from '../navigation/Navigation';
-import {Config} from '../configuration';
+import {ENV} from '../env';
 
 const ProfileSettingsScreen: AppScreen<'ProfileSettings'> = ({navigation}) => {
   const confirmLogoutModal = () => {
@@ -53,7 +53,7 @@ const ProfileSettingsScreen: AppScreen<'ProfileSettings'> = ({navigation}) => {
               onPress={confirmLogoutModal}
             />
             <Text align="center" textVariant="textMini">
-              Verze: {Config.MODE[0]}
+              Verze: {ENV.MODE[0]}
               {getReadableVersion()}
             </Text>
           </View>

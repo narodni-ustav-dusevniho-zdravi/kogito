@@ -14,9 +14,9 @@ import {
   RefreshAccessTokenMutation,
   RefreshAccessTokenMutationVariables,
 } from '../../gql/__generated__/graphql';
-import {Config} from '../configuration';
+import {ENV} from '../env';
 
-console.log('APOLLO USING:', Config.API_CORE);
+console.log('APOLLO USING:', ENV.API_URL);
 
 let isRefreshing = false;
 // @ts-ignore
@@ -76,7 +76,7 @@ const refreshAuthToken = async () => {
 };
 
 const targetEndPointLink = createHttpLink({
-  uri: Config.API_CORE,
+  uri: ENV.API_URL,
 });
 
 const authLink = setContext(async () => {
