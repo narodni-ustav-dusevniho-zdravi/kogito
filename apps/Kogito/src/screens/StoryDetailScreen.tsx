@@ -1,5 +1,11 @@
-import React, {FC, useEffect, useState} from 'react';
-import {SafeAreaView, ScrollView, View, TouchableOpacity} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {
+  SafeAreaView,
+  ScrollView,
+  View,
+  TouchableOpacity,
+  StyleSheet,
+} from 'react-native';
 import {RouteProp, useRoute} from '@react-navigation/native';
 import {RootStackParamList} from '../navigation/Navigation';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
@@ -13,7 +19,7 @@ import useMixPanelTracking from '../tracking/useMixPanelTracking';
 
 export type StoryDetail = RouteProp<RootStackParamList, 'StoryDetail'>;
 
-const styles = {
+const styles = StyleSheet.create({
   p: {
     textAlign: 'justify',
     marginBottom: 12,
@@ -25,9 +31,9 @@ const styles = {
     padding: 0,
     lineHeight: 20,
   },
-};
+});
 
-const StoryDetailScreen: FC = () => {
+const StoryDetailScreen: React.FC = () => {
   const route = useRoute<StoryDetail>();
   const [playing, setPlaying] = useState(false);
   const {story} = useStoryContent(route.params.id);
@@ -57,7 +63,7 @@ const StoryDetailScreen: FC = () => {
         <MainContainerWrapper>
           <MainHeader />
           <ScrollView>
-            <MainContainer align={null} page={'sub'} color={'white'}>
+            <MainContainer page={'sub'} color={'white'}>
               <Text textVariant={'header'}>{story.title}</Text>
               {story.videoLink && (
                 <View>

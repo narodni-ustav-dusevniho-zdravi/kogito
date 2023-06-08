@@ -1,13 +1,11 @@
-import React, {FC, useCallback, useEffect, useState} from 'react';
-import {StackScreenProps} from '@react-navigation/stack';
+import React, {useCallback, useEffect, useState} from 'react';
 import {
   BackHandler,
-  Button,
   SafeAreaView,
   ScrollView,
   useWindowDimensions,
 } from 'react-native';
-import {RouteProp, useFocusEffect, useRoute} from '@react-navigation/native';
+import {RouteProp, useFocusEffect} from '@react-navigation/native';
 import {RootStackParamList} from '../navigation/Navigation';
 import {useViciousCircle} from '../modules/diary/useViciousCircle';
 import ViciousCircle from '../components/primitives/ViciousCircle/VicousCircle';
@@ -19,6 +17,7 @@ import Text from '../components/primitives/Text';
 import DetailViciousCircleModal from '../modules/diary/modal/DetailViciousCircleModal';
 import moment from 'moment';
 import useMixPanelTracking from '../tracking/useMixPanelTracking';
+import type {AppScreen} from '../navigation/Navigation';
 
 export type ViciousCircleEditProps = RouteProp<
   RootStackParamList,
@@ -56,7 +55,7 @@ const modalText = (part: Parts) =>
     behaviour: 'Zapsat chování',
   }[part]);
 
-const ViciousCircleEditScreen: FC<StackScreenProps<any>> = ({}) => {
+const ViciousCircleEditScreen: AppScreen<'ViciousCircleEdit'> = ({}) => {
   const [data, setData] = useState<Data>(defaultData);
   const {trackViciousCycleOpened, trackViciousCycleEdited} =
     useMixPanelTracking();
@@ -145,6 +144,7 @@ const ViciousCircleEditScreen: FC<StackScreenProps<any>> = ({}) => {
 
       const onBackPress = () => {
         handleSave().then();
+        return false;
       };
 
       BackHandler.addEventListener('hardwareBackPress', onBackPress);
@@ -158,11 +158,7 @@ const ViciousCircleEditScreen: FC<StackScreenProps<any>> = ({}) => {
     <SafeAreaView>
       <MainContainerWrapper color={'white'}>
         <MainHeader beforeBackButton={handleSave} title={' '} />
-        <MainContainer
-          align={null}
-          page={'sub'}
-          color={'white'}
-          style={{flexGrow: 0}}>
+        <MainContainer page={'sub'} color={'white'} style={{flexGrow: 0}}>
           <Text textVariant="bigHeader">Bludný kruh</Text>
           {viciousCircle && (
             <Text textVariant={'textMini'}>

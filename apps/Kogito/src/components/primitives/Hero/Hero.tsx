@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, {PropsWithChildren} from 'react';
 import {Container, ContainerInner, Center, TextSmall, TextMain} from './styles';
 import Button from '../Button';
 import GradientBackground from '../GradientBackground';
@@ -10,7 +10,10 @@ import HeroDepression from '../../../assets/depression/hero.svg';
 export type ImageVariant = 'depression' | 'anxiety';
 export type StateVariants = 'onlyHeadline' | 'mainInfo' | 'normal';
 
-const decideColors = (variant: ImageVariant, state: StateVariants) => {
+const decideColors = (
+  variant: ImageVariant | undefined,
+  state: StateVariants,
+) => {
   if (variant === 'depression') {
     return ['normal'].includes(state)
       ? {color1: '#FFCE8F', color2: '#FFA38F'}
@@ -22,20 +25,20 @@ const decideColors = (variant: ImageVariant, state: StateVariants) => {
     : {color1: 'transparent', color2: 'transparent'};
 };
 
-type MainContainerProps = {
+type MainContainerProps = PropsWithChildren & {
   state?: StateVariants;
 
   subTitle?: string;
-  title: string;
+  title?: string;
   progress?: number;
 
   onPressContinue?: () => void;
   onPress?: () => void;
 
-  variant: ImageVariant;
+  variant?: ImageVariant;
 };
 
-const Hero: FC<MainContainerProps> = ({
+const Hero: React.FC<MainContainerProps> = ({
   state = 'normal',
   subTitle,
   title,

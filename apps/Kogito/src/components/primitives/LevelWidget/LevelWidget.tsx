@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React from 'react';
 import Check from '../../../assets/check.svg';
 import S from './styles';
 import ProgressBar from '../ProgressBar';
@@ -13,7 +13,7 @@ type ContainerProps = {
   maxProgress?: number;
 };
 
-const LevelWidget: FC<ContainerProps> = ({
+const LevelWidget: React.FC<ContainerProps> = ({
   name,
   state = 'locked',
   onPress = () => {},

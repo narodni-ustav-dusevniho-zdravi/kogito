@@ -1,31 +1,38 @@
 import {
-  InitLoginAction,
-  InitLoginActionInput,
-  InitLoginActionResult,
-  LoginAction,
-  LoginActionInput,
-  LoginActionResult,
-} from './graphql';
-import {MutationFunction, useMutation} from '@apollo/client';
+  InitLoginMutation,
+  InitLoginMutationVariables,
+  LoginMutation,
+  LoginMutationVariables,
+} from '../../../gql/__generated__/graphql';
+import {gql, useMutation} from '@apollo/client';
 
-type UseLogin = () => {
-  initializeLoginMutation: MutationFunction<
-    InitLoginActionResult,
-    {input: InitLoginActionInput}
-  >;
-  loginMutation: MutationFunction<LoginActionResult, {input: LoginActionInput}>;
-};
+const LoginAction = gql`
+  mutation login($input: LoginInput!) {
+    login(input: $input) {
+      accessToken
+      refreshToken
+    }
+  }
+`;
 
-export const useLogin: UseLogin = () => {
+const InitLoginAction = gql`
+  mutation initLogin($input: InitLoginInput!) {
+    initLogin(input: $input) {
+      usePassword
+      useSmsCode
+    }
+  }
+`;
+
+export const useLogin = () => {
   const [initializeLoginMutation] = useMutation<
-    InitLoginActionResult,
-    {input: InitLoginActionInput}
+    InitLoginMutation,
+    InitLoginMutationVariables
   >(InitLoginAction);
 
-  const [loginMutation] = useMutation<
-    LoginActionResult,
-    {input: LoginActionInput}
-  >(LoginAction);
+  const [loginMutation] = useMutation<LoginMutation, LoginMutationVariables>(
+    LoginAction,
+  );
 
   return {
     initializeLoginMutation,

@@ -1,15 +1,11 @@
-import React, {FC} from 'react';
+import React from 'react';
 import styled from 'styled-components/native';
 import {variant} from 'styled-system';
 import Check from '../../../assets/check.svg';
 import DropShadow from 'react-native-drop-shadow';
 
-type Button = {
-  finished: boolean;
-};
-
-const StyledButton = styled.TouchableOpacity<Button>``;
-const Wrapper = styled.View`
+const StyledButton = styled.TouchableOpacity``;
+const Wrapper = styled.View<{finished: boolean}>`
   width: 100%;
   border-radius: 15px;
   background: #fff;
@@ -51,7 +47,7 @@ type QuestionnaireWidget = {
   count?: number;
 };
 
-const QuestionnaireWidget: FC<QuestionnaireWidget> = ({
+const QuestionnaireWidget: React.FC<QuestionnaireWidget> = ({
   name,
   finished,
   count,

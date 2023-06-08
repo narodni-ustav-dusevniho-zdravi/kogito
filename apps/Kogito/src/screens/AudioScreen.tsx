@@ -1,6 +1,5 @@
-import React, {FC, useCallback, useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {
-  BackHandler,
   Image,
   SafeAreaView,
   ScrollView,
@@ -12,11 +11,9 @@ import MainHeader from '../components/container/MainHeader/MainHeader';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import Text from '../components/primitives/Text';
 import GradientBackground from '../components/primitives/GradientBackground';
-import Hero from '../assets/box-media-1.svg';
 import AudioControls from '../components/primitives/AudioControls';
 import DropShadow from 'react-native-drop-shadow';
 import SoundPlayer from 'react-native-sound-player';
-import {StackScreenProps} from '@react-navigation/stack';
 import {RootStackParamList} from '../navigation/Navigation';
 import {RouteProp, useRoute} from '@react-navigation/native';
 import {useItemContent} from '../modules/content/useItemContent';
@@ -29,12 +26,13 @@ import images from '../helpers/images';
 import Modal from '../components/container/Modal/Modal';
 import Button from '../components/primitives/Button';
 import useMixPanelTracking from '../tracking/useMixPanelTracking';
+import type {AppScreen} from '../navigation/Navigation';
 
 export type AudioScreenProps = RouteProp<RootStackParamList, 'Audio'>;
 
 const styles = {
   p: {
-    textAlign: 'justify',
+    textAlign: 'justify' as const,
     marginBottom: 12,
     fontSize: 18,
   },
@@ -46,14 +44,7 @@ const styles = {
   },
 };
 
-const audioImage = (image: string) => {
-  switch (image) {
-    default:
-      return <Hero style={{marginBottom: 16}} />;
-  }
-};
-
-const AudioScreen: FC<StackScreenProps<any>> = ({navigation}) => {
+const AudioScreen: AppScreen<'Audio'> = ({navigation}) => {
   const route = useRoute<AudioScreenProps>();
   const {fireEvent} = useEventListener();
   const {audioFile} = useItemContent(route.params.id);
@@ -290,9 +281,11 @@ const AudioScreen: FC<StackScreenProps<any>> = ({navigation}) => {
                   disablePrevButton={!audioFile.previous}
                   disableNextButton={!audioFile.next}
                   onPressPrev={() =>
+                    audioFile.previous &&
                     navigation.navigate('Audio', {id: audioFile.previous})
                   }
                   onPressNext={() =>
+                    audioFile.next &&
                     navigation.navigate('Audio', {id: audioFile.next})
                   }
                   onPressPlay={() => togglePlay()} //setAudioPlaying(!audioPlaying)}
@@ -318,7 +311,7 @@ const AudioScreen: FC<StackScreenProps<any>> = ({navigation}) => {
           </MainContainerWrapper>
         </GradientBackground>
 
-        {visibleTranscript && (
+        {visibleTranscript && !!audioFile?.transcript && (
           <Modal
             close={() => setVisibleTranscript(!visibleTranscript)}
             onRequestClose={() => setVisibleTranscript(!visibleTranscript)}>

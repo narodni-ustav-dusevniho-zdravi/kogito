@@ -1,22 +1,10 @@
-import {gql, MutationFunction, useMutation} from '@apollo/client';
+import {gql, useMutation} from '@apollo/client';
+import {
+  TrackScheduleMutation,
+  TrackTodoMutationVariables,
+} from '../../../gql/__generated__/graphql';
 
-type TrackScheduleInput = {
-  id: string;
-  checked: boolean;
-};
-
-type TrackScheduleResult = {
-  success: boolean;
-};
-
-type UseTrackSchedule = () => {
-  trackScheduleMutation: MutationFunction<
-    TrackScheduleResult,
-    {input: TrackScheduleInput}
-  >;
-};
-
-export const TrackScheduleAction = gql`
+const mutation = gql`
   mutation trackSchedule($input: TrackScheduleInput!) {
     trackSchedule(input: $input) {
       success
@@ -24,11 +12,11 @@ export const TrackScheduleAction = gql`
   }
 `;
 
-export const useTrackSchedule: UseTrackSchedule = () => {
+export const useTrackSchedule = () => {
   const [trackScheduleMutation] = useMutation<
-    TrackScheduleResult,
-    {input: TrackScheduleInput}
-  >(TrackScheduleAction);
+    TrackScheduleMutation,
+    TrackTodoMutationVariables
+  >(mutation);
 
   return {
     trackScheduleMutation,

@@ -1,12 +1,10 @@
 import {gql, useQuery} from '@apollo/client';
+import {
+  ViciousCircleListQuery,
+  ViciousCircleListQueryVariables,
+} from '../../../gql/__generated__/graphql';
 
-export type ViciousCircle = {
-  id: string;
-  date: string;
-  name: string;
-};
-
-const ViciousCircleList = gql`
+const query = gql`
   query viciousCircleList($afterId: ID) {
     viciousCircleList(afterId: $afterId) {
       records {
@@ -19,16 +17,11 @@ const ViciousCircleList = gql`
   }
 `;
 
-type UseViciousCircleList = () => {
-  records: ViciousCircle[];
-  haveNext: boolean;
-  refetch: () => void;
-};
-
-export const useViciousCircleList: UseViciousCircleList = () => {
-  const {data, error, refetch} = useQuery(ViciousCircleList);
-
-  console.log({data, error});
+export const useViciousCircleList = () => {
+  const {data, refetch} = useQuery<
+    ViciousCircleListQuery,
+    ViciousCircleListQueryVariables
+  >(query);
 
   if (data) {
     return {

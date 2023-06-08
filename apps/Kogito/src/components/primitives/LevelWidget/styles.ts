@@ -1,9 +1,10 @@
 import styled from 'styled-components/native';
 import {variant} from 'styled-system';
+import {LevelWidgetVariant} from './LevelWidget';
 
 const S = {
   Container: styled.TouchableOpacity``,
-  Wrapper: styled.View`
+  Wrapper: styled.View<{state: LevelWidgetVariant}>`
     flex-direction: row;
     align-items: center;
     justify-content: space-between;

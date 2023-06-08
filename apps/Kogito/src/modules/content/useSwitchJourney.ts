@@ -1,13 +1,20 @@
-import {gql, MutationFunction, useMutation} from '@apollo/client';
+import {gql, useMutation} from '@apollo/client';
+import {
+  SwitchJourneyMutation,
+  SwitchJourneyMutationVariables,
+} from '../../../gql/__generated__/graphql';
 
-export const SwitchJourneyAction = gql`
+const mutation = gql`
   mutation switchJourney($id: ID!) {
     switchJourney(id: $id)
   }
 `;
 
 export const useSwitchJourney = () => {
-  const [switchJourneyMutation] = useMutation(SwitchJourneyAction);
+  const [switchJourneyMutation] = useMutation<
+    SwitchJourneyMutation,
+    SwitchJourneyMutationVariables
+  >(mutation);
 
   return {
     switchJourneyMutation,

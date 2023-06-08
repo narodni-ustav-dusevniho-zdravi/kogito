@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React from 'react';
 import {Container, BorderTop, Button, Text} from './styles';
 import IconMyDay from '../../../assets/icon-my-day.svg';
 import IconRoad from '../../../assets/icon-road.svg';
@@ -13,31 +13,32 @@ type MainContainerProps = {
   align?: Align;
 };
 
-const MainFooter: FC<MainContainerProps> = ({align = null, ...rest}) => {
+const MainFooter: React.FC<MainContainerProps> = ({align = null, ...rest}) => {
   const navigation = useNavigation();
 
   return (
     <Container align={align} {...rest}>
       <BorderTop />
       <Button onPress={() => navigation.navigate('Dashboard')}>
-        <IconMyDay style={{color: '#8e8e93'}} />
+        <IconMyDay color="#8e8e93" />
         <Text>Můj den</Text>
       </Button>
       <Button onPress={() => navigation.navigate('JourneyProgress')}>
-        <IconRoad style={{color: '#8e8e93'}} />
+        <IconRoad color="#8e8e93" />
         <Text>Cesta</Text>
       </Button>
       <Button onPress={() => navigation.navigate('Relaxation')}>
-        <IconSun style={{color: '#8e8e93'}} />
+        <IconSun color="#8e8e93" />
         <Text>Relaxace</Text>
       </Button>
       <Button onPress={() => navigation.navigate('RoadTodos')}>
-        <IconTodo style={{color: '#8e8e93'}} />
+        <IconTodo color="#8e8e93" />
         <Text>Úkoly</Text>
       </Button>
       <Button onPress={() => navigation.navigate('Signpost')}>
         <IconDots
-          style={{color: '#8e8e93', marginTop: 'auto', marginBottom: 'auto'}}
+          color="#8e8e93"
+          style={{marginTop: 'auto', marginBottom: 'auto'}}
         />
         <Text>Více</Text>
       </Button>

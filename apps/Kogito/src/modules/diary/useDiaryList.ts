@@ -1,12 +1,10 @@
 import {gql, useQuery} from '@apollo/client';
+import {
+  DiaryListQuery,
+  DiaryListQueryVariables,
+} from '../../../gql/__generated__/graphql';
 
-export type DiaryEntry = {
-  id: string;
-  date: string;
-  previewText: string;
-};
-
-const DiaryQuery = gql`
+const query = gql`
   query diaryList($afterId: ID) {
     diaryList(afterId: $afterId) {
       records {
@@ -19,23 +17,10 @@ const DiaryQuery = gql`
   }
 `;
 
-type DiaryQuery = {
-  diaryList: {
-    records: DiaryEntry[];
-    haveNext: boolean;
-  };
-};
-
-type UseDiaryList = () => {
-  records: DiaryEntry[];
-  haveNext: boolean;
-  refetch: () => void;
-};
-
-export const useDiaryList: UseDiaryList = () => {
-  const {data, error, refetch} = useQuery<DiaryQuery>(DiaryQuery);
-
-  console.log({data, error});
+export const useDiaryList = () => {
+  const {data, refetch} = useQuery<DiaryListQuery, DiaryListQueryVariables>(
+    query,
+  );
 
   if (data) {
     return {

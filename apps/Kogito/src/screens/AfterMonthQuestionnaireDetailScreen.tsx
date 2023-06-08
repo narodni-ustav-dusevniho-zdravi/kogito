@@ -1,7 +1,6 @@
-import React, {FC, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import {SafeAreaView, ScrollView} from 'react-native';
-import {AboutScreenNavigationProp} from '../../App';
-import {useNavigation, useRoute} from '@react-navigation/native';
+import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
 import ProgressBar from '../components/primitives/ProgressBar/ProgressBar';
 import Text from '../components/primitives/Text';
 import {useQuestionnaire} from '../modules/questionnaire/useQuestionnaire';
@@ -12,6 +11,7 @@ import MainContainer from '../components/container/MainContainer/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper/MainContainerWrapper';
 import styled from 'styled-components/native';
 import ButtonBack from '../components/primitives/ButtonBack';
+import {RegistrationStackParamList} from '../navigation/Navigation';
 
 export const Footer = styled.View`
   flex-direction: row;
@@ -21,9 +21,13 @@ export const AnswerWrapper = styled.View`
   margin-top: 20px;
 `;
 
-const AfterMonthQuestionnaireDetailScreen: FC = () => {
+const AfterMonthQuestionnaireDetailScreen: React.FC = () => {
   const navigation = useNavigation();
-  const route = useRoute<AboutScreenNavigationProp>();
+  const route = useRoute<
+    RouteProp<{
+      params: RegistrationStackParamList['QuestionnaireScreen'];
+    }>
+  >();
 
   const {
     actualQuestion,
@@ -36,7 +40,7 @@ const AfterMonthQuestionnaireDetailScreen: FC = () => {
     finished,
     questionCount,
     actualIndex,
-  } = useQuestionnaire(route.params.id);
+  } = useQuestionnaire(route.params?.id);
 
   useEffect(() => {
     if (finished) {
@@ -53,7 +57,6 @@ const AfterMonthQuestionnaireDetailScreen: FC = () => {
       <MainContainerWrapper>
         <ProgressBar value={actualIndex} max={questionCount} />
         <MainContainer
-          align={null}
           alignVertical="between"
           style={{paddingTop: 24, paddingBottom: 56}}>
           <ChapterHeader

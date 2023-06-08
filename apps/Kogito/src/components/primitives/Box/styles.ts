@@ -13,7 +13,7 @@ export const Image = styled.Image`
     },
   })};
 `;
-export const Text = styled.Text`
+export const Text = styled.Text<{isBonus: boolean}>`
   color: #3c3f64;
   font-size: 18px;
   font-weight: 700;
@@ -30,7 +30,7 @@ export const Text = styled.Text`
     },
   })};
 `;
-export const TextWrapper = styled.View`
+export const TextWrapper = styled.View<{isBonus: boolean}>`
   min-height: 61px;
   align-items: center;
   justify-content: center;
@@ -53,7 +53,7 @@ export const TextWrapper = styled.View`
   })};
 `;
 export const Container = styled.TouchableOpacity``;
-export const Wrapper = styled.View`
+export const Wrapper = styled.View<{isDisabled: boolean; isBonus: boolean}>`
   border-radius: 15px;
   background: #ffffff;
   width: 180px;

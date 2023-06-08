@@ -13,7 +13,7 @@ export const Text = styled.Text`
   font-size: 16px;
   font-weight: 500;
 `;
-export const Container = styled.View`
+export const Container = styled.View<{background: string}>`
   overflow: hidden;
   position: relative;
   border-radius: 15px;

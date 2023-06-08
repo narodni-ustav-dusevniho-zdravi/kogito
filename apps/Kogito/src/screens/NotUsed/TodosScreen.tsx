@@ -1,21 +1,21 @@
-import React, {FC} from 'react';
+import React from 'react';
 import {SafeAreaView, Text} from 'react-native';
-import MainContainer from '../components/container/MainContainer/MainContainer';
-import MainHeader from '../components/container/MainHeader/MainHeader';
-import MainContainerWrapper from '../components/container/MainContainerWrapper';
-import GradientBackground from '../components/primitives/GradientBackground';
-import Hero from '../components/primitives/Hero/Hero';
-import BoxMediaWrapper from '../components/primitives/BoxMediaWrapper/BoxMediaWrapper';
-import RoadNavigation from '../components/primitives/RoadNavigation/RoadNavigation';
-import BoxCheckbox from '../components/primitives/BoxCheckbox/BoxCheckbox';
+import MainContainer from '../../components/container/MainContainer/MainContainer';
+import MainHeader from '../../components/container/MainHeader/MainHeader';
+import MainContainerWrapper from '../../components/container/MainContainerWrapper';
+import GradientBackground from '../../components/primitives/GradientBackground';
+import Hero from '../../components/primitives/Hero/Hero';
+import BoxMediaWrapper from '../../components/primitives/BoxMediaWrapper/BoxMediaWrapper';
+import RoadNavigation from '../../components/primitives/RoadNavigation/RoadNavigation';
+import BoxCheckbox from '../../components/primitives/BoxCheckbox/BoxCheckbox';
 
-const TodosScreen: FC = () => {
+const TodosScreen: React.FC = () => {
   return (
     <SafeAreaView>
       <GradientBackground color1={'#ffd1a0'} color2={'#ffdfdf'} angle={138}>
         <MainContainerWrapper>
           <MainHeader />
-          <MainContainer align={null} page={'dashboard'}>
+          <MainContainer page={'dashboard'}>
             <Text>Todos</Text>
             <Hero state={'mainInfo'} />
             <BoxMediaWrapper>

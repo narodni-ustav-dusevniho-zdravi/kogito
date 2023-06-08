@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React from 'react';
 import S from './styles';
 import IconPlay from '../../../assets/icon-play.svg';
 import IconLocked from '../../../assets/icon-locked.svg';
@@ -14,7 +14,7 @@ type ContainerProps = {
   onPress?: () => void;
 };
 
-const BoxMedia: FC<ContainerProps> = ({
+const BoxMedia: React.FC<ContainerProps> = ({
   title,
   subTitle = null,
   isLocked = false,

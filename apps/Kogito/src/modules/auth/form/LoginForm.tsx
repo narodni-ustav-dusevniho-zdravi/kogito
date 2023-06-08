@@ -1,28 +1,28 @@
-import React, {FC, useEffect, useState} from 'react';
-import {KeyboardAvoidingView, ToastAndroid, View} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {ToastAndroid, View} from 'react-native';
 import {useForm, Controller} from 'react-hook-form';
 import Text from '../../../components/primitives/Text';
 import TextInput from '../../../components/form/TextInput';
 import Button from '../../../components/primitives/Button';
-import {LoginActionInput} from '../graphql';
 import {useAuth} from '../useAuth';
 import {ValidationMessage} from '../../../components/form/ValidationMessage';
 import {useLogin} from '../useLogin';
 import {PHONE_NUMBER_REGEX} from '../../../helpers/regexp';
 import useMixPanelTracking from '../../../tracking/useMixPanelTracking';
+import {LoginInput} from '../../../../gql/__generated__/graphql';
 
 type LoginForm = {
   type: 'login' | 'registration';
   onSuccess: () => void;
 };
 
-const LoginForm: FC<LoginForm> = ({type, onSuccess}) => {
+const LoginForm: React.FC<LoginForm> = ({type, onSuccess}) => {
   const {setTokens} = useAuth();
   const [useMasked, setUseMasked] = useState(true);
   const {initializeLoginMutation, loginMutation} = useLogin();
   const [error, setError] = useState<string | null>(null);
   const {trackRegistrationPhoneNumberEntered} = useMixPanelTracking();
-  const {control, handleSubmit, watch} = useForm<LoginActionInput>({
+  const {control, handleSubmit, watch} = useForm<LoginInput>({
     defaultValues: {
       phoneNumber: '+420',
     },
@@ -58,7 +58,7 @@ const LoginForm: FC<LoginForm> = ({type, onSuccess}) => {
     })().then();
   }, [phoneNumberWatch]);
 
-  const onSubmit = async (input: LoginActionInput) => {
+  const onSubmit = async (input: LoginInput) => {
     console.log('Submit');
     try {
       const result = await loginMutation({
@@ -93,7 +93,7 @@ const LoginForm: FC<LoginForm> = ({type, onSuccess}) => {
       </View>
       <Controller
         control={control}
-        render={({onChange, onBlur, value}) => (
+        render={({field: {onChange, onBlur, value}}) => (
           <TextInput
             placeholder="Telefonní číslo"
             onBlur={onBlur}
@@ -108,7 +108,7 @@ const LoginForm: FC<LoginForm> = ({type, onSuccess}) => {
       />
       <Controller
         control={control}
-        render={({onChange, onBlur, value}) => (
+        render={({field: {onChange, onBlur, value}}) => (
           <TextInput
             secureTextEntry={useMasked}
             style={{marginTop: 16, marginBottom: 24}}

@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React from 'react';
 import {StyledButton, ButtonInnerText} from './styles';
 import ReactNative from 'react-native';
 
@@ -16,7 +16,7 @@ type ButtonProps = {
   type?: Type;
 } & ReactNative.TouchableOpacityProps;
 
-const Button: FC<ButtonProps> = ({
+const Button: React.FC<ButtonProps> = ({
   colorVariant = 'red',
   title,
   type = 'large',

@@ -1,6 +1,14 @@
-import {gql, MutationFunction, useMutation, useQuery} from '@apollo/client';
+import {gql, useMutation, useQuery} from '@apollo/client';
+import {
+  DiaryEntryQuery,
+  DiaryEntryQueryVariables,
+  EditDiaryEntryMutation,
+  EditDiaryEntryMutationVariables,
+  RemoveDiaryEntryMutation,
+  RemoveDiaryEntryMutationVariables,
+} from '../../../gql/__generated__/graphql';
 
-const DiaryEntryQuery = gql`
+const diaryEntryQuery = gql`
   query diaryEntry($id: ID!) {
     diaryEntry(id: $id) {
       id
@@ -10,7 +18,7 @@ const DiaryEntryQuery = gql`
   }
 `;
 
-const DiaryEditAction = gql`
+const diaryEditAction = gql`
   mutation editDiaryEntry($input: EditDiaryEntryInput!) {
     editDiaryEntry(input: $input) {
       id
@@ -21,39 +29,31 @@ const DiaryEditAction = gql`
   }
 `;
 
-const DiaryRemoveAction = gql`
+const diaryRemoveAction = gql`
   mutation removeDiaryEntry($id: ID!) {
     removeDiaryEntry(id: $id)
   }
 `;
 
-type DiaryEntry = {
-  id: string;
-  date: Date;
-  content: string;
-};
-
-type EditDiaryEntryInput = {
-  id: string | null;
-  content: string;
-};
-
-type UseDiaryEntry = (id: string | null) => {
-  diaryEntry: null | DiaryEntry;
-  saveDiaryEntry: MutationFunction<DiaryEntry, {input: EditDiaryEntryInput}>;
-  removeDiaryEntry: MutationFunction<boolean, {id: string}>;
-};
-
-export const useDiaryEntry: UseDiaryEntry = id => {
-  const {data} = useQuery(DiaryEntryQuery, {
-    variables: {
-      id,
+export const useDiaryEntry = (id: string | null) => {
+  const {data} = useQuery<DiaryEntryQuery, DiaryEntryQueryVariables>(
+    diaryEntryQuery,
+    {
+      variables: {
+        id: id!,
+      },
+      skip: !id,
     },
-    skip: !id,
-  });
+  );
 
-  const [saveDiaryEntry] = useMutation(DiaryEditAction);
-  const [removeDiaryEntry] = useMutation(DiaryRemoveAction);
+  const [saveDiaryEntry] = useMutation<
+    EditDiaryEntryMutation,
+    EditDiaryEntryMutationVariables
+  >(diaryEditAction);
+  const [removeDiaryEntry] = useMutation<
+    RemoveDiaryEntryMutation,
+    RemoveDiaryEntryMutationVariables
+  >(diaryRemoveAction);
 
   if (data) {
     return {

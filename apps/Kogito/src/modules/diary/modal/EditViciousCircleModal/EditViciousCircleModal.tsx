@@ -1,9 +1,8 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Modal from '../../../../components/container/Modal/Modal';
 import Text from '../../../../components/primitives/Text';
 import Button from '../../../../components/primitives/Button';
 import TextInput from '../../../../components/form/TextInput';
-import MainContainer from '../../../../components/container/MainContainer';
 import {View} from 'react-native';
 
 type EditViciousCircleModal = {
@@ -14,7 +13,7 @@ type EditViciousCircleModal = {
   remove: () => void;
 };
 
-const EditViciousCircleModal: FC<EditViciousCircleModal> = ({
+const EditViciousCircleModal: React.FC<EditViciousCircleModal> = ({
   title,
   initText,
   save,

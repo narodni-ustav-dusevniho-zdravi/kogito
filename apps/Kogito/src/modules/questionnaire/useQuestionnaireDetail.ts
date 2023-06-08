@@ -1,6 +1,10 @@
-import {gql, ApolloError, useQuery} from '@apollo/client';
+import {gql, useQuery} from '@apollo/client';
+import {
+  QuestionnaireDetailQuery,
+  QuestionnaireDetailQueryVariables,
+} from '../../../gql/__generated__/graphql';
 
-const QuestionnaireDetailQuery = gql`
+const query = gql`
   query questionnaireDetail($id: ID!) {
     questionnaireDetail(id: $id) {
       id
@@ -23,41 +27,11 @@ const QuestionnaireDetailQuery = gql`
   }
 `;
 
-export type Answer = {
-  answer: string;
-};
-
-export type Question = {
-  id: string;
-  question: string;
-  answers: Answer[];
-};
-
-export type UserAnswer = {
-  questionId: string;
-  answerIndex: number | null;
-};
-
-type Questionnaire = {
-  name: string;
-  questionCount: number;
-  questions: Question[];
-};
-
-type UserQuestionnaire = {
-  id: string;
-  answers: UserAnswer[];
-  questionnaire: Questionnaire;
-} | null;
-
-type QuestionnaireDetail = (id: string) => {
-  questionnaire: UserQuestionnaire;
-  loading: boolean;
-  error?: ApolloError;
-};
-
-export const useQuestionnaireDetail: QuestionnaireDetail = (id: string) => {
-  const {loading, error, data} = useQuery(QuestionnaireDetailQuery, {
+export const useQuestionnaireDetail = (id: string) => {
+  const {loading, error, data} = useQuery<
+    QuestionnaireDetailQuery,
+    QuestionnaireDetailQueryVariables
+  >(query, {
     variables: {
       id,
     },

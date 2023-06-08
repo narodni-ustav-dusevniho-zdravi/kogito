@@ -1,6 +1,5 @@
-import React, {FC, useCallback} from 'react';
-import {RefreshControl, SafeAreaView, ScrollView, View} from 'react-native';
-import GradientBackground from '../components/primitives/GradientBackground';
+import React, {useCallback} from 'react';
+import {ScrollView, View} from 'react-native';
 import MainContainer from '../components/container/MainContainer';
 import Text from '../components/primitives/Text';
 import {useUserQuestionnairesQuery} from '../modules/questionnaire/useUserQuestionnairesQuery';
@@ -11,7 +10,7 @@ import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import {useMeQuery} from '../modules/user/useMeQuery';
 import ColoredSafeAreaView from '../components/primitives/ColoredSafeAreaView';
 
-const AvailableQuestionnairesScreen: FC = () => {
+const AvailableQuestionnairesScreen: React.FC = () => {
   const navigation = useNavigation();
   const {userQuestionnaires, userState, loading, refetch} =
     useUserQuestionnairesQuery();
@@ -41,11 +40,11 @@ const AvailableQuestionnairesScreen: FC = () => {
             <View style={{marginTop: 15, width: '100%'}}>
               <QuestionnaireWidget
                 press={() =>
-                  !userState.userInfoCompleted &&
+                  !userState?.userInfoCompleted &&
                   navigation.navigate('FinishRegistrationScreen')
                 }
                 name="Základní údaje"
-                finished={userState.userInfoCompleted}
+                finished={!!userState?.userInfoCompleted}
                 count={10}
               />
 

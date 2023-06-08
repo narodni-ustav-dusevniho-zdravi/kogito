@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React from 'react';
 import Text from '../components/primitives/Text';
 import Button from '../components/primitives/Button';
 import MainContainer from '../components/container/MainContainer';
@@ -8,6 +8,7 @@ import RegisterImg from '../assets/register-img.svg';
 import styled from 'styled-components/native';
 import {useNavigation} from '@react-navigation/native';
 import ColoredSafeAreaView from '../components/primitives/ColoredSafeAreaView';
+import type {AppScreen} from '../navigation/Navigation';
 
 export const RegisterImgWrapper = styled.View`
   margin-top: auto;
@@ -17,7 +18,7 @@ export const RegisterImgWrapper = styled.View`
   align-self: center;
 `;
 
-const RegisterScreen: FC = () => {
+const RegisterScreen: AppScreen<'Register'> = () => {
   const navigation = useNavigation();
   return (
     <ColoredSafeAreaView>

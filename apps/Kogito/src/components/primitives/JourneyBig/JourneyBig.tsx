@@ -1,7 +1,6 @@
-import React, {FC} from 'react';
+import React from 'react';
 import {Container, ContainerInner, Title} from './styles';
 import Button from '../Button';
-import Woman from '../../../assets/woman-1.svg';
 import {View} from 'react-native';
 import HeroAnxiety from '../../../assets/anxiety/hero.svg';
 import HeroDepression from '../../../assets/depression/hero.svg';
@@ -13,7 +12,11 @@ type BoxBigProps = {
   variant: ImageVariant;
 };
 
-const JourneyBig: FC<BoxBigProps> = ({title, onPress = () => {}, variant}) => {
+const JourneyBig: React.FC<BoxBigProps> = ({
+  title,
+  onPress = () => {},
+  variant,
+}) => {
   return (
     <Container background={variant === 'depression' ? '#FFCE8F' : '#BF9BE8'}>
       {variant === 'depression' && (

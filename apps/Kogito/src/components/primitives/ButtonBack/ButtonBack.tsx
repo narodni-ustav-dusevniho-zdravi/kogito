@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React from 'react';
 import {StyledButton} from './styles';
 import ReactNative from 'react-native';
 import IconBack from '../../../assets/icon-chevron-left.svg';
@@ -9,14 +9,10 @@ type ButtonProps = {
   colorVariant?: ColorVariants;
 } & ReactNative.TouchableOpacityProps;
 
-const ButtonBack: FC<ButtonProps> = ({colorVariant = 'red', ...rest}) => {
+const ButtonBack: React.FC<ButtonProps> = ({colorVariant = 'red', ...rest}) => {
   return (
     <StyledButton colorVariant={colorVariant} {...rest}>
-      <IconBack
-        style={{
-          color: '#ca4233',
-        }}
-      />
+      <IconBack color="#ca4233" />
     </StyledButton>
   );
 };

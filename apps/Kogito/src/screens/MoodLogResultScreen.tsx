@@ -1,7 +1,7 @@
-import React, {FC} from 'react';
+import React from 'react';
 import {SafeAreaView} from 'react-native';
 
-const MoodLogResultScreen: FC = () => {
+const MoodLogResultScreen: React.FC = () => {
   return <SafeAreaView />;
 };
 

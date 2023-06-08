@@ -1,26 +1,26 @@
-import React, {FC} from 'react';
+import React from 'react';
 import {SafeAreaView, ScrollView, View} from 'react-native';
-import MainContainer from '../components/container/MainContainer/MainContainer';
-import MainHeader from '../components/container/MainHeader/MainHeader';
-import MainContainerWrapper from '../components/container/MainContainerWrapper';
-import Box from '../components/primitives/Box';
-import BoxWrapper from '../components/primitives/BoxWrapper';
-import Text from '../components/primitives/Text';
+import MainContainer from '../../components/container/MainContainer/MainContainer';
+import MainHeader from '../../components/container/MainHeader/MainHeader';
+import MainContainerWrapper from '../../components/container/MainContainerWrapper';
+import Box from '../../components/primitives/Box';
+import BoxWrapper from '../../components/primitives/BoxWrapper';
+import Text from '../../components/primitives/Text';
 import BoxImg3 from '../assets/box-img-3.png';
 import BoxImg4 from '../assets/box-img-4.png';
-import Tabs from '../components/primitives/Tabs';
-import InputSearch from '../components/primitives/InputSearch';
-import Locked from '../components/primitives/Locked';
+import Tabs from '../../components/primitives/Tabs';
+import InputSearch from '../../components/primitives/InputSearch';
+import Locked from '../../components/primitives/Locked';
 
-const RelaxationLockedScreen: FC = () => {
+const RelaxationLockedScreen: React.FC = () => {
   return (
     <SafeAreaView>
       <MainContainerWrapper>
         <MainHeader />
-        <MainContainer align={null} page={'dashboard'} color={'white'}>
+        <MainContainer page={'dashboard'} color={'white'}>
           <ScrollView>
             <InputSearch />
-            <MainContainer align={null} page={'sub'}>
+            <MainContainer page={'sub'}>
               <Text textVariant={'headerSub'}>Bonusová relaxace</Text>
             </MainContainer>
             <ScrollView
@@ -32,7 +32,6 @@ const RelaxationLockedScreen: FC = () => {
                   img={BoxImg3}
                   isBonus={true}
                   isMedia={true}
-                  goTo={'Audio'}
                 />
                 <Box
                   title={'Tipy na cvičení pro mentální hygienu'}

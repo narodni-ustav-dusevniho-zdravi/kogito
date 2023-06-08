@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React from 'react';
 import {AnswerButton, AnswerIndex, Character, Text} from './styles';
 import DropShadow from 'react-native-drop-shadow';
 
@@ -9,7 +9,7 @@ type Answer = {
   press: (index: number) => void;
 };
 
-const Answer: FC<Answer> = ({index, answer, selected, press}) => {
+const Answer: React.FC<Answer> = ({index, answer, selected, press}) => {
   const character = String.fromCharCode(65 + index);
 
   return (

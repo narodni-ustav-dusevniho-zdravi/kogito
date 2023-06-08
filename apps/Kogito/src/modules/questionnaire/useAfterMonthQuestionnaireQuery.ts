@@ -1,7 +1,11 @@
-import {gql, ApolloError, useQuery} from '@apollo/client';
+import {gql, useQuery} from '@apollo/client';
+import {
+  CurrentUserQuestionnairesQuery,
+  CurrentUserQuestionnairesQueryVariables,
+} from '../../../gql/__generated__/graphql';
 
-const Query = gql`
-  {
+const query = gql`
+  query CurrentUserQuestionnaires {
     currentUserQuestionnaires {
       occasion
       questionnaires {
@@ -23,42 +27,18 @@ const Query = gql`
   }
 `;
 
-type Questionnaire = {
-  id: string;
-  name: string;
-  questionCount: number;
-};
-
-type UserQuestionnaire = {
-  id: string;
-  finished: boolean;
-  questionnaire: Questionnaire;
-};
-
-type CurrentUserQuestionnaires = {
-  occasion: number;
-  questionnaires: UserQuestionnaire[];
-};
-
-type UserQuestionnaires = () => {
-  haveActiveQuestionnaire: boolean;
-  haveToChooseJourney: boolean;
-  questionnaire: CurrentUserQuestionnaires | null;
-
-  refetch: () => void;
-  loading: boolean;
-  error?: ApolloError;
-};
-
-export const useAfterMonthQuestionnaireQuery: UserQuestionnaires = () => {
-  const {loading, error, data, refetch} = useQuery(Query);
+export const useAfterMonthQuestionnaireQuery = () => {
+  const {loading, error, data, refetch} = useQuery<
+    CurrentUserQuestionnairesQuery,
+    CurrentUserQuestionnairesQueryVariables
+  >(query);
 
   console.log({data});
 
   return {
     haveActiveQuestionnaire: data?.viewer.haveActiveQuestionnaire || false,
     haveToChooseJourney:
-      data?.registrationStatus.journeysToChoose.length > 0 || false,
+      (data?.registrationStatus.journeysToChoose?.length || 0) > 0 || false,
     questionnaire: data?.currentUserQuestionnaires || null,
 
     refetch,

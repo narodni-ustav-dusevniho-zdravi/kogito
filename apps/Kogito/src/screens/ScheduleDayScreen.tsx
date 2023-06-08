@@ -1,4 +1,4 @@
-import React, {FC, useCallback, useEffect} from 'react';
+import React, {useCallback} from 'react';
 import {SafeAreaView, ScrollView} from 'react-native';
 import MainContainer from '../components/container/MainContainer/MainContainer';
 import MainHeader from '../components/container/MainHeader/MainHeader';
@@ -8,9 +8,9 @@ import BoxCheckbox from '../components/primitives/BoxCheckbox';
 import {useContent} from '../modules/content/useContent';
 import {useTrackSchedule} from '../modules/content/useTrackSchedule';
 import useMixPanelTracking from '../tracking/useMixPanelTracking';
-import {useFocusEffect, useIsFocused} from '@react-navigation/native';
+import {useFocusEffect} from '@react-navigation/native';
 
-const ScheduleDayScreen: FC = () => {
+const ScheduleDayScreen: React.FC = () => {
   const {todaySchedule} = useContent();
   const {trackScheduleMutation} = useTrackSchedule();
   const {trackDayPlannerOpened} = useMixPanelTracking();
@@ -42,7 +42,7 @@ const ScheduleDayScreen: FC = () => {
       <MainContainerWrapper>
         <MainHeader />
         <ScrollView contentContainerStyle={{flexGrow: 1}}>
-          <MainContainer align={null} page={'subWithoutFooter'} color={'white'}>
+          <MainContainer page={'subWithoutFooter'} color={'white'}>
             <Text textVariant={'bigHeader'} add={true}>
               Plán dne
             </Text>

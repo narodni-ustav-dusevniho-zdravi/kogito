@@ -1,5 +1,5 @@
-import React, {FC, useCallback, useEffect, useMemo} from 'react';
-import {StackScreenProps} from '@react-navigation/stack';
+import React, {useEffect, useMemo} from 'react';
+
 import {SafeAreaView, ScrollView} from 'react-native';
 import MainContainerWrapper from '../components/container/MainContainerWrapper/MainContainerWrapper';
 import MainHeader from '../components/container/MainHeader/MainHeader';
@@ -8,10 +8,11 @@ import {useViciousCircleList} from '../modules/diary/useViciousCircleList';
 import {capitalize, groupBy} from 'lodash';
 import moment from 'moment';
 import DayInfoBox from '../components/primitives/DayInfoBox';
-import {useFocusEffect} from '@react-navigation/native';
-import {useTrackSchedule} from '../modules/content/useTrackSchedule';
 
-const ViciousCircleScreen: FC<StackScreenProps<any>> = ({navigation}) => {
+import {useTrackSchedule} from '../modules/content/useTrackSchedule';
+import type {AppScreen} from '../navigation/Navigation';
+
+const ViciousCircleScreen: AppScreen<'ViciousCircle'> = ({navigation}) => {
   const {records, refetch} = useViciousCircleList();
   const {} = useTrackSchedule();
 

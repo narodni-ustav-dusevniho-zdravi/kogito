@@ -9,6 +9,7 @@ type Container = {
 type Text = {
   colorVariant: ColorVariant;
   textVariant: TextVariant;
+  add: boolean | null;
 };
 
 const S = {

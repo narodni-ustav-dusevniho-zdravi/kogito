@@ -1,4 +1,4 @@
-import React, {FC, useCallback, useEffect} from 'react';
+import React, {useCallback} from 'react';
 import {SafeAreaView, ScrollView, TouchableOpacity, View} from 'react-native';
 import MainContainer from '../components/container/MainContainer/MainContainer';
 import MainHeader from '../components/container/MainHeader/MainHeader';
@@ -7,15 +7,14 @@ import Hero from '../components/primitives/Hero';
 import Box from '../components/primitives/Box';
 import BoxWrapper from '../components/primitives/BoxWrapper';
 import Text from '../components/primitives/Text';
-import BoxImg1 from '../assets/box-img-1.png';
 import BoxBig from '../components/primitives/BoxBig';
-import {StackScreenProps} from '@react-navigation/stack';
 import {useContent} from '../modules/content/useContent';
 import {redirectItem} from '../helpers/redirectItem';
 import {useFocusEffect} from '@react-navigation/native';
 import images from '../helpers/images';
+import type {AppScreen} from '../navigation/Navigation';
 
-const DashboardScreen: FC<StackScreenProps<any>> = ({navigation}) => {
+const DashboardScreen: AppScreen<'MyDay'> = ({navigation}) => {
   const {userJourney, currentRelaxation, newestStory, refetch} = useContent();
 
   useFocusEffect(
@@ -29,13 +28,13 @@ const DashboardScreen: FC<StackScreenProps<any>> = ({navigation}) => {
     <SafeAreaView>
       <MainContainerWrapper>
         <MainHeader />
-        <MainContainer align={null} page={'dashboard'} color={'white'}>
+        <MainContainer page={'dashboard'} color={'white'}>
           <ScrollView>
             {userJourney && (
               <Hero
                 subTitle={`Úroveň ${userJourney.currentLevel}`}
                 title={userJourney.name}
-                progress={userJourney.currentLevelProgress}
+                progress={userJourney.currentLevel}
                 onPressContinue={() =>
                   navigation.navigate('Journey', {
                     id: userJourney.id,
@@ -49,7 +48,7 @@ const DashboardScreen: FC<StackScreenProps<any>> = ({navigation}) => {
               />
             )}
 
-            <MainContainer align={null} page={'sub'}>
+            <MainContainer page={'sub'}>
               <TouchableOpacity
                 onPress={() => navigation.navigate('Relaxation')}>
                 <Text textVariant={'headerSub'}>Relaxace</Text>
@@ -76,7 +75,7 @@ const DashboardScreen: FC<StackScreenProps<any>> = ({navigation}) => {
             </ScrollView>
 
             {newestStory && (
-              <MainContainer align={null} page={'subWithoutFooter'}>
+              <MainContainer page={'subWithoutFooter'}>
                 <View
                   style={{
                     display: 'flex',

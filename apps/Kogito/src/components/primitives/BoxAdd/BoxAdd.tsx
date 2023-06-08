@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React from 'react';
 import S from './styles';
 import Icon from '../../../assets/icon-plus.svg';
 
@@ -6,7 +6,7 @@ type BoxAdd = {
   onPress: () => void;
 };
 
-const BoxAdd: FC<BoxAdd> = ({onPress}) => {
+const BoxAdd: React.FC<BoxAdd> = ({onPress}) => {
   return (
     <S.Container onPress={onPress}>
       <S.Wrapper>

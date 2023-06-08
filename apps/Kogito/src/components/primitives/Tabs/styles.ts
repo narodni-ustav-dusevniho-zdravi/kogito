@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 import {variant} from 'styled-system';
 
-export const Text = styled.Text`
+export const Text = styled.Text<{isActive: boolean}>`
   opacity: 0.5;
   color: #1c1c1c;
   font-size: 18px;
@@ -20,7 +20,7 @@ export const Link = styled.TouchableOpacity`
   position: relative;
   padding: 8px 15px;
 `;
-export const Border = styled.View`
+export const Border = styled.View<{isActive: boolean}>`
   position: relative;
   opacity: 0;
   height: 3px;

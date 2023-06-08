@@ -1,15 +1,15 @@
-import React, {FC} from 'react';
+import React from 'react';
 import S from './styles';
 import {useNavigation} from '@react-navigation/native';
-import ReactNative from 'react-native';
+import {ViewProps} from 'react-native';
 
 export type activeVariants = 'phase' | 'tools' | 'relaxation' | 'todos' | null;
 
 type ContainerProps = {
   active?: activeVariants;
-} & ReactNative.TouchableOpacityProps;
+} & ViewProps;
 
-const RoadNavigation: FC<ContainerProps> = ({active = null, ...rest}) => {
+const RoadNavigation: React.FC<ContainerProps> = ({active = null, ...rest}) => {
   const navigation = useNavigation();
 
   return (

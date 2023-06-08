@@ -1,20 +1,84 @@
-import {useQuery} from '@apollo/client';
-import {JourneyQuery, JourneyQueryResult, UserJourney} from './graphql';
+import {gql, useQuery} from '@apollo/client';
+import {
+  JourneyQuery,
+  JourneyQueryVariables,
+} from '../../../gql/__generated__/graphql';
 
-type UseJourney = (journeyId: string) => {
-  journey: UserJourney | null;
-  refetch: () => void;
-};
+const query = gql`
+  query journey($id: ID!) {
+    journey(id: $id) {
+      id
+      name
+      levels {
+        id
+        level
+        progress
+        phase {
+          id
+          name
+          subTitle
+          image
+          locked
+          options
+          progress
+          ... on AudioItem {
+            duration
+            link
+          }
+        }
+        relaxation {
+          id
+          name
+          subTitle
+          image
+          locked
+          options
+          progress
+          ... on AudioItem {
+            duration
+            link
+          }
+        }
+        tools {
+          id
+          name
+          subTitle
+          image
+          locked
+          options
+          progress
+          ... on AudioItem {
+            duration
+            link
+          }
+        }
+        tasks {
+          id
+          name
+          subTitle
+          image
+          locked
+          options
+          progress
+          ... on AudioItem {
+            duration
+            link
+          }
+        }
+      }
+    }
+  }
+`;
 
-export const useJourney: UseJourney = (journeyId: string) => {
-  const {data, loading, error, refetch} = useQuery<JourneyQueryResult>(
+export const useJourney = (journeyId: string) => {
+  const {data, loading, error, refetch} = useQuery<
     JourneyQuery,
-    {
-      variables: {
-        id: journeyId,
-      },
+    JourneyQueryVariables
+  >(query, {
+    variables: {
+      id: journeyId,
     },
-  );
+  });
 
   console.log({data, loading, error});
 
