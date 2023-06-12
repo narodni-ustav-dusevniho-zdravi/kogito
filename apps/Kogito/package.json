@@ -5,7 +5,7 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "lint": "eslint .",
+    "lint": "eslint . --ext .ts,.tsx,.js,.jsx --cache",
     "start": "react-native start",
     "test": "jest",
     "codegen": "graphql-codegen --config codegen.ts",
