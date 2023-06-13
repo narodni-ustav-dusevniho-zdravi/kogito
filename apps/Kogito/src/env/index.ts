@@ -1,6 +1,6 @@
-import dotenvParseVariables from 'dotenv-parse-variables';
 // eslint-disable-next-line no-restricted-imports
 import Config from 'react-native-config';
+import dotenvParseVariables from 'dotenv-parse-variables';
 
 const useLocalApi = false;
 export const ENV = {
