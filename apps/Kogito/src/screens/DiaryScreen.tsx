@@ -4,6 +4,7 @@ import {useFocusEffect} from '@react-navigation/native';
 import {capitalize, groupBy} from 'lodash';
 import moment from 'moment';
 
+import {logEvent} from '../analytics';
 import MainContainer from '../components/container/MainContainer/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import MainHeader from '../components/container/MainHeader/MainHeader';
@@ -12,12 +13,10 @@ import Text from '../components/primitives/Text';
 import {useDiaryEntry} from '../modules/diary/useDiaryEntry';
 import {useDiaryList} from '../modules/diary/useDiaryList';
 import type {AppScreen} from '../navigation/Navigation';
-import useMixPanelTracking from '../tracking/useMixPanelTracking';
 
 const DiaryScreen: AppScreen<'Diary'> = ({navigation}) => {
   const {records, refetch} = useDiaryList();
   const {removeDiaryEntry} = useDiaryEntry(null);
-  const {trackJournalOpened} = useMixPanelTracking();
 
   const groupedRecords = useMemo(() => {
     // preparing grouping parameter
@@ -63,7 +62,7 @@ const DiaryScreen: AppScreen<'Diary'> = ({navigation}) => {
 
   useFocusEffect(
     useCallback(() => {
-      trackJournalOpened();
+      logEvent('Journal Opened');
       console.log('REFETCH');
       refetch();
     }, [refetch]),

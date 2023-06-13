@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {SafeAreaView, ScrollView, useWindowDimensions} from 'react-native';
 import HTML from 'react-native-render-html';
 
+import {logEvent} from '../analytics';
 import MainContainer from '../components/container/MainContainer/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import Button from '../components/primitives/Button';
@@ -11,7 +12,6 @@ import useEventListener from '../helpers/useEventListener';
 import {useItemContent} from '../modules/content/useItemContent';
 import {useTrackProgress} from '../modules/content/useTrackProgress';
 import type {AppScreen} from '../navigation/Navigation';
-import useMixPanelTracking from '../tracking/useMixPanelTracking';
 
 const styles = {
   p: {
@@ -32,7 +32,6 @@ const ArticleScreen: AppScreen<'Article'> = ({navigation, route}) => {
   const {fireEvent} = useEventListener();
   const {articleItem} = useItemContent(route.params.id);
   const windowWidth = useWindowDimensions().width;
-  const {trackLessonCompleted} = useMixPanelTracking();
 
   const {trackProgressMutation} = useTrackProgress();
   const [position, setPosition] = useState(0);
@@ -52,7 +51,7 @@ const ArticleScreen: AppScreen<'Article'> = ({navigation, route}) => {
           },
         },
       }).then(() => {
-        trackLessonCompleted(articleItem.name);
+        logEvent('Lesson completed', {lessonTitle: articleItem.name});
         fireEvent('refetch-progress');
       });
     }

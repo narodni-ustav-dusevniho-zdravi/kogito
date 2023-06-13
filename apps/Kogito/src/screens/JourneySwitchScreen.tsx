@@ -3,13 +3,13 @@ import React, {useCallback} from 'react';
 import {useFocusEffect} from '@react-navigation/native';
 import styled from 'styled-components/native';
 
+import {logEvent} from '../analytics';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import BoxJourney from '../components/primitives/BoxJourney';
 import ColoredSafeAreaView from '../components/primitives/ColoredSafeAreaView';
 import {useSwitchJourney} from '../modules/content/useSwitchJourney';
 import {useRegistrationStatus} from '../modules/user/useRegistrationStatus';
 import type {AppScreen} from '../navigation/Navigation';
-import useMixPanelTracking from '../tracking/useMixPanelTracking';
 
 const S = {
   HeadlineContainer: styled.View`
@@ -50,9 +50,6 @@ const JourneySwitchScreen: AppScreen<'JourneySwitch'> = ({navigation}) => {
   const {status} = useRegistrationStatus();
   const {switchJourneyMutation} = useSwitchJourney();
 
-  const {trackSwitchJourneyScreenOpened, trackSwitchJourney} =
-    useMixPanelTracking();
-
   const ids = [];
 
   if (status) {
@@ -80,7 +77,7 @@ const JourneySwitchScreen: AppScreen<'JourneySwitch'> = ({navigation}) => {
 
   useFocusEffect(
     useCallback(() => {
-      trackSwitchJourneyScreenOpened();
+      logEvent('Switch screen opened');
     }, []),
   );
 
@@ -101,7 +98,7 @@ const JourneySwitchScreen: AppScreen<'JourneySwitch'> = ({navigation}) => {
                   index={index + 1}
                   title={textData.name}
                   onClick={() => {
-                    trackSwitchJourney(textData.id);
+                    logEvent('Switch journey', {newJourney: textData.id});
                     switchJourneyMutation({
                       variables: {
                         id: textData.id,

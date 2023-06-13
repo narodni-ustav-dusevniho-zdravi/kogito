@@ -4,6 +4,7 @@ import type {RouteProp} from '@react-navigation/native';
 import {useRoute} from '@react-navigation/native';
 import moment from 'moment';
 
+import {logEvent} from '../analytics';
 import MainContainer from '../components/container/MainContainer/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import MainHeader from '../components/container/MainHeader/MainHeader';
@@ -13,7 +14,6 @@ import useEventListener from '../helpers/useEventListener';
 import {useDiaryEntry} from '../modules/diary/useDiaryEntry';
 import type {AppScreen, RootStackParamList} from '../navigation/Navigation';
 import {useNavigationListener} from '../navigation/useNavigationListener';
-import useMixPanelTracking from '../tracking/useMixPanelTracking';
 
 export type AudioScreenProps = RouteProp<RootStackParamList, 'DiaryEdit'>;
 
@@ -23,8 +23,6 @@ const DiaryEditScreen: AppScreen<'DiaryEdit'> = () => {
   const [content, setContent] = useState<string>('');
   const {fireEvent} = useEventListener();
   const {diaryEntry, saveDiaryEntry} = useDiaryEntry(id);
-  const {trackJournalEntryOpened, trackJournalEntryAdded} =
-    useMixPanelTracking();
 
   const handleSave = useCallback(async () => {
     if (content !== '') {
@@ -39,7 +37,7 @@ const DiaryEditScreen: AppScreen<'DiaryEdit'> = () => {
         });
 
         if (id === null) {
-          trackJournalEntryAdded();
+          logEvent('Journal Entry Added');
           fireEvent('refetch-user-diary');
         }
 
@@ -50,7 +48,7 @@ const DiaryEditScreen: AppScreen<'DiaryEdit'> = () => {
     }
 
     return;
-  }, [content, fireEvent, id, saveDiaryEntry, trackJournalEntryAdded]);
+  }, [content, fireEvent, id, saveDiaryEntry]);
 
   useEffect(() => {
     if (diaryEntry) {
@@ -63,7 +61,7 @@ const DiaryEditScreen: AppScreen<'DiaryEdit'> = () => {
   useEffect(() => {
     setId(route.params.id);
     setContent('');
-    trackJournalEntryOpened();
+    logEvent('Journal Entry Opened');
   }, [route.params.id]);
 
   useNavigationListener('beforeRemove', () => handleSave());

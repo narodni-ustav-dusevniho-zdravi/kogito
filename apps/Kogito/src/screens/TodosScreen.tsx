@@ -3,6 +3,7 @@ import {Alert, SafeAreaView, ScrollView} from 'react-native';
 import {useFocusEffect} from '@react-navigation/native';
 
 import type {DayPart, Todo} from '../../gql/__generated__/graphql';
+import {logEvent} from '../analytics';
 import MainContainer from '../components/container/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import MainHeader from '../components/container/MainHeader';
@@ -11,7 +12,6 @@ import BoxCheckbox from '../components/primitives/BoxCheckbox';
 import Text from '../components/primitives/Text';
 import EditTodoModal from '../modules/diary/modal/EditTodoModal/EditTodoModal';
 import {useTodos} from '../modules/diary/useTodos';
-import useMixPanelTracking from '../tracking/useMixPanelTracking';
 
 type EditorSettings = {
   dayPart: DayPart;
@@ -60,12 +60,6 @@ const DayPartRender: React.FC<DayPartRender> = ({
 const TodosScreen: React.FC = () => {
   const {todos, refetch, saveTodo, trackTodo, removeTodo} = useTodos();
   const [editor, setEditor] = useState<EditorSettings | null>(null);
-  const {
-    trackTodoScreenOpened,
-    trackTodoCreated,
-    trackTodoCompleted,
-    trackTodoDeleted,
-  } = useMixPanelTracking();
 
   const handleItemSave = async (title: string) => {
     if (editor) {
@@ -75,7 +69,7 @@ const TodosScreen: React.FC = () => {
         title,
       });
       setEditor(null);
-      trackTodoCreated();
+      logEvent('Todo Created');
     }
   };
 
@@ -93,7 +87,7 @@ const TodosScreen: React.FC = () => {
       },
     });
     if (checked) {
-      trackTodoCompleted();
+      logEvent('Todo Completed');
     }
   };
 
@@ -111,7 +105,7 @@ const TodosScreen: React.FC = () => {
               id,
             },
           });
-          trackTodoDeleted();
+          logEvent('Todo Deleted');
           refetch();
         },
       },
@@ -120,7 +114,7 @@ const TodosScreen: React.FC = () => {
 
   useFocusEffect(
     useCallback(() => {
-      trackTodoScreenOpened();
+      logEvent('Todo Screen Opened');
     }, []),
   );
 

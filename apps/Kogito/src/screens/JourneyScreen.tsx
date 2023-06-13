@@ -5,6 +5,7 @@ import {useFocusEffect, useRoute} from '@react-navigation/native';
 import type {StackNavigationProp} from '@react-navigation/stack/src/types';
 
 import type {Journey} from '../../gql/__generated__/graphql';
+import {logEvent} from '../analytics';
 import MainContainer from '../components/container/MainContainer/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import MainHeader from '../components/container/MainHeader/MainHeader';
@@ -19,7 +20,6 @@ import type {
   AppScreen,
   DashboardStackParamList,
 } from '../navigation/Navigation';
-import useMixPanelTracking from '../tracking/useMixPanelTracking';
 
 type Items = {
   items: Omit<ContentItem, 'content'>[];
@@ -31,15 +31,19 @@ type Items = {
 type RoadPhaseNavigationProp = RouteProp<DashboardStackParamList, 'Journey'>;
 
 const Items: React.FC<Items> = ({type, level, items, navigation}) => {
-  const {trackRelaxationOpened, trackLessonOpened} = useMixPanelTracking();
-
   const trackAndRedirect = (item: Items['items'][0]) => {
     redirectItem(navigation, item);
     switch (type) {
       case 'lesson':
-        return trackLessonOpened(item.name, level);
+        return logEvent('Lesson Opened', {
+          lessonTitle: item.name,
+          lessonLevel: level,
+        });
       case 'relaxation':
-        return trackRelaxationOpened(item.name, level);
+        return logEvent('Relaxation opened', {
+          relaxationTitle: item.name,
+          relaxationLevel: level,
+        });
     }
   };
 

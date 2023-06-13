@@ -11,13 +11,13 @@ import YoutubePlayer from 'react-native-youtube-iframe';
 import type {RouteProp} from '@react-navigation/native';
 import {useRoute} from '@react-navigation/native';
 
+import {logEvent} from '../analytics';
 import MainContainer from '../components/container/MainContainer/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import MainHeader from '../components/container/MainHeader/MainHeader';
 import Text from '../components/primitives/Text';
 import {useStoryContent} from '../modules/content/useStoryContent';
 import type {RootStackParamList} from '../navigation/Navigation';
-import useMixPanelTracking from '../tracking/useMixPanelTracking';
 
 export type StoryDetail = RouteProp<RootStackParamList, 'StoryDetail'>;
 
@@ -39,12 +39,11 @@ const StoryDetailScreen: React.FC = () => {
   const route = useRoute<StoryDetail>();
   const [playing, setPlaying] = useState(false);
   const {story} = useStoryContent(route.params.id);
-  const {trackStoryOpened, trackStoryCompleted} = useMixPanelTracking();
 
   const onStateChange = (state: string) => {
     if (state === 'ended') {
       if (story) {
-        trackStoryCompleted(story.title, 0);
+        logEvent('Story completed', {storyTitle: story.title, storyLevel: 0});
       }
       setPlaying(false);
     }
@@ -55,7 +54,7 @@ const StoryDetailScreen: React.FC = () => {
 
   useEffect(() => {
     if (story) {
-      trackStoryOpened(story.title, 0);
+      logEvent('Story opened', {storyTitle: story.title, storyLevel: 0});
     }
   }, [story]);
 

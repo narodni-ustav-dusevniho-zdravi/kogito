@@ -4,6 +4,7 @@ import YoutubePlayer from 'react-native-youtube-iframe';
 import type {RouteProp} from '@react-navigation/native';
 import {useRoute} from '@react-navigation/native';
 
+import {logEvent} from '../analytics';
 import MainContainer from '../components/container/MainContainer/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import MainHeader from '../components/container/MainHeader/MainHeader';
@@ -14,14 +15,12 @@ import useInterval from '../helpers/useInterval';
 import {useItemContent} from '../modules/content/useItemContent';
 import {useTrackProgress} from '../modules/content/useTrackProgress';
 import type {AppScreen, RootStackParamList} from '../navigation/Navigation';
-import useMixPanelTracking from '../tracking/useMixPanelTracking';
 
 export type AudioScreenProps = RouteProp<RootStackParamList, 'Audio'>;
 
 const VideoScreen: AppScreen<'Video'> = () => {
   const route = useRoute<AudioScreenProps>();
   const {fireEvent} = useEventListener();
-  const {trackLessonCompleted} = useMixPanelTracking();
   const [isLoading, setLoading] = useState(true);
   const [playedSeconds, setPlayedSeconds] = useState(0);
   const [tracked, setTracked] = useState(false);
@@ -66,7 +65,7 @@ const VideoScreen: AppScreen<'Video'> = () => {
         },
       }).then(() => {
         if (videoItem) {
-          trackLessonCompleted(videoItem.name);
+          logEvent('Lesson completed', {lessonTitle: videoItem.name});
         }
         fireEvent('refetch-progress');
       });

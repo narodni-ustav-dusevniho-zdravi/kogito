@@ -12,6 +12,7 @@ import SoundPlayer from 'react-native-sound-player';
 import type {RouteProp} from '@react-navigation/native';
 import {useRoute} from '@react-navigation/native';
 
+import {logEvent} from '../analytics';
 import MainContainer from '../components/container/MainContainer/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import MainHeader from '../components/container/MainHeader/MainHeader';
@@ -28,7 +29,6 @@ import {useItemContent} from '../modules/content/useItemContent';
 import {useTrackProgress} from '../modules/content/useTrackProgress';
 import type {AppScreen, RootStackParamList} from '../navigation/Navigation';
 import {useNavigationListener} from '../navigation/useNavigationListener';
-import useMixPanelTracking from '../tracking/useMixPanelTracking';
 
 export type AudioScreenProps = RouteProp<RootStackParamList, 'Audio'>;
 
@@ -51,7 +51,6 @@ const AudioScreen: AppScreen<'Audio'> = ({navigation}) => {
   const {fireEvent} = useEventListener();
   const {audioFile} = useItemContent(route.params.id);
   const {trackProgressMutation} = useTrackProgress();
-  const {trackLessonCompleted} = useMixPanelTracking();
 
   const [visibleTranscript, setVisibleTranscript] = useState<boolean>(false);
   const [currentTrack, setCurrentTrack] = useState<string | null>(null);
@@ -128,7 +127,7 @@ const AudioScreen: AppScreen<'Audio'> = ({navigation}) => {
         fireEvent('refetch-progress');
       });
       if (audioFile && currentPercents > 80) {
-        trackLessonCompleted(audioFile.name);
+        logEvent('Lesson completed', {lessonTitle: audioFile.name});
       }
     }
   }, [lastInfo]);

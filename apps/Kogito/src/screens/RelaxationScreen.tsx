@@ -2,6 +2,7 @@ import React, {useCallback} from 'react';
 import {SafeAreaView, ScrollView} from 'react-native';
 import {useFocusEffect} from '@react-navigation/native';
 
+import {logEvent} from '../analytics';
 import MainContainer from '../components/container/MainContainer/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import MainHeader from '../components/container/MainHeader/MainHeader';
@@ -15,16 +16,13 @@ import images from '../helpers/images';
 import {redirectItem} from '../helpers/redirectItem';
 import {useContent} from '../modules/content/useContent';
 import type {AppScreen} from '../navigation/Navigation';
-import useMixPanelTracking from '../tracking/useMixPanelTracking';
 
 const RelaxationScreen: AppScreen<'Relaxation'> = ({navigation}) => {
   const {bonusRelaxation, journeyRelaxation} = useContent();
-  const {trackRelaxationScreenOpened, trackRelaxationOpened} =
-    useMixPanelTracking();
 
   useFocusEffect(
     useCallback(() => {
-      trackRelaxationScreenOpened();
+      logEvent('Relaxations screen opened');
     }, []),
   );
 
@@ -53,7 +51,10 @@ const RelaxationScreen: AppScreen<'Relaxation'> = ({navigation}) => {
                     isMedia={item.__typename === 'AudioItem'}
                     title={item.name}
                     onPress={() => {
-                      trackRelaxationOpened(item.name, 'Bonus');
+                      logEvent('Relaxation opened', {
+                        relaxationTitle: item.name,
+                        relaxationLevel: 'Bonus',
+                      });
                       redirectItem(navigation, item);
                     }}
                   />

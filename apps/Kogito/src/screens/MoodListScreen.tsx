@@ -11,6 +11,7 @@ import type {
   RemoveMoodRecordMutation,
   RemoveMoodRecordMutationVariables,
 } from '../../gql/__generated__/graphql';
+import {logEvent} from '../analytics';
 import EmoticonHappy from '../assets/emotions/happy.png';
 import EmoticonOkay from '../assets/emotions/okay.png';
 import EmoticonSad from '../assets/emotions/sad.png';
@@ -24,7 +25,6 @@ import MoodRecord from '../components/primitives/MoodRecord/MoodRecord';
 import Text from '../components/primitives/Text';
 import useEventListener from '../helpers/useEventListener';
 import {useMoodsList} from '../modules/diary/useMoodsList';
-import useMixPanelTracking from '../tracking/useMixPanelTracking';
 
 const prepareCount = (items: MoodCount[], mood: Mood): number => {
   return items.find(item => item.mood === mood)?.count || 0;
@@ -43,7 +43,6 @@ const MoodListScreen: React.FC = () => {
     RemoveMoodRecordMutation,
     RemoveMoodRecordMutationVariables
   >(removeMoodRecordMutation);
-  const {trackEmotionTrackingOpened} = useMixPanelTracking();
 
   const groupedRecords = useMemo(() => {
     const items = records.map(item => {
@@ -105,7 +104,7 @@ const MoodListScreen: React.FC = () => {
 
   useFocusEffect(
     useCallback(() => {
-      trackEmotionTrackingOpened();
+      logEvent('Emotion Tracking opened');
       refetch();
     }, [refetch]),
   );

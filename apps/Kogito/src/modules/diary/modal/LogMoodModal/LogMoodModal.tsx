@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Image} from 'react-native';
 
 import type {Mood} from '../../../../../gql/__generated__/graphql';
+import {logEvent} from '../../../../analytics';
 import EmoticoedHappy from '../../../../assets/emotions/happy.png';
 import EmoticonOkay from '../../../../assets/emotions/okay.png';
 import EmoticonSad from '../../../../assets/emotions/sad.png';
@@ -12,7 +13,6 @@ import ModalEmoticon from '../../../../components/container/ModalEmoticon/ModalE
 import ButtonIcon from '../../../../components/primitives/ButtonIcon';
 import Text from '../../../../components/primitives/Text';
 import useEventListener from '../../../../helpers/useEventListener';
-import useMixPanelTracking from '../../../../tracking/useMixPanelTracking';
 import {useLogMood} from '../../useLogMood';
 
 import S from './styles';
@@ -23,7 +23,6 @@ const LogMoodModal: React.FC = () => {
   const [visibility, setVisibility] = useState(false);
   const [showResult, setShowResult] = useState<Mood>();
   const [closeTimer, setCloseTimer] = useState<NodeJS.Timeout>();
-  const {trackEmotionEvaluated} = useMixPanelTracking();
 
   const {addListener, removeListener, fireEvent} = useEventListener();
 
@@ -36,10 +35,10 @@ const LogMoodModal: React.FC = () => {
       },
     });
 
-    trackEmotionEvaluated(
+    logEvent('Emotion Evaluated', {
       mood,
-      result.data?.logMood.last ? result.data.logMood.last : '',
-    );
+      lastMood: result.data?.logMood.last ? result.data.logMood.last : '',
+    });
     setShowResult(mood);
     fireEvent('refetch-mood-list');
 

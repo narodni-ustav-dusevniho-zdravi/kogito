@@ -2,6 +2,7 @@ import React, {useCallback} from 'react';
 import {SafeAreaView, ScrollView} from 'react-native';
 import {useFocusEffect} from '@react-navigation/native';
 
+import {logEvent} from '../analytics';
 import MainContainer from '../components/container/MainContainer/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import MainHeader from '../components/container/MainHeader/MainHeader';
@@ -9,12 +10,10 @@ import BoxCheckbox from '../components/primitives/BoxCheckbox';
 import Text from '../components/primitives/Text';
 import {useContent} from '../modules/content/useContent';
 import {useTrackSchedule} from '../modules/content/useTrackSchedule';
-import useMixPanelTracking from '../tracking/useMixPanelTracking';
 
 const ScheduleDayScreen: React.FC = () => {
   const {todaySchedule} = useContent();
   const {trackScheduleMutation} = useTrackSchedule();
-  const {trackDayPlannerOpened} = useMixPanelTracking();
 
   const handleChange = async (id: string, checked: boolean) => {
     try {
@@ -34,7 +33,7 @@ const ScheduleDayScreen: React.FC = () => {
 
   useFocusEffect(
     useCallback(() => {
-      trackDayPlannerOpened();
+      logEvent('Day Planner Opened');
     }, []),
   );
 

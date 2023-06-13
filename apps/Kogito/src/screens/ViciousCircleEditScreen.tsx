@@ -4,6 +4,7 @@ import type {RouteProp} from '@react-navigation/native';
 import {useFocusEffect} from '@react-navigation/native';
 import moment from 'moment';
 
+import {logEvent} from '../analytics';
 import MainContainer from '../components/container/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import MainHeader from '../components/container/MainHeader';
@@ -14,7 +15,6 @@ import EditViciousCircleModal from '../modules/diary/modal/EditViciousCircleModa
 import {useViciousCircle} from '../modules/diary/useViciousCircle';
 import type {AppScreen, RootStackParamList} from '../navigation/Navigation';
 import {useNavigationListener} from '../navigation/useNavigationListener';
-import useMixPanelTracking from '../tracking/useMixPanelTracking';
 
 export type ViciousCircleEditProps = RouteProp<
   RootStackParamList,
@@ -54,8 +54,6 @@ const modalText = (part: Parts) =>
 
 const ViciousCircleEditScreen: AppScreen<'ViciousCircleEdit'> = () => {
   const [data, setData] = useState<Data>(defaultData);
-  const {trackViciousCycleOpened, trackViciousCycleEdited} =
-    useMixPanelTracking();
 
   const [overview, setOverview] = useState<EditData | null>(null);
   const [editor, setEditor] = useState<EditData | null>(null);
@@ -123,7 +121,7 @@ const ViciousCircleEditScreen: AppScreen<'ViciousCircleEdit'> = () => {
             },
           },
         });
-        trackViciousCycleEdited();
+        logEvent('Vicious cycle edited');
       } catch (e) {
         console.error({e});
       }
@@ -139,7 +137,7 @@ const ViciousCircleEditScreen: AppScreen<'ViciousCircleEdit'> = () => {
 
   useFocusEffect(
     useCallback(() => {
-      trackViciousCycleOpened();
+      logEvent('Vicious cycle opened');
     }, [handleSave]),
   );
 

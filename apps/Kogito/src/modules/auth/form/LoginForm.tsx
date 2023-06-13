@@ -3,12 +3,12 @@ import {Controller, useForm} from 'react-hook-form';
 import {ToastAndroid, View} from 'react-native';
 
 import type {LoginInput} from '../../../../gql/__generated__/graphql';
+import {logEvent} from '../../../analytics';
 import TextInput from '../../../components/form/TextInput';
 import {ValidationMessage} from '../../../components/form/ValidationMessage';
 import Button from '../../../components/primitives/Button';
 import Text from '../../../components/primitives/Text';
 import {PHONE_NUMBER_REGEX} from '../../../helpers/regexp';
-import useMixPanelTracking from '../../../tracking/useMixPanelTracking';
 import {useAuth} from '../useAuth';
 import {useLogin} from '../useLogin';
 
@@ -22,7 +22,6 @@ const LoginForm: React.FC<LoginForm> = ({type, onSuccess}) => {
   const [useMasked, setUseMasked] = useState(true);
   const {initializeLoginMutation, loginMutation} = useLogin();
   const [error, setError] = useState<string | null>(null);
-  const {trackRegistrationPhoneNumberEntered} = useMixPanelTracking();
   const {control, handleSubmit, watch} = useForm<LoginInput>({
     defaultValues: {
       phoneNumber: '+420',
@@ -71,7 +70,7 @@ const LoginForm: React.FC<LoginForm> = ({type, onSuccess}) => {
       console.log(result);
 
       if (result.data) {
-        trackRegistrationPhoneNumberEntered();
+        logEvent('Registration Phone Number Entered');
         await setTokens(
           result.data.login.accessToken,
           result.data.login.refreshToken,
