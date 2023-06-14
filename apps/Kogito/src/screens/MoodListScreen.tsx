@@ -11,7 +11,6 @@ import type {
   RemoveMoodRecordMutation,
   RemoveMoodRecordMutationVariables,
 } from '../../gql/__generated__/graphql';
-import {logEvent} from '../analytics';
 import EmoticonHappy from '../assets/emotions/happy.png';
 import EmoticonOkay from '../assets/emotions/okay.png';
 import EmoticonSad from '../assets/emotions/sad.png';
@@ -104,7 +103,6 @@ const MoodListScreen: React.FC = () => {
 
   useFocusEffect(
     useCallback(() => {
-      logEvent('Emotion Tracking opened');
       refetch();
     }, [refetch]),
   );

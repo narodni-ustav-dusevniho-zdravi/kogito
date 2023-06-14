@@ -1,6 +1,5 @@
-import React, {useCallback} from 'react';
+import React from 'react';
 import {SafeAreaView, ScrollView} from 'react-native';
-import {useFocusEffect} from '@react-navigation/native';
 
 import {logEvent} from '../analytics';
 import MainContainer from '../components/container/MainContainer/MainContainer';
@@ -19,12 +18,6 @@ import type {AppScreen} from '../navigation/Navigation';
 
 const RelaxationScreen: AppScreen<'Relaxation'> = ({navigation}) => {
   const {bonusRelaxation, journeyRelaxation} = useContent();
-
-  useFocusEffect(
-    useCallback(() => {
-      logEvent('Relaxations screen opened');
-    }, []),
-  );
 
   return (
     <SafeAreaView>

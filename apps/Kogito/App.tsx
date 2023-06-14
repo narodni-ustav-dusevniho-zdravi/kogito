@@ -7,16 +7,21 @@ import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {ApolloProvider} from '@apollo/client';
 import {NavigationContainer} from '@react-navigation/native';
 
-import {AppStateTracking} from './src/analytics';
+import {AppStateTracking, logScreen} from './src/analytics';
 import ApolloClient from './src/apollo/client';
 import {ENV} from './src/env';
 import {AuthProvider} from './src/modules/auth/auth-context';
 import LogMoodModal from './src/modules/diary/modal/LogMoodModal/LogMoodModal';
+import {getCurrentRoute, navigationRef} from './src/navigation';
 import Navigation from './src/navigation/Navigation';
 
 Moment.globalLocale = 'cs';
 Moment.globalFormat = 'Do MMMM YYYY';
 
+const onNavigationStateChange = () => {
+  const routeName = getCurrentRoute()?.name;
+  routeName && logScreen(routeName);
+};
 // TODO PROSTE SE SNAZ VIC HERMANE
 const App = () => {
   console.log(`
@@ -31,7 +36,9 @@ const App = () => {
   return (
     <GestureHandlerRootView style={{flex: 1}}>
       <AppStateTracking />
-      <NavigationContainer>
+      <NavigationContainer
+        ref={navigationRef}
+        onStateChange={onNavigationStateChange}>
         <AuthProvider>
           <ApolloProvider client={ApolloClient}>
             <StatusBar barStyle="dark-content" />

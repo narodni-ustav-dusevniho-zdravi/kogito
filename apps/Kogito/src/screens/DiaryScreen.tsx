@@ -4,7 +4,6 @@ import {useFocusEffect} from '@react-navigation/native';
 import {capitalize, groupBy} from 'lodash';
 import moment from 'moment';
 
-import {logEvent} from '../analytics';
 import MainContainer from '../components/container/MainContainer/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import MainHeader from '../components/container/MainHeader/MainHeader';
@@ -62,8 +61,6 @@ const DiaryScreen: AppScreen<'Diary'> = ({navigation}) => {
 
   useFocusEffect(
     useCallback(() => {
-      logEvent('Journal Opened');
-      console.log('REFETCH');
       refetch();
     }, [refetch]),
   );

@@ -1,6 +1,5 @@
-import React, {useCallback, useState} from 'react';
+import React, {useState} from 'react';
 import {Alert, SafeAreaView, ScrollView} from 'react-native';
-import {useFocusEffect} from '@react-navigation/native';
 
 import type {DayPart, Todo} from '../../gql/__generated__/graphql';
 import {logEvent} from '../analytics';
@@ -12,6 +11,7 @@ import BoxCheckbox from '../components/primitives/BoxCheckbox';
 import Text from '../components/primitives/Text';
 import EditTodoModal from '../modules/diary/modal/EditTodoModal/EditTodoModal';
 import {useTodos} from '../modules/diary/useTodos';
+import type {AppScreen} from '../navigation/Navigation';
 
 type EditorSettings = {
   dayPart: DayPart;
@@ -57,7 +57,7 @@ const DayPartRender: React.FC<DayPartRender> = ({
   );
 };
 
-const TodosScreen: React.FC = () => {
+const TodosScreen: AppScreen<'Todos'> = () => {
   const {todos, refetch, saveTodo, trackTodo, removeTodo} = useTodos();
   const [editor, setEditor] = useState<EditorSettings | null>(null);
 
@@ -111,12 +111,6 @@ const TodosScreen: React.FC = () => {
       },
     ]);
   };
-
-  useFocusEffect(
-    useCallback(() => {
-      logEvent('Todo Screen Opened');
-    }, []),
-  );
 
   return (
     <SafeAreaView>

@@ -1,7 +1,6 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {SafeAreaView, ScrollView, useWindowDimensions} from 'react-native';
 import type {RouteProp} from '@react-navigation/native';
-import {useFocusEffect} from '@react-navigation/native';
 import moment from 'moment';
 
 import {logEvent} from '../analytics';
@@ -134,12 +133,6 @@ const ViciousCircleEditScreen: AppScreen<'ViciousCircleEdit'> = () => {
     ((windowWidth > windowHeight ? windowHeight : windowWidth) * 0.2) / 2;
 
   useNavigationListener('beforeRemove', () => handleSave());
-
-  useFocusEffect(
-    useCallback(() => {
-      logEvent('Vicious cycle opened');
-    }, [handleSave]),
-  );
 
   return (
     <SafeAreaView>

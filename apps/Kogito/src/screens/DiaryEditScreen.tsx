@@ -61,7 +61,6 @@ const DiaryEditScreen: AppScreen<'DiaryEdit'> = () => {
   useEffect(() => {
     setId(route.params.id);
     setContent('');
-    logEvent('Journal Entry Opened');
   }, [route.params.id]);
 
   useNavigationListener('beforeRemove', () => handleSave());

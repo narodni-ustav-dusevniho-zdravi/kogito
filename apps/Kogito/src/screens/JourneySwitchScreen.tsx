@@ -1,6 +1,5 @@
 /* eslint-disable no-lone-blocks */
-import React, {useCallback} from 'react';
-import {useFocusEffect} from '@react-navigation/native';
+import React from 'react';
 import styled from 'styled-components/native';
 
 import {logEvent} from '../analytics';
@@ -74,12 +73,6 @@ const JourneySwitchScreen: AppScreen<'JourneySwitch'> = ({navigation}) => {
   const texts = ids.map(id => {
     return rawTexts.find(text => text.id === id);
   });
-
-  useFocusEffect(
-    useCallback(() => {
-      logEvent('Switch screen opened');
-    }, []),
-  );
 
   return (
     <ColoredSafeAreaView angle={138} color1="#FFCE8F" color2="#FFA38F">
