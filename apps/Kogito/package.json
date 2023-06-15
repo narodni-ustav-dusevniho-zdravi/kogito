@@ -54,6 +54,7 @@
     "rn-secure-storage": "^2.0.8",
     "styled-components": "^5.3.11",
     "styled-system": "^5.1.5",
+    "use-event-callback": "^0.1.0",
     "yup": "^1.2.0"
   },
   "devDependencies": {

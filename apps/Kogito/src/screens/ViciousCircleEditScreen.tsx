@@ -1,10 +1,5 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import {
-  BackHandler,
-  SafeAreaView,
-  ScrollView,
-  useWindowDimensions,
-} from 'react-native';
+import {SafeAreaView, ScrollView, useWindowDimensions} from 'react-native';
 import {RouteProp, useFocusEffect} from '@react-navigation/native';
 import {RootStackParamList} from '../navigation/Navigation';
 import {useViciousCircle} from '../modules/diary/useViciousCircle';
@@ -18,6 +13,7 @@ import DetailViciousCircleModal from '../modules/diary/modal/DetailViciousCircle
 import moment from 'moment';
 import useMixPanelTracking from '../tracking/useMixPanelTracking';
 import type {AppScreen} from '../navigation/Navigation';
+import {useNavigationListener} from '../navigation/useNavigationListener';
 
 export type ViciousCircleEditProps = RouteProp<
   RootStackParamList,
@@ -138,19 +134,11 @@ const ViciousCircleEditScreen: AppScreen<'ViciousCircleEdit'> = ({}) => {
   const size =
     ((windowWidth > windowHeight ? windowHeight : windowWidth) * 0.2) / 2;
 
+  useNavigationListener('beforeRemove', () => handleSave());
+
   useFocusEffect(
     useCallback(() => {
       trackViciousCycleOpened();
-
-      const onBackPress = () => {
-        handleSave().then();
-        return false;
-      };
-
-      BackHandler.addEventListener('hardwareBackPress', onBackPress);
-
-      return () =>
-        BackHandler.removeEventListener('hardwareBackPress', onBackPress);
     }, [handleSave]),
   );
 
