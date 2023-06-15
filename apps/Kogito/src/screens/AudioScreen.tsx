@@ -27,6 +27,7 @@ import Modal from '../components/container/Modal/Modal';
 import Button from '../components/primitives/Button';
 import useMixPanelTracking from '../tracking/useMixPanelTracking';
 import type {AppScreen} from '../navigation/Navigation';
+import {useNavigationListener} from '../navigation/useNavigationListener';
 
 export type AudioScreenProps = RouteProp<RootStackParamList, 'Audio'>;
 
@@ -144,23 +145,15 @@ const AudioScreen: AppScreen<'Audio'> = ({navigation}) => {
     }
   }, [lastProgressTrack]);
 
+  useNavigationListener('blur', () => SoundPlayer.stop());
+  useNavigationListener('beforeRemove', () => SoundPlayer.stop());
+
   useEffect(() => {
     setCurrentTrack(null);
     setLastProgressTrack(0);
     if (audioFile) {
       setCurrentTrack(audioFile.link);
     }
-    const blurUnsubscribe = navigation.addListener('blur', () => {
-      console.log('BLUR');
-      SoundPlayer.stop();
-    });
-    const beforeRemoveUnsubscribe = navigation.addListener(
-      'beforeRemove',
-      () => {
-        console.log('REMOVE!');
-        SoundPlayer.stop();
-      },
-    );
     const finishedLoadingSubscription = SoundPlayer.addEventListener(
       'FinishedLoadingURL',
       () => {
@@ -180,14 +173,12 @@ const AudioScreen: AppScreen<'Audio'> = ({navigation}) => {
 
     return () => {
       console.log('Unsubscribing!');
-      blurUnsubscribe();
-      beforeRemoveUnsubscribe();
       finishedLoadingSubscription.remove();
       finishedPlayingSubscription.remove();
       // SoundPlayer.stop();
       clearInterval(getInfoInterval);
     };
-  }, [navigation]);
+  }, []);
 
   // useEffect(() => {
   //   const onBackPress = () => {

@@ -1,21 +1,22 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import {BackHandler, Platform, SafeAreaView} from 'react-native';
+import {SafeAreaView} from 'react-native';
 import MainContainer from '../components/container/MainContainer/MainContainer';
 import MainHeader from '../components/container/MainHeader/MainHeader';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import Text from '../components/primitives/Text';
 import TextArea from '../components/form/TextArea';
 import {useDiaryEntry} from '../modules/diary/useDiaryEntry';
-import {RouteProp, useFocusEffect, useRoute} from '@react-navigation/native';
+import {RouteProp, useRoute} from '@react-navigation/native';
 import {RootStackParamList} from '../navigation/Navigation';
 import useEventListener from '../helpers/useEventListener';
 import moment from 'moment';
 import useMixPanelTracking from '../tracking/useMixPanelTracking';
 import type {AppScreen} from '../navigation/Navigation';
+import {useNavigationListener} from '../navigation/useNavigationListener';
 
 export type AudioScreenProps = RouteProp<RootStackParamList, 'DiaryEdit'>;
 
-const DiaryEditScreen: AppScreen<'DiaryEdit'> = ({navigation}) => {
+const DiaryEditScreen: AppScreen<'DiaryEdit'> = () => {
   const route = useRoute<AudioScreenProps>();
   const [id, setId] = useState<string | null>(null);
   const [content, setContent] = useState<string>('');
@@ -64,31 +65,7 @@ const DiaryEditScreen: AppScreen<'DiaryEdit'> = ({navigation}) => {
     trackJournalEntryOpened();
   }, [route.params.id]);
 
-  useEffect(() => {
-    const callback = () => {
-      if (Platform.OS === 'ios') {
-        handleSave().then();
-      }
-    };
-
-    navigation.addListener('beforeRemove', callback);
-
-    return () => navigation.removeListener('beforeRemove', callback);
-  }, [navigation, handleSave]);
-
-  useFocusEffect(
-    useCallback(() => {
-      const onBackPress = () => {
-        handleSave().then();
-        return true;
-      };
-
-      BackHandler.addEventListener('hardwareBackPress', onBackPress);
-
-      return () =>
-        BackHandler.removeEventListener('hardwareBackPress', onBackPress);
-    }, [handleSave]),
-  );
+  useNavigationListener('beforeRemove', () => handleSave());
 
   return (
     <SafeAreaView>
