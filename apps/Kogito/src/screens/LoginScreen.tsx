@@ -15,7 +15,7 @@ import ColoredSafeAreaView from '../components/primitives/ColoredSafeAreaView';
 import Text from '../components/primitives/Text';
 import {ENV} from '../env';
 import LoginForm from '../modules/auth/form/LoginForm';
-import type {AppScreen} from '../navigation/Navigation';
+import type {AppScreen} from '../navigation';
 
 export const LogoFooterWrapper = styled.View`
   margin-top: auto;

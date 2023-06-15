@@ -11,7 +11,7 @@ import Text from '../components/primitives/Text';
 import useEventListener from '../helpers/useEventListener';
 import {useItemContent} from '../modules/content/useItemContent';
 import {useTrackProgress} from '../modules/content/useTrackProgress';
-import type {AppScreen} from '../navigation/Navigation';
+import type {AppScreen} from '../navigation';
 
 const styles = {
   p: {

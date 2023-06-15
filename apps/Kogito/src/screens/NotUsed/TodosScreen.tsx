@@ -9,7 +9,7 @@ import BoxMediaWrapper from '../../components/primitives/BoxMediaWrapper/BoxMedi
 import GradientBackground from '../../components/primitives/GradientBackground';
 import Hero from '../../components/primitives/Hero/Hero';
 import RoadNavigation from '../../components/primitives/RoadNavigation/RoadNavigation';
-import type {AppScreen} from '../../navigation/Navigation';
+import type {AppScreen} from '../../navigation';
 
 const TodosScreen: AppScreen<'Todos'> = () => {
   return (

@@ -14,7 +14,7 @@ import useEventListener from '../helpers/useEventListener';
 import useInterval from '../helpers/useInterval';
 import {useItemContent} from '../modules/content/useItemContent';
 import {useTrackProgress} from '../modules/content/useTrackProgress';
-import type {AppScreen, RootStackParamList} from '../navigation/Navigation';
+import type {AppScreen, RootStackParamList} from '../navigation';
 
 export type AudioScreenProps = RouteProp<RootStackParamList, 'Audio'>;
 

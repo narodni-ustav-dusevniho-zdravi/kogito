@@ -9,7 +9,7 @@ import DayInfoBox from '../components/primitives/DayInfoBox';
 import Text from '../components/primitives/Text';
 import {useTrackSchedule} from '../modules/content/useTrackSchedule';
 import {useViciousCircleList} from '../modules/diary/useViciousCircleList';
-import type {AppScreen} from '../navigation/Navigation';
+import type {AppScreen} from '../navigation';
 
 const ViciousCircleScreen: AppScreen<'ViciousCircle'> = ({
   navigation: {navigate},

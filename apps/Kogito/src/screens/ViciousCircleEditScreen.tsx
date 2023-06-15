@@ -12,8 +12,7 @@ import ViciousCircle from '../components/primitives/ViciousCircle/VicousCircle';
 import DetailViciousCircleModal from '../modules/diary/modal/DetailViciousCircleModal';
 import EditViciousCircleModal from '../modules/diary/modal/EditViciousCircleModal';
 import {useViciousCircle} from '../modules/diary/useViciousCircle';
-import type {AppScreen, RootStackParamList} from '../navigation/Navigation';
-import {useNavigationListener} from '../navigation/useNavigationListener';
+import type {AppScreen, RootStackParamList} from '../navigation';
 
 export type ViciousCircleEditProps = RouteProp<
   RootStackParamList,

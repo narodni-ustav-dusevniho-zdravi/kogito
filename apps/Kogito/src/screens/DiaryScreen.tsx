@@ -11,7 +11,7 @@ import DayInfoBox from '../components/primitives/DayInfoBox';
 import Text from '../components/primitives/Text';
 import {useDiaryEntry} from '../modules/diary/useDiaryEntry';
 import {useDiaryList} from '../modules/diary/useDiaryList';
-import type {AppScreen} from '../navigation/Navigation';
+import type {AppScreen} from '../navigation';
 
 const DiaryScreen: AppScreen<'Diary'> = ({navigation: {navigate}}) => {
   const {records, refetch} = useDiaryList();

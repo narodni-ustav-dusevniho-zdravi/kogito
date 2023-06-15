@@ -11,7 +11,7 @@ import BoxCheckbox from '../components/primitives/BoxCheckbox';
 import Text from '../components/primitives/Text';
 import EditTodoModal from '../modules/diary/modal/EditTodoModal/EditTodoModal';
 import {useTodos} from '../modules/diary/useTodos';
-import type {AppScreen} from '../navigation/Navigation';
+import type {AppScreen} from '../navigation';
 
 type EditorSettings = {
   dayPart: DayPart;

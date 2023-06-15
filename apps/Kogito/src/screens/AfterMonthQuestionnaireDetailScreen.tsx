@@ -13,10 +13,7 @@ import ProgressBar from '../components/primitives/ProgressBar/ProgressBar';
 import Text from '../components/primitives/Text';
 import Answer from '../modules/questionnaire/components/Answer/';
 import {useQuestionnaire} from '../modules/questionnaire/useQuestionnaire';
-import type {
-  AppScreen,
-  RegistrationStackParamList,
-} from '../navigation/Navigation';
+import type {AppScreen, RegistrationStackParamList} from '../navigation';
 
 export const Footer = styled.View`
   flex-direction: row;

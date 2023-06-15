@@ -10,7 +10,7 @@ import InputSearch from '../../components/primitives/InputSearch';
 import Locked from '../../components/primitives/Locked';
 import Tabs from '../../components/primitives/Tabs';
 import Text from '../../components/primitives/Text';
-import type {AppScreen} from '../../navigation/Navigation';
+import type {AppScreen} from '../../navigation';
 import BoxImg3 from '../assets/box-img-3.png';
 import BoxImg4 from '../assets/box-img-4.png';
 

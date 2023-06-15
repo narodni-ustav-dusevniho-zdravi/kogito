@@ -17,7 +17,7 @@ import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import MainHeader from '../components/container/MainHeader/MainHeader';
 import Text from '../components/primitives/Text';
 import {useStoryContent} from '../modules/content/useStoryContent';
-import type {AppScreen, RootStackParamList} from '../navigation/Navigation';
+import type {AppScreen, RootStackParamList} from '../navigation';
 
 export type StoryDetail = RouteProp<RootStackParamList, 'StoryDetail'>;
 

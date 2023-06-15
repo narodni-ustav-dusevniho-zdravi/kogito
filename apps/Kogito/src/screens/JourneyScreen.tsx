@@ -15,10 +15,7 @@ import TabbedBox from '../components/primitives/TabbedBox/TabbedBox';
 import {redirectItem} from '../helpers/redirectItem';
 import type {ContentItem} from '../modules/content/types';
 import {useJourney} from '../modules/content/useJourney';
-import type {
-  AppScreen,
-  DashboardStackParamList,
-} from '../navigation/Navigation';
+import type {AppScreen, DashboardStackParamList} from '../navigation';
 
 type Items = {
   items: Omit<ContentItem, 'content'>[];

@@ -7,7 +7,7 @@ import MainHeader from '../components/container/MainHeader/MainHeader';
 import ArticleListBox from '../components/primitives/ArticleListBox';
 import Text from '../components/primitives/Text';
 import {useContent} from '../modules/content/useContent';
-import type {AppScreen} from '../navigation/Navigation';
+import type {AppScreen} from '../navigation';
 
 const StoriesListScreen: AppScreen<'StoriesList'> = ({
   navigation: {navigate},

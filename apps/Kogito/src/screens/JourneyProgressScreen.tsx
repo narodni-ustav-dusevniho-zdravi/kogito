@@ -12,7 +12,7 @@ import type {LevelWidgetVariant} from '../components/primitives/LevelWidget';
 import LevelWidget from '../components/primitives/LevelWidget';
 import Text from '../components/primitives/Text';
 import {useContent} from '../modules/content/useContent';
-import type {AppScreen} from '../navigation/Navigation';
+import type {AppScreen} from '../navigation';
 
 const solveState = (
   unlocked: boolean,

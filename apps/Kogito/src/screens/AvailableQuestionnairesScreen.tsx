@@ -10,7 +10,7 @@ import Text from '../components/primitives/Text';
 import QuestionnaireWidget from '../modules/questionnaire/components/QuestionnaireWidget';
 import {useUserQuestionnairesQuery} from '../modules/questionnaire/useUserQuestionnairesQuery';
 import {useMeQuery} from '../modules/user/useMeQuery';
-import type {AppScreen} from '../navigation/Navigation';
+import type {AppScreen} from '../navigation';
 
 const AvailableQuestionnairesScreen: AppScreen<
   'AvailableQuestionnaires'

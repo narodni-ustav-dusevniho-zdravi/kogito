@@ -6,7 +6,7 @@ import MainContainerWrapper from '../../components/container/MainContainerWrappe
 import MainHeader from '../../components/container/MainHeader/MainHeader';
 import GradientBackground from '../../components/primitives/GradientBackground';
 import Hero from '../../components/primitives/Hero';
-import type {AppScreen} from '../../navigation/Navigation';
+import type {AppScreen} from '../../navigation';
 
 const RoadToolsScreen: AppScreen<'RoadTodos'> = () => {
   return (

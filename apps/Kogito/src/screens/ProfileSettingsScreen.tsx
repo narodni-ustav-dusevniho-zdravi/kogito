@@ -9,7 +9,7 @@ import Divider from '../components/primitives/Divider';
 import Text from '../components/primitives/Text';
 import {ENV} from '../env';
 import ProfileSettingsForm from '../modules/user/form/ProfileSettingsForm';
-import type {AppScreen} from '../navigation/Navigation';
+import type {AppScreen} from '../navigation';
 
 const ProfileSettingsScreen: AppScreen<'ProfileSettings'> = ({
   navigation: {navigate},

@@ -27,8 +27,8 @@ import {secondsToTime} from '../helpers/secondsToTime';
 import useEventListener from '../helpers/useEventListener';
 import {useItemContent} from '../modules/content/useItemContent';
 import {useTrackProgress} from '../modules/content/useTrackProgress';
-import type {AppScreen, RootStackParamList} from '../navigation/Navigation';
-import {useNavigationListener} from '../navigation/useNavigationListener';
+import type {AppScreen, RootStackParamList} from '../navigation';
+import {useNavigationListener} from '../navigation';
 
 export type AudioScreenProps = RouteProp<RootStackParamList, 'Audio'>;
 

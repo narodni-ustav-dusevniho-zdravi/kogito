@@ -9,7 +9,7 @@ import Button from '../components/primitives/Button';
 import ColoredSafeAreaView from '../components/primitives/ColoredSafeAreaView';
 import Text from '../components/primitives/Text';
 import {useRegistrationStatus} from '../modules/user/useRegistrationStatus';
-import type {AppScreen} from '../navigation/Navigation';
+import type {AppScreen} from '../navigation';
 
 import {RegisterImgWrapper} from './RegisterScreen';
 

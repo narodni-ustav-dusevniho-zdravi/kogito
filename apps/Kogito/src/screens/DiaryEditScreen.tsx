@@ -12,8 +12,8 @@ import TextArea from '../components/form/TextArea';
 import Text from '../components/primitives/Text';
 import useEventListener from '../helpers/useEventListener';
 import {useDiaryEntry} from '../modules/diary/useDiaryEntry';
-import type {AppScreen, RootStackParamList} from '../navigation/Navigation';
-import {useNavigationListener} from '../navigation/useNavigationListener';
+import type {AppScreen, RootStackParamList} from '../navigation';
+import {useNavigationListener} from '../navigation';
 
 export type AudioScreenProps = RouteProp<RootStackParamList, 'DiaryEdit'>;
 

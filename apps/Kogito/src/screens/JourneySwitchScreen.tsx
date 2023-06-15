@@ -8,7 +8,7 @@ import BoxJourney from '../components/primitives/BoxJourney';
 import ColoredSafeAreaView from '../components/primitives/ColoredSafeAreaView';
 import {useSwitchJourney} from '../modules/content/useSwitchJourney';
 import {useRegistrationStatus} from '../modules/user/useRegistrationStatus';
-import type {AppScreen} from '../navigation/Navigation';
+import type {AppScreen} from '../navigation';
 
 const S = {
   HeadlineContainer: styled.View`

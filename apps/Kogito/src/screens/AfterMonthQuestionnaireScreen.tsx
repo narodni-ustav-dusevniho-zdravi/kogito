@@ -11,7 +11,7 @@ import {useSelectJourney} from '../modules/content/useSelectJourney';
 import QuestionnaireWidget from '../modules/questionnaire/components/QuestionnaireWidget';
 import {useAfterMonthQuestionnaireQuery} from '../modules/questionnaire/useAfterMonthQuestionnaireQuery';
 import {useMeQuery} from '../modules/user/useMeQuery';
-import type {AppScreen} from '../navigation/Navigation';
+import type {AppScreen} from '../navigation';
 
 const AfterMonthQuestionnaireScreen: AppScreen<'AfterMonthQuestionnaire'> = ({
   navigation: {replace, navigate},

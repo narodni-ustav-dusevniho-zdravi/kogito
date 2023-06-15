@@ -9,7 +9,7 @@ import Button from '../components/primitives/Button';
 import ColoredSafeAreaView from '../components/primitives/ColoredSafeAreaView';
 import terms from '../modules/user/data/terms';
 import {useTerms} from '../modules/user/useTerms';
-import type {AppScreen} from '../navigation/Navigation';
+import type {AppScreen} from '../navigation';
 
 const TermsScreen: AppScreen<'Terms'> = ({navigation: {replace}}) => {
   const {setSeenTerms, haveSeenTerms} = useTerms();

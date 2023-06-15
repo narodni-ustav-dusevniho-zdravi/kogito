@@ -14,7 +14,7 @@ import Text from '../components/primitives/Text';
 import images from '../helpers/images';
 import {redirectItem} from '../helpers/redirectItem';
 import {useContent} from '../modules/content/useContent';
-import type {AppScreen} from '../navigation/Navigation';
+import type {AppScreen} from '../navigation';
 
 const RelaxationScreen: AppScreen<'Relaxation'> = () => {
   const {bonusRelaxation, journeyRelaxation} = useContent();
