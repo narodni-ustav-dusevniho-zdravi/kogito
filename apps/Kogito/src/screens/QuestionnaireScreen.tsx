@@ -1,7 +1,5 @@
 import React, {useEffect} from 'react';
 import {SafeAreaView, ScrollView} from 'react-native';
-import type {RouteProp} from '@react-navigation/native';
-import {useRoute} from '@react-navigation/native';
 import styled from 'styled-components/native';
 
 import MainContainer from '../components/container/MainContainer/MainContainer';
@@ -13,7 +11,7 @@ import ProgressBar from '../components/primitives/ProgressBar/ProgressBar';
 import Text from '../components/primitives/Text';
 import Answer from '../modules/questionnaire/components/Answer/';
 import {useQuestionnaire} from '../modules/questionnaire/useQuestionnaire';
-import type {AppScreen, RegistrationStackParamList} from '../navigation';
+import type {AppScreen} from '../navigation';
 
 export const Footer = styled.View`
   flex-direction: row;
@@ -25,12 +23,8 @@ export const AnswerWrapper = styled.View`
 
 const QuestionnaireScreen: AppScreen<'QuestionnaireScreen'> = ({
   navigation: {navigate},
+  route,
 }) => {
-  const route =
-    useRoute<
-      RouteProp<{params: RegistrationStackParamList['QuestionnaireScreen']}>
-    >();
-
   const {
     actualQuestion,
     actualAnswer,

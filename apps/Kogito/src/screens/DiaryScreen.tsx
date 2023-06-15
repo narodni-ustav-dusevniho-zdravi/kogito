@@ -1,6 +1,5 @@
-import React, {useCallback, useMemo} from 'react';
+import React, {useMemo} from 'react';
 import {Alert, SafeAreaView, ScrollView} from 'react-native';
-import {useFocusEffect} from '@react-navigation/native';
 import {capitalize, groupBy} from 'lodash';
 import moment from 'moment';
 
@@ -11,7 +10,7 @@ import DayInfoBox from '../components/primitives/DayInfoBox';
 import Text from '../components/primitives/Text';
 import {useDiaryEntry} from '../modules/diary/useDiaryEntry';
 import {useDiaryList} from '../modules/diary/useDiaryList';
-import type {AppScreen} from '../navigation';
+import {type AppScreen, useOnScreenFocus} from '../navigation';
 
 const DiaryScreen: AppScreen<'Diary'> = ({navigation: {navigate}}) => {
   const {records, refetch} = useDiaryList();
@@ -59,11 +58,7 @@ const DiaryScreen: AppScreen<'Diary'> = ({navigation: {navigate}}) => {
     ]);
   };
 
-  useFocusEffect(
-    useCallback(() => {
-      refetch();
-    }, [refetch]),
-  );
+  useOnScreenFocus(() => refetch());
 
   return (
     <SafeAreaView>

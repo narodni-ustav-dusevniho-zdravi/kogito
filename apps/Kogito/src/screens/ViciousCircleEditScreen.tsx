@@ -1,6 +1,5 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {SafeAreaView, ScrollView, useWindowDimensions} from 'react-native';
-import type {RouteProp} from '@react-navigation/native';
 import moment from 'moment';
 
 import {logEvent} from '../analytics';
@@ -12,12 +11,7 @@ import ViciousCircle from '../components/primitives/ViciousCircle/VicousCircle';
 import DetailViciousCircleModal from '../modules/diary/modal/DetailViciousCircleModal';
 import EditViciousCircleModal from '../modules/diary/modal/EditViciousCircleModal';
 import {useViciousCircle} from '../modules/diary/useViciousCircle';
-import type {AppScreen, RootStackParamList} from '../navigation';
-
-export type ViciousCircleEditProps = RouteProp<
-  RootStackParamList,
-  'ViciousCircleEdit'
->;
+import {type AppScreen, useNavigationListener} from '../navigation';
 
 type Parts =
   | 'trigger'

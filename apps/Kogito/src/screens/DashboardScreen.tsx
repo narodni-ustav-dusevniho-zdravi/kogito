@@ -1,6 +1,5 @@
-import React, {useCallback} from 'react';
+import React from 'react';
 import {SafeAreaView, ScrollView, TouchableOpacity, View} from 'react-native';
-import {useFocusEffect} from '@react-navigation/native';
 
 import MainContainer from '../components/container/MainContainer/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
@@ -13,17 +12,12 @@ import Text from '../components/primitives/Text';
 import images from '../helpers/images';
 import {redirectItem} from '../helpers/redirectItem';
 import {useContent} from '../modules/content/useContent';
-import type {AppScreen} from '../navigation';
+import {type AppScreen, useOnScreenFocus} from '../navigation';
 
 const DashboardScreen: AppScreen<'MyDay'> = ({navigation: {navigate}}) => {
   const {userJourney, currentRelaxation, newestStory, refetch} = useContent();
 
-  useFocusEffect(
-    useCallback(() => {
-      console.log('focus efetc');
-      refetch();
-    }, [refetch]),
-  );
+  useOnScreenFocus(() => refetch());
 
   return (
     <SafeAreaView>

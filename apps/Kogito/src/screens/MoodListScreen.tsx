@@ -1,7 +1,6 @@
-import React, {useCallback, useEffect, useMemo} from 'react';
+import React, {useEffect, useMemo} from 'react';
 import {Alert, Image, SafeAreaView, ScrollView, View} from 'react-native';
 import {gql, useMutation} from '@apollo/client';
-import {useFocusEffect} from '@react-navigation/native';
 import {groupBy} from 'lodash';
 import moment from 'moment';
 
@@ -24,7 +23,7 @@ import MoodRecord from '../components/primitives/MoodRecord/MoodRecord';
 import Text from '../components/primitives/Text';
 import useEventListener from '../helpers/useEventListener';
 import {useMoodsList} from '../modules/diary/useMoodsList';
-import type {AppScreen} from '../navigation';
+import {type AppScreen, useOnScreenFocus} from '../navigation';
 
 const prepareCount = (items: MoodCount[], mood: Mood): number => {
   return items.find(item => item.mood === mood)?.count || 0;
@@ -102,11 +101,7 @@ const MoodListScreen: AppScreen<'MoodList'> = () => {
     };
   }, []);
 
-  useFocusEffect(
-    useCallback(() => {
-      refetch();
-    }, [refetch]),
-  );
+  useOnScreenFocus(() => refetch());
 
   return (
     <SafeAreaView>

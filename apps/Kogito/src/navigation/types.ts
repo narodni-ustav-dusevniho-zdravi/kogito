@@ -1,5 +1,9 @@
 import type {BottomTabScreenProps} from '@react-navigation/bottom-tabs';
-import type {StackScreenProps} from '@react-navigation/stack';
+import type {RouteProp} from '@react-navigation/native';
+import type {
+  StackNavigationProp,
+  StackScreenProps,
+} from '@react-navigation/stack';
 
 export type RootStackParamList = {
   AfterMonthQuestionnaire: undefined;
@@ -69,6 +73,13 @@ export type AppParamList = DashboardStackParamList &
   UnusedScreensParamList;
 
 export type AppScreenName = keyof AppParamList;
+
+export type AppNavigationProps<S extends AppScreenName> = StackNavigationProp<
+  AppParamList,
+  S
+>;
+
+export type AppRouteProps<T extends AppScreenName> = RouteProp<AppParamList, T>;
 
 export type AppScreen<T extends AppScreenName> = React.FC<
   T extends keyof DashboardTabParamList

@@ -1,6 +1,5 @@
-import React, {useCallback, useRef} from 'react';
+import React, {useRef} from 'react';
 import {ScrollView, TouchableOpacity, View} from 'react-native';
-import {useFocusEffect} from '@react-navigation/native';
 
 import type {Journey} from '../../gql/__generated__/graphql';
 import MainContainer from '../components/container/MainContainer/MainContainer';
@@ -12,7 +11,7 @@ import type {LevelWidgetVariant} from '../components/primitives/LevelWidget';
 import LevelWidget from '../components/primitives/LevelWidget';
 import Text from '../components/primitives/Text';
 import {useContent} from '../modules/content/useContent';
-import type {AppScreen} from '../navigation';
+import {type AppScreen, useOnScreenFocus} from '../navigation';
 
 const solveState = (
   unlocked: boolean,
@@ -45,12 +44,7 @@ const JourneyProgressScreen: AppScreen<'JourneyProgress'> = ({
 }) => {
   const scrollRef = useRef<ScrollView>(null);
   const {userJourney, refetch} = useContent();
-  useFocusEffect(
-    useCallback(() => {
-      console.log('focus efetc');
-      refetch();
-    }, [refetch]),
-  );
+  useOnScreenFocus(() => refetch());
 
   return (
     <ColoredSafeAreaView

@@ -27,6 +27,14 @@ module.exports = {
               'Please use ENV from src/env which uses react-native-config internally instead',
           },
         ],
+        patterns: [
+          {
+            group: ['@react-navigation/*'],
+            importNames: ['useRoute', 'useNavigation'],
+            message:
+              'Import from project `navigation` module as there is better type coverage :)',
+          },
+        ],
       },
     ],
   },

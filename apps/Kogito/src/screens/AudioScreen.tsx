@@ -9,8 +9,6 @@ import {
 import DropShadow from 'react-native-drop-shadow';
 import HTML from 'react-native-render-html';
 import SoundPlayer from 'react-native-sound-player';
-import type {RouteProp} from '@react-navigation/native';
-import {useRoute} from '@react-navigation/native';
 
 import {logEvent} from '../analytics';
 import MainContainer from '../components/container/MainContainer/MainContainer';
@@ -27,10 +25,8 @@ import {secondsToTime} from '../helpers/secondsToTime';
 import useEventListener from '../helpers/useEventListener';
 import {useItemContent} from '../modules/content/useItemContent';
 import {useTrackProgress} from '../modules/content/useTrackProgress';
-import type {AppScreen, RootStackParamList} from '../navigation';
+import type {AppScreen} from '../navigation';
 import {useNavigationListener} from '../navigation';
-
-export type AudioScreenProps = RouteProp<RootStackParamList, 'Audio'>;
 
 const styles = {
   p: {
@@ -46,8 +42,7 @@ const styles = {
   },
 };
 
-const AudioScreen: AppScreen<'Audio'> = ({navigation: {navigate}}) => {
-  const route = useRoute<AudioScreenProps>();
+const AudioScreen: AppScreen<'Audio'> = ({navigation: {navigate}, route}) => {
   const {fireEvent} = useEventListener();
   const {audioFile} = useItemContent(route.params.id);
   const {trackProgressMutation} = useTrackProgress();

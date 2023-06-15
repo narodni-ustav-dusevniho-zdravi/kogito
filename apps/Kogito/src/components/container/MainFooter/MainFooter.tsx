@@ -1,11 +1,11 @@
 import React from 'react';
-import {useNavigation} from '@react-navigation/native';
 
 import IconDots from '../../../assets/icon-dots.svg';
 import IconMyDay from '../../../assets/icon-my-day.svg';
 import IconRoad from '../../../assets/icon-road.svg';
 import IconSun from '../../../assets/icon-sun.svg';
 import IconTodo from '../../../assets/icon-todo.svg';
+import {useNavigation} from '../../../navigation';
 
 import {BorderTop, Button, Container, Text} from './styles';
 

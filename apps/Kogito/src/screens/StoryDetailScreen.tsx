@@ -8,8 +8,6 @@ import {
 } from 'react-native';
 import HTML from 'react-native-render-html';
 import YoutubePlayer from 'react-native-youtube-iframe';
-import type {RouteProp} from '@react-navigation/native';
-import {useRoute} from '@react-navigation/native';
 
 import {logEvent} from '../analytics';
 import MainContainer from '../components/container/MainContainer/MainContainer';
@@ -17,9 +15,7 @@ import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import MainHeader from '../components/container/MainHeader/MainHeader';
 import Text from '../components/primitives/Text';
 import {useStoryContent} from '../modules/content/useStoryContent';
-import type {AppScreen, RootStackParamList} from '../navigation';
-
-export type StoryDetail = RouteProp<RootStackParamList, 'StoryDetail'>;
+import type {AppScreen} from '../navigation';
 
 const styles = StyleSheet.create({
   p: {
@@ -35,8 +31,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const StoryDetailScreen: AppScreen<'StoryDetail'> = () => {
-  const route = useRoute<StoryDetail>();
+const StoryDetailScreen: AppScreen<'StoryDetail'> = ({route}) => {
   const [playing, setPlaying] = useState(false);
   const {story} = useStoryContent(route.params.id);
 

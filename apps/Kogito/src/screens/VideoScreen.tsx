@@ -1,8 +1,6 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {SafeAreaView, ToastAndroid, TouchableOpacity, View} from 'react-native';
 import YoutubePlayer from 'react-native-youtube-iframe';
-import type {RouteProp} from '@react-navigation/native';
-import {useRoute} from '@react-navigation/native';
 
 import {logEvent} from '../analytics';
 import MainContainer from '../components/container/MainContainer/MainContainer';
@@ -14,12 +12,9 @@ import useEventListener from '../helpers/useEventListener';
 import useInterval from '../helpers/useInterval';
 import {useItemContent} from '../modules/content/useItemContent';
 import {useTrackProgress} from '../modules/content/useTrackProgress';
-import type {AppScreen, RootStackParamList} from '../navigation';
+import type {AppScreen} from '../navigation';
 
-export type AudioScreenProps = RouteProp<RootStackParamList, 'Audio'>;
-
-const VideoScreen: AppScreen<'Video'> = () => {
-  const route = useRoute<AudioScreenProps>();
+const VideoScreen: AppScreen<'Video'> = ({route}) => {
   const {fireEvent} = useEventListener();
   const [isLoading, setLoading] = useState(true);
   const [playedSeconds, setPlayedSeconds] = useState(0);

@@ -1,7 +1,7 @@
 import React from 'react';
-import {useNavigation} from '@react-navigation/native';
 
 import IconUser from '../../../assets/icon-user.svg';
+import {useNavigation} from '../../../navigation';
 import GoBack from '../../primitives/GoBack';
 
 import S from './styles';

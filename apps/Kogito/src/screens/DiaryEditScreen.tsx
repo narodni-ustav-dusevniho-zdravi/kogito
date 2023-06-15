@@ -1,7 +1,5 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {SafeAreaView} from 'react-native';
-import type {RouteProp} from '@react-navigation/native';
-import {useRoute} from '@react-navigation/native';
 import moment from 'moment';
 
 import {logEvent} from '../analytics';
@@ -12,13 +10,10 @@ import TextArea from '../components/form/TextArea';
 import Text from '../components/primitives/Text';
 import useEventListener from '../helpers/useEventListener';
 import {useDiaryEntry} from '../modules/diary/useDiaryEntry';
-import type {AppScreen, RootStackParamList} from '../navigation';
+import type {AppScreen} from '../navigation';
 import {useNavigationListener} from '../navigation';
 
-export type AudioScreenProps = RouteProp<RootStackParamList, 'DiaryEdit'>;
-
-const DiaryEditScreen: AppScreen<'DiaryEdit'> = () => {
-  const route = useRoute<AudioScreenProps>();
+const DiaryEditScreen: AppScreen<'DiaryEdit'> = ({route}) => {
   const [id, setId] = useState<string | null>(null);
   const [content, setContent] = useState<string>('');
   const {fireEvent} = useEventListener();

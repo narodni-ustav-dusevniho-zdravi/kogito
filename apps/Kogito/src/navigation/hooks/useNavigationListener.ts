@@ -1,6 +1,6 @@
 import {useEffect} from 'react';
-import type {NavigationProp} from '@react-navigation/native';
-import {useNavigation} from '@react-navigation/native';
+// eslint-disable-next-line no-restricted-imports
+import {type NavigationProp, useNavigation} from '@react-navigation/native';
 import useEventCallback from 'use-event-callback';
 
 /*

@@ -1,7 +1,5 @@
-import React, {useCallback} from 'react';
+import React from 'react';
 import {SafeAreaView, ScrollView, Text} from 'react-native';
-import type {RouteProp} from '@react-navigation/native';
-import {useFocusEffect, useRoute} from '@react-navigation/native';
 
 import type {Journey} from '../../gql/__generated__/graphql';
 import {logEvent} from '../analytics';
@@ -15,15 +13,13 @@ import TabbedBox from '../components/primitives/TabbedBox/TabbedBox';
 import {redirectItem} from '../helpers/redirectItem';
 import type {ContentItem} from '../modules/content/types';
 import {useJourney} from '../modules/content/useJourney';
-import type {AppScreen, DashboardStackParamList} from '../navigation';
+import {type AppScreen, useOnScreenFocus} from '../navigation';
 
 type Items = {
   items: Omit<ContentItem, 'content'>[];
   level: number;
   type?: string;
 };
-
-type RoadPhaseNavigationProp = RouteProp<DashboardStackParamList, 'Journey'>;
 
 const Items: React.FC<Items> = ({type, level, items}) => {
   const trackAndRedirect = (item: Items['items'][0]) => {
@@ -76,16 +72,10 @@ const colorSecond = (journey: Pick<Journey, 'id'> | null) => {
   }
 };
 
-const JourneyScreen: AppScreen<'Journey'> = () => {
-  const route = useRoute<RoadPhaseNavigationProp>();
+const JourneyScreen: AppScreen<'Journey'> = ({route}) => {
   const {journey, refetch} = useJourney(route.params.id);
 
-  useFocusEffect(
-    useCallback(() => {
-      console.log('focus efetc');
-      refetch();
-    }, [refetch]),
-  );
+  useOnScreenFocus(() => refetch());
 
   if (!journey) {
     return (
