@@ -1,7 +1,7 @@
 import React from 'react';
 import DropShadow from 'react-native-drop-shadow';
 
-import IconPlay from '../../../assets/icon-play.svg';
+import IconPlay from '~assets/icon-play.svg';
 
 import {Container, Image, Text, TextWrapper, Wrapper} from './styles';
 

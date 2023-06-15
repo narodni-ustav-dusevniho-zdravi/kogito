@@ -2,7 +2,8 @@ import React from 'react';
 import Moment from 'react-moment';
 import {View} from 'react-native';
 
-import Woman from '../../../assets/woman-2.svg';
+import Woman from '~assets/woman-2.svg';
+
 import Button from '../Button';
 
 import {Container, ContainerInner, Text, Title} from './styles';

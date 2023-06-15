@@ -3,7 +3,7 @@ import DropShadow from 'react-native-drop-shadow';
 import styled from 'styled-components/native';
 import {variant} from 'styled-system';
 
-import Check from '../../../assets/check.svg';
+import Check from '~assets/check.svg';
 
 const StyledButton = styled.TouchableOpacity``;
 const Wrapper = styled.View<{finished: boolean}>`

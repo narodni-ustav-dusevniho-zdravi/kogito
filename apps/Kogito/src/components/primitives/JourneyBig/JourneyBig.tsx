@@ -1,8 +1,9 @@
 import React from 'react';
 import {View} from 'react-native';
 
-import HeroAnxiety from '../../../assets/anxiety/hero.svg';
-import HeroDepression from '../../../assets/depression/hero.svg';
+import HeroAnxiety from '~assets/anxiety/hero.svg';
+import HeroDepression from '~assets/depression/hero.svg';
+
 import Button from '../Button';
 
 import {Container, ContainerInner, Title} from './styles';

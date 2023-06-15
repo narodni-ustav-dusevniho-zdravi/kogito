@@ -2,7 +2,7 @@ import React from 'react';
 import type ReactNative from 'react-native';
 import {TouchableOpacity} from 'react-native';
 
-import IconPlus from '../../../assets/icon-plus.svg';
+import IconPlus from '~assets/icon-plus.svg';
 
 import S from './styles';
 

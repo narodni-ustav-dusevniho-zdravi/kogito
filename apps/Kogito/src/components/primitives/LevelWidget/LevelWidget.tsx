@@ -1,6 +1,7 @@
 import React from 'react';
 
-import Check from '../../../assets/check.svg';
+import Check from '~assets/check.svg';
+
 import ProgressBar from '../ProgressBar';
 
 import S from './styles';

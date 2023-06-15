@@ -1,6 +1,6 @@
 import React from 'react';
 
-import IconLock from '../../../assets/icon-lock.svg';
+import IconLock from '~assets/icon-lock.svg';
 
 import S from './styles';
 

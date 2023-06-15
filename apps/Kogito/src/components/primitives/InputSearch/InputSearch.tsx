@@ -1,6 +1,6 @@
 import React from 'react';
 
-import IconSearch from '../../../assets/icon-search.svg';
+import IconSearch from '~assets/icon-search.svg';
 
 import S from './styles';
 

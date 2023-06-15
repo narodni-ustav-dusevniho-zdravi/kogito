@@ -1,8 +1,8 @@
 import React from 'react';
 import DropShadow from 'react-native-drop-shadow';
 
-import IconLocked from '../../../assets/icon-locked.svg';
-import IconPlay from '../../../assets/icon-play.svg';
+import IconLocked from '~assets/icon-locked.svg';
+import IconPlay from '~assets/icon-play.svg';
 
 import S from './styles';
 

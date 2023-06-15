@@ -1,13 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import {Image} from 'react-native';
 
+import EmoticoedHappy from '~assets/emotions/happy.png';
+import EmoticonOkay from '~assets/emotions/okay.png';
+import EmoticonSad from '~assets/emotions/sad.png';
+import EmoticonSatisfied from '~assets/emotions/satisfied.png';
+import EmoticonVerysad from '~assets/emotions/verysad.png';
+
 import type {Mood} from '../../../../../gql/__generated__/graphql';
 import {logEvent} from '../../../../analytics';
-import EmoticoedHappy from '../../../../assets/emotions/happy.png';
-import EmoticonOkay from '../../../../assets/emotions/okay.png';
-import EmoticonSad from '../../../../assets/emotions/sad.png';
-import EmoticonSatisfied from '../../../../assets/emotions/satisfied.png';
-import EmoticonVerysad from '../../../../assets/emotions/verysad.png';
 import Modal from '../../../../components/container/Modal/Modal';
 import ModalEmoticon from '../../../../components/container/ModalEmoticon/ModalEmoticon';
 import ButtonIcon from '../../../../components/primitives/ButtonIcon';

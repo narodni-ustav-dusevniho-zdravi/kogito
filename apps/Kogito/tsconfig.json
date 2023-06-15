@@ -4,7 +4,8 @@
     "types": ["@types/styled-components-react-native"],
     "baseUrl": "./" /* Base directory to resolve non-absolute module names. */,
     "paths": {
-      "~modules/*": ["./src/modules/*"]
+      "~modules/*": ["./src/modules/*"],
+      "~assets/*": ["./src/assets/*"]
     }
   }
 }

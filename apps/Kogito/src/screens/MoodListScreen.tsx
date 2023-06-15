@@ -4,6 +4,11 @@ import {gql, useMutation} from '@apollo/client';
 import {groupBy} from 'lodash';
 import moment from 'moment';
 
+import EmoticonHappy from '~assets/emotions/happy.png';
+import EmoticonOkay from '~assets/emotions/okay.png';
+import EmoticonSad from '~assets/emotions/sad.png';
+import EmoticonSatisfied from '~assets/emotions/satisfied.png';
+import EmoticonVerysad from '~assets/emotions/verysad.png';
 import {type AppScreen, useOnScreenFocus} from '~modules/navigation';
 
 import type {
@@ -12,11 +17,6 @@ import type {
   RemoveMoodRecordMutation,
   RemoveMoodRecordMutationVariables,
 } from '../../gql/__generated__/graphql';
-import EmoticonHappy from '../assets/emotions/happy.png';
-import EmoticonOkay from '../assets/emotions/okay.png';
-import EmoticonSad from '../assets/emotions/sad.png';
-import EmoticonSatisfied from '../assets/emotions/satisfied.png';
-import EmoticonVerysad from '../assets/emotions/verysad.png';
 import MainContainer from '../components/container/MainContainer/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import MainHeader from '../components/container/MainHeader/MainHeader';

@@ -1,8 +1,8 @@
 import React from 'react';
 
+import IconUser from '~assets/icon-user.svg';
 import {useNavigation} from '~modules/navigation';
 
-import IconUser from '../../../assets/icon-user.svg';
 import GoBack from '../../primitives/GoBack';
 
 import S from './styles';

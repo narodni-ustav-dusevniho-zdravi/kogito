@@ -2,9 +2,9 @@ import React, {useEffect} from 'react';
 import {BackHandler, Image, ScrollView} from 'react-native';
 import HTML from 'react-native-render-html';
 
+import Logo from '~assets/logo.png';
 import type {AppScreen} from '~modules/navigation';
 
-import Logo from '../assets/logo.png';
 import MainContainer from '../components/container/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import Button from '../components/primitives/Button';

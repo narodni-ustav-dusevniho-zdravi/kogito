@@ -1,7 +1,7 @@
 import React from 'react';
 import type ReactNative from 'react-native';
 
-import IconCoin from '../../../assets/icon-coin.svg';
+import IconCoin from '~assets/icon-coin.svg';
 
 import {StyledButton, Text} from './styles';
 

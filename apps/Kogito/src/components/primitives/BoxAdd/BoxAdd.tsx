@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Icon from '../../../assets/icon-plus.svg';
+import Icon from '~assets/icon-plus.svg';
 
 import S from './styles';
 

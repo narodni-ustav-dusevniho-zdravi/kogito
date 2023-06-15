@@ -1,7 +1,7 @@
 import React from 'react';
 import type ReactNative from 'react-native';
 
-import IconBack from '../../../assets/icon-chevron-left.svg';
+import IconBack from '~assets/icon-chevron-left.svg';
 
 import {StyledButton} from './styles';
 

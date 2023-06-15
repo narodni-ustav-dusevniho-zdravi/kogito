@@ -1,11 +1,12 @@
 import React from 'react';
 
+import EmoticonHappy from '~assets/emotions/happy.png';
+import EmoticonOkay from '~assets/emotions/okay.png';
+import EmoticonSad from '~assets/emotions/sad.png';
+import EmoticonSatisfied from '~assets/emotions/satisfied.png';
+import EmoticonVerysad from '~assets/emotions/verysad.png';
+
 import type {Mood} from '../../../../gql/__generated__/graphql';
-import EmoticonHappy from '../../../assets/emotions/happy.png';
-import EmoticonOkay from '../../../assets/emotions/okay.png';
-import EmoticonSad from '../../../assets/emotions/sad.png';
-import EmoticonSatisfied from '../../../assets/emotions/satisfied.png';
-import EmoticonVerysad from '../../../assets/emotions/verysad.png';
 
 import S from './styles';
 

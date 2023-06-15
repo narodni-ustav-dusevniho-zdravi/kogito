@@ -2,10 +2,11 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
 
-import IconMyDay from '../../assets/icon-my-day.svg';
-import IconRoad from '../../assets/icon-road.svg';
-import IconSun from '../../assets/icon-sun.svg';
-import IconTodo from '../../assets/icon-todo.svg';
+import IconMyDay from '~assets/icon-my-day.svg';
+import IconRoad from '~assets/icon-road.svg';
+import IconSun from '~assets/icon-sun.svg';
+import IconTodo from '~assets/icon-todo.svg';
+
 import AfterMonthQuestionnaireDetailScreen from '../../screens/AfterMonthQuestionnaireDetailScreen';
 import AfterMonthQuestionnaireScreen from '../../screens/AfterMonthQuestionnaireScreen';
 import ArticleScreen from '../../screens/ArticleScreen';

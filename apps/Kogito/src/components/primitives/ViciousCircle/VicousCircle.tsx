@@ -3,7 +3,7 @@ import type {ViewProps} from 'react-native';
 import {useWindowDimensions} from 'react-native';
 import DropShadow from 'react-native-drop-shadow';
 
-import IconPlus from '../../../assets/icon-plus.svg';
+import IconPlus from '~assets/icon-plus.svg';
 
 import S from './styles';
 

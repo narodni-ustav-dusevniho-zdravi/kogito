@@ -1,10 +1,10 @@
 import React from 'react';
 import DropShadow from 'react-native-drop-shadow';
 
-import IconNext from '../../../assets/icon-audio-next.svg';
-import IconPause from '../../../assets/icon-audio-pause.svg';
-import IconPlay from '../../../assets/icon-audio-play.svg';
-import IconPrev from '../../../assets/icon-audio-prev.svg';
+import IconNext from '~assets/icon-audio-next.svg';
+import IconPause from '~assets/icon-audio-pause.svg';
+import IconPlay from '~assets/icon-audio-play.svg';
+import IconPrev from '~assets/icon-audio-prev.svg';
 
 import S from './styles';
 

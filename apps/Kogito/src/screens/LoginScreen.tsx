@@ -4,11 +4,11 @@ import {getReadableVersion} from 'react-native-device-info';
 import {useApolloClient} from '@apollo/client';
 import styled from 'styled-components/native';
 
+import GirlImage from '~assets/girl-isolated.svg';
+import LogoFooter from '~assets/login-logo-footer.svg';
+import Logo from '~assets/logo.png';
 import type {AppScreen} from '~modules/navigation';
 
-import GirlImage from '../assets/girl-isolated.svg';
-import LogoFooter from '../assets/login-logo-footer.svg';
-import Logo from '../assets/logo.png';
 import HalfOverlay from '../components/container/HalfOverlay';
 import MainContainer from '../components/container/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';

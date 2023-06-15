@@ -1,8 +1,7 @@
 import React from 'react';
 
+import Icon from '~assets/icon-chevron-left.svg';
 import {useNavigation} from '~modules/navigation';
-
-import Icon from '../../../assets/icon-chevron-left.svg';
 
 import S from './styles';
 

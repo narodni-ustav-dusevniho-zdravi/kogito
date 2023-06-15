@@ -1,8 +1,9 @@
 import React from 'react';
 import {TouchableOpacity} from 'react-native';
 
-import HeroAnxiety from '../../../assets/anxiety/hero.svg';
-import HeroDepression from '../../../assets/depression/hero.svg';
+import HeroAnxiety from '~assets/anxiety/hero.svg';
+import HeroDepression from '~assets/depression/hero.svg';
+
 import Button from '../Button';
 import GradientBackground from '../GradientBackground';
 import ProgressBar from '../ProgressBar';

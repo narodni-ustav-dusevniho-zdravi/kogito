@@ -2,18 +2,19 @@ import React from 'react';
 import Moment from 'react-moment';
 import type ReactNative from 'react-native';
 
+import EmoticonHappy from '~assets/emotions/happy_big.png';
+import ResultHappy from '~assets/emotions/happy_result.png';
+import EmoticonOkay from '~assets/emotions/okay_big.png';
+import ResultOkay from '~assets/emotions/okay_result.png';
+import EmoticonSad from '~assets/emotions/sad_big.png';
+import ResultSad from '~assets/emotions/sad_result.png';
+import EmoticonSatisfied from '~assets/emotions/satisfied_big.png';
+import ResultSatisfied from '~assets/emotions/satisfied_result.png';
+import EmoticonVerysad from '~assets/emotions/verysad_big.png';
+import ResultVerysad from '~assets/emotions/verysad_result.png';
+import IconClose from '~assets/icon-cross.svg';
+
 import type {Mood} from '../../../../gql/__generated__/graphql';
-import EmoticonHappy from '../../../assets/emotions/happy_big.png';
-import ResultHappy from '../../../assets/emotions/happy_result.png';
-import EmoticonOkay from '../../../assets/emotions/okay_big.png';
-import ResultOkay from '../../../assets/emotions/okay_result.png';
-import EmoticonSad from '../../../assets/emotions/sad_big.png';
-import ResultSad from '../../../assets/emotions/sad_result.png';
-import EmoticonSatisfied from '../../../assets/emotions/satisfied_big.png';
-import ResultSatisfied from '../../../assets/emotions/satisfied_result.png';
-import EmoticonVerysad from '../../../assets/emotions/verysad_big.png';
-import ResultVerysad from '../../../assets/emotions/verysad_result.png';
-import IconClose from '../../../assets/icon-cross.svg';
 import Text from '../../primitives/Text';
 
 import S from './styles';
