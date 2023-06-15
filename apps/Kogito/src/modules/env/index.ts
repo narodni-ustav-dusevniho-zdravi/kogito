@@ -3,7 +3,7 @@ import Config from 'react-native-config';
 import dotenvParseVariables from 'dotenv-parse-variables';
 
 const useLocalApi = false;
-export const ENV = {
+const ENV = {
   ...(dotenvParseVariables(
     Config as unknown as Record<string, string>,
   ) as typeof Config),
@@ -13,3 +13,5 @@ export const ENV = {
       : 'https://prod-api.kogito.cz/graphql',
   MODE: __DEV__ ? 'DEVELOPMENT' : 'PRODUCTION',
 };
+
+export default ENV;

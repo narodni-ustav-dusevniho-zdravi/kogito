@@ -7,12 +7,12 @@ import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {ApolloProvider} from '@apollo/client';
 import {NavigationContainer} from '@react-navigation/native';
 
+import ENV from '~modules/env';
 import {getCurrentRoute, navigationRef} from '~modules/navigation';
 import Navigation from '~modules/navigation/Navigation';
 
 import {AppStateTracking, logScreen} from './src/analytics';
 import ApolloClient from './src/apollo/client';
-import {ENV} from './src/env';
 import {AuthProvider} from './src/modules/auth/auth-context';
 import LogMoodModal from './src/modules/diary/modal/LogMoodModal/LogMoodModal';
 
