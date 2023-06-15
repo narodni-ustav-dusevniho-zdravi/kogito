@@ -45,7 +45,9 @@ const rawTexts = [
   },
 ];
 
-const JourneySwitchScreen: AppScreen<'JourneySwitch'> = ({navigation}) => {
+const JourneySwitchScreen: AppScreen<'JourneySwitch'> = ({
+  navigation: {navigate},
+}) => {
   const {status} = useRegistrationStatus();
   const {switchJourneyMutation} = useSwitchJourney();
 
@@ -97,7 +99,7 @@ const JourneySwitchScreen: AppScreen<'JourneySwitch'> = ({navigation}) => {
                         id: textData.id,
                       },
                     }).then(() => {
-                      navigation.navigate('Dashboard');
+                      navigate('Dashboard');
                     });
                   }}
                 />

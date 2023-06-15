@@ -16,7 +16,7 @@ import {redirectItem} from '../helpers/redirectItem';
 import {useContent} from '../modules/content/useContent';
 import type {AppScreen} from '../navigation/Navigation';
 
-const RelaxationScreen: AppScreen<'Relaxation'> = ({navigation}) => {
+const RelaxationScreen: AppScreen<'Relaxation'> = () => {
   const {bonusRelaxation, journeyRelaxation} = useContent();
 
   return (
@@ -48,7 +48,7 @@ const RelaxationScreen: AppScreen<'Relaxation'> = ({navigation}) => {
                         relaxationTitle: item.name,
                         relaxationLevel: 'Bonus',
                       });
-                      redirectItem(navigation, item);
+                      redirectItem(item);
                     }}
                   />
                 ))}
@@ -69,7 +69,7 @@ const RelaxationScreen: AppScreen<'Relaxation'> = ({navigation}) => {
                         isPlayable={item.__typename === 'AudioItem'}
                         subTitle={item.subTitle}
                         title={item.name}
-                        onPress={() => redirectItem(navigation, item)}
+                        onPress={() => redirectItem(item)}
                       />
                     ))
                   ) : (

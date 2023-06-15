@@ -15,11 +15,11 @@ const GoBack: React.FC<ContainerProps> = ({
   beforeBackButton,
   ...rest
 }) => {
-  const navigation = useNavigation();
+  const {navigate} = useNavigation();
 
   const handlePress = async () => {
     await beforeBackButton?.();
-    navigation.navigate('Dashboard');
+    navigate('Dashboard');
   };
 
   return (

@@ -21,14 +21,14 @@ const MainHeader: React.FC<MainContainerProps> = ({
   beforeBackButton,
   // ...rest
 }) => {
-  const navigation = useNavigation();
+  const {navigate} = useNavigation();
 
   return (
     <S.Container bgColor={useTransparent ? 'transparent' : undefined}>
       {title ? (
         <GoBack beforeBackButton={beforeBackButton} title={title} />
       ) : (
-        <IconUser onPress={() => navigation.navigate('ProfileSettings')} />
+        <IconUser onPress={() => navigate('ProfileSettings')} />
       )}
       {/* NOT USED NOW */}
       {/*<Coin title={'132'} />*/}

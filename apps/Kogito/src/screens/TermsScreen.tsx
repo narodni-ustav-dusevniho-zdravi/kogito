@@ -11,18 +11,18 @@ import terms from '../modules/user/data/terms';
 import {useTerms} from '../modules/user/useTerms';
 import type {AppScreen} from '../navigation/Navigation';
 
-const TermsScreen: AppScreen<'Terms'> = ({navigation}) => {
+const TermsScreen: AppScreen<'Terms'> = ({navigation: {replace}}) => {
   const {setSeenTerms, haveSeenTerms} = useTerms();
 
   useEffect(() => {
     if (haveSeenTerms) {
-      navigation.replace('Login');
+      replace('Login');
     }
   }, [haveSeenTerms]);
 
   const handleAgreePress = async () => {
     await setSeenTerms();
-    navigation.replace('Login');
+    replace('Login');
   };
 
   const handleDeclinePress = () => {

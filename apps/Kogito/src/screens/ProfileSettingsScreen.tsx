@@ -11,7 +11,9 @@ import {ENV} from '../env';
 import ProfileSettingsForm from '../modules/user/form/ProfileSettingsForm';
 import type {AppScreen} from '../navigation/Navigation';
 
-const ProfileSettingsScreen: AppScreen<'ProfileSettings'> = ({navigation}) => {
+const ProfileSettingsScreen: AppScreen<'ProfileSettings'> = ({
+  navigation: {navigate},
+}) => {
   const confirmLogoutModal = () => {
     Alert.alert('Doopravdy odhlásit?', undefined, [
       {
@@ -21,7 +23,7 @@ const ProfileSettingsScreen: AppScreen<'ProfileSettings'> = ({navigation}) => {
       },
       {
         text: 'Ano',
-        onPress: () => navigation.navigate('Logout'),
+        onPress: () => navigate('Logout'),
       },
     ]);
   };
@@ -44,7 +46,7 @@ const ProfileSettingsScreen: AppScreen<'ProfileSettings'> = ({navigation}) => {
               style={{marginBottom: 10}}
               title="Chci změnit cestu"
               type="small"
-              onPress={() => navigation.navigate('JourneySwitch')}
+              onPress={() => navigate('JourneySwitch')}
             />
             <Divider />
             <Button

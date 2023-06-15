@@ -46,7 +46,7 @@ const styles = {
   },
 };
 
-const AudioScreen: AppScreen<'Audio'> = ({navigation}) => {
+const AudioScreen: AppScreen<'Audio'> = ({navigation: {navigate}}) => {
   const route = useRoute<AudioScreenProps>();
   const {fireEvent} = useEventListener();
   const {audioFile} = useItemContent(route.params.id);
@@ -269,13 +269,12 @@ const AudioScreen: AppScreen<'Audio'> = ({navigation}) => {
                   disablePrevButton={!audioFile.previous}
                   isPlaying={audioPlaying}
                   onPressNext={() =>
-                    audioFile.next &&
-                    navigation.navigate('Audio', {id: audioFile.next})
+                    audioFile.next && navigate('Audio', {id: audioFile.next})
                   }
                   onPressPlay={() => togglePlay()} //setAudioPlaying(!audioPlaying)}
                   onPressPrev={() =>
                     audioFile.previous &&
-                    navigation.navigate('Audio', {id: audioFile.previous})
+                    navigate('Audio', {id: audioFile.previous})
                   }
                 />
 

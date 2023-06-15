@@ -13,7 +13,10 @@ import ProgressBar from '../components/primitives/ProgressBar/ProgressBar';
 import Text from '../components/primitives/Text';
 import Answer from '../modules/questionnaire/components/Answer/';
 import {useQuestionnaire} from '../modules/questionnaire/useQuestionnaire';
-import type {RegistrationStackParamList} from '../navigation/Navigation';
+import type {
+  AppScreen,
+  RegistrationStackParamList,
+} from '../navigation/Navigation';
 
 export const Footer = styled.View`
   flex-direction: row;
@@ -23,8 +26,10 @@ export const AnswerWrapper = styled.View`
   margin-top: 20px;
 `;
 
-const AfterMonthQuestionnaireDetailScreen: React.FC = () => {
-  const navigation = useNavigation();
+const AfterMonthQuestionnaireDetailScreen: AppScreen<
+  'AfterMonthQuestionnaireDetail'
+> = () => {
+  const {navigate} = useNavigation();
   const route = useRoute<
     RouteProp<{
       params: RegistrationStackParamList['QuestionnaireScreen'];
@@ -46,7 +51,7 @@ const AfterMonthQuestionnaireDetailScreen: React.FC = () => {
 
   useEffect(() => {
     if (finished) {
-      navigation.navigate('AfterMonthQuestionnaire');
+      navigate('AfterMonthQuestionnaire');
     }
   }, [finished]);
 

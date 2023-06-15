@@ -7,7 +7,7 @@ import {useMeQuery} from '../modules/user/useMeQuery';
 import {useTerms} from '../modules/user/useTerms';
 import type {AppScreen} from '../navigation/Navigation';
 
-const SplashScreen: AppScreen<'Splash'> = ({navigation}) => {
+const SplashScreen: AppScreen<'Splash'> = ({navigation: {replace}}) => {
   const {status} = useAuth();
   const {haveSeenTerms} = useTerms();
   const {me, haveActiveQuestionnaire} = useMeQuery();
@@ -16,9 +16,9 @@ const SplashScreen: AppScreen<'Splash'> = ({navigation}) => {
   useEffect(() => {
     if (status === 'unauthenticated') {
       if (haveSeenTerms) {
-        navigation.replace('Login');
+        replace('Login');
       } else {
-        navigation.replace('Terms');
+        replace('Terms');
       }
 
       BootSplash.hide();
@@ -30,12 +30,12 @@ const SplashScreen: AppScreen<'Splash'> = ({navigation}) => {
     if (me) {
       console.log(me);
       if (haveActiveQuestionnaire) {
-        navigation.replace('AfterMonthQuestionnaire');
+        replace('AfterMonthQuestionnaire');
         // eslint-disable-next-line no-negated-condition
       } else if (!me.finishedRegistration) {
-        navigation.replace('Registration');
+        replace('Registration');
       } else {
-        navigation.replace('Dashboard');
+        replace('Dashboard');
       }
 
       BootSplash.hide();

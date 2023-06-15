@@ -15,7 +15,7 @@ import {redirectItem} from '../helpers/redirectItem';
 import {useContent} from '../modules/content/useContent';
 import type {AppScreen} from '../navigation/Navigation';
 
-const DashboardScreen: AppScreen<'MyDay'> = ({navigation}) => {
+const DashboardScreen: AppScreen<'MyDay'> = ({navigation: {navigate}}) => {
   const {userJourney, currentRelaxation, newestStory, refetch} = useContent();
 
   useFocusEffect(
@@ -39,9 +39,9 @@ const DashboardScreen: AppScreen<'MyDay'> = ({navigation}) => {
                 variant={
                   userJourney.id === 'Sm91cm5leTox' ? 'depression' : 'anxiety'
                 }
-                onPress={() => navigation.navigate('JourneyProgress')}
+                onPress={() => navigate('JourneyProgress')}
                 onPressContinue={() =>
-                  navigation.navigate('Journey', {
+                  navigate('Journey', {
                     id: userJourney.id,
                     level: userJourney.currentLevel,
                   })
@@ -50,8 +50,7 @@ const DashboardScreen: AppScreen<'MyDay'> = ({navigation}) => {
             )}
 
             <MainContainer page="sub">
-              <TouchableOpacity
-                onPress={() => navigation.navigate('Relaxation')}>
+              <TouchableOpacity onPress={() => navigate('Relaxation')}>
                 <Text textVariant="headerSub">Relaxace</Text>
               </TouchableOpacity>
             </MainContainer>
@@ -65,7 +64,7 @@ const DashboardScreen: AppScreen<'MyDay'> = ({navigation}) => {
                     img={images('audioDetail', item.image ? item.image : null)}
                     maxHeight={true}
                     title={item.name}
-                    onPress={() => redirectItem(navigation, item)}
+                    onPress={() => redirectItem(item)}
                   />
                 ))}
               </BoxWrapper>
@@ -80,8 +79,7 @@ const DashboardScreen: AppScreen<'MyDay'> = ({navigation}) => {
                     justifyContent: 'space-between',
                   }}>
                   <Text textVariant="headerSub">Příběhy</Text>
-                  <TouchableOpacity
-                    onPress={() => navigation.navigate('StoriesList')}>
+                  <TouchableOpacity onPress={() => navigate('StoriesList')}>
                     <Text colorVariant="gray" textVariant="headerSub">
                       další příběhy
                     </Text>
@@ -92,9 +90,7 @@ const DashboardScreen: AppScreen<'MyDay'> = ({navigation}) => {
                   buttonText={newestStory.videoLink ? 'Přehrát' : 'Přečíst'}
                   date={newestStory.published}
                   title={newestStory.title}
-                  onPress={() =>
-                    navigation.navigate('StoryDetail', {id: newestStory.id})
-                  }
+                  onPress={() => navigate('StoryDetail', {id: newestStory.id})}
                 />
               </MainContainer>
             )}

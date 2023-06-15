@@ -24,6 +24,7 @@ import MoodRecord from '../components/primitives/MoodRecord/MoodRecord';
 import Text from '../components/primitives/Text';
 import useEventListener from '../helpers/useEventListener';
 import {useMoodsList} from '../modules/diary/useMoodsList';
+import type {AppScreen} from '../navigation/Navigation';
 
 const prepareCount = (items: MoodCount[], mood: Mood): number => {
   return items.find(item => item.mood === mood)?.count || 0;
@@ -35,7 +36,7 @@ const removeMoodRecordMutation = gql`
   }
 `;
 
-const MoodListScreen: React.FC = () => {
+const MoodListScreen: AppScreen<'MoodList'> = () => {
   const {records, moodsCount, refetch} = useMoodsList();
   const {fireEvent, addListener, removeListener} = useEventListener();
   const [removeMoodRecord] = useMutation<

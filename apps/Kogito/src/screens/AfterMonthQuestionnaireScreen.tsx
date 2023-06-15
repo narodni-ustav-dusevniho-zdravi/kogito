@@ -14,7 +14,7 @@ import {useMeQuery} from '../modules/user/useMeQuery';
 import type {AppScreen} from '../navigation/Navigation';
 
 const AfterMonthQuestionnaireScreen: AppScreen<'AfterMonthQuestionnaire'> = ({
-  navigation,
+  navigation: {replace, navigate},
 }) => {
   const {haveToChooseJourney, questionnaire, loading, refetch} =
     useAfterMonthQuestionnaireQuery();
@@ -37,10 +37,10 @@ const AfterMonthQuestionnaireScreen: AppScreen<'AfterMonthQuestionnaire'> = ({
 
   const handlePress = async () => {
     if (haveToChooseJourney) {
-      navigation.navigate('SelectJourneyScreen');
+      navigate('SelectJourneyScreen');
     } else {
       await selectJourneyMutation();
-      navigation.replace('Dashboard');
+      replace('Dashboard');
     }
   };
 
@@ -85,7 +85,7 @@ const AfterMonthQuestionnaireScreen: AppScreen<'AfterMonthQuestionnaire'> = ({
                     name={item.questionnaire.name}
                     press={() =>
                       !item.finished &&
-                      navigation.navigate('AfterMonthQuestionnaireDetail', {
+                      navigate('AfterMonthQuestionnaireDetail', {
                         id: item.id,
                       })
                     }

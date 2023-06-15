@@ -10,9 +10,12 @@ import Text from '../components/primitives/Text';
 import QuestionnaireWidget from '../modules/questionnaire/components/QuestionnaireWidget';
 import {useUserQuestionnairesQuery} from '../modules/questionnaire/useUserQuestionnairesQuery';
 import {useMeQuery} from '../modules/user/useMeQuery';
+import type {AppScreen} from '../navigation/Navigation';
 
-const AvailableQuestionnairesScreen: React.FC = () => {
-  const navigation = useNavigation();
+const AvailableQuestionnairesScreen: AppScreen<
+  'AvailableQuestionnaires'
+> = () => {
+  const {navigate} = useNavigation();
   const {userQuestionnaires, userState, loading, refetch} =
     useUserQuestionnairesQuery();
   // eslint-disable-next-line no-empty-pattern
@@ -46,7 +49,7 @@ const AvailableQuestionnairesScreen: React.FC = () => {
                 name="Základní údaje"
                 press={() =>
                   !userState?.userInfoCompleted &&
-                  navigation.navigate('FinishRegistrationScreen')
+                  navigate('FinishRegistrationScreen')
                 }
               />
 
@@ -59,7 +62,7 @@ const AvailableQuestionnairesScreen: React.FC = () => {
                     name={item.questionnaire.name}
                     press={() =>
                       !item.finished &&
-                      navigation.navigate('QuestionnaireScreen', {
+                      navigate('QuestionnaireScreen', {
                         id: item.id,
                       })
                     }
@@ -75,12 +78,12 @@ const AvailableQuestionnairesScreen: React.FC = () => {
                   marginTop: 14,
                 }}
                 title="Dokončit"
-                onPress={() => navigation.navigate('QuestionnaireResultScreen')}
+                onPress={() => navigate('QuestionnaireResultScreen')}
               />
             )}
             {/*<Button*/}
             {/*  title="Začít"*/}
-            {/*  onPress={() => navigation.navigate('Dashboard')}*/}
+            {/*  onPress={() => navigate('Dashboard')}*/}
             {/*  style={{*/}
             {/*    marginTop: 14,*/}
             {/*  }}*/}

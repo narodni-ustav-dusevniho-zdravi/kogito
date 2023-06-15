@@ -8,11 +8,11 @@ import FinishRegistrationForm from '../modules/auth/form/FinishRegistrationForm'
 import type {AppScreen} from '../navigation/Navigation';
 
 const FinishRegistrationScreen: AppScreen<'FinishRegistrationScreen'> = ({
-  navigation,
+  navigation: {replace},
 }) => {
   const handleSuccess = useCallback(() => {
-    navigation.replace('AvailableQuestionnaires');
-  }, [navigation]);
+    replace('AvailableQuestionnaires');
+  }, [replace]);
 
   return (
     <SafeAreaView>

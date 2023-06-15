@@ -13,7 +13,7 @@ import {useDiaryEntry} from '../modules/diary/useDiaryEntry';
 import {useDiaryList} from '../modules/diary/useDiaryList';
 import type {AppScreen} from '../navigation/Navigation';
 
-const DiaryScreen: AppScreen<'Diary'> = ({navigation}) => {
+const DiaryScreen: AppScreen<'Diary'> = ({navigation: {navigate}}) => {
   const {records, refetch} = useDiaryList();
   const {removeDiaryEntry} = useDiaryEntry(null);
 
@@ -74,7 +74,7 @@ const DiaryScreen: AppScreen<'Diary'> = ({navigation}) => {
             <Text
               space="main"
               textVariant="bigHeader"
-              onPressPlus={() => navigation.navigate('DiaryEdit', {id: null})}>
+              onPressPlus={() => navigate('DiaryEdit', {id: null})}>
               Deník
             </Text>
 
@@ -91,9 +91,7 @@ const DiaryScreen: AppScreen<'Diary'> = ({navigation}) => {
                       date={date}
                       title={entry.previewText}
                       onLongPress={() => handleLongPress(entry.id)}
-                      onPress={() =>
-                        navigation.navigate('DiaryEdit', {id: entry.id})
-                      }
+                      onPress={() => navigate('DiaryEdit', {id: entry.id})}
                     />
                   );
                 })}

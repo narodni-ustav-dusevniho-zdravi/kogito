@@ -40,7 +40,9 @@ const colorSecond = (journey: Pick<Journey, 'id'> | undefined) => {
   }
 };
 
-const JourneyProgressScreen: AppScreen<'JourneyProgress'> = ({navigation}) => {
+const JourneyProgressScreen: AppScreen<'JourneyProgress'> = ({
+  navigation: {navigate},
+}) => {
   const scrollRef = useRef<ScrollView>(null);
   const {userJourney, refetch} = useContent();
   useFocusEffect(
@@ -77,7 +79,7 @@ const JourneyProgressScreen: AppScreen<'JourneyProgress'> = ({navigation}) => {
                         progress={level.progress}
                         state={solveState(level.unlocked, level.progress)}
                         onPress={() =>
-                          navigation.navigate('Journey', {
+                          navigate('Journey', {
                             id: userJourney.id,
                             level: level.level,
                           })
@@ -93,7 +95,7 @@ const JourneyProgressScreen: AppScreen<'JourneyProgress'> = ({navigation}) => {
                       y: 0,
                       animated: false,
                     });
-                    navigation.navigate('JourneySwitch');
+                    navigate('JourneySwitch');
                   }}>
                   <Text align="center">Chci změnit cestu</Text>
                 </TouchableOpacity>

@@ -11,7 +11,9 @@ import {useTrackSchedule} from '../modules/content/useTrackSchedule';
 import {useViciousCircleList} from '../modules/diary/useViciousCircleList';
 import type {AppScreen} from '../navigation/Navigation';
 
-const ViciousCircleScreen: AppScreen<'ViciousCircle'> = ({navigation}) => {
+const ViciousCircleScreen: AppScreen<'ViciousCircle'> = ({
+  navigation: {navigate},
+}) => {
   const {records, refetch} = useViciousCircleList();
   // eslint-disable-next-line no-empty-pattern
   const {} = useTrackSchedule();
@@ -49,9 +51,7 @@ const ViciousCircleScreen: AppScreen<'ViciousCircle'> = ({navigation}) => {
           <Text
             space="main"
             textVariant="bigHeader"
-            onPressPlus={() =>
-              navigation.navigate('ViciousCircleEdit', {id: null})
-            }>
+            onPressPlus={() => navigate('ViciousCircleEdit', {id: null})}>
             Kruhy
           </Text>
 
@@ -69,7 +69,7 @@ const ViciousCircleScreen: AppScreen<'ViciousCircle'> = ({navigation}) => {
                     date={date}
                     title="Title"
                     onPress={() =>
-                      navigation.navigate('ViciousCircleEdit', {id: entry.id})
+                      navigate('ViciousCircleEdit', {id: entry.id})
                     }
                   />
                 );

@@ -16,28 +16,28 @@ type MainContainerProps = {
 };
 
 const MainFooter: React.FC<MainContainerProps> = ({align = null, ...rest}) => {
-  const navigation = useNavigation();
+  const {navigate} = useNavigation();
 
   return (
     <Container align={align} {...rest}>
       <BorderTop />
-      <Button onPress={() => navigation.navigate('Dashboard')}>
+      <Button onPress={() => navigate('Dashboard')}>
         <IconMyDay color="#8e8e93" />
         <Text>Můj den</Text>
       </Button>
-      <Button onPress={() => navigation.navigate('JourneyProgress')}>
+      <Button onPress={() => navigate('JourneyProgress')}>
         <IconRoad color="#8e8e93" />
         <Text>Cesta</Text>
       </Button>
-      <Button onPress={() => navigation.navigate('Relaxation')}>
+      <Button onPress={() => navigate('Relaxation')}>
         <IconSun color="#8e8e93" />
         <Text>Relaxace</Text>
       </Button>
-      <Button onPress={() => navigation.navigate('RoadTodos')}>
+      <Button onPress={() => navigate('RoadTodos')}>
         <IconTodo color="#8e8e93" />
         <Text>Úkoly</Text>
       </Button>
-      <Button onPress={() => navigation.navigate('Signpost')}>
+      <Button onPress={() => navigate('Signpost')}>
         <IconDots
           color="#8e8e93"
           style={{marginTop: 'auto', marginBottom: 'auto'}}

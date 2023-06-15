@@ -17,7 +17,7 @@ import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import MainHeader from '../components/container/MainHeader/MainHeader';
 import Text from '../components/primitives/Text';
 import {useStoryContent} from '../modules/content/useStoryContent';
-import type {RootStackParamList} from '../navigation/Navigation';
+import type {AppScreen, RootStackParamList} from '../navigation/Navigation';
 
 export type StoryDetail = RouteProp<RootStackParamList, 'StoryDetail'>;
 
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const StoryDetailScreen: React.FC = () => {
+const StoryDetailScreen: AppScreen<'StoryDetail'> = () => {
   const route = useRoute<StoryDetail>();
   const [playing, setPlaying] = useState(false);
   const {story} = useStoryContent(route.params.id);

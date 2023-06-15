@@ -28,7 +28,10 @@ const styles = {
   },
 };
 
-const ArticleScreen: AppScreen<'Article'> = ({navigation, route}) => {
+const ArticleScreen: AppScreen<'Article'> = ({
+  navigation: {replace, goBack},
+  route,
+}) => {
   const {fireEvent} = useEventListener();
   const {articleItem} = useItemContent(route.params.id);
   const windowWidth = useWindowDimensions().width;
@@ -63,10 +66,10 @@ const ArticleScreen: AppScreen<'Article'> = ({navigation, route}) => {
         if (articleItem.options) {
           const options = JSON.parse(articleItem.options);
           if (options.navigate) {
-            navigation.replace(options.navigate.name);
+            replace(options.navigate.name);
           }
         } else {
-          navigation.goBack();
+          goBack();
         }
       } else {
         setPosition(position + 1);

@@ -2,7 +2,6 @@ import React, {useCallback, useState} from 'react';
 import {Image} from 'react-native';
 import {getReadableVersion} from 'react-native-device-info';
 import {useApolloClient} from '@apollo/client';
-import {useNavigation} from '@react-navigation/native';
 import styled from 'styled-components/native';
 
 import GirlImage from '../assets/girl-isolated.svg';
@@ -16,6 +15,7 @@ import ColoredSafeAreaView from '../components/primitives/ColoredSafeAreaView';
 import Text from '../components/primitives/Text';
 import {ENV} from '../env';
 import LoginForm from '../modules/auth/form/LoginForm';
+import type {AppScreen} from '../navigation/Navigation';
 
 export const LogoFooterWrapper = styled.View`
   margin-top: auto;
@@ -24,8 +24,7 @@ export const LogoFooterWrapper = styled.View`
 
 type State = 'normal' | 'login' | 'registration';
 
-const LoginScreen: React.FC = () => {
-  const navigation = useNavigation();
+const LoginScreen: AppScreen<'Login'> = ({navigation: {navigate}}) => {
   const apolloClient = useApolloClient();
   const [state, setState] = useState<State>('normal');
 
@@ -35,8 +34,8 @@ const LoginScreen: React.FC = () => {
 
     setState('normal');
 
-    navigation.navigate('Splash');
-  }, [navigation, apolloClient]);
+    navigate('Splash');
+  }, [navigate, apolloClient]);
 
   return (
     <ColoredSafeAreaView>

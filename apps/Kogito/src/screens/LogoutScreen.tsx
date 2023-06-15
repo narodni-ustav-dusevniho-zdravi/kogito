@@ -5,7 +5,7 @@ import {useApolloClient} from '@apollo/client';
 import {useAuth} from '../modules/auth/useAuth';
 import type {AppScreen} from '../navigation/Navigation';
 
-const LogoutScreen: AppScreen<'Logout'> = ({navigation}) => {
+const LogoutScreen: AppScreen<'Logout'> = ({navigation: {replace}}) => {
   const {clearTokens} = useAuth();
   const apolloClient = useApolloClient();
 
@@ -16,7 +16,7 @@ const LogoutScreen: AppScreen<'Logout'> = ({navigation}) => {
 
       await clearTokens();
 
-      navigation.replace('Login');
+      replace('Login');
     })();
   }, []);
 

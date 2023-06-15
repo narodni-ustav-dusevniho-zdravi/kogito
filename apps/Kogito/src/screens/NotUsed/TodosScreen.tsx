@@ -9,8 +9,9 @@ import BoxMediaWrapper from '../../components/primitives/BoxMediaWrapper/BoxMedi
 import GradientBackground from '../../components/primitives/GradientBackground';
 import Hero from '../../components/primitives/Hero/Hero';
 import RoadNavigation from '../../components/primitives/RoadNavigation/RoadNavigation';
+import type {AppScreen} from '../../navigation/Navigation';
 
-const TodosScreen: React.FC = () => {
+const TodosScreen: AppScreen<'Todos'> = () => {
   return (
     <SafeAreaView>
       <GradientBackground angle={138} color1="#ffd1a0" color2="#ffdfdf">

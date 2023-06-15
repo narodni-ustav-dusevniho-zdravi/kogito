@@ -2,7 +2,6 @@ import React, {useCallback} from 'react';
 import {SafeAreaView, ScrollView, Text} from 'react-native';
 import type {RouteProp} from '@react-navigation/native';
 import {useFocusEffect, useRoute} from '@react-navigation/native';
-import type {StackNavigationProp} from '@react-navigation/stack/src/types';
 
 import type {Journey} from '../../gql/__generated__/graphql';
 import {logEvent} from '../analytics';
@@ -24,15 +23,14 @@ import type {
 type Items = {
   items: Omit<ContentItem, 'content'>[];
   level: number;
-  navigation: StackNavigationProp<any, any>;
   type?: string;
 };
 
 type RoadPhaseNavigationProp = RouteProp<DashboardStackParamList, 'Journey'>;
 
-const Items: React.FC<Items> = ({type, level, items, navigation}) => {
+const Items: React.FC<Items> = ({type, level, items}) => {
   const trackAndRedirect = (item: Items['items'][0]) => {
-    redirectItem(navigation, item);
+    redirectItem(item);
     switch (type) {
       case 'lesson':
         return logEvent('Lesson Opened', {
@@ -81,7 +79,7 @@ const colorSecond = (journey: Pick<Journey, 'id'> | null) => {
   }
 };
 
-const JourneyScreen: AppScreen<'Journey'> = ({navigation}) => {
+const JourneyScreen: AppScreen<'Journey'> = () => {
   const route = useRoute<RoadPhaseNavigationProp>();
   const {journey, refetch} = useJourney(route.params.id);
 
@@ -137,7 +135,6 @@ const JourneyScreen: AppScreen<'Journey'> = ({navigation}) => {
                     <Items
                       items={selectedLevel.phase}
                       level={selectedLevel.level}
-                      navigation={navigation}
                       type="lesson"
                     />
                   ),
@@ -149,7 +146,6 @@ const JourneyScreen: AppScreen<'Journey'> = ({navigation}) => {
                     <Items
                       items={selectedLevel.tools}
                       level={selectedLevel.level}
-                      navigation={navigation}
                     />
                   ),
                 },
@@ -160,7 +156,6 @@ const JourneyScreen: AppScreen<'Journey'> = ({navigation}) => {
                     <Items
                       items={selectedLevel.relaxation}
                       level={selectedLevel.level}
-                      navigation={navigation}
                       type="relaxation"
                     />
                   ),
@@ -172,7 +167,6 @@ const JourneyScreen: AppScreen<'Journey'> = ({navigation}) => {
                     <Items
                       items={selectedLevel.tasks}
                       level={selectedLevel.level}
-                      navigation={navigation}
                     />
                   ),
                 },

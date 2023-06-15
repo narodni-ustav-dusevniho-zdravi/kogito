@@ -10,16 +10,16 @@ type ContainerProps = ViewProps & {
 };
 
 const Tabs: React.FC<ContainerProps> = ({isActive = false, ...rest}) => {
-  const navigation = useNavigation();
+  const {navigate} = useNavigation();
   return (
     <Container {...rest}>
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
         <ScrollViewInner>
-          <Link onPress={() => navigation.navigate('Relaxation')}>
+          <Link onPress={() => navigate('Relaxation')}>
             <Text isActive={true}>Bojujte s depresí</Text>
             <Border isActive={true} />
           </Link>
-          <Link onPress={() => navigation.navigate('RelaxationLocked')}>
+          <Link onPress={() => navigate('RelaxationLocked')}>
             <Text isActive={isActive}>Jak se vyrovnat z úzkostí</Text>
             <Border isActive={isActive} />
           </Link>

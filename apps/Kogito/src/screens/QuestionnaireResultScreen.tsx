@@ -126,7 +126,7 @@ const resultTexts = {
 };
 
 const QuestionnaireResultScreen: AppScreen<'QuestionnaireResultScreen'> = ({
-  navigation,
+  navigation: {navigate},
 }) => {
   const {status, loading} = useRegistrationStatus();
   const [page, setPage] = useState(0);
@@ -140,7 +140,7 @@ const QuestionnaireResultScreen: AppScreen<'QuestionnaireResultScreen'> = ({
       if (resultTexts[status.group][status.userLabel].length - 1 > page) {
         setPage(page + 1);
       } else if (status.group === 'normal') {
-        navigation.navigate('JourneySwitch');
+        navigate('JourneySwitch');
       }
     }
   };

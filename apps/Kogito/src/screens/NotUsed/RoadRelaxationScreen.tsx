@@ -6,8 +6,9 @@ import MainContainerWrapper from '../../components/container/MainContainerWrappe
 import MainHeader from '../../components/container/MainHeader/MainHeader';
 import GradientBackground from '../../components/primitives/GradientBackground';
 import Hero from '../../components/primitives/Hero';
+import type {AppScreen} from '../../navigation/Navigation';
 
-const RoadRelaxationScreen: React.FC = () => {
+const RoadRelaxationScreen: AppScreen<'RoadRelaxation'> = () => {
   return (
     <SafeAreaView>
       <GradientBackground angle={138} color1="#ffd1a0" color2="#ffdfdf">

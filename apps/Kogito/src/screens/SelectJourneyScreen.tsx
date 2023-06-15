@@ -9,7 +9,7 @@ import {useSelectJourney} from '../modules/content/useSelectJourney';
 import type {AppScreen} from '../navigation/Navigation';
 
 const SelectJourneyScreen: AppScreen<'SelectJourneyScreen'> = ({
-  navigation,
+  navigation: {navigate},
 }) => {
   const {selectJourneyMutation} = useSelectJourney();
 
@@ -20,7 +20,7 @@ const SelectJourneyScreen: AppScreen<'SelectJourneyScreen'> = ({
       },
     });
 
-    navigation.navigate('Dashboard');
+    navigate('Dashboard');
   };
 
   return (

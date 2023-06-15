@@ -9,7 +9,9 @@ import Text from '../components/primitives/Text';
 import {useContent} from '../modules/content/useContent';
 import type {AppScreen} from '../navigation/Navigation';
 
-const StoriesListScreen: AppScreen<'StoriesList'> = ({navigation}) => {
+const StoriesListScreen: AppScreen<'StoriesList'> = ({
+  navigation: {navigate},
+}) => {
   const {stories} = useContent();
 
   return (
@@ -31,9 +33,7 @@ const StoriesListScreen: AppScreen<'StoriesList'> = ({navigation}) => {
                   key={story.id}
                   buttonText={story.videoLink ? 'Přehrát' : 'Přečíst'}
                   title={story.title}
-                  onPress={() =>
-                    navigation.navigate('StoryDetail', {id: story.id})
-                  }
+                  onPress={() => navigate('StoryDetail', {id: story.id})}
                 />
               ))}
             </MainContainer>

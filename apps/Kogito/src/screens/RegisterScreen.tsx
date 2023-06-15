@@ -1,5 +1,4 @@
 import React from 'react';
-import {useNavigation} from '@react-navigation/native';
 import styled from 'styled-components/native';
 
 import LogoFooter from '../assets/login-logo-footer.svg';
@@ -20,8 +19,7 @@ export const RegisterImgWrapper = styled.View`
   align-self: center;
 `;
 
-const RegisterScreen: AppScreen<'Register'> = () => {
-  const navigation = useNavigation();
+const RegisterScreen: AppScreen<'Register'> = ({navigation: {navigate}}) => {
   return (
     <ColoredSafeAreaView>
       <MainContainer align="left">
@@ -41,7 +39,7 @@ const RegisterScreen: AppScreen<'Register'> = () => {
         </LogoFooterWrapper>
         <Button
           title="Vyplnit dotazník"
-          onPress={() => navigation.navigate('AvailableQuestionnaires')}
+          onPress={() => navigate('AvailableQuestionnaires')}
         />
         <RegisterImgWrapper>
           <RegisterImg />
