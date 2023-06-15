@@ -10,6 +10,9 @@ import DropShadow from 'react-native-drop-shadow';
 import HTML from 'react-native-render-html';
 import SoundPlayer from 'react-native-sound-player';
 
+import type {AppScreen} from '~modules/navigation';
+import {useNavigationListener} from '~modules/navigation';
+
 import {logEvent} from '../analytics';
 import MainContainer from '../components/container/MainContainer/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
@@ -25,8 +28,6 @@ import {secondsToTime} from '../helpers/secondsToTime';
 import useEventListener from '../helpers/useEventListener';
 import {useItemContent} from '../modules/content/useItemContent';
 import {useTrackProgress} from '../modules/content/useTrackProgress';
-import type {AppScreen} from '../navigation';
-import {useNavigationListener} from '../navigation';
 
 const styles = {
   p: {

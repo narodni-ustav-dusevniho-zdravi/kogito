@@ -2,6 +2,8 @@ import React, {useEffect} from 'react';
 import {SafeAreaView, ScrollView} from 'react-native';
 import styled from 'styled-components/native';
 
+import type {AppScreen} from '~modules/navigation';
+
 import MainContainer from '../components/container/MainContainer/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper/MainContainerWrapper';
 import Button from '../components/primitives/Button/Button';
@@ -11,7 +13,6 @@ import ProgressBar from '../components/primitives/ProgressBar/ProgressBar';
 import Text from '../components/primitives/Text';
 import Answer from '../modules/questionnaire/components/Answer/';
 import {useQuestionnaire} from '../modules/questionnaire/useQuestionnaire';
-import type {AppScreen} from '../navigation';
 
 export const Footer = styled.View`
   flex-direction: row;

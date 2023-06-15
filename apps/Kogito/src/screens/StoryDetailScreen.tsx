@@ -9,13 +9,14 @@ import {
 import HTML from 'react-native-render-html';
 import YoutubePlayer from 'react-native-youtube-iframe';
 
+import type {AppScreen} from '~modules/navigation';
+
 import {logEvent} from '../analytics';
 import MainContainer from '../components/container/MainContainer/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import MainHeader from '../components/container/MainHeader/MainHeader';
 import Text from '../components/primitives/Text';
 import {useStoryContent} from '../modules/content/useStoryContent';
-import type {AppScreen} from '../navigation';
 
 const styles = StyleSheet.create({
   p: {

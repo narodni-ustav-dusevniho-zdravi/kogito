@@ -4,6 +4,8 @@ import {gql, useMutation} from '@apollo/client';
 import {groupBy} from 'lodash';
 import moment from 'moment';
 
+import {type AppScreen, useOnScreenFocus} from '~modules/navigation';
+
 import type {
   Mood,
   MoodCount,
@@ -23,7 +25,6 @@ import MoodRecord from '../components/primitives/MoodRecord/MoodRecord';
 import Text from '../components/primitives/Text';
 import useEventListener from '../helpers/useEventListener';
 import {useMoodsList} from '../modules/diary/useMoodsList';
-import {type AppScreen, useOnScreenFocus} from '../navigation';
 
 const prepareCount = (items: MoodCount[], mood: Mood): number => {
   return items.find(item => item.mood === mood)?.count || 0;

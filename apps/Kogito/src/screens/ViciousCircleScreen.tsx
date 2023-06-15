@@ -3,13 +3,14 @@ import {SafeAreaView, ScrollView} from 'react-native';
 import {capitalize, groupBy} from 'lodash';
 import moment from 'moment';
 
+import type {AppScreen} from '~modules/navigation';
+
 import MainContainerWrapper from '../components/container/MainContainerWrapper/MainContainerWrapper';
 import MainHeader from '../components/container/MainHeader/MainHeader';
 import DayInfoBox from '../components/primitives/DayInfoBox';
 import Text from '../components/primitives/Text';
 import {useTrackSchedule} from '../modules/content/useTrackSchedule';
 import {useViciousCircleList} from '../modules/diary/useViciousCircleList';
-import type {AppScreen} from '../navigation';
 
 const ViciousCircleScreen: AppScreen<'ViciousCircle'> = ({
   navigation: {navigate},

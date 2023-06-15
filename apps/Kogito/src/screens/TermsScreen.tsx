@@ -2,6 +2,8 @@ import React, {useEffect} from 'react';
 import {BackHandler, Image, ScrollView} from 'react-native';
 import HTML from 'react-native-render-html';
 
+import type {AppScreen} from '~modules/navigation';
+
 import Logo from '../assets/logo.png';
 import MainContainer from '../components/container/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
@@ -9,7 +11,6 @@ import Button from '../components/primitives/Button';
 import ColoredSafeAreaView from '../components/primitives/ColoredSafeAreaView';
 import terms from '../modules/user/data/terms';
 import {useTerms} from '../modules/user/useTerms';
-import type {AppScreen} from '../navigation';
 
 const TermsScreen: AppScreen<'Terms'> = ({navigation: {replace}}) => {
   const {setSeenTerms, haveSeenTerms} = useTerms();

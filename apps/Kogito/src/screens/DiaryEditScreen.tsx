@@ -2,6 +2,9 @@ import React, {useCallback, useEffect, useState} from 'react';
 import {SafeAreaView} from 'react-native';
 import moment from 'moment';
 
+import type {AppScreen} from '~modules/navigation';
+import {useNavigationListener} from '~modules/navigation';
+
 import {logEvent} from '../analytics';
 import MainContainer from '../components/container/MainContainer/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
@@ -10,8 +13,6 @@ import TextArea from '../components/form/TextArea';
 import Text from '../components/primitives/Text';
 import useEventListener from '../helpers/useEventListener';
 import {useDiaryEntry} from '../modules/diary/useDiaryEntry';
-import type {AppScreen} from '../navigation';
-import {useNavigationListener} from '../navigation';
 
 const DiaryEditScreen: AppScreen<'DiaryEdit'> = ({route}) => {
   const [id, setId] = useState<string | null>(null);

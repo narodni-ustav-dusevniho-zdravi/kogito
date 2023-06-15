@@ -3,6 +3,8 @@ import {Alert, SafeAreaView, ScrollView} from 'react-native';
 import {capitalize, groupBy} from 'lodash';
 import moment from 'moment';
 
+import {type AppScreen, useOnScreenFocus} from '~modules/navigation';
+
 import MainContainer from '../components/container/MainContainer/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import MainHeader from '../components/container/MainHeader/MainHeader';
@@ -10,7 +12,6 @@ import DayInfoBox from '../components/primitives/DayInfoBox';
 import Text from '../components/primitives/Text';
 import {useDiaryEntry} from '../modules/diary/useDiaryEntry';
 import {useDiaryList} from '../modules/diary/useDiaryList';
-import {type AppScreen, useOnScreenFocus} from '../navigation';
 
 const DiaryScreen: AppScreen<'Diary'> = ({navigation: {navigate}}) => {
   const {records, refetch} = useDiaryList();

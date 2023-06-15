@@ -4,6 +4,8 @@ import {getReadableVersion} from 'react-native-device-info';
 import {useApolloClient} from '@apollo/client';
 import styled from 'styled-components/native';
 
+import type {AppScreen} from '~modules/navigation';
+
 import GirlImage from '../assets/girl-isolated.svg';
 import LogoFooter from '../assets/login-logo-footer.svg';
 import Logo from '../assets/logo.png';
@@ -15,7 +17,6 @@ import ColoredSafeAreaView from '../components/primitives/ColoredSafeAreaView';
 import Text from '../components/primitives/Text';
 import {ENV} from '../env';
 import LoginForm from '../modules/auth/form/LoginForm';
-import type {AppScreen} from '../navigation';
 
 export const LogoFooterWrapper = styled.View`
   margin-top: auto;

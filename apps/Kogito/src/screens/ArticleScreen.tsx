@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react';
 import {SafeAreaView, ScrollView, useWindowDimensions} from 'react-native';
 import HTML from 'react-native-render-html';
 
+import type {AppScreen} from '~modules/navigation';
+
 import {logEvent} from '../analytics';
 import MainContainer from '../components/container/MainContainer/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
@@ -11,7 +13,6 @@ import Text from '../components/primitives/Text';
 import useEventListener from '../helpers/useEventListener';
 import {useItemContent} from '../modules/content/useItemContent';
 import {useTrackProgress} from '../modules/content/useTrackProgress';
-import type {AppScreen} from '../navigation';
 
 const styles = {
   p: {

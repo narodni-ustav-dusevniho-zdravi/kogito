@@ -1,6 +1,8 @@
 import React from 'react';
 import {SafeAreaView, ScrollView, Text} from 'react-native';
 
+import {type AppScreen, useOnScreenFocus} from '~modules/navigation';
+
 import type {Journey} from '../../gql/__generated__/graphql';
 import {logEvent} from '../analytics';
 import MainContainer from '../components/container/MainContainer/MainContainer';
@@ -13,7 +15,6 @@ import TabbedBox from '../components/primitives/TabbedBox/TabbedBox';
 import {redirectItem} from '../helpers/redirectItem';
 import type {ContentItem} from '../modules/content/types';
 import {useJourney} from '../modules/content/useJourney';
-import {type AppScreen, useOnScreenFocus} from '../navigation';
 
 type Items = {
   items: Omit<ContentItem, 'content'>[];

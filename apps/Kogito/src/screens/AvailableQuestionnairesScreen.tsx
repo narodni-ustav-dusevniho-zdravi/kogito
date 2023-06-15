@@ -1,6 +1,8 @@
 import React from 'react';
 import {ScrollView, View} from 'react-native';
 
+import {type AppScreen, useOnScreenFocus} from '~modules/navigation';
+
 import MainContainer from '../components/container/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import Button from '../components/primitives/Button';
@@ -9,7 +11,6 @@ import Text from '../components/primitives/Text';
 import QuestionnaireWidget from '../modules/questionnaire/components/QuestionnaireWidget';
 import {useUserQuestionnairesQuery} from '../modules/questionnaire/useUserQuestionnairesQuery';
 import {useMeQuery} from '../modules/user/useMeQuery';
-import {type AppScreen, useOnScreenFocus} from '../navigation';
 
 const AvailableQuestionnairesScreen: AppScreen<'AvailableQuestionnaires'> = ({
   navigation: {navigate},

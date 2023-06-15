@@ -1,4 +1,4 @@
-import type {AppScreenName} from '../navigation';
+import type {AppScreenName} from '~modules/navigation';
 
 import type {ScreenEvent} from './types/events';
 

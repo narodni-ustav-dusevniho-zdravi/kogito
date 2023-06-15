@@ -2,6 +2,8 @@ import React from 'react';
 import {Alert, SafeAreaView, ToastAndroid, View} from 'react-native';
 import {getReadableVersion} from 'react-native-device-info';
 
+import type {AppScreen} from '~modules/navigation';
+
 import MainContainer from '../components/container/MainContainer/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper/MainContainerWrapper';
 import Button from '../components/primitives/Button/Button';
@@ -9,7 +11,6 @@ import Divider from '../components/primitives/Divider';
 import Text from '../components/primitives/Text';
 import {ENV} from '../env';
 import ProfileSettingsForm from '../modules/user/form/ProfileSettingsForm';
-import type {AppScreen} from '../navigation';
 
 const ProfileSettingsScreen: AppScreen<'ProfileSettings'> = ({
   navigation: {navigate},

@@ -1,6 +1,8 @@
 import React from 'react';
 import {SafeAreaView, ScrollView} from 'react-native';
 
+import type {AppScreen} from '~modules/navigation';
+
 import MainContainer from '../components/container/MainContainer/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import MainHeader from '../components/container/MainHeader/MainHeader';
@@ -8,7 +10,6 @@ import BoxCheckbox from '../components/primitives/BoxCheckbox';
 import Text from '../components/primitives/Text';
 import {useContent} from '../modules/content/useContent';
 import {useTrackSchedule} from '../modules/content/useTrackSchedule';
-import type {AppScreen} from '../navigation';
 
 const ScheduleDayScreen: AppScreen<'ScheduleDay'> = () => {
   const {todaySchedule} = useContent();

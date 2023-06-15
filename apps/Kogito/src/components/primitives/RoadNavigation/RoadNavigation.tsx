@@ -1,7 +1,7 @@
 import React from 'react';
 import type {ViewProps} from 'react-native';
 
-import {useNavigation} from '../../../navigation';
+import {useNavigation} from '~modules/navigation';
 
 import S from './styles';
 

@@ -3,13 +3,14 @@ import React, {useEffect, useState} from 'react';
 import {ScrollView} from 'react-native';
 import HTML from 'react-native-render-html';
 
+import type {AppScreen} from '~modules/navigation';
+
 import RegisterImg from '../assets/register-img.svg';
 import MainContainer from '../components/container/MainContainer';
 import Button from '../components/primitives/Button';
 import ColoredSafeAreaView from '../components/primitives/ColoredSafeAreaView';
 import Text from '../components/primitives/Text';
 import {useRegistrationStatus} from '../modules/user/useRegistrationStatus';
-import type {AppScreen} from '../navigation';
 
 import {RegisterImgWrapper} from './RegisterScreen';
 

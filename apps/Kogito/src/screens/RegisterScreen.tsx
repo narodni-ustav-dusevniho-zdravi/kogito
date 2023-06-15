@@ -1,13 +1,14 @@
 import React from 'react';
 import styled from 'styled-components/native';
 
+import type {AppScreen} from '~modules/navigation';
+
 import LogoFooter from '../assets/login-logo-footer.svg';
 import RegisterImg from '../assets/register-img.svg';
 import MainContainer from '../components/container/MainContainer';
 import Button from '../components/primitives/Button';
 import ColoredSafeAreaView from '../components/primitives/ColoredSafeAreaView';
 import Text from '../components/primitives/Text';
-import type {AppScreen} from '../navigation';
 
 import {LogoFooterWrapper} from './LoginScreen';
 

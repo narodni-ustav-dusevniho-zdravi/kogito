@@ -1,8 +1,9 @@
 import type {MixpanelProperties} from 'mixpanel-react-native';
 import {Mixpanel} from 'mixpanel-react-native';
 
+import type {AppScreenName} from '~modules/navigation';
+
 import {ENV} from '../env';
-import type {AppScreenName} from '../navigation';
 
 import type {Events, NoParamsEvent} from './types/events';
 import {getScreenOpenedEvent} from './screenEventMapping';

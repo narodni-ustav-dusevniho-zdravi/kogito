@@ -2,7 +2,7 @@ import React from 'react';
 import type {ViewProps} from 'react-native';
 import {ScrollView} from 'react-native';
 
-import {useNavigation} from '../../../navigation';
+import {useNavigation} from '~modules/navigation';
 
 import {Border, Container, Link, ScrollViewInner, Text} from './styles';
 

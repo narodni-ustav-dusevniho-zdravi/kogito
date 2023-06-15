@@ -2,10 +2,11 @@ import React, {useEffect} from 'react';
 import {SafeAreaView} from 'react-native';
 import BootSplash from 'react-native-bootsplash';
 
+import type {AppScreen} from '~modules/navigation';
+
 import {useAuth} from '../modules/auth/useAuth';
 import {useMeQuery} from '../modules/user/useMeQuery';
 import {useTerms} from '../modules/user/useTerms';
-import type {AppScreen} from '../navigation';
 
 const SplashScreen: AppScreen<'Splash'> = ({navigation: {replace}}) => {
   const {status} = useAuth();

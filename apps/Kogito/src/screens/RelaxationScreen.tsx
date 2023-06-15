@@ -1,6 +1,8 @@
 import React from 'react';
 import {SafeAreaView, ScrollView} from 'react-native';
 
+import type {AppScreen} from '~modules/navigation';
+
 import {logEvent} from '../analytics';
 import MainContainer from '../components/container/MainContainer/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
@@ -14,7 +16,6 @@ import Text from '../components/primitives/Text';
 import images from '../helpers/images';
 import {redirectItem} from '../helpers/redirectItem';
 import {useContent} from '../modules/content/useContent';
-import type {AppScreen} from '../navigation';
 
 const RelaxationScreen: AppScreen<'Relaxation'> = () => {
   const {bonusRelaxation, journeyRelaxation} = useContent();

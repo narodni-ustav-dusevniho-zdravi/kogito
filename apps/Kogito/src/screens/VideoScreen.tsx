@@ -2,6 +2,8 @@ import React, {useCallback, useEffect, useState} from 'react';
 import {SafeAreaView, ToastAndroid, TouchableOpacity, View} from 'react-native';
 import YoutubePlayer from 'react-native-youtube-iframe';
 
+import type {AppScreen} from '~modules/navigation';
+
 import {logEvent} from '../analytics';
 import MainContainer from '../components/container/MainContainer/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
@@ -12,7 +14,6 @@ import useEventListener from '../helpers/useEventListener';
 import useInterval from '../helpers/useInterval';
 import {useItemContent} from '../modules/content/useItemContent';
 import {useTrackProgress} from '../modules/content/useTrackProgress';
-import type {AppScreen} from '../navigation';
 
 const VideoScreen: AppScreen<'Video'> = ({route}) => {
   const {fireEvent} = useEventListener();

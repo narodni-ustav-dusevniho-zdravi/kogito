@@ -2,8 +2,9 @@ import React, {useEffect} from 'react';
 import {SafeAreaView} from 'react-native';
 import {useApolloClient} from '@apollo/client';
 
+import type {AppScreen} from '~modules/navigation';
+
 import {useAuth} from '../modules/auth/useAuth';
-import type {AppScreen} from '../navigation';
 
 const LogoutScreen: AppScreen<'Logout'> = ({navigation: {replace}}) => {
   const {clearTokens} = useAuth();

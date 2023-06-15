@@ -1,12 +1,13 @@
 import React from 'react';
 import {SafeAreaView} from 'react-native';
 
+import type {AppScreen} from '~modules/navigation';
+
 import MainContainer from '../components/container/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import JourneyBig from '../components/primitives/JourneyBig';
 import Text from '../components/primitives/Text';
 import {useSelectJourney} from '../modules/content/useSelectJourney';
-import type {AppScreen} from '../navigation';
 
 const SelectJourneyScreen: AppScreen<'SelectJourneyScreen'> = ({
   navigation: {navigate},

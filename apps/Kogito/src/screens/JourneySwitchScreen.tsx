@@ -2,13 +2,14 @@
 import React from 'react';
 import styled from 'styled-components/native';
 
+import type {AppScreen} from '~modules/navigation';
+
 import {logEvent} from '../analytics';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import BoxJourney from '../components/primitives/BoxJourney';
 import ColoredSafeAreaView from '../components/primitives/ColoredSafeAreaView';
 import {useSwitchJourney} from '../modules/content/useSwitchJourney';
 import {useRegistrationStatus} from '../modules/user/useRegistrationStatus';
-import type {AppScreen} from '../navigation';
 
 const S = {
   HeadlineContainer: styled.View`
