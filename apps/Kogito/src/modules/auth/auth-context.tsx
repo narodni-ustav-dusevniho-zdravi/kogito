@@ -7,7 +7,8 @@ import React, {
   useState,
 } from 'react';
 
-import {identifyUser} from '../../analytics';
+import {identifyUser} from '~modules/analytics';
+
 import ApolloClient from '../../apollo/client';
 import {MeQuery} from '../user/useMeQuery';
 

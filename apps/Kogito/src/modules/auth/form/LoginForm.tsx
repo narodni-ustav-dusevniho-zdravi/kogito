@@ -2,8 +2,9 @@ import React, {useEffect, useState} from 'react';
 import {Controller, useForm} from 'react-hook-form';
 import {ToastAndroid, View} from 'react-native';
 
+import {logEvent} from '~modules/analytics';
+
 import type {LoginInput} from '../../../../gql/__generated__/graphql';
-import {logEvent} from '../../../analytics';
 import TextInput from '../../../components/form/TextInput';
 import {ValidationMessage} from '../../../components/form/ValidationMessage';
 import Button from '../../../components/primitives/Button';

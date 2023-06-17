@@ -1,6 +1,6 @@
 import type {AppScreenName} from '~modules/navigation';
 
-import type {ScreenEvent} from './types/events';
+import type {ScreenEvent} from '../types';
 
 const map: Partial<Record<AppScreenName, ScreenEvent>> = {
   ViciousCircleEdit: 'Vicious cycle opened',

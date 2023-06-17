@@ -2,9 +2,9 @@ import React, {useCallback, useEffect, useState} from 'react';
 import {SafeAreaView, ToastAndroid, TouchableOpacity, View} from 'react-native';
 import YoutubePlayer from 'react-native-youtube-iframe';
 
+import {logEvent} from '~modules/analytics';
 import type {AppScreen} from '~modules/navigation';
 
-import {logEvent} from '../analytics';
 import MainContainer from '../components/container/MainContainer/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import MainHeader from '../components/container/MainHeader/MainHeader';

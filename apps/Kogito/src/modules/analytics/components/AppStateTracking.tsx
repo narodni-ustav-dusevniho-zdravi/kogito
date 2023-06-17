@@ -2,7 +2,7 @@ import type React from 'react';
 import {useEffect, useRef, useState} from 'react';
 import {AppState} from 'react-native';
 
-import {logEvent} from './eventLogging';
+import {logEvent} from '../utils';
 
 export const AppStateTracking: React.FC = () => {
   const appState = useRef(AppState.currentState);

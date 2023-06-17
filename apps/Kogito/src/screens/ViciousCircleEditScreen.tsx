@@ -2,9 +2,9 @@ import React, {useCallback, useEffect, useState} from 'react';
 import {SafeAreaView, ScrollView, useWindowDimensions} from 'react-native';
 import moment from 'moment';
 
+import {logEvent} from '~modules/analytics';
 import {type AppScreen, useNavigationListener} from '~modules/navigation';
 
-import {logEvent} from '../analytics';
 import MainContainer from '../components/container/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import MainHeader from '../components/container/MainHeader';
