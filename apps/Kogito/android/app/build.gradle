@@ -99,8 +99,8 @@ android {
         applicationId "cz.nudz.kogito"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 22
-        versionName "1.0.22"
+        versionCode Integer.parseInt(findProperty("versionCode"))
+        versionName findProperty("versionName")
         resValue "string", "build_config_package", "cz.nudz.kogito"
     }
 
