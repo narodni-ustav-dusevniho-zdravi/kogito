@@ -1,9 +1,6 @@
 import {gql, useMutation} from '@apollo/client';
 
-import type {
-  LogMoodMutation,
-  LogMoodMutationVariables,
-} from '../../gql/__generated__/graphql';
+import type {LogMoodMutation, LogMoodMutationVariables} from '~gql/graphql';
 
 const mutation = gql`
   mutation logMood($input: LogMoodInput!) {

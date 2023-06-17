@@ -9,14 +9,14 @@ import EmoticonOkay from '~assets/emotions/okay.png';
 import EmoticonSad from '~assets/emotions/sad.png';
 import EmoticonSatisfied from '~assets/emotions/satisfied.png';
 import EmoticonVerysad from '~assets/emotions/verysad.png';
-import {type AppScreen, useOnScreenFocus} from '~modules/navigation';
-
 import type {
   Mood,
   MoodCount,
   RemoveMoodRecordMutation,
   RemoveMoodRecordMutationVariables,
-} from '../../gql/__generated__/graphql';
+} from '~gql/graphql';
+import {type AppScreen, useOnScreenFocus} from '~modules/navigation';
+
 import MainContainer from '../components/container/MainContainer/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import MainHeader from '../components/container/MainHeader/MainHeader';

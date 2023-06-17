@@ -3,7 +3,7 @@ import {gql, useQuery} from '@apollo/client';
 import type {
   CurrentUserQuestionnairesQuery,
   CurrentUserQuestionnairesQueryVariables,
-} from '../../gql/__generated__/graphql';
+} from '~gql/graphql';
 
 const query = gql`
   query CurrentUserQuestionnaires {

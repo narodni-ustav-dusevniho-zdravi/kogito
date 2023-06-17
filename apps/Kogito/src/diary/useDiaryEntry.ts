@@ -7,7 +7,7 @@ import type {
   EditDiaryEntryMutationVariables,
   RemoveDiaryEntryMutation,
   RemoveDiaryEntryMutationVariables,
-} from '../../gql/__generated__/graphql';
+} from '~gql/graphql';
 
 const diaryEntryQuery = gql`
   query diaryEntry($id: ID!) {

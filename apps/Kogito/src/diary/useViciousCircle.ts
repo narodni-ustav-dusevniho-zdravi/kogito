@@ -5,7 +5,7 @@ import type {
   CurrentViciousCircleQuery,
   EditViciousCircleMutation,
   EditViciousCircleMutationVariables,
-} from '../../gql/__generated__/graphql';
+} from '~gql/graphql';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const ViciousCircle = gql`

@@ -6,9 +6,9 @@ import EmoticonOkay from '~assets/emotions/okay.png';
 import EmoticonSad from '~assets/emotions/sad.png';
 import EmoticonSatisfied from '~assets/emotions/satisfied.png';
 import EmoticonVerysad from '~assets/emotions/verysad.png';
+import type {Mood} from '~gql/graphql';
 import {logEvent} from '~modules/analytics';
 
-import type {Mood} from '../../../../gql/__generated__/graphql';
 import Modal from '../../../components/container/Modal/Modal';
 import ModalEmoticon from '../../../components/container/ModalEmoticon/ModalEmoticon';
 import ButtonIcon from '../../../components/primitives/ButtonIcon';

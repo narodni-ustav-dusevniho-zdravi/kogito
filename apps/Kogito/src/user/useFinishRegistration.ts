@@ -3,7 +3,7 @@ import {gql, useMutation} from '@apollo/client';
 import type {
   FinishRegistrationMutation,
   FinishRegistrationMutationVariables,
-} from '../../gql/__generated__/graphql';
+} from '~gql/graphql';
 
 const mutation = gql`
   mutation finishRegistration($input: FinishRegistrationInput!) {

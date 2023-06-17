@@ -10,12 +10,12 @@ import {
 import {setContext} from '@apollo/client/link/context';
 import {onError} from 'apollo-link-error';
 
-import ENV from '~modules/env';
-
 import type {
   RefreshAccessTokenMutation,
   RefreshAccessTokenMutationVariables,
-} from '../../gql/__generated__/graphql';
+} from '~gql/graphql';
+import ENV from '~modules/env';
+
 import {getAccessToken, getRefreshToken, saveTokens} from '../auth/api';
 
 console.log('APOLLO USING:', ENV.API_URL);

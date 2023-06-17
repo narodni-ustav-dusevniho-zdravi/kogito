@@ -3,7 +3,7 @@ import {gql, useQuery} from '@apollo/client';
 import type {
   ViciousCircleListQuery,
   ViciousCircleListQueryVariables,
-} from '../../gql/__generated__/graphql';
+} from '~gql/graphql';
 
 const query = gql`
   query viciousCircleList($afterId: ID) {

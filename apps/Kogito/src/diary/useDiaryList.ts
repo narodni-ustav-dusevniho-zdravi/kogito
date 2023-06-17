@@ -1,9 +1,6 @@
 import {gql, useQuery} from '@apollo/client';
 
-import type {
-  DiaryListQuery,
-  DiaryListQueryVariables,
-} from '../../gql/__generated__/graphql';
+import type {DiaryListQuery, DiaryListQueryVariables} from '~gql/graphql';
 
 const query = gql`
   query diaryList($afterId: ID) {

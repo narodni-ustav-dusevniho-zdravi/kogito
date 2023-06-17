@@ -5,7 +5,7 @@ import type {
   UpdateQuestionnaireMutation,
   UpdateQuestionnaireMutationVariables,
   UserAnswer,
-} from '../../gql/__generated__/graphql';
+} from '~gql/graphql';
 
 const mutation = gql`
   mutation updateQuestionnaire($input: UserQuestionnaireInput!) {

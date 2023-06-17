@@ -1,7 +1,8 @@
 import React from 'react';
 import {Controller, useForm} from 'react-hook-form';
 
-import type {EditProfileInput} from '../../../gql/__generated__/graphql';
+import type {EditProfileInput} from '~gql/graphql';
+
 import TextInput from '../../components/form/TextInput';
 import Button from '../../components/primitives/Button';
 import {useEditProfile} from '../useEditProfile';

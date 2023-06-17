@@ -1,9 +1,6 @@
 import {gql, useQuery} from '@apollo/client';
 
-import type {
-  ContentQueryQuery,
-  ContentQueryQueryVariables,
-} from '../../gql/__generated__/graphql';
+import type {ContentQueryQuery, ContentQueryQueryVariables} from '~gql/graphql';
 
 const query = gql`
   query ContentQuery {

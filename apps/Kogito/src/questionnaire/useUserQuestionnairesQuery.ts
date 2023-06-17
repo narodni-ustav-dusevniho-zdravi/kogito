@@ -1,6 +1,6 @@
 import {gql, useQuery} from '@apollo/client';
 
-import type {UserQuestionnairesQuery} from '../../gql/__generated__/graphql';
+import type {UserQuestionnairesQuery} from '~gql/graphql';
 
 const query = gql`
   query UserQuestionnaires {

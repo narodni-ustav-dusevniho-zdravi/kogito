@@ -1,9 +1,6 @@
 import {gql, useQuery} from '@apollo/client';
 
-import type {
-  ItemDetailQuery,
-  ItemDetailQueryVariables,
-} from '../../gql/__generated__/graphql';
+import type {ItemDetailQuery, ItemDetailQueryVariables} from '~gql/graphql';
 
 const query = gql`
   query itemDetail($id: ID!) {

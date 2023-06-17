@@ -1,6 +1,6 @@
 import {useCallback, useEffect, useState} from 'react';
 
-import type {Question, UserAnswer} from '../../gql/__generated__/graphql';
+import type {Question, UserAnswer} from '~gql/graphql';
 
 import {useQuestionnaireDetail} from './useQuestionnaireDetail';
 import {useUpdateQuestionnaire} from './useUpdateQuestionnaire';

@@ -1,9 +1,6 @@
 import {gql, useQuery} from '@apollo/client';
 
-import type {
-  StoryDetailQuery,
-  StoryDetailQueryVariables,
-} from '../../gql/__generated__/graphql';
+import type {StoryDetailQuery, StoryDetailQueryVariables} from '~gql/graphql';
 
 const query = gql`
   query storyDetail($id: ID!) {

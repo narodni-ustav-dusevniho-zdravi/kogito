@@ -1,7 +1,3 @@
-import type {
-  ArticleItem,
-  AudioItem,
-  VideoItem,
-} from '../../gql/__generated__/graphql';
+import type {ArticleItem, AudioItem, VideoItem} from '~gql/graphql';
 
 export type ContentItem = AudioItem | ArticleItem | VideoItem;

@@ -5,7 +5,7 @@ import type {
   InitLoginMutationVariables,
   LoginMutation,
   LoginMutationVariables,
-} from '../../gql/__generated__/graphql';
+} from '~gql/graphql';
 
 const LoginAction = gql`
   mutation login($input: LoginInput!) {

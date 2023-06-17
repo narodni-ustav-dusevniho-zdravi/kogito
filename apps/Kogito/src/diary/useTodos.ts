@@ -9,7 +9,7 @@ import type {
   TodosQueryVariables,
   TrackTodoMutation,
   TrackTodoMutationVariables,
-} from '../../gql/__generated__/graphql';
+} from '~gql/graphql';
 
 const todosQuery = gql`
   query Todos {

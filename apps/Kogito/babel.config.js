@@ -9,6 +9,7 @@ module.exports = {
         alias: {
           '~modules': './src/modules',
           '~assets': './src/assets',
+          '~gql': './gql/__generated__',
         },
       },
     ],

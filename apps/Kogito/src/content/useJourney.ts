@@ -1,9 +1,6 @@
 import {gql, useQuery} from '@apollo/client';
 
-import type {
-  JourneyQuery,
-  JourneyQueryVariables,
-} from '../../gql/__generated__/graphql';
+import type {JourneyQuery, JourneyQueryVariables} from '~gql/graphql';
 
 const query = gql`
   query journey($id: ID!) {

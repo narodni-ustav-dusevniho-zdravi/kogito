@@ -5,7 +5,8 @@
     "baseUrl": "./" /* Base directory to resolve non-absolute module names. */,
     "paths": {
       "~modules/*": ["./src/modules/*"],
-      "~assets/*": ["./src/assets/*"]
+      "~assets/*": ["./src/assets/*"],
+      "~gql/*": ["./gql/__generated__/*"]
     }
   }
 }

@@ -13,8 +13,8 @@ import ResultSatisfied from '~assets/emotions/satisfied_result.png';
 import EmoticonVerysad from '~assets/emotions/verysad_big.png';
 import ResultVerysad from '~assets/emotions/verysad_result.png';
 import IconClose from '~assets/icon-cross.svg';
+import type {Mood} from '~gql/graphql';
 
-import type {Mood} from '../../../../gql/__generated__/graphql';
 import Text from '../../primitives/Text';
 
 import S from './styles';
