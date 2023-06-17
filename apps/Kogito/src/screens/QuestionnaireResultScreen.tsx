@@ -10,7 +10,7 @@ import MainContainer from '../components/container/MainContainer';
 import Button from '../components/primitives/Button';
 import ColoredSafeAreaView from '../components/primitives/ColoredSafeAreaView';
 import Text from '../components/primitives/Text';
-import {useRegistrationStatus} from '../modules/user/useRegistrationStatus';
+import {useRegistrationStatus} from '../user/useRegistrationStatus';
 
 import {RegisterImgWrapper} from './RegisterScreen';
 

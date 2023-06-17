@@ -23,11 +23,11 @@ import Button from '../components/primitives/Button';
 import GradientBackground from '../components/primitives/GradientBackground';
 import Slider from '../components/primitives/Slider';
 import Text from '../components/primitives/Text';
+import {useItemContent} from '../content/useItemContent';
+import {useTrackProgress} from '../content/useTrackProgress';
 import images from '../helpers/images';
 import {secondsToTime} from '../helpers/secondsToTime';
 import useEventListener from '../helpers/useEventListener';
-import {useItemContent} from '../modules/content/useItemContent';
-import {useTrackProgress} from '../modules/content/useTrackProgress';
 
 const styles = {
   p: {

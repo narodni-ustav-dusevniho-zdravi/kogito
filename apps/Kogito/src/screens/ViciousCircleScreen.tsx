@@ -9,8 +9,8 @@ import MainContainerWrapper from '../components/container/MainContainerWrapper/M
 import MainHeader from '../components/container/MainHeader/MainHeader';
 import DayInfoBox from '../components/primitives/DayInfoBox';
 import Text from '../components/primitives/Text';
-import {useTrackSchedule} from '../modules/content/useTrackSchedule';
-import {useViciousCircleList} from '../modules/diary/useViciousCircleList';
+import {useTrackSchedule} from '../content/useTrackSchedule';
+import {useViciousCircleList} from '../diary/useViciousCircleList';
 
 const ViciousCircleScreen: AppScreen<'ViciousCircle'> = ({
   navigation: {navigate},

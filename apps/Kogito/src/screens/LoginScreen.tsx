@@ -10,13 +10,13 @@ import Logo from '~assets/logo.png';
 import ENV from '~modules/env';
 import type {AppScreen} from '~modules/navigation';
 
+import LoginForm from '../auth/form/LoginForm';
 import HalfOverlay from '../components/container/HalfOverlay';
 import MainContainer from '../components/container/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import Button from '../components/primitives/Button';
 import ColoredSafeAreaView from '../components/primitives/ColoredSafeAreaView';
 import Text from '../components/primitives/Text';
-import LoginForm from '../modules/auth/form/LoginForm';
 
 export const LogoFooterWrapper = styled.View`
   margin-top: auto;

@@ -10,9 +10,9 @@ import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import MainHeader from '../components/container/MainHeader';
 import Text from '../components/primitives/Text';
 import ViciousCircle from '../components/primitives/ViciousCircle/VicousCircle';
-import DetailViciousCircleModal from '../modules/diary/modal/DetailViciousCircleModal';
-import EditViciousCircleModal from '../modules/diary/modal/EditViciousCircleModal';
-import {useViciousCircle} from '../modules/diary/useViciousCircle';
+import DetailViciousCircleModal from '../diary/modal/DetailViciousCircleModal';
+import EditViciousCircleModal from '../diary/modal/EditViciousCircleModal';
+import {useViciousCircle} from '../diary/useViciousCircle';
 
 type Parts =
   | 'trigger'

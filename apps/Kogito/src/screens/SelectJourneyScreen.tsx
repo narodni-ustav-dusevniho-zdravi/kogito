@@ -7,7 +7,7 @@ import MainContainer from '../components/container/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import JourneyBig from '../components/primitives/JourneyBig';
 import Text from '../components/primitives/Text';
-import {useSelectJourney} from '../modules/content/useSelectJourney';
+import {useSelectJourney} from '../content/useSelectJourney';
 
 const SelectJourneyScreen: AppScreen<'SelectJourneyScreen'> = ({
   navigation: {navigate},

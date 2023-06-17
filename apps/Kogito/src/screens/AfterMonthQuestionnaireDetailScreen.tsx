@@ -11,8 +11,8 @@ import ButtonBack from '../components/primitives/ButtonBack';
 import ChapterHeader from '../components/primitives/ChapterHeader/ChapterHeader';
 import ProgressBar from '../components/primitives/ProgressBar/ProgressBar';
 import Text from '../components/primitives/Text';
-import Answer from '../modules/questionnaire/components/Answer/';
-import {useQuestionnaire} from '../modules/questionnaire/useQuestionnaire';
+import Answer from '../questionnaire/components/Answer/';
+import {useQuestionnaire} from '../questionnaire/useQuestionnaire';
 
 export const Footer = styled.View`
   flex-direction: row;

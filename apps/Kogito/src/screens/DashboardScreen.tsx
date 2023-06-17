@@ -11,9 +11,9 @@ import BoxBig from '../components/primitives/BoxBig';
 import BoxWrapper from '../components/primitives/BoxWrapper';
 import Hero from '../components/primitives/Hero';
 import Text from '../components/primitives/Text';
+import {useContent} from '../content/useContent';
 import images from '../helpers/images';
 import {redirectItem} from '../helpers/redirectItem';
-import {useContent} from '../modules/content/useContent';
 
 const DashboardScreen: AppScreen<'MyDay'> = ({navigation: {navigate}}) => {
   const {userJourney, currentRelaxation, newestStory, refetch} = useContent();

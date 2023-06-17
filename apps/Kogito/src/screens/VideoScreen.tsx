@@ -10,10 +10,10 @@ import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import MainHeader from '../components/container/MainHeader/MainHeader';
 import ColoredSafeAreaView from '../components/primitives/ColoredSafeAreaView';
 import Text from '../components/primitives/Text';
+import {useItemContent} from '../content/useItemContent';
+import {useTrackProgress} from '../content/useTrackProgress';
 import useEventListener from '../helpers/useEventListener';
 import useInterval from '../helpers/useInterval';
-import {useItemContent} from '../modules/content/useItemContent';
-import {useTrackProgress} from '../modules/content/useTrackProgress';
 
 const VideoScreen: AppScreen<'Video'> = ({route}) => {
   const {fireEvent} = useEventListener();

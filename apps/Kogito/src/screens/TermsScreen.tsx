@@ -9,8 +9,8 @@ import MainContainer from '../components/container/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import Button from '../components/primitives/Button';
 import ColoredSafeAreaView from '../components/primitives/ColoredSafeAreaView';
-import terms from '../modules/user/data/terms';
-import {useTerms} from '../modules/user/useTerms';
+import terms from '../user/data/terms';
+import {useTerms} from '../user/useTerms';
 
 const TermsScreen: AppScreen<'Terms'> = ({navigation: {replace}}) => {
   const {setSeenTerms, haveSeenTerms} = useTerms();

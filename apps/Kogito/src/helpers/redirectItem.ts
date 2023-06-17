@@ -1,6 +1,6 @@
 import {navigate} from '~modules/navigation';
 
-import type {ContentItem} from '../modules/content/types';
+import type {ContentItem} from '../content/types';
 
 export const redirectItem = (
   item: Pick<ContentItem, 'options' | '__typename' | 'progress' | 'id'>,

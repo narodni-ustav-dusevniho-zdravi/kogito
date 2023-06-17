@@ -13,8 +13,8 @@ import {getCurrentRoute, navigationRef} from '~modules/navigation';
 import Navigation from '~modules/navigation/Navigation';
 
 import ApolloClient from './src/apollo/client';
-import {AuthProvider} from './src/modules/auth/auth-context';
-import LogMoodModal from './src/modules/diary/modal/LogMoodModal/LogMoodModal';
+import {AuthProvider} from './src/auth/auth-context';
+import LogMoodModal from './src/diary/modal/LogMoodModal/LogMoodModal';
 
 Moment.globalLocale = 'cs';
 Moment.globalFormat = 'Do MMMM YYYY';

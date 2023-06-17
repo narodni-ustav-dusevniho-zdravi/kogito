@@ -3,10 +3,10 @@ import {SafeAreaView, ScrollView} from 'react-native';
 
 import type {AppScreen} from '~modules/navigation';
 
+import FinishRegistrationForm from '../auth/form/FinishRegistrationForm';
 import MainContainer from '../components/container/MainContainer/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper/MainContainerWrapper';
 import Text from '../components/primitives/Text';
-import FinishRegistrationForm from '../modules/auth/form/FinishRegistrationForm';
 
 const FinishRegistrationScreen: AppScreen<'FinishRegistrationScreen'> = ({
   navigation: {replace},

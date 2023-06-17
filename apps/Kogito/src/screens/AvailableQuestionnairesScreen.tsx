@@ -8,9 +8,9 @@ import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import Button from '../components/primitives/Button';
 import ColoredSafeAreaView from '../components/primitives/ColoredSafeAreaView';
 import Text from '../components/primitives/Text';
-import QuestionnaireWidget from '../modules/questionnaire/components/QuestionnaireWidget';
-import {useUserQuestionnairesQuery} from '../modules/questionnaire/useUserQuestionnairesQuery';
-import {useMeQuery} from '../modules/user/useMeQuery';
+import QuestionnaireWidget from '../questionnaire/components/QuestionnaireWidget';
+import {useUserQuestionnairesQuery} from '../questionnaire/useUserQuestionnairesQuery';
+import {useMeQuery} from '../user/useMeQuery';
 
 const AvailableQuestionnairesScreen: AppScreen<'AvailableQuestionnaires'> = ({
   navigation: {navigate},

@@ -11,8 +11,8 @@ import MainHeader from '../components/container/MainHeader';
 import BoxAdd from '../components/primitives/BoxAdd';
 import BoxCheckbox from '../components/primitives/BoxCheckbox';
 import Text from '../components/primitives/Text';
-import EditTodoModal from '../modules/diary/modal/EditTodoModal/EditTodoModal';
-import {useTodos} from '../modules/diary/useTodos';
+import EditTodoModal from '../diary/modal/EditTodoModal/EditTodoModal';
+import {useTodos} from '../diary/useTodos';
 
 type EditorSettings = {
   dayPart: DayPart;

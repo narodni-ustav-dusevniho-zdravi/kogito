@@ -8,10 +8,10 @@ import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import Button from '../components/primitives/Button';
 import ColoredSafeAreaView from '../components/primitives/ColoredSafeAreaView';
 import Text from '../components/primitives/Text';
-import {useSelectJourney} from '../modules/content/useSelectJourney';
-import QuestionnaireWidget from '../modules/questionnaire/components/QuestionnaireWidget';
-import {useAfterMonthQuestionnaireQuery} from '../modules/questionnaire/useAfterMonthQuestionnaireQuery';
-import {useMeQuery} from '../modules/user/useMeQuery';
+import {useSelectJourney} from '../content/useSelectJourney';
+import QuestionnaireWidget from '../questionnaire/components/QuestionnaireWidget';
+import {useAfterMonthQuestionnaireQuery} from '../questionnaire/useAfterMonthQuestionnaireQuery';
+import {useMeQuery} from '../user/useMeQuery';
 
 const AfterMonthQuestionnaireScreen: AppScreen<'AfterMonthQuestionnaire'> = ({
   navigation: {replace, navigate},

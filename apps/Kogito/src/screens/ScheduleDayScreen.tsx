@@ -8,8 +8,8 @@ import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import MainHeader from '../components/container/MainHeader/MainHeader';
 import BoxCheckbox from '../components/primitives/BoxCheckbox';
 import Text from '../components/primitives/Text';
-import {useContent} from '../modules/content/useContent';
-import {useTrackSchedule} from '../modules/content/useTrackSchedule';
+import {useContent} from '../content/useContent';
+import {useTrackSchedule} from '../content/useTrackSchedule';
 
 const ScheduleDayScreen: AppScreen<'ScheduleDay'> = () => {
   const {todaySchedule} = useContent();

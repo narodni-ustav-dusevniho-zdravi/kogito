@@ -4,9 +4,9 @@ import BootSplash from 'react-native-bootsplash';
 
 import type {AppScreen} from '~modules/navigation';
 
-import {useAuth} from '../modules/auth/useAuth';
-import {useMeQuery} from '../modules/user/useMeQuery';
-import {useTerms} from '../modules/user/useTerms';
+import {useAuth} from '../auth/useAuth';
+import {useMeQuery} from '../user/useMeQuery';
+import {useTerms} from '../user/useTerms';
 
 const SplashScreen: AppScreen<'Splash'> = ({navigation: {replace}}) => {
   const {status} = useAuth();

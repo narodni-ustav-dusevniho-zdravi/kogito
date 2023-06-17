@@ -8,7 +8,7 @@ import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import MainHeader from '../components/container/MainHeader/MainHeader';
 import ArticleListBox from '../components/primitives/ArticleListBox';
 import Text from '../components/primitives/Text';
-import {useContent} from '../modules/content/useContent';
+import {useContent} from '../content/useContent';
 
 const StoriesListScreen: AppScreen<'StoriesList'> = ({
   navigation: {navigate},

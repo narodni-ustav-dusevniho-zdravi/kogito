@@ -16,7 +16,7 @@ import type {
   RefreshAccessTokenMutation,
   RefreshAccessTokenMutationVariables,
 } from '../../gql/__generated__/graphql';
-import {getAccessToken, getRefreshToken, saveTokens} from '../modules/auth/api';
+import {getAccessToken, getRefreshToken, saveTokens} from '../auth/api';
 
 console.log('APOLLO USING:', ENV.API_URL);
 

@@ -23,8 +23,8 @@ import MainHeader from '../components/container/MainHeader/MainHeader';
 import ButtonIcon from '../components/primitives/ButtonIcon';
 import MoodRecord from '../components/primitives/MoodRecord/MoodRecord';
 import Text from '../components/primitives/Text';
+import {useMoodsList} from '../diary/useMoodsList';
 import useEventListener from '../helpers/useEventListener';
-import {useMoodsList} from '../modules/diary/useMoodsList';
 
 const prepareCount = (items: MoodCount[], mood: Mood): number => {
   return items.find(item => item.mood === mood)?.count || 0;

@@ -10,7 +10,7 @@ import MainContainerWrapper from '../components/container/MainContainerWrapper/M
 import Button from '../components/primitives/Button/Button';
 import Divider from '../components/primitives/Divider';
 import Text from '../components/primitives/Text';
-import ProfileSettingsForm from '../modules/user/form/ProfileSettingsForm';
+import ProfileSettingsForm from '../user/form/ProfileSettingsForm';
 
 const ProfileSettingsScreen: AppScreen<'ProfileSettings'> = ({
   navigation: {navigate},

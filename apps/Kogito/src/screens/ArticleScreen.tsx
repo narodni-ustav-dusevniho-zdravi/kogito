@@ -10,9 +10,9 @@ import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import Button from '../components/primitives/Button';
 import ProgressBar from '../components/primitives/ProgressBar/ProgressBar';
 import Text from '../components/primitives/Text';
+import {useItemContent} from '../content/useItemContent';
+import {useTrackProgress} from '../content/useTrackProgress';
 import useEventListener from '../helpers/useEventListener';
-import {useItemContent} from '../modules/content/useItemContent';
-import {useTrackProgress} from '../modules/content/useTrackProgress';
 
 const styles = {
   p: {

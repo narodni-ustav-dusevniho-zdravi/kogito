@@ -12,9 +12,9 @@ import BoxMedia from '../components/primitives/BoxMedia';
 import ColoredSafeAreaView from '../components/primitives/ColoredSafeAreaView';
 import Hero from '../components/primitives/Hero/Hero';
 import TabbedBox from '../components/primitives/TabbedBox/TabbedBox';
+import type {ContentItem} from '../content/types';
+import {useJourney} from '../content/useJourney';
 import {redirectItem} from '../helpers/redirectItem';
-import type {ContentItem} from '../modules/content/types';
-import {useJourney} from '../modules/content/useJourney';
 
 type Items = {
   items: Omit<ContentItem, 'content'>[];

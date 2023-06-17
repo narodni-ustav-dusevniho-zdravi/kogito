@@ -11,8 +11,8 @@ import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import MainHeader from '../components/container/MainHeader/MainHeader';
 import TextArea from '../components/form/TextArea';
 import Text from '../components/primitives/Text';
+import {useDiaryEntry} from '../diary/useDiaryEntry';
 import useEventListener from '../helpers/useEventListener';
-import {useDiaryEntry} from '../modules/diary/useDiaryEntry';
 
 const DiaryEditScreen: AppScreen<'DiaryEdit'> = ({route}) => {
   const [id, setId] = useState<string | null>(null);

@@ -10,8 +10,8 @@ import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import MainHeader from '../components/container/MainHeader/MainHeader';
 import DayInfoBox from '../components/primitives/DayInfoBox';
 import Text from '../components/primitives/Text';
-import {useDiaryEntry} from '../modules/diary/useDiaryEntry';
-import {useDiaryList} from '../modules/diary/useDiaryList';
+import {useDiaryEntry} from '../diary/useDiaryEntry';
+import {useDiaryList} from '../diary/useDiaryList';
 
 const DiaryScreen: AppScreen<'Diary'> = ({navigation: {navigate}}) => {
   const {records, refetch} = useDiaryList();
