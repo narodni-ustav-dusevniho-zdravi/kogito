@@ -16,7 +16,7 @@ type MainContainerProps = ViewProps & {
 
 const MainContainer: React.FC<MainContainerProps> = ({
   children,
-  align = 'center',
+  align = 'between',
   alignVertical,
   page,
   color,
