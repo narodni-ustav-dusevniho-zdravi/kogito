@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import S from './styles';
 import SelectPicker, {PickerSelectProps} from 'react-native-picker-select';
-import {StyleSheet} from "react-native";
+import {StyleSheet} from 'react-native';
 
 const ChoiceList: FC<PickerSelectProps> = ({...rest}) => {
   return (

@@ -57,9 +57,7 @@ export const ItemQuery = gql`
   }
 `;
 
-type UseItemContent = (
-  id: string,
-) => {
+type UseItemContent = (id: string) => {
   audioFile: AudioItem | null;
   articleItem: ArticleItem | null;
   videoItem: VideoItem | null;

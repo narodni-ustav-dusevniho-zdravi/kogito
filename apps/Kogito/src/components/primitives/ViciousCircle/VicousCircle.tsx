@@ -25,7 +25,11 @@ const ViciousCircle: FC<ViciousCircle> = ({
   const size = (windowWidth > windowHeight ? windowHeight : windowWidth) * 0.8;
 
   return (
-    <S.Container disabled={items.length === 0} size={size} onPress={onPressCircle} {...rest}>
+    <S.Container
+      disabled={items.length === 0}
+      size={size}
+      onPress={onPressCircle}
+      {...rest}>
       <S.Circle size={size}>
         <DropShadow
           style={{

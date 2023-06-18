@@ -50,9 +50,7 @@ type UserQuestionnaire = {
   questionnaire: Questionnaire;
 } | null;
 
-type QuestionnaireDetail = (
-  id: string,
-) => {
+type QuestionnaireDetail = (id: string) => {
   questionnaire: UserQuestionnaire;
   loading: boolean;
   error?: ApolloError;

@@ -1,3 +1,3 @@
-import DetailViciousCircleModal from "./DetailViciousCircleModal";
+import DetailViciousCircleModal from './DetailViciousCircleModal';
 
 export default DetailViciousCircleModal;

@@ -34,7 +34,7 @@ const EditViciousCircleModal: FC<EditViciousCircleModal> = ({
       </Text>
       <TextInput
         value={text}
-        onChangeText={(val) => setText(val)}
+        onChangeText={val => setText(val)}
         style={{
           marginVertical: 32,
         }}

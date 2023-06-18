@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 import {variant} from 'styled-system';
 
-const boxBackgroundColor = (props) => {
+const boxBackgroundColor = props => {
   if (props.isLocked) {
     return '#fff';
   }
@@ -33,7 +33,7 @@ const S = {
         },
       },
     })};
-    background-color: ${(props) => boxBackgroundColor(props)};
+    background-color: ${props => boxBackgroundColor(props)};
   `,
   Image: styled.Image`
     flex: 0 0 72px;

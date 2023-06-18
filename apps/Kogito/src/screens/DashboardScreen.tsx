@@ -60,7 +60,7 @@ const DashboardScreen: FC<StackScreenProps<any>> = ({navigation}) => {
               showsHorizontalScrollIndicator={false}>
               <BoxWrapper>
                 {currentRelaxation &&
-                  currentRelaxation.map((item) => (
+                  currentRelaxation.map(item => (
                     <Box
                       key={item.id}
                       title={item.name}

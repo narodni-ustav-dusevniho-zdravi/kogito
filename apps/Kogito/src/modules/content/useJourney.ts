@@ -1,9 +1,7 @@
 import {useQuery} from '@apollo/client';
 import {JourneyQuery, JourneyQueryResult, UserJourney} from './graphql';
 
-type UseJourney = (
-  journeyId: string,
-) => {
+type UseJourney = (journeyId: string) => {
   journey: UserJourney | null;
   refetch: () => void;
 };

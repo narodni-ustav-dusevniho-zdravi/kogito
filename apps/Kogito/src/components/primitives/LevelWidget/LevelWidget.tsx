@@ -20,7 +20,6 @@ const LevelWidget: FC<ContainerProps> = ({
   progress,
   maxProgress = 100,
 }) => {
-
   console.log({progress});
 
   return (

@@ -11,7 +11,7 @@ const addListener = (event: EventName, callback: Callable) => {
 };
 
 const removeListener = (callback: Callable) => {
-  Object.keys(events).map((eventName) => {
+  Object.keys(events).map(eventName => {
     for (let i = 0, l = events[eventName].length; i < l; i++) {
       if (callback === events[eventName][i]) {
         events[eventName].splice(i, 1);
@@ -22,7 +22,7 @@ const removeListener = (callback: Callable) => {
 
 const fireEvent = (event: EventName, payload: any | null = null) => {
   if (events.hasOwnProperty(event)) {
-    events[event].forEach((callbacks) => {
+    events[event].forEach(callbacks => {
       callbacks(payload);
     });
   }

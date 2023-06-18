@@ -27,10 +27,8 @@ const DiaryEditScreen: FC<StackScreenProps<any>> = ({navigation}) => {
   const [content, setContent] = useState<string>('');
   const {fireEvent} = useEventListener();
   const {diaryEntry, saveDiaryEntry} = useDiaryEntry(id);
-  const {
-    trackJournalEntryOpened,
-    trackJournalEntryAdded,
-  } = useMixPanelTracking();
+  const {trackJournalEntryOpened, trackJournalEntryAdded} =
+    useMixPanelTracking();
 
   const handleSave = async () => {
     if (content !== '') {

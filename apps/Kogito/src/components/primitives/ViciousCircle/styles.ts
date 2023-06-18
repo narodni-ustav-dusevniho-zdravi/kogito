@@ -3,12 +3,12 @@ import styled from 'styled-components/native';
 const S = {
   Container: styled.TouchableOpacity`
     margin: 0 8px;
-    width: ${(props) => `${props.size}px`};
+    width: ${props => `${props.size}px`};
   `,
   Circle: styled.View`
-    width: ${(props) => `${props.size}px`};
-    height: ${(props) => `${props.size}px`};
-    border-radius: ${(props) => `${props.size / 2}px`};
+    width: ${props => `${props.size}px`};
+    height: ${props => `${props.size}px`};
+    border-radius: ${props => `${props.size / 2}px`};
     overflow: hidden;
     align-items: center;
     justify-content: center;
@@ -18,7 +18,7 @@ const S = {
   CircleInner: styled.View`
     width: 90%;
     height: 90%;
-    border-radius: ${(props) => `${props.size / 2}px`};
+    border-radius: ${props => `${props.size / 2}px`};
     overflow: hidden;
     align-items: center;
     justify-content: center;

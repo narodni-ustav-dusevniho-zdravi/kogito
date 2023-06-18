@@ -14,12 +14,8 @@ import ColoredSafeAreaView from '../components/primitives/ColoredSafeAreaView';
 
 const AvailableQuestionnairesScreen: FC = () => {
   const navigation = useNavigation();
-  const {
-    haveToChooseJourney,
-    questionnaire,
-    loading,
-    refetch,
-  } = useAfterMonthQuestionnaireQuery();
+  const {haveToChooseJourney, questionnaire, loading, refetch} =
+    useAfterMonthQuestionnaireQuery();
   const {selectJourneyMutation} = useSelectJourney();
   const {} = useMeQuery();
 
@@ -70,7 +66,7 @@ const AvailableQuestionnairesScreen: FC = () => {
             )}
             {questionnaire.occasion === 2 && (
               <>
-                <Text></Text>
+                <Text />
                 <Text>Moc děkujeme!</Text>
               </>
             )}
