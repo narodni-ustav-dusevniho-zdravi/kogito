@@ -3,10 +3,12 @@ import {Mixpanel} from 'mixpanel-react-native';
 import AppState from './AppState';
 import {ENV} from '../env';
 
-const mixpanel = new Mixpanel(ENV.MIXPANEL_API_KEY, true);
-mixpanel.init();
+const mixpanel = ENV.MIXPANEL_API_KEY
+  ? new Mixpanel(ENV.MIXPANEL_API_KEY, true)
+  : undefined;
+mixpanel?.init();
 
-const TrackingContext = createContext<Mixpanel>({} as Mixpanel);
+const TrackingContext = createContext<Mixpanel | undefined>(undefined);
 
 export const useMixPanelTrackingContext = () => useContext(TrackingContext);
 

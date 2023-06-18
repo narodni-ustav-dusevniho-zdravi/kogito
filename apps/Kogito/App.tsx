@@ -17,9 +17,14 @@ Moment.globalFormat = 'Do MMMM YYYY';
 
 // TODO PROSTE SE SNAZ VIC HERMANE
 const App = () => {
-  console.log('----------------------------------------------------');
-  console.log('----------------------------------------------------');
-  console.log(ENV);
+  console.log(`
+  ----------------------------------------------------
+  ----------------------------------------------------
+  Running app with config
+  ${JSON.stringify(ENV, null, 2)}
+  ----------------------------------------------------
+  ----------------------------------------------------  
+  `);
 
   return (
     <GestureHandlerRootView style={{flex: 1}}>

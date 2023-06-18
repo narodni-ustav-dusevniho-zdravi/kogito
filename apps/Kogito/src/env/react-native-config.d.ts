@@ -1,6 +1,6 @@
 declare module 'react-native-config' {
   export type NativeConfig = {
-    //TODO: add .env file variables
+    MIXPANEL_API_KEY?: string;
   };
   export const Config: NativeConfig;
   export default Config;
