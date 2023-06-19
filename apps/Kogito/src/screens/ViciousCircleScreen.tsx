@@ -31,7 +31,7 @@ const ViciousCircleScreen: AppScreen<'ViciousCircle'> = ({
     const grouped = groupBy(items, 'key');
 
     return Object.keys(grouped).map(index => {
-      const date = moment(grouped[index][0].date);
+      const date = moment(grouped[index]?.[0]?.date);
 
       return {
         title: capitalize(date.format('MMMM YYYY')),
@@ -61,7 +61,7 @@ const ViciousCircleScreen: AppScreen<'ViciousCircle'> = ({
               <Text colorVariant="gray" space="main" textVariant="headerSub2">
                 {item.title}
               </Text>
-              {item.items.map(entry => {
+              {item.items?.map(entry => {
                 console.log(entry.date);
                 const date = new Date(entry.date);
                 return (

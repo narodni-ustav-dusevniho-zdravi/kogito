@@ -52,11 +52,7 @@ const TabbedBox: React.FC<TabbedBox> = ({items, headerVariant = 'boxed'}) => {
       }
     }
 
-    if (items.length) {
-      setSelected(items[0]);
-    } else {
-      setSelected(null);
-    }
+    setSelected(items[0] || null);
   }, [items]);
 
   return (

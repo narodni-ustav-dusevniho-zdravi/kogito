@@ -31,7 +31,7 @@ const DiaryScreen: AppScreen<'Diary'> = ({navigation: {navigate}}) => {
 
     // preparing array for printing - title and items
     return Object.keys(grouped).map(index => {
-      const date = moment(grouped[index][0].date);
+      const date = moment(grouped[index]?.[0]?.date);
       return {
         title: capitalize(date.format('MMMM YYYY')),
         items: grouped[index],
@@ -79,7 +79,7 @@ const DiaryScreen: AppScreen<'Diary'> = ({navigation: {navigate}}) => {
                 <Text colorVariant="gray" space="main" textVariant="headerSub2">
                   {item.title}
                 </Text>
-                {item.items.map(entry => {
+                {item.items?.map(entry => {
                   const date = new Date(entry.date);
                   return (
                     <DayInfoBox

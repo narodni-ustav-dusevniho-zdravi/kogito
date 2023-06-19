@@ -55,12 +55,12 @@ const JourneySwitchScreen: AppScreen<'JourneySwitch'> = ({
   const ids = [];
 
   if (status) {
-    if (rawTexts[0].labels.includes(status.userLabel)) {
+    if (rawTexts[0]?.labels.includes(status.userLabel)) {
       ids.push('Sm91cm5leTox');
       console.log('a');
     }
 
-    if (rawTexts[1].labels.includes(status.userLabel)) {
+    if (rawTexts[1]?.labels.includes(status.userLabel)) {
       ids.push('Sm91cm5leToy');
       console.log('b');
     }

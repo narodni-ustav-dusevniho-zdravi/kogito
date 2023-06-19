@@ -89,7 +89,7 @@ const ArticleScreen: AppScreen<'Article'> = ({
                 {articleItem.name}
               </Text>
               <HTML
-                source={{html: articleItem.content[position].content}}
+                source={{html: articleItem.content[position]?.content || ''}}
                 tagsStyles={{
                   ...styles,
                   img: {
@@ -101,7 +101,7 @@ const ArticleScreen: AppScreen<'Article'> = ({
                 style={{
                   marginTop: 'auto',
                 }}
-                title={articleItem.content[position].continue}
+                title={articleItem.content[position]?.continue || 'Pokračovat'}
                 onPress={handlePress}
               />
             </ScrollView>

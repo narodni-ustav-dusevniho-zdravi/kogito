@@ -56,9 +56,9 @@ export const useQuestionnaire = (id: string) => {
     if (questionnaire && actualQuestion) {
       const questions = questionnaire.questionnaire.questions;
       const index = questions.indexOf(actualQuestion);
-
-      if (index - 1 >= 0) {
-        setActualQuestion(questions[index - 1]);
+      const nextQuestion = questions[index - 1];
+      if (nextQuestion) {
+        setActualQuestion(nextQuestion);
       }
     }
   };
@@ -110,6 +110,7 @@ export const useQuestionnaire = (id: string) => {
 
       if (answer) {
         const answerIndex = answers.indexOf(answer);
+        //@ts-expect-error
         answers[answerIndex].answerIndex = index;
       } else {
         answers.push({

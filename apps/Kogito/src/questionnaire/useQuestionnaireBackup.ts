@@ -5,6 +5,7 @@ import type {Question, UserAnswer} from '~gql/graphql';
 import {useQuestionnaireDetail} from './useQuestionnaireDetail';
 import {useUpdateQuestionnaire} from './useUpdateQuestionnaire';
 
+// eslint-disable-next-line max-lines-per-function, max-statements
 export const useQuestionnaireBackup = (id: string) => {
   const {questionnaire} = useQuestionnaireDetail(id);
   const {saveUserQuestionnaire} = useUpdateQuestionnaire();
@@ -64,9 +65,9 @@ export const useQuestionnaireBackup = (id: string) => {
     if (questionnaire && actualQuestion) {
       const questions = questionnaire.questionnaire.questions;
       const index = questions.indexOf(actualQuestion);
-
-      if (index - 1 >= 0) {
-        setActualQuestion(questions[index - 1]);
+      const nextQuestion = questions[index - 1];
+      if (nextQuestion) {
+        setActualQuestion(nextQuestion);
       }
     }
 
@@ -133,6 +134,7 @@ export const useQuestionnaireBackup = (id: string) => {
           const answerIndex = answers.indexOf(answer);
 
           console.log({answers, answerIndex});
+          //@ts-expect-error
           answers[answerIndex].answerIndex = index;
         } else {
           answers.push({

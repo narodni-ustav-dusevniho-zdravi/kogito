@@ -57,7 +57,7 @@ const MoodListScreen: AppScreen<'MoodList'> = () => {
     const grouped = groupBy(items, 'key');
 
     return Object.keys(grouped).map(index => {
-      const date = moment(grouped[index][0].date);
+      const date = moment(grouped[index]?.[0]?.date);
 
       return {
         title: date.format('Do MMMM YYYY'),
@@ -168,7 +168,7 @@ const MoodListScreen: AppScreen<'MoodList'> = () => {
                   textVariant="text600">
                   {item.title}
                 </Text>
-                {item.items.map(item => (
+                {item.items?.map(item => (
                   <MoodRecord
                     key={item.id}
                     type={item.mood}

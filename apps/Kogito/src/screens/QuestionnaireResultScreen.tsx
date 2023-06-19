@@ -164,7 +164,9 @@ const QuestionnaireResultScreen: AppScreen<'QuestionnaireResultScreen'> = ({
           {status && (
             <HTML
               source={{
-                html: resultTexts[status.group][status.userLabel][page].text,
+                html:
+                  resultTexts[status.group]?.[status.userLabel]?.[page]?.text ||
+                  '',
               }}
               tagsStyles={styles}
             />
@@ -172,7 +174,10 @@ const QuestionnaireResultScreen: AppScreen<'QuestionnaireResultScreen'> = ({
 
           {showButton && (
             <Button
-              title={resultTexts[status.group][status.userLabel][page].button}
+              title={
+                resultTexts[status.group]?.[status.userLabel]?.[page]?.button ||
+                'Pokračovat'
+              }
               onPress={handlePress}
             />
           )}
