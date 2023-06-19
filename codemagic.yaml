@@ -1,5 +1,13 @@
 workflows:
     react-native-android:
+        triggering:
+          events:
+            - push
+          branch_patterns:
+            - pattern: codemagic
+              include: true
+              source: true
+          cancel_previous_builds: true
         working_directory: apps/Kogito
         name: React Native Android
         max_build_duration: 120
