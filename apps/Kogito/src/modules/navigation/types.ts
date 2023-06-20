@@ -58,19 +58,11 @@ export type DashboardTabParamList = Record<
   'DashboardTab' | 'JourneyProgress' | 'Relaxation' | 'Todos',
   undefined
 >;
-//TODO: is it actually used?
-type UnusedScreensParamList = {
-  RelaxationLocked: undefined;
-  RoadPhase: undefined;
-  RoadRelaxation: undefined;
-  RoadTodos: undefined;
-  RoadTools: undefined;
-};
+
 export type AppParamList = DashboardStackParamList &
   RegistrationStackParamList &
   RootStackParamList &
-  DashboardTabParamList &
-  UnusedScreensParamList;
+  DashboardTabParamList;
 
 export type AppScreenName = keyof AppParamList;
 
