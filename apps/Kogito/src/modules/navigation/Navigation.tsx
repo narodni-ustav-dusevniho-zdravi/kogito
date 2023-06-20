@@ -2,10 +2,7 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
 
-import IconMyDay from '~assets/icon-my-day.svg';
-import IconRoad from '~assets/icon-road.svg';
-import IconSun from '~assets/icon-sun.svg';
-import IconTodo from '~assets/icon-todo.svg';
+import {Icon} from '~modules/ui';
 
 import AfterMonthQuestionnaireDetailScreen from '../../screens/AfterMonthQuestionnaireDetailScreen';
 import AfterMonthQuestionnaireScreen from '../../screens/AfterMonthQuestionnaireScreen';
@@ -112,18 +109,16 @@ const DashboardTabNavigation = () => {
         tabBarActiveTintColor: '#F2AC33',
         tabBarInactiveTintColor: '#8e8e93',
         tabBarStyle: {height: 80, paddingTop: 12, paddingBottom: 22},
-        tabBarIcon: ({focused}) => {
-          const iconColor = focused ? '#F2AC33' : '#8e8e93';
-
+        tabBarIcon: ({color: iconColor}) => {
           switch (route.name) {
             case 'DashboardTab':
-              return <IconMyDay color={iconColor} />;
+              return <Icon color={iconColor} name="my-day" size={32} />;
             case 'JourneyProgress':
-              return <IconRoad color={iconColor} />;
+              return <Icon color={iconColor} name="road" size={32} />;
             case 'Relaxation':
-              return <IconSun color={iconColor} />;
+              return <Icon color={iconColor} name="sun" size={32} />;
             case 'Todos':
-              return <IconTodo color={iconColor} />;
+              return <Icon color={iconColor} name="todo" size={32} />;
           }
         },
       })}>

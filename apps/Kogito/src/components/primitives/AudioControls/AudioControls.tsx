@@ -1,10 +1,7 @@
 import React from 'react';
 import DropShadow from 'react-native-drop-shadow';
 
-import IconNext from '~assets/icon-audio-next.svg';
-import IconPause from '~assets/icon-audio-pause.svg';
-import IconPlay from '~assets/icon-audio-play.svg';
-import IconPrev from '~assets/icon-audio-prev.svg';
+import {Color, Icon, theme} from '~modules/ui';
 
 import S from './styles';
 
@@ -29,7 +26,15 @@ const AudioControls: React.FC<AudioControls> = ({
     <S.Container>
       <S.Wrapper>
         <S.Button disabled={disablePrevButton} onPress={onPressPrev}>
-          <IconPrev />
+          <Icon
+            color={
+              disablePrevButton
+                ? Color.alpha(theme.colors.primary, 0.23)
+                : theme.colors.primary
+            }
+            name="audio-prev"
+            size={29}
+          />
         </S.Button>
         <DropShadow
           style={{
@@ -39,19 +44,23 @@ const AudioControls: React.FC<AudioControls> = ({
             shadowRadius: 20,
           }}>
           <S.ButtonPlay onPress={onPressPlay}>
-            {isPlaying ? (
-              <IconPause />
-            ) : (
-              <IconPlay
-                style={{
-                  marginLeft: 5,
-                }}
-              />
-            )}
+            <Icon
+              color={theme.colors.primary}
+              name={isPlaying ? 'audio-pause' : 'audio-play'}
+              size={29}
+            />
           </S.ButtonPlay>
         </DropShadow>
         <S.Button disabled={disableNextButton} onPress={onPressNext}>
-          <IconNext />
+          <Icon
+            color={
+              disableNextButton
+                ? Color.alpha(theme.colors.primary, 0.23)
+                : theme.colors.primary
+            }
+            name="audio-next"
+            size={29}
+          />
         </S.Button>
       </S.Wrapper>
     </S.Container>

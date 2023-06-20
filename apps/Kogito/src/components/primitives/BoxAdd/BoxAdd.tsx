@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Icon from '~assets/icon-plus.svg';
+import {Icon, theme} from '~modules/ui';
 
 import S from './styles';
 
@@ -13,7 +13,7 @@ const BoxAdd: React.FC<BoxAdd> = ({onPress}) => {
     <S.Container onPress={onPress}>
       <S.Wrapper>
         <S.Box>
-          <Icon />
+          <Icon color={theme.colors.primary} name="plus" size={24} />
         </S.Box>
         <S.Title>Přidat úkol</S.Title>
       </S.Wrapper>

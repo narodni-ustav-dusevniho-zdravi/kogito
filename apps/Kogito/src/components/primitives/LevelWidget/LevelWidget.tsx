@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Check from '~assets/check.svg';
+import {Icon} from '~modules/ui';
 
 import ProgressBar from '../ProgressBar';
 
@@ -29,7 +29,9 @@ const LevelWidget: React.FC<ContainerProps> = ({
     <S.Container disabled={state === 'locked'} onPress={onPress}>
       <S.Wrapper state={state}>
         <S.Text>{name}</S.Text>
-        {state === 'done' && <Check />}
+        {state === 'done' && (
+          <Icon color="#2aac6c" name="check-circle" size={32} />
+        )}
         {state === 'inProgress' && (
           <ProgressBar
             max={maxProgress}

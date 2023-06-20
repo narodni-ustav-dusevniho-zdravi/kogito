@@ -1,8 +1,7 @@
 import React from 'react';
 import DropShadow from 'react-native-drop-shadow';
 
-import IconLocked from '~assets/icon-locked.svg';
-import IconPlay from '~assets/icon-play.svg';
+import {Icon, theme} from '~modules/ui';
 
 import S from './styles';
 
@@ -39,16 +38,28 @@ const BoxMedia: React.FC<ContainerProps> = ({
             <S.Title>{title}</S.Title>
             {subTitle !== null && <S.SubTitle>{subTitle}</S.SubTitle>}
           </S.Headline>
-          <DropShadow
-            style={{
-              shadowColor: '#000',
-              shadowOffset: {width: 0, height: 3},
-              shadowOpacity: 0.16,
-              shadowRadius: 2,
-            }}>
-            {!isLocked && isPlayable && <IconPlay />}
-            {isLocked && <IconLocked />}
-          </DropShadow>
+          {(isLocked || isPlayable) && (
+            <DropShadow
+              style={{
+                shadowColor: '#000',
+                shadowOffset: {width: 0, height: 3},
+                shadowOpacity: 0.16,
+                shadowRadius: 2,
+              }}>
+              <Icon
+                backgroundColor="white"
+                color={theme.colors.primary}
+                name={isLocked ? 'lock' : 'audio-play'}
+                size={24}
+                style={{
+                  height: 41,
+                  width: 41,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}
+              />
+            </DropShadow>
+          )}
         </S.Box>
       </S.Wrapper>
     </S.Container>

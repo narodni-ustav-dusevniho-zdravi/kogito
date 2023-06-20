@@ -1,7 +1,7 @@
 import React from 'react';
 import type ReactNative from 'react-native';
 
-import IconBack from '~assets/icon-chevron-left.svg';
+import {Icon, theme} from '~modules/ui';
 
 import {StyledButton} from './styles';
 
@@ -14,7 +14,7 @@ type ButtonProps = {
 const ButtonBack: React.FC<ButtonProps> = ({colorVariant = 'red', ...rest}) => {
   return (
     <StyledButton colorVariant={colorVariant} {...rest}>
-      <IconBack color="#ca4233" />
+      <Icon color={theme.colors.primary} name="chevron-left" size={24} />
     </StyledButton>
   );
 };

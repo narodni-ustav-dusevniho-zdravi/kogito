@@ -1,7 +1,7 @@
 import React from 'react';
 import DropShadow from 'react-native-drop-shadow';
 
-import IconPlay from '~assets/icon-play.svg';
+import {Icon, theme} from '~modules/ui';
 
 import {Container, Image, Text, TextWrapper, Wrapper} from './styles';
 
@@ -45,7 +45,18 @@ const Box: React.FC<ContainerProps> = ({
                   shadowOpacity: 0.16,
                   shadowRadius: 2,
                 }}>
-                <IconPlay style={{marginLeft: 4}} />
+                <Icon
+                  backgroundColor="white"
+                  color={theme.colors.primary}
+                  name="audio-play"
+                  size={24}
+                  style={{
+                    height: 41,
+                    width: 41,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}
+                />
               </DropShadow>
             )}
           </TextWrapper>

@@ -122,7 +122,6 @@ const TodosScreen: AppScreen<'Todos'> = () => {
             <Text add={true} textVariant="bigHeader">
               Plánovač
             </Text>
-
             <DayPartRender
               dayPart="MORNING"
               handleCheck={handleCheck}

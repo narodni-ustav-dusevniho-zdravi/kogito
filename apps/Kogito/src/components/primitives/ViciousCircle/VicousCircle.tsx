@@ -3,7 +3,7 @@ import type {ViewProps} from 'react-native';
 import {useWindowDimensions} from 'react-native';
 import DropShadow from 'react-native-drop-shadow';
 
-import IconPlus from '~assets/icon-plus.svg';
+import {Icon, theme} from '~modules/ui';
 
 import S from './styles';
 
@@ -66,7 +66,7 @@ const ViciousCircle: React.FC<ViciousCircle> = ({
                   </S.ItemWrapper>
                 ))}
                 <S.ButtonAdd onPress={onPress}>
-                  <IconPlus />
+                  <Icon color={theme.colors.primary} name="plus" size={32} />
                 </S.ButtonAdd>
               </S.CircleInnerWrapper>
             </DropShadow>

@@ -1,4 +1,4 @@
 {
    "**/*.+(ts|tsx)": "eslint --fix",
-   "**/*.(xml|json)": "prettier --write"
+   "**/*.(xml|json|svg)": "prettier --write"
 }

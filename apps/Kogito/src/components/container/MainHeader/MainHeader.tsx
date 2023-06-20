@@ -1,7 +1,7 @@
 import React from 'react';
 
-import IconUser from '~assets/icon-user.svg';
 import {useNavigation} from '~modules/navigation';
+import {Icon} from '~modules/ui';
 
 import GoBack from '../../primitives/GoBack';
 
@@ -29,7 +29,12 @@ const MainHeader: React.FC<MainContainerProps> = ({
       {title ? (
         <GoBack beforeBackButton={beforeBackButton} title={title} />
       ) : (
-        <IconUser onPress={() => navigate('ProfileSettings')} />
+        <Icon
+          color="#1d1d1b"
+          name="user"
+          size={32}
+          onPress={() => navigate('ProfileSettings')}
+        />
       )}
       {/* NOT USED NOW */}
       {/*<Coin title={'132'} />*/}

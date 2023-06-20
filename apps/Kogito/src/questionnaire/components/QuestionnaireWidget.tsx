@@ -3,7 +3,7 @@ import DropShadow from 'react-native-drop-shadow';
 import styled from 'styled-components/native';
 import {variant} from 'styled-system';
 
-import Check from '~assets/check.svg';
+import {Icon} from '~modules/ui';
 
 const StyledButton = styled.TouchableOpacity``;
 const Wrapper = styled.View<{finished: boolean}>`
@@ -68,7 +68,7 @@ const QuestionnaireWidget: React.FC<QuestionnaireWidget> = ({
             <Line>
               <Text>{name}</Text>
               <PullRight>
-                <Check />
+                <Icon color="#2aac6c" name="check-circle" size={32} />
               </PullRight>
             </Line>
           </Wrapper>

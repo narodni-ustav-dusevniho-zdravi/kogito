@@ -1,6 +1,6 @@
 import React from 'react';
 
-import IconSearch from '~assets/icon-search.svg';
+import {Icon} from '~modules/ui';
 
 import S from './styles';
 
@@ -8,7 +8,7 @@ const InputSearch: React.FC = () => {
   return (
     <S.Container>
       <S.Wrapper>
-        <IconSearch />
+        <Icon color="#bababa" name="search" size={24} />
         <S.TextInput
           placeholder="Vyhledávej"
           placeholderTextColor="rgba(28,28,28,0.3)"

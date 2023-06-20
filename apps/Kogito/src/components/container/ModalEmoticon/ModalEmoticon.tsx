@@ -12,8 +12,8 @@ import EmoticonSatisfied from '~assets/emotions/satisfied_big.png';
 import ResultSatisfied from '~assets/emotions/satisfied_result.png';
 import EmoticonVerysad from '~assets/emotions/verysad_big.png';
 import ResultVerysad from '~assets/emotions/verysad_result.png';
-import IconClose from '~assets/icon-cross.svg';
 import type {Mood} from '~gql/graphql';
+import {Icon} from '~modules/ui';
 
 import Text from '../../primitives/Text';
 
@@ -75,7 +75,7 @@ const ModalEmoticon: React.FC<HalfOverlayProps> = ({
   return (
     <S.Modal animationType="fade" transparent={true} {...rest}>
       <S.Close onPress={() => close()}>
-        <IconClose />
+        <Icon color="#4b2e00" name="close" size={24} />
       </S.Close>
       <S.ContainerWrap type={type}>
         <S.ContainerInner>

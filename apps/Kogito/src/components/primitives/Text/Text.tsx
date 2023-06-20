@@ -2,7 +2,7 @@ import React from 'react';
 import type ReactNative from 'react-native';
 import {TouchableOpacity} from 'react-native';
 
-import IconPlus from '~assets/icon-plus.svg';
+import {Icon, theme} from '~modules/ui';
 
 import S from './styles';
 
@@ -56,7 +56,7 @@ const Text: React.FC<TextProps> = ({
             padding: 15,
           }}
           onPress={onPressPlus}>
-          <IconPlus />
+          <Icon color={theme.colors.primary} name="plus" size={32} />
         </TouchableOpacity>
       )}
     </S.Container>

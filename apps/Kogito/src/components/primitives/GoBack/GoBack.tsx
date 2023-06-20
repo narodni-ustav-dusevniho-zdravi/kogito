@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Icon from '~assets/icon-chevron-left.svg';
 import {useNavigation} from '~modules/navigation';
+import {Icon} from '~modules/ui';
 
 import S from './styles';
 
@@ -25,7 +25,7 @@ const GoBack: React.FC<ContainerProps> = ({
   return (
     <S.Container {...rest} onPress={handlePress}>
       <S.Wrapper>
-        <Icon color="#1c1c1c" />
+        <Icon color="#1c1c1c" name="chevron-left" size={32} />
         <S.Text>{title}</S.Text>
       </S.Wrapper>
     </S.Container>
