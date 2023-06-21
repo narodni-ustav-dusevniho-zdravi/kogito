@@ -12,7 +12,6 @@ module.exports = {
     '@typescript-eslint/no-floating-promises': 'off', //TODO: remove
     '@typescript-eslint/no-explicit-any': 'warn', //TODO: remove
     'require-await': 'warn', //TODO: remove
-    'max-depth': 'warn', //TODO: remove
     'no-restricted-imports': [
       'error',
       {
