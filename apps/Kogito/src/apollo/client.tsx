@@ -21,13 +21,11 @@ import {getAccessToken, getRefreshToken, saveTokens} from '../auth/api';
 console.log('APOLLO USING:', ENV.API_URL);
 
 let isRefreshing = false;
-// @ts-expect-error
-let pendingRequests = [];
+let pendingRequests: (() => void)[] = [];
 // eslint-disable-next-line prefer-const
 let apolloClient: ApolloClient<NormalizedCacheObject>;
 
 const resolvePendingRequests = () => {
-  // @ts-expect-error
   pendingRequests.map(callback => callback());
   pendingRequests = [];
 };
@@ -92,8 +90,8 @@ const authLink = setContext(async () => {
   };
 });
 
-// @ts-expect-error
-const errorLink = onError(({graphQLErrors, operation, forward}) => {
+// @ts-expect-error keep previous implementation to not accidentaly break something
+const errorLink: ApolloLink = onError(({graphQLErrors, operation, forward}) => {
   console.log({graphQLErrors});
   if (graphQLErrors) {
     for (const err of graphQLErrors) {
@@ -127,14 +125,13 @@ const errorLink = onError(({graphQLErrors, operation, forward}) => {
             // Will only emit once the Promise is resolved
             forward$ = fromPromise(
               // eslint-disable-next-line no-loop-func
-              new Promise(resolve => {
-                // @ts-expect-error
+              new Promise<void>(resolve => {
                 pendingRequests.push(() => resolve());
               }),
             );
           }
 
-          // @ts-expect-error
+          // @ts-expect-error keep previous implementation to not accidentaly break something
           return forward$.flatMap(() => forward(operation));
       }
     }
@@ -142,7 +139,6 @@ const errorLink = onError(({graphQLErrors, operation, forward}) => {
 });
 
 apolloClient = new ApolloClient({
-  // @ts-expect-error
   link: ApolloLink.from([errorLink, authLink, targetEndPointLink]),
   cache: new InMemoryCache(),
 });

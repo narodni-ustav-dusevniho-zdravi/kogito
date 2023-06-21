@@ -4,7 +4,6 @@ module.exports = {
   rules: {
     'react-native/no-inline-styles': 'warn', //TODO: remove
     'max-lines-per-function': 'warn', //TODO: remove
-    '@typescript-eslint/ban-ts-comment': 'warn', //TODO: remove
     'react/jsx-no-literals': 'warn', //TODO: remove
     'max-statements': 'warn', //TODO: remove
     '@typescript-eslint/no-floating-promises': 'off', //TODO: remove

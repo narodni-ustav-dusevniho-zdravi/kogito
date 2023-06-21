@@ -108,7 +108,7 @@ export const useQuestionnaire = (id: string) => {
 
     if (answer) {
       const answerIndex = answers.indexOf(answer);
-      //@ts-expect-error
+      // @ts-expect-error keep previous implementation to not accidentaly break something
       answers[answerIndex].answerIndex = index;
     } else {
       answers.push({

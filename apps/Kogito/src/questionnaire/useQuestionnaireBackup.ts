@@ -132,7 +132,7 @@ export const useQuestionnaireBackup = (id: string) => {
         const answerIndex = answers.indexOf(answer);
 
         console.log({answers, answerIndex});
-        //@ts-expect-error
+        // @ts-expect-error keep previous implementation to not accidentaly break something
         answers[answerIndex].answerIndex = index;
       } else {
         answers.push({
