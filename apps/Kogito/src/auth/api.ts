@@ -31,19 +31,18 @@ export const removeTokens = async () => {
 };
 
 const loadTokens = async () => {
-  if (!loaded) {
-    if (await RNSecureStorage.exists('auth.accessToken')) {
-      const [accessToken, refreshToken] = await Promise.all([
-        RNSecureStorage.get('auth.accessToken'),
-        RNSecureStorage.get('auth.refreshToken'),
-      ]);
+  if (loaded) return;
+  if (await RNSecureStorage.exists('auth.accessToken')) {
+    const [accessToken, refreshToken] = await Promise.all([
+      RNSecureStorage.get('auth.accessToken'),
+      RNSecureStorage.get('auth.refreshToken'),
+    ]);
 
-      currentAccessToken = accessToken;
-      currentRefreshToken = refreshToken;
-    }
-
-    loaded = true;
+    currentAccessToken = accessToken;
+    currentRefreshToken = refreshToken;
   }
+
+  loaded = true;
 };
 
 export const getAccessToken = async (): Promise<string | null> => {

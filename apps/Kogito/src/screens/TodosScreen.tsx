@@ -63,15 +63,14 @@ const TodosScreen: AppScreen<'Todos'> = () => {
   const [editor, setEditor] = useState<EditorSettings | null>(null);
 
   const handleItemSave = async (title: string) => {
-    if (editor) {
-      await saveTodo({
-        id: editor.id,
-        dayPart: editor.dayPart,
-        title,
-      });
-      setEditor(null);
-      logEvent('Todo Created');
-    }
+    if (!editor) return;
+    await saveTodo({
+      id: editor.id,
+      dayPart: editor.dayPart,
+      title,
+    });
+    setEditor(null);
+    logEvent('Todo Created');
   };
 
   const handleItemRemove = () => {

@@ -28,38 +28,36 @@ export const useQuestionnaire = (id: string) => {
   };
 
   const solvePosition = () => {
-    if (questionnaire) {
-      const questions = questionnaire.questionnaire.questions;
+    if (!questionnaire) return;
+    const questions = questionnaire.questionnaire.questions;
 
-      setQuestionCount(questions.length);
+    setQuestionCount(questions.length);
 
-      const index = actualQuestion ? questions.indexOf(actualQuestion) : 0;
+    const index = actualQuestion ? questions.indexOf(actualQuestion) : 0;
 
-      setActualIndex(index);
+    setActualIndex(index);
 
-      setHavePrevious(index > 0);
-      setHaveNext(questions.length >= index);
+    setHavePrevious(index > 0);
+    setHaveNext(questions.length >= index);
 
-      if (actualQuestion) {
-        const haveAnswer = userAnswers.find(
-          answer => answer.questionId === actualQuestion.id,
-        );
+    if (actualQuestion) {
+      const haveAnswer = userAnswers.find(
+        answer => answer.questionId === actualQuestion.id,
+      );
 
-        setActualAnswer(haveAnswer ? haveAnswer.answerIndex : null);
-      } else {
-        setActualAnswer(null);
-      }
+      setActualAnswer(haveAnswer ? haveAnswer.answerIndex : null);
+    } else {
+      setActualAnswer(null);
     }
   };
 
   const previousQuestion = () => {
-    if (questionnaire && actualQuestion) {
-      const questions = questionnaire.questionnaire.questions;
-      const index = questions.indexOf(actualQuestion);
-      const nextQuestion = questions[index - 1];
-      if (nextQuestion) {
-        setActualQuestion(nextQuestion);
-      }
+    if (!questionnaire || !actualQuestion) return;
+    const questions = questionnaire.questionnaire.questions;
+    const index = questions.indexOf(actualQuestion);
+    const nextQuestion = questions[index - 1];
+    if (nextQuestion) {
+      setActualQuestion(nextQuestion);
     }
   };
 
@@ -101,26 +99,25 @@ export const useQuestionnaire = (id: string) => {
   };
 
   const saveAnswer = (index: number) => {
-    if (actualQuestion && userAnswers) {
-      setActualAnswer(index);
+    if (!actualQuestion || !userAnswers) return;
+    setActualAnswer(index);
 
-      const answers = [...userAnswers];
+    const answers = [...userAnswers];
 
-      const answer = answers.find(a => a.questionId === actualQuestion.id);
+    const answer = answers.find(a => a.questionId === actualQuestion.id);
 
-      if (answer) {
-        const answerIndex = answers.indexOf(answer);
-        //@ts-expect-error
-        answers[answerIndex].answerIndex = index;
-      } else {
-        answers.push({
-          questionId: actualQuestion.id,
-          answerIndex: index,
-        });
-      }
-
-      setUserAnswers(answers);
+    if (answer) {
+      const answerIndex = answers.indexOf(answer);
+      //@ts-expect-error
+      answers[answerIndex].answerIndex = index;
+    } else {
+      answers.push({
+        questionId: actualQuestion.id,
+        answerIndex: index,
+      });
     }
+
+    setUserAnswers(answers);
   };
 
   useEffect(() => {

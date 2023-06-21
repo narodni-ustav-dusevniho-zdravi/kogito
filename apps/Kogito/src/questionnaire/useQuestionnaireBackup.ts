@@ -20,37 +20,35 @@ export const useQuestionnaireBackup = (id: string) => {
   const [finished, setFinished] = useState(false);
 
   const saveProgress = useCallback(async () => {
-    if (userAnswers.length) {
-      console.log('save!');
-      await saveUserQuestionnaire(id, userAnswers);
-    }
+    if (!userAnswers.length) return;
+    console.log('save!');
+    await saveUserQuestionnaire(id, userAnswers);
   }, [saveUserQuestionnaire, id, userAnswers]);
 
   const solvePosition = useCallback(async () => {
-    if (questionnaire) {
-      const savePromise = saveProgress();
+    if (!questionnaire) return;
+    const savePromise = saveProgress();
 
-      const questions = questionnaire.questionnaire.questions;
+    const questions = questionnaire.questionnaire.questions;
 
-      const index = actualQuestion ? questions.indexOf(actualQuestion) : 0;
+    const index = actualQuestion ? questions.indexOf(actualQuestion) : 0;
 
-      console.log('Index', actualQuestion, index);
+    console.log('Index', actualQuestion, index);
 
-      setHavePrevious(index >= 0);
-      setHaveNext(questions.length >= index);
+    setHavePrevious(index >= 0);
+    setHaveNext(questions.length >= index);
 
-      if (actualQuestion && userAnswers) {
-        const haveAnswer = userAnswers.find(
-          answer => answer.questionId === actualQuestion.id,
-        );
+    if (actualQuestion && userAnswers) {
+      const haveAnswer = userAnswers.find(
+        answer => answer.questionId === actualQuestion.id,
+      );
 
-        setActualAnswer(haveAnswer ? haveAnswer.answerIndex : null);
-      } else {
-        setActualAnswer(null);
-      }
-
-      await savePromise;
+      setActualAnswer(haveAnswer ? haveAnswer.answerIndex : null);
+    } else {
+      setActualAnswer(null);
     }
+
+    await savePromise;
   }, [
     questionnaire,
     actualQuestion,
@@ -123,28 +121,27 @@ export const useQuestionnaireBackup = (id: string) => {
 
   const saveAnswer = useCallback(
     (index: number) => {
-      if (actualQuestion && userAnswers) {
-        setActualAnswer(index);
+      if (!actualQuestion || !userAnswers) return;
+      setActualAnswer(index);
 
-        const answers = [...userAnswers];
+      const answers = [...userAnswers];
 
-        const answer = answers.find(a => a.questionId === actualQuestion.id);
+      const answer = answers.find(a => a.questionId === actualQuestion.id);
 
-        if (answer) {
-          const answerIndex = answers.indexOf(answer);
+      if (answer) {
+        const answerIndex = answers.indexOf(answer);
 
-          console.log({answers, answerIndex});
-          //@ts-expect-error
-          answers[answerIndex].answerIndex = index;
-        } else {
-          answers.push({
-            questionId: actualQuestion.id,
-            answerIndex: index,
-          });
-        }
-
-        setUserAnswers(answers);
+        console.log({answers, answerIndex});
+        //@ts-expect-error
+        answers[answerIndex].answerIndex = index;
+      } else {
+        answers.push({
+          questionId: actualQuestion.id,
+          answerIndex: index,
+        });
       }
+
+      setUserAnswers(answers);
     },
     [setActualAnswer, userAnswers, setUserAnswers, actualQuestion],
   );

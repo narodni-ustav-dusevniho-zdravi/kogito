@@ -45,6 +45,7 @@ const modalText = (part: Parts) =>
     behaviour: 'Zapsat chování',
   }[part]);
 
+// eslint-disable-next-line max-lines-per-function, max-statements
 const ViciousCircleEditScreen: AppScreen<'ViciousCircleEdit'> = () => {
   const [data, setData] = useState<Data>(defaultData);
 
@@ -68,32 +69,30 @@ const ViciousCircleEditScreen: AppScreen<'ViciousCircleEdit'> = () => {
   }, [viciousCircle]);
 
   const handleItemSave = (newText: string) => {
-    if (editor) {
-      const tempData = {...data};
+    if (!editor) return;
+    const tempData = {...data};
 
-      if (editor.index) {
-        tempData[editor.section][editor.index] = newText;
-      } else {
-        tempData[editor.section] = [...tempData[editor.section], newText];
-      }
-
-      setData(tempData);
-      setEditor(null);
+    if (editor.index) {
+      tempData[editor.section][editor.index] = newText;
+    } else {
+      tempData[editor.section] = [...tempData[editor.section], newText];
     }
+
+    setData(tempData);
+    setEditor(null);
   };
   const handleItemRemove = () => {
-    if (editor && editor.index !== null) {
-      const tempData = {...data};
-      const tempSection = [...tempData[editor.section]];
+    if (!editor || editor.index == null) return;
+    const tempData = {...data};
+    const tempSection = [...tempData[editor.section]];
 
-      tempSection.splice(editor.index as number, 1);
+    tempSection.splice(editor.index as number, 1);
 
-      tempData[editor.section] = tempSection;
+    tempData[editor.section] = tempSection;
 
-      setData(tempData);
-      setEditor(null);
-      setOverview(null);
-    }
+    setData(tempData);
+    setEditor(null);
+    setOverview(null);
   };
 
   const openOverview = (part: Parts) => {

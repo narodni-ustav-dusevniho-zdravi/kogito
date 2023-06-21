@@ -9,7 +9,6 @@ module.exports = {
     'max-statements': 'warn', //TODO: remove
     '@typescript-eslint/no-floating-promises': 'off', //TODO: remove
     '@typescript-eslint/no-explicit-any': 'warn', //TODO: remove
-    '@shopify/prefer-early-return': 'warn', //TODO:remove
     'require-await': 'warn', //TODO: remove
     'max-lines': 'warn', //TODO: remove
     'no-shadow': 'warn', //TODO: remove
