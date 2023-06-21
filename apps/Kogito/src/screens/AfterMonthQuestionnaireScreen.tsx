@@ -72,21 +72,20 @@ const AfterMonthQuestionnaireScreen: AppScreen<'AfterMonthQuestionnaire'> = ({
             <Text>Tým Kogito</Text>
 
             <View style={{marginTop: 15, width: '100%'}}>
-              {questionnaire &&
-                questionnaire.questionnaires.map(item => (
-                  <QuestionnaireWidget
-                    key={item.id}
-                    count={item.questionnaire.questionCount}
-                    finished={item.finished}
-                    name={item.questionnaire.name}
-                    press={() =>
-                      !item.finished &&
-                      navigate('AfterMonthQuestionnaireDetail', {
-                        id: item.id,
-                      })
-                    }
-                  />
-                ))}
+              {questionnaire?.questionnaires.map(item => (
+                <QuestionnaireWidget
+                  key={item.id}
+                  count={item.questionnaire.questionCount}
+                  finished={item.finished}
+                  name={item.questionnaire.name}
+                  press={() =>
+                    !item.finished &&
+                    navigate('AfterMonthQuestionnaireDetail', {
+                      id: item.id,
+                    })
+                  }
+                />
+              ))}
             </View>
             {allFinished && (
               <Button

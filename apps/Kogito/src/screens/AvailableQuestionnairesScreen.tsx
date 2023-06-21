@@ -48,21 +48,20 @@ const AvailableQuestionnairesScreen: AppScreen<'AvailableQuestionnaires'> = ({
                 }
               />
 
-              {userQuestionnaires &&
-                userQuestionnaires.map(item => (
-                  <QuestionnaireWidget
-                    key={item.id}
-                    count={item.questionnaire.questionCount}
-                    finished={item.finished}
-                    name={item.questionnaire.name}
-                    press={() =>
-                      !item.finished &&
-                      navigate('QuestionnaireScreen', {
-                        id: item.id,
-                      })
-                    }
-                  />
-                ))}
+              {userQuestionnaires?.map(item => (
+                <QuestionnaireWidget
+                  key={item.id}
+                  count={item.questionnaire.questionCount}
+                  finished={item.finished}
+                  name={item.questionnaire.name}
+                  press={() =>
+                    !item.finished &&
+                    navigate('QuestionnaireScreen', {
+                      id: item.id,
+                    })
+                  }
+                />
+              ))}
             </View>
             <Text style={{marginTop: 14}}>
               Vyplnění celého dotazníku zabere cca 15 minut.

@@ -46,7 +46,7 @@ const LoginForm: React.FC<LoginForm> = ({type, onSuccess}) => {
           },
         });
 
-        if (result && result.data?.initLogin.useSmsCode) {
+        if (result.data?.initLogin.useSmsCode) {
           ToastAndroid.show(
             'Na Váš telefon jsme odeslali SMS s přihlašovacím kódem',
             ToastAndroid.LONG,

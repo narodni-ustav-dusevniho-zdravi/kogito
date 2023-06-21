@@ -25,7 +25,7 @@ export const useStoryContent = (id: string) => {
   );
 
   return {
-    story: (data && data.storyDetail) || null,
+    story: data?.storyDetail || null,
     loading,
   };
 };
