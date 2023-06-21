@@ -27,7 +27,10 @@ const styles = {
   },
 };
 
-const resultTexts = {
+const resultTexts: Record<
+  string,
+  Record<string, {button: string; text: string}[]>
+> = {
   normal: {
     Va: [
       {
@@ -136,9 +139,12 @@ const QuestionnaireResultScreen: AppScreen<'QuestionnaireResultScreen'> = ({
     setPage(0);
   }, [status]);
 
+  const results =
+    (status && resultTexts[status.group]?.[status.userLabel]) || [];
+
   const handlePress = async () => {
     if (status) {
-      if (resultTexts[status.group][status.userLabel].length - 1 > page) {
+      if (results.length - 1 > page) {
         setPage(page + 1);
       } else if (status.group === 'normal') {
         navigate('JourneySwitch');
@@ -152,8 +158,7 @@ const QuestionnaireResultScreen: AppScreen<'QuestionnaireResultScreen'> = ({
 
   const showButton =
     status?.group === 'normal' ||
-    (status?.group === 'control' &&
-      resultTexts[status.group][status.userLabel].length - 1 !== page);
+    (status?.group === 'control' && results.length - 1 !== page);
 
   return (
     <ColoredSafeAreaView>

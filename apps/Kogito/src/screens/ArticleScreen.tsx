@@ -59,7 +59,7 @@ const ArticleScreen: AppScreen<'Article'> = ({
         eventListener.fireEvent('refetch-progress');
       });
       const nextScreen =
-        articleItem?.options && JSON.parse(articleItem.options)?.navigate?.name;
+        articleItem.options && JSON.parse(articleItem.options)?.navigate?.name;
       return nextScreen ? replace(nextScreen) : goBack();
     }
     setPosition(position + 1);

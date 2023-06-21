@@ -99,6 +99,7 @@ export const useQuestionnaire = (id: string) => {
   };
 
   const saveAnswer = (index: number) => {
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!actualQuestion || !userAnswers) return;
     setActualAnswer(index);
 

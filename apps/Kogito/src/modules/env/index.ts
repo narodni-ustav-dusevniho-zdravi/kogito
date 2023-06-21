@@ -3,7 +3,7 @@ import {Platform} from 'react-native';
 import Config from 'react-native-config';
 import dotenvParseVariables from 'dotenv-parse-variables';
 
-const useLocalApi = false;
+const useLocalApi = false as boolean;
 const ENV = {
   ...(dotenvParseVariables(
     Config as unknown as Record<string, string>,

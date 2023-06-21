@@ -38,6 +38,7 @@ export const useQuestionnaireBackup = (id: string) => {
     setHavePrevious(index >= 0);
     setHaveNext(questions.length >= index);
 
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (actualQuestion && userAnswers) {
       const haveAnswer = userAnswers.find(
         answer => answer.questionId === actualQuestion.id,
@@ -121,6 +122,7 @@ export const useQuestionnaireBackup = (id: string) => {
 
   const saveAnswer = useCallback(
     (index: number) => {
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
       if (!actualQuestion || !userAnswers) return;
       setActualAnswer(index);
 

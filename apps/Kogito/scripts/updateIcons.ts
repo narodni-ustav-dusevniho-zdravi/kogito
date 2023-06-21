@@ -4,7 +4,7 @@ import * as path from 'path';
 
 import {isCmd, logger, runTerminal} from './utils';
 
-const fixPaths = false;
+const fixPaths = false as boolean;
 const fontName = 'icons';
 const resDir = path.join('resources', 'icons');
 const inputDir = fixPaths

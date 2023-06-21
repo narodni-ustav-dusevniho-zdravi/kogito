@@ -28,11 +28,9 @@ const removeListener = (callback: Callable) => {
 };
 
 const fireEvent = (event: EventName, payload: any | null = null) => {
-  if (events[event]) {
-    events[event].forEach(callbacks => {
-      callbacks(payload);
-    });
-  }
+  events[event].forEach(callbacks => {
+    callbacks(payload);
+  });
 };
 
 const eventListener = {

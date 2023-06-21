@@ -11,7 +11,6 @@ module.exports = {
     'require-await': 'warn', //TODO: remove
     'max-lines': 'warn', //TODO: remove
     'max-depth': 'warn', //TODO: remove
-    '@typescript-eslint/no-unnecessary-condition': 'off', //TODO: remove
     'no-restricted-imports': [
       'error',
       {
