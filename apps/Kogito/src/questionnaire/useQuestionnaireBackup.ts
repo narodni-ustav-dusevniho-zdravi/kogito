@@ -5,7 +5,7 @@ import type {Question, UserAnswer} from '~gql/graphql';
 import {useQuestionnaireDetail} from './useQuestionnaireDetail';
 import {useUpdateQuestionnaire} from './useUpdateQuestionnaire';
 
-// eslint-disable-next-line max-lines-per-function, max-statements
+// eslint-disable-next-line max-lines-per-function
 export const useQuestionnaireBackup = (id: string) => {
   const {questionnaire} = useQuestionnaireDetail(id);
   const {saveUserQuestionnaire} = useUpdateQuestionnaire();
@@ -21,7 +21,6 @@ export const useQuestionnaireBackup = (id: string) => {
 
   const saveProgress = useCallback(async () => {
     if (!userAnswers.length) return;
-    console.log('save!');
     await saveUserQuestionnaire(id, userAnswers);
   }, [saveUserQuestionnaire, id, userAnswers]);
 
@@ -32,8 +31,6 @@ export const useQuestionnaireBackup = (id: string) => {
     const questions = questionnaire.questionnaire.questions;
 
     const index = actualQuestion ? questions.indexOf(actualQuestion) : 0;
-
-    console.log('Index', actualQuestion, index);
 
     setHavePrevious(index >= 0);
     setHaveNext(questions.length >= index);
@@ -73,6 +70,7 @@ export const useQuestionnaireBackup = (id: string) => {
     await solvePosition();
   }, [questionnaire, actualQuestion, solvePosition]);
 
+  // eslint-disable-next-line max-statements
   const nextQuestion = useCallback(async () => {
     let applyFinished = false;
     if (questionnaire) {

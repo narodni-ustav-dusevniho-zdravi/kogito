@@ -46,6 +46,7 @@ const rawTexts = [
   },
 ];
 
+// eslint-disable-next-line max-statements
 const JourneySwitchScreen: AppScreen<'JourneySwitch'> = ({
   navigation: {navigate},
 }) => {

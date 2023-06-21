@@ -45,7 +45,7 @@ const modalText = (part: Parts) =>
     behaviour: 'Zapsat chování',
   }[part]);
 
-// eslint-disable-next-line max-lines-per-function, max-statements
+// eslint-disable-next-line max-lines-per-function
 const ViciousCircleEditScreen: AppScreen<'ViciousCircleEdit'> = () => {
   const [data, setData] = useState<Data>(defaultData);
 

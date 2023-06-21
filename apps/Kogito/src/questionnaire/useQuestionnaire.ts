@@ -5,7 +5,7 @@ import type {Question, UserAnswer} from '~gql/graphql';
 import {useQuestionnaireDetail} from './useQuestionnaireDetail';
 import {useUpdateQuestionnaire} from './useUpdateQuestionnaire';
 
-// eslint-disable-next-line max-lines-per-function
+// eslint-disable-next-line max-lines-per-function, max-statements
 export const useQuestionnaire = (id: string) => {
   const {questionnaire} = useQuestionnaireDetail(id);
   const {saveUserQuestionnaire} = useUpdateQuestionnaire();
@@ -62,6 +62,7 @@ export const useQuestionnaire = (id: string) => {
     }
   };
 
+  // eslint-disable-next-line max-statements
   const nextQuestion = () => {
     let applyFinished = false;
     if (questionnaire) {

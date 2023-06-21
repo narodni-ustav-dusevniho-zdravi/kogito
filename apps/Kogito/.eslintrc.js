@@ -8,7 +8,7 @@ module.exports = {
     ],
     'react-native/no-inline-styles': 'warn', //TODO: remove
     'react/jsx-no-literals': 'warn', //TODO: remove
-    'max-statements': 'warn', //TODO: remove
+    'max-statements': ['error', 15],
     '@typescript-eslint/no-floating-promises': 'off', //TODO: remove
     '@typescript-eslint/no-explicit-any': 'warn', //TODO: remove
     'require-await': 'warn', //TODO: remove
