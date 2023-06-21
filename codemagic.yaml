@@ -68,7 +68,7 @@ workflows:
         environment:
           ios_signing:
             distribution_type: app_store
-            bundle_identifier: cz.nudz.kogito
+            bundle_identifier: cz.nudz.kogito.kogito
           vars:
             XCODE_WORKSPACE: "CodemagicSample.xcworkspace" # <-- Put the name of your Xcode workspace here
             XCODE_SCHEME: "CodemagicSample" # <-- Put the name of your Xcode scheme here
