@@ -92,7 +92,7 @@ const TodosScreen: AppScreen<'Todos'> = () => {
     }
   };
 
-  const handleLongPress = async (id: string) => {
+  const handleLongPress = (id: string) => {
     Alert.alert('Smazat', 'Doopravdy chcete smazat záznam?', [
       {
         text: 'Ne',

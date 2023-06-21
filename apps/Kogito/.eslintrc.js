@@ -10,7 +10,6 @@ module.exports = {
     'react/jsx-no-literals': 'warn', //TODO: remove
     'max-statements': ['error', 15],
     '@typescript-eslint/no-floating-promises': 'off', //TODO: remove
-    'require-await': 'warn', //TODO: remove
     'no-restricted-imports': [
       'error',
       {

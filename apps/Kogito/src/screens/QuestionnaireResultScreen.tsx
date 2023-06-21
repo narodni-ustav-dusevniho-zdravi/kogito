@@ -142,7 +142,7 @@ const QuestionnaireResultScreen: AppScreen<'QuestionnaireResultScreen'> = ({
   const results =
     (status && resultTexts[status.group]?.[status.userLabel]) || [];
 
-  const handlePress = async () => {
+  const handlePress = () => {
     if (status) {
       if (results.length - 1 > page) {
         setPage(page + 1);
