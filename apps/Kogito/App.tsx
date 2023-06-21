@@ -7,7 +7,11 @@ import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {ApolloProvider} from '@apollo/client';
 import {NavigationContainer} from '@react-navigation/native';
 
-import {AppStateTracking, logScreen} from '~modules/analytics';
+import {
+  AnalyticsProvider,
+  AppStateTracking,
+  logScreen,
+} from '~modules/analytics';
 import ENV from '~modules/env';
 import {getCurrentRoute, navigationRef} from '~modules/navigation';
 import Navigation from '~modules/navigation/Navigation';
@@ -36,18 +40,20 @@ const App = () => {
 
   return (
     <GestureHandlerRootView style={{flex: 1}}>
-      <AppStateTracking />
-      <NavigationContainer
-        ref={navigationRef}
-        onStateChange={onNavigationStateChange}>
-        <AuthProvider>
-          <ApolloProvider client={ApolloClient}>
-            <StatusBar barStyle="dark-content" />
-            <Navigation />
-            <LogMoodModal />
-          </ApolloProvider>
-        </AuthProvider>
-      </NavigationContainer>
+      <AnalyticsProvider>
+        <AppStateTracking />
+        <NavigationContainer
+          ref={navigationRef}
+          onStateChange={onNavigationStateChange}>
+          <AuthProvider>
+            <ApolloProvider client={ApolloClient}>
+              <StatusBar barStyle="dark-content" />
+              <Navigation />
+              <LogMoodModal />
+            </ApolloProvider>
+          </AuthProvider>
+        </NavigationContainer>
+      </AnalyticsProvider>
     </GestureHandlerRootView>
   );
 };

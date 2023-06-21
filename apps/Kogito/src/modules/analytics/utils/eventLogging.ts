@@ -11,7 +11,10 @@ import {getScreenOpenedEvent} from './screenEventMapping';
 const mixPanel = ENV.MIXPANEL_API_KEY
   ? new Mixpanel(ENV.MIXPANEL_API_KEY, true)
   : null;
-mixPanel?.init();
+
+export const initEventLogging = async () => {
+  await mixPanel?.init();
+};
 
 type TrackFc<T extends keyof Events> = T extends NoParamsEvent
   ? (eventName: T) => void
