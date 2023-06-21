@@ -163,6 +163,7 @@ export const useQuestionnaireBackup = (id: string) => {
     if (questionnaire) {
       nextQuestion().then();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [questionnaire]);
 
   return {

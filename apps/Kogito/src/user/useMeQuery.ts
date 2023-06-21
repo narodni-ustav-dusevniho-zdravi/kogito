@@ -48,7 +48,7 @@ export const useMeQuery = () => {
   };
 
   return {
-    me: data?.viewer.me || null,
+    me: data?.viewer.me,
     haveActiveQuestionnaire: data?.viewer.haveActiveQuestionnaire || false,
     refetch,
     loading,

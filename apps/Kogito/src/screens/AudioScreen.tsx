@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useEffect, useMemo, useRef, useState} from 'react';
 import {
   Image,
   SafeAreaView,
@@ -9,6 +9,7 @@ import {
 import DropShadow from 'react-native-drop-shadow';
 import HTML from 'react-native-render-html';
 import SoundPlayer from 'react-native-sound-player';
+import {useEventCallback, useInterval} from 'usehooks-ts';
 
 import {logEvent} from '~modules/analytics';
 import type {AppScreen} from '~modules/navigation';
@@ -25,9 +26,9 @@ import Slider from '../components/primitives/Slider';
 import Text from '../components/primitives/Text';
 import {useItemContent} from '../content/useItemContent';
 import {useTrackProgress} from '../content/useTrackProgress';
+import eventListener from '../helpers/eventListener';
 import images from '../helpers/images';
 import {secondsToTime} from '../helpers/secondsToTime';
-import useEventListener from '../helpers/useEventListener';
 
 const styles = {
   p: {
@@ -44,38 +45,32 @@ const styles = {
 };
 
 const AudioScreen: AppScreen<'Audio'> = ({navigation: {navigate}, route}) => {
-  const {fireEvent} = useEventListener();
   const {audioFile} = useItemContent(route.params.id);
   const {trackProgressMutation} = useTrackProgress();
 
   const [visibleTranscript, setVisibleTranscript] = useState<boolean>(false);
-  const [currentTrack, setCurrentTrack] = useState<string | null>(null);
   const [audioPlaying, setAudioPlaying] = useState(false);
   const [lastInfo, setLastInfo] = useState<{
     currentTime: number;
     duration: number;
     progress: number;
   }>({currentTime: 0, duration: 0, progress: 0});
-  const [lastProgressTrack, setLastProgressTrack] = useState(0);
+  const lastTrackedProgress = useRef(0);
 
   const pause = () => {
-    if (audioPlaying) {
-      SoundPlayer.pause();
-      setAudioPlaying(false);
-    }
+    if (!audioPlaying) return;
+    SoundPlayer.pause();
+    setAudioPlaying(false);
   };
   const play = () => {
-    if (!audioPlaying) {
-      SoundPlayer.resume();
-      setAudioPlaying(true);
-    }
+    if (audioPlaying) return;
+    SoundPlayer.resume();
+    setAudioPlaying(true);
   };
   const seek = (progress: number) => {
-    if (currentTrack) {
-      SoundPlayer.seek(Math.floor(lastInfo.duration * (progress / 100)));
-
-      play();
-    }
+    if (!audioFile?.link) return;
+    SoundPlayer.seek(Math.floor(lastInfo.duration * (progress / 100)));
+    play();
   };
   const togglePlay = () => {
     if (audioPlaying) {
@@ -86,32 +81,31 @@ const AudioScreen: AppScreen<'Audio'> = ({navigation: {navigate}, route}) => {
   };
 
   useEffect(() => {
-    if (currentTrack) {
-      SoundPlayer.playUrl(currentTrack);
+    if (audioFile?.link) {
+      SoundPlayer.playUrl(audioFile.link);
       setAudioPlaying(true);
     } else {
       setAudioPlaying(false);
     }
-  }, [currentTrack]);
+  }, [audioFile?.link]);
 
-  useEffect(() => {
-    if (audioFile) {
-      setCurrentTrack(audioFile.link);
-    } else {
-      setCurrentTrack(null);
-    }
-  }, [audioFile]);
+  const currentPercents = useMemo(() => {
+    const result = Math.floor(100 * (lastInfo.currentTime / lastInfo.duration));
+    return result - (result % 10);
+  }, [lastInfo.currentTime, lastInfo.duration]);
 
-  useEffect(() => {
-    let currentPercents = Math.floor(
-      100 * (lastInfo.currentTime / lastInfo.duration),
-    );
-    currentPercents = currentPercents - (currentPercents % 10);
-
-    if (currentPercents > lastProgressTrack && currentPercents >= 10) {
-      console.log('TRACKING!');
-      setLastProgressTrack(currentPercents);
-
+  const trackProgress = useEventCallback(async () => {
+    try {
+      const info = await SoundPlayer.getInfo();
+      setLastInfo({
+        ...info,
+        progress: Math.floor(100 * (info.currentTime / info.duration)),
+      });
+      if (
+        currentPercents <= lastTrackedProgress.current ||
+        currentPercents < 10
+      )
+        return;
       trackProgressMutation({
         variables: {
           input: {
@@ -120,36 +114,22 @@ const AudioScreen: AppScreen<'Audio'> = ({navigation: {navigate}, route}) => {
           },
         },
       }).then(() => {
-        fireEvent('refetch-progress');
+        lastTrackedProgress.current = currentPercents;
+        eventListener.fireEvent('refetch-progress');
       });
       if (audioFile && currentPercents > 80) {
         logEvent('Lesson completed', {lessonTitle: audioFile.name});
       }
-    }
-  }, [lastInfo]);
-
-  const trackProgress = useCallback(async () => {
-    try {
-      const info = await SoundPlayer.getInfo();
-      setLastInfo({
-        ...info,
-        progress: Math.floor(100 * (info.currentTime / info.duration)),
-      });
     } catch (e) {
       console.log(e);
       setLastInfo({currentTime: 0, duration: 0, progress: 0});
     }
-  }, [lastProgressTrack]);
+  });
 
   useNavigationListener('blur', () => SoundPlayer.stop());
   useNavigationListener('beforeRemove', () => SoundPlayer.stop());
 
   useEffect(() => {
-    setCurrentTrack(null);
-    setLastProgressTrack(0);
-    if (audioFile) {
-      setCurrentTrack(audioFile.link);
-    }
     const finishedLoadingSubscription = SoundPlayer.addEventListener(
       'FinishedLoadingURL',
       () => {
@@ -164,17 +144,13 @@ const AudioScreen: AppScreen<'Audio'> = ({navigation: {navigate}, route}) => {
         setAudioPlaying(false);
       },
     );
-
-    const getInfoInterval = setInterval(trackProgress, 500);
-
     return () => {
-      console.log('Unsubscribing!');
       finishedLoadingSubscription.remove();
       finishedPlayingSubscription.remove();
-      // SoundPlayer.stop();
-      clearInterval(getInfoInterval);
     };
   }, []);
+
+  useInterval(trackProgress, 500);
 
   // useEffect(() => {
   //   const onBackPress = () => {
@@ -196,134 +172,127 @@ const AudioScreen: AppScreen<'Audio'> = ({navigation: {navigate}, route}) => {
 
   console.log({duration: lastInfo.duration});
 
-  if (audioFile) {
-    return (
-      <SafeAreaView
-        style={{
-          backgroundColor: '#fff',
-        }}>
-        <GradientBackground
-          angle={180}
-          color1="rgba(255,255,255,0.29)"
-          color2="rgba(255,231,231,0.29)">
-          <MainContainerWrapper>
-            <MainHeader />
-
-            <MainContainer align="center" alignVertical="center" page="sub">
-              {!visibleTranscript && (
-                <DropShadow
-                  style={{
-                    shadowColor: 'rgba(255,231,231,0.29)',
-                    shadowOffset: {width: 0, height: 10},
-                    shadowOpacity: 0.64,
-                    shadowRadius: 20,
-                  }}>
-                  {audioFile.image && (
-                    <Image
-                      source={images('audioDetail', audioFile.image)}
-                      style={{
-                        marginBottom: 16,
-                        borderRadius: 10,
-                      }}
-                    />
-                  )}
-                </DropShadow>
-              )}
-              <View
-                style={{
-                  marginBottom: 32,
-                }}>
-                <Text align="center" textVariant="bigHeader">
-                  {audioFile.name}
-                </Text>
-                <Text
-                  align="center"
-                  colorVariant="gray"
-                  textVariant="textSmall">
-                  {/*Úroveň 1 • Bojujte s depresí*/}
-                </Text>
-              </View>
-
-              <View style={{display: 'flex', flexDirection: 'row'}}>
-                <Text>{secondsToTime(lastInfo.currentTime)}</Text>
-                <View style={{flex: 1}} />
-                <Text>
-                  {secondsToTime(
-                    lastInfo.duration > 300000 ? 0 : lastInfo.duration,
-                  )}
-                </Text>
-              </View>
-              <Slider
-                progress={lastInfo.progress}
-                onSeek={seek}
-                onSlidingStart={() => pause()}
-              />
-
-              <View>
-                <AudioControls
-                  disableNextButton={!audioFile.next}
-                  disablePrevButton={!audioFile.previous}
-                  isPlaying={audioPlaying}
-                  onPressNext={() =>
-                    audioFile.next && navigate('Audio', {id: audioFile.next})
-                  }
-                  onPressPlay={() => togglePlay()} //setAudioPlaying(!audioPlaying)}
-                  onPressPrev={() =>
-                    audioFile.previous &&
-                    navigate('Audio', {id: audioFile.previous})
-                  }
-                />
-
-                {audioFile.transcript && (
-                  <View>
-                    <TouchableOpacity
-                      style={{
-                        width: '100%',
-                      }}
-                      onPress={() => setVisibleTranscript(!visibleTranscript)}>
-                      <Text align="center">
-                        {visibleTranscript
-                          ? 'Zpět k audiu'
-                          : 'Chci raději číst'}
-                      </Text>
-                    </TouchableOpacity>
-                  </View>
-                )}
-              </View>
-            </MainContainer>
-          </MainContainerWrapper>
-        </GradientBackground>
-
-        {visibleTranscript && !!audioFile.transcript && (
-          <Modal
-            close={() => setVisibleTranscript(!visibleTranscript)}
-            onRequestClose={() => setVisibleTranscript(!visibleTranscript)}>
-            <ScrollView>
-              <Text align="center" textVariant="bigHeader">
-                {audioFile.name}
-              </Text>
-              <HTML
-                source={{html: audioFile.transcript}}
-                tagsStyles={{
-                  ...styles,
-                }}
-              />
-              <Button
-                title="Zavřít"
-                onPress={() => setVisibleTranscript(false)}
-              />
-            </ScrollView>
-          </Modal>
-        )}
-      </SafeAreaView>
-    );
-  } else {
+  if (!audioFile)
     return (
       <SafeAreaView>
         <Text>Loading</Text>
       </SafeAreaView>
     );
-  }
+  return (
+    <SafeAreaView
+      style={{
+        backgroundColor: '#fff',
+      }}>
+      <GradientBackground
+        angle={180}
+        color1="rgba(255,255,255,0.29)"
+        color2="rgba(255,231,231,0.29)">
+        <MainContainerWrapper>
+          <MainHeader />
+
+          <MainContainer align="center" alignVertical="center" page="sub">
+            {!visibleTranscript && (
+              <DropShadow
+                style={{
+                  shadowColor: 'rgba(255,231,231,0.29)',
+                  shadowOffset: {width: 0, height: 10},
+                  shadowOpacity: 0.64,
+                  shadowRadius: 20,
+                }}>
+                {audioFile.image && (
+                  <Image
+                    source={images('audioDetail', audioFile.image)}
+                    style={{
+                      marginBottom: 16,
+                      borderRadius: 10,
+                    }}
+                  />
+                )}
+              </DropShadow>
+            )}
+            <View
+              style={{
+                marginBottom: 32,
+              }}>
+              <Text align="center" textVariant="bigHeader">
+                {audioFile.name}
+              </Text>
+              <Text align="center" colorVariant="gray" textVariant="textSmall">
+                {/*Úroveň 1 • Bojujte s depresí*/}
+              </Text>
+            </View>
+
+            <View style={{display: 'flex', flexDirection: 'row'}}>
+              <Text>{secondsToTime(lastInfo.currentTime)}</Text>
+              <View style={{flex: 1}} />
+              <Text>
+                {secondsToTime(
+                  lastInfo.duration > 300000 ? 0 : lastInfo.duration,
+                )}
+              </Text>
+            </View>
+            <Slider
+              progress={lastInfo.progress}
+              onSeek={seek}
+              onSlidingStart={() => pause()}
+            />
+
+            <View>
+              <AudioControls
+                disableNextButton={!audioFile.next}
+                disablePrevButton={!audioFile.previous}
+                isPlaying={audioPlaying}
+                onPressNext={() =>
+                  audioFile.next && navigate('Audio', {id: audioFile.next})
+                }
+                onPressPlay={() => togglePlay()} //setAudioPlaying(!audioPlaying)}
+                onPressPrev={() =>
+                  audioFile.previous &&
+                  navigate('Audio', {id: audioFile.previous})
+                }
+              />
+
+              {audioFile.transcript && (
+                <View>
+                  <TouchableOpacity
+                    style={{
+                      width: '100%',
+                    }}
+                    onPress={() => setVisibleTranscript(!visibleTranscript)}>
+                    <Text align="center">
+                      {visibleTranscript ? 'Zpět k audiu' : 'Chci raději číst'}
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+              )}
+            </View>
+          </MainContainer>
+        </MainContainerWrapper>
+      </GradientBackground>
+
+      {visibleTranscript && !!audioFile.transcript && (
+        <Modal
+          close={() => setVisibleTranscript(!visibleTranscript)}
+          onRequestClose={() => setVisibleTranscript(!visibleTranscript)}>
+          <ScrollView>
+            <Text align="center" textVariant="bigHeader">
+              {audioFile.name}
+            </Text>
+            <HTML
+              source={{html: audioFile.transcript}}
+              tagsStyles={{
+                ...styles,
+              }}
+            />
+            <Button
+              title="Zavřít"
+              onPress={() => setVisibleTranscript(false)}
+            />
+          </ScrollView>
+        </Modal>
+      )}
+    </SafeAreaView>
+  );
 };
 
 export default AudioScreen;

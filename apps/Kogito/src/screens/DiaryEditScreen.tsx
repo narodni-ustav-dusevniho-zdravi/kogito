@@ -12,12 +12,11 @@ import MainHeader from '../components/container/MainHeader/MainHeader';
 import TextArea from '../components/form/TextArea';
 import Text from '../components/primitives/Text';
 import {useDiaryEntry} from '../diary/useDiaryEntry';
-import useEventListener from '../helpers/useEventListener';
+import eventListener from '../helpers/eventListener';
 
 const DiaryEditScreen: AppScreen<'DiaryEdit'> = ({route}) => {
   const [id, setId] = useState<string | null>(null);
   const [content, setContent] = useState<string>('');
-  const {fireEvent} = useEventListener();
   const {diaryEntry, saveDiaryEntry} = useDiaryEntry(id);
 
   const handleSave = useCallback(async () => {
@@ -34,7 +33,7 @@ const DiaryEditScreen: AppScreen<'DiaryEdit'> = ({route}) => {
 
         if (id === null) {
           logEvent('Journal Entry Added');
-          fireEvent('refetch-user-diary');
+          eventListener.fireEvent('refetch-user-diary');
         }
 
         setId(result.data?.editDiaryEntry?.id ?? null);
@@ -44,7 +43,7 @@ const DiaryEditScreen: AppScreen<'DiaryEdit'> = ({route}) => {
     }
 
     return;
-  }, [content, fireEvent, id, saveDiaryEntry]);
+  }, [content, id, saveDiaryEntry]);
 
   useEffect(() => {
     if (diaryEntry) {
@@ -59,7 +58,7 @@ const DiaryEditScreen: AppScreen<'DiaryEdit'> = ({route}) => {
     setContent('');
   }, [route.params.id]);
 
-  useNavigationListener('beforeRemove', () => handleSave());
+  useNavigationListener('beforeRemove', handleSave);
 
   return (
     <SafeAreaView>

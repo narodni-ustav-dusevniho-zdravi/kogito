@@ -43,7 +43,7 @@ const QuestionnaireScreen: AppScreen<'QuestionnaireScreen'> = ({
     if (finished) {
       navigate('AvailableQuestionnaires');
     }
-  }, [finished]);
+  }, [finished, navigate]);
 
   if (!actualQuestion) {
     return <Text>Loading</Text>;

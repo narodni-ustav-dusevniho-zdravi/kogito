@@ -125,12 +125,14 @@ export const useQuestionnaire = (id: string) => {
 
   useEffect(() => {
     saveProgress().then();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [actualAnswer, finished]);
 
   useEffect(() => {
     if (actualQuestion) {
       solvePosition();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [actualQuestion]);
 
   useEffect(() => {
@@ -149,6 +151,7 @@ export const useQuestionnaire = (id: string) => {
     if (questionnaire) {
       nextQuestion();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [questionnaire]);
 
   return {

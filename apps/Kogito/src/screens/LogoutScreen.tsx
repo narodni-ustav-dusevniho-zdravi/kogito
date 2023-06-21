@@ -1,6 +1,7 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {SafeAreaView} from 'react-native';
 import {useApolloClient} from '@apollo/client';
+import {useEffectOnce} from 'usehooks-ts';
 
 import type {AppScreen} from '~modules/navigation';
 
@@ -10,7 +11,7 @@ const LogoutScreen: AppScreen<'Logout'> = ({navigation: {replace}}) => {
   const {clearTokens} = useAuth();
   const apolloClient = useApolloClient();
 
-  useEffect(() => {
+  useEffectOnce(() => {
     (async () => {
       await apolloClient.clearStore();
       await apolloClient.resetStore();
@@ -19,7 +20,7 @@ const LogoutScreen: AppScreen<'Logout'> = ({navigation: {replace}}) => {
 
       replace('Login');
     })();
-  }, []);
+  });
 
   return <SafeAreaView />;
 };

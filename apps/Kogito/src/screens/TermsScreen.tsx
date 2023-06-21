@@ -19,7 +19,7 @@ const TermsScreen: AppScreen<'Terms'> = ({navigation: {replace}}) => {
     if (haveSeenTerms) {
       replace('Login');
     }
-  }, [haveSeenTerms]);
+  }, [haveSeenTerms, replace]);
 
   const handleAgreePress = async () => {
     await setSeenTerms();

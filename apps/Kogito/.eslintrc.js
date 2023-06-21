@@ -3,7 +3,6 @@ module.exports = {
   extends: ['@react-native-community', '@mkraina/eslint-config-base'],
   rules: {
     'react-native/no-inline-styles': 'warn', //TODO: remove
-    'react-hooks/exhaustive-deps': 'warn', //TODO: remove
     'max-lines-per-function': 'warn', //TODO: remove
     '@typescript-eslint/ban-ts-comment': 'warn', //TODO: remove
     'react/jsx-no-literals': 'warn', //TODO: remove

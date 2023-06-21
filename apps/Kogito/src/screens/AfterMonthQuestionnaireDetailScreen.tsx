@@ -42,7 +42,7 @@ const AfterMonthQuestionnaireDetailScreen: AppScreen<
     if (finished) {
       navigate('AfterMonthQuestionnaire');
     }
-  }, [finished]);
+  }, [finished, navigate]);
 
   if (!actualQuestion) {
     return <Text>Loading</Text>;

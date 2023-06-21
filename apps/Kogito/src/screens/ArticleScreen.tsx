@@ -12,7 +12,7 @@ import ProgressBar from '../components/primitives/ProgressBar/ProgressBar';
 import Text from '../components/primitives/Text';
 import {useItemContent} from '../content/useItemContent';
 import {useTrackProgress} from '../content/useTrackProgress';
-import useEventListener from '../helpers/useEventListener';
+import eventListener from '../helpers/eventListener';
 
 const styles = {
   p: {
@@ -33,7 +33,6 @@ const ArticleScreen: AppScreen<'Article'> = ({
   navigation: {replace, goBack},
   route,
 }) => {
-  const {fireEvent} = useEventListener();
   const {articleItem} = useItemContent(route.params.id);
   const windowWidth = useWindowDimensions().width;
 
@@ -44,9 +43,10 @@ const ArticleScreen: AppScreen<'Article'> = ({
     setPosition(0);
   }, [articleItem]);
 
-  useEffect(() => {
-    if (articleItem && position === articleItem.content.length - 1) {
-      console.log('tracking!');
+  const handlePress = () => {
+    if (!articleItem) return;
+    const nextPosition = position + 1;
+    if (nextPosition === articleItem.content.length) {
       trackProgressMutation({
         variables: {
           input: {
@@ -56,26 +56,13 @@ const ArticleScreen: AppScreen<'Article'> = ({
         },
       }).then(() => {
         logEvent('Lesson completed', {lessonTitle: articleItem.name});
-        fireEvent('refetch-progress');
+        eventListener.fireEvent('refetch-progress');
       });
+      const nextScreen =
+        articleItem?.options && JSON.parse(articleItem.options)?.navigate?.name;
+      return nextScreen ? replace(nextScreen) : goBack();
     }
-  }, [articleItem, position]);
-
-  const handlePress = () => {
-    if (articleItem) {
-      if (position === articleItem.content.length - 1) {
-        if (articleItem.options) {
-          const options = JSON.parse(articleItem.options);
-          if (options.navigate) {
-            replace(options.navigate.name);
-          }
-        } else {
-          goBack();
-        }
-      } else {
-        setPosition(position + 1);
-      }
-    }
+    setPosition(position + 1);
   };
 
   return (

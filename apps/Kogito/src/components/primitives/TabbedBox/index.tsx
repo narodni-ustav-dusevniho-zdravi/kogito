@@ -40,19 +40,18 @@ const LinkItem: React.FC<NavigationItem> = ({title, active, onPress}) => {
 };
 
 const TabbedBox: React.FC<TabbedBox> = ({items, headerVariant = 'boxed'}) => {
-  const [selected, setSelected] = useState<Item | null>(null);
+  const [selected, setSelected] = useState<Item>();
 
   useEffect(() => {
-    if (selected) {
-      const sameItem = items.find(item => item.id === selected.id);
+    setSelected(current => {
+      if (current) {
+        const sameItem = items.find(item => item.id === current.id);
 
-      if (sameItem) {
-        setSelected(sameItem);
-        return;
+        if (sameItem) return sameItem;
       }
-    }
 
-    setSelected(items[0] || null);
+      return items[0];
+    });
   }, [items]);
 
   return (
@@ -80,7 +79,7 @@ const TabbedBox: React.FC<TabbedBox> = ({items, headerVariant = 'boxed'}) => {
               ))}
           </S.Navigation.Wrapper>
         </S.Navigation.Container>
-        {selected && selected.render()}
+        {selected?.render()}
       </S.Wrapper>
     </S.WrapperContainer>
   );

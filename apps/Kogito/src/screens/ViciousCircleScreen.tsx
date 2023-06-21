@@ -1,9 +1,9 @@
-import React, {useEffect, useMemo} from 'react';
+import React, {useMemo} from 'react';
 import {SafeAreaView, ScrollView} from 'react-native';
 import {capitalize, groupBy} from 'lodash';
 import moment from 'moment';
 
-import type {AppScreen} from '~modules/navigation';
+import {type AppScreen, useOnScreenFocus} from '~modules/navigation';
 
 import MainContainerWrapper from '../components/container/MainContainerWrapper/MainContainerWrapper';
 import MainHeader from '../components/container/MainHeader/MainHeader';
@@ -40,9 +40,7 @@ const ViciousCircleScreen: AppScreen<'ViciousCircle'> = ({
     });
   }, [records]);
 
-  useEffect(() => {
-    refetch();
-  }, []);
+  useOnScreenFocus(() => refetch());
 
   return (
     <SafeAreaView>

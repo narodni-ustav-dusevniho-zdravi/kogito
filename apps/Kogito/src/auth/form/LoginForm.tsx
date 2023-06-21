@@ -57,7 +57,7 @@ const LoginForm: React.FC<LoginForm> = ({type, onSuccess}) => {
         console.log('Invalid phone number');
       }
     })().then();
-  }, [phoneNumberWatch]);
+  }, [initializeLoginMutation, phoneNumberWatch]);
 
   const onSubmit = async (input: LoginInput) => {
     console.log('Submit');

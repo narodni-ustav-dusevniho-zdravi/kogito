@@ -24,7 +24,7 @@ import ButtonIcon from '../components/primitives/ButtonIcon';
 import MoodRecord from '../components/primitives/MoodRecord/MoodRecord';
 import Text from '../components/primitives/Text';
 import {useMoodsList} from '../diary/useMoodsList';
-import useEventListener from '../helpers/useEventListener';
+import eventListener from '../helpers/eventListener';
 
 const prepareCount = (items: MoodCount[], mood: Mood): number => {
   return items.find(item => item.mood === mood)?.count || 0;
@@ -38,7 +38,6 @@ const removeMoodRecordMutation = gql`
 
 const MoodListScreen: AppScreen<'MoodList'> = () => {
   const {records, moodsCount, refetch} = useMoodsList();
-  const {fireEvent, addListener, removeListener} = useEventListener();
   const [removeMoodRecord] = useMutation<
     RemoveMoodRecordMutation,
     RemoveMoodRecordMutationVariables
@@ -87,7 +86,7 @@ const MoodListScreen: AppScreen<'MoodList'> = () => {
   };
 
   const pressAdd = () => {
-    fireEvent('open-log-mood');
+    eventListener.fireEvent('open-log-mood');
   };
 
   useEffect(() => {
@@ -95,12 +94,12 @@ const MoodListScreen: AppScreen<'MoodList'> = () => {
       refetch();
     };
 
-    addListener('refetch-mood-list', handleRefetch);
+    eventListener.addListener('refetch-mood-list', handleRefetch);
 
     return () => {
-      removeListener(handleRefetch);
+      eventListener.removeListener(handleRefetch);
     };
-  }, []);
+  }, [refetch]);
 
   useOnScreenFocus(() => refetch());
 

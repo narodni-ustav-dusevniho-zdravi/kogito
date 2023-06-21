@@ -11,7 +11,7 @@ import MainHeader from '../components/container/MainHeader/MainHeader';
 import BoxMedia from '../components/primitives/BoxMedia';
 import ColoredSafeAreaView from '../components/primitives/ColoredSafeAreaView';
 import Hero from '../components/primitives/Hero/Hero';
-import TabbedBox from '../components/primitives/TabbedBox/TabbedBox';
+import TabbedBox from '../components/primitives/TabbedBox';
 import type {ContentItem} from '../content/types';
 import {useJourney} from '../content/useJourney';
 import {redirectItem} from '../helpers/redirectItem';

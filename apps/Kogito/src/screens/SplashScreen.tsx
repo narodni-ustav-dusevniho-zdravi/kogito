@@ -2,46 +2,45 @@ import React, {useEffect} from 'react';
 import {SafeAreaView} from 'react-native';
 import BootSplash from 'react-native-bootsplash';
 
-import type {AppScreen} from '~modules/navigation';
+import type {AppScreen, AppScreenName} from '~modules/navigation';
 
+import type {AuthStatus} from '../auth/auth-types';
 import {useAuth} from '../auth/useAuth';
 import {useMeQuery} from '../user/useMeQuery';
 import {useTerms} from '../user/useTerms';
+
+const getNextScreen = (props: {
+  haveActiveQuestionnaire: boolean;
+  haveSeenTerms: boolean;
+  status: AuthStatus;
+  me?: {finishedRegistration?: boolean | null};
+}): AppScreenName | undefined => {
+  if (props.status === 'unauthenticated')
+    return props.haveSeenTerms ? 'Login' : 'Terms';
+  if (!props.me) return;
+  if (props.haveActiveQuestionnaire) {
+    return 'AfterMonthQuestionnaire';
+  }
+  return props.me.finishedRegistration ? 'Dashboard' : 'Registration';
+};
 
 const SplashScreen: AppScreen<'Splash'> = ({navigation: {replace}}) => {
   const {status} = useAuth();
   const {haveSeenTerms} = useTerms();
   const {me, haveActiveQuestionnaire} = useMeQuery();
 
-  // eslint-disable-next-line @shopify/prefer-early-return
+  const nextScreen = getNextScreen({
+    status,
+    haveActiveQuestionnaire,
+    haveSeenTerms,
+    me,
+  });
+
   useEffect(() => {
-    if (status === 'unauthenticated') {
-      if (haveSeenTerms) {
-        replace('Login');
-      } else {
-        replace('Terms');
-      }
-
-      BootSplash.hide();
-    }
-  }, [status]);
-
-  // eslint-disable-next-line @shopify/prefer-early-return
-  useEffect(() => {
-    if (me) {
-      console.log(me);
-      if (haveActiveQuestionnaire) {
-        replace('AfterMonthQuestionnaire');
-        // eslint-disable-next-line no-negated-condition
-      } else if (!me.finishedRegistration) {
-        replace('Registration');
-      } else {
-        replace('Dashboard');
-      }
-
-      BootSplash.hide();
-    }
-  }, [me]);
+    if (!nextScreen) return;
+    replace(nextScreen);
+    BootSplash.hide();
+  }, [nextScreen, replace]);
 
   return <SafeAreaView />;
 };

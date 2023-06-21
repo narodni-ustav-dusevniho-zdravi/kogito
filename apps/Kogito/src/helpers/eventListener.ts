@@ -35,12 +35,10 @@ const fireEvent = (event: EventName, payload: any | null = null) => {
   }
 };
 
-const useEventListener = () => {
-  return {
-    addListener,
-    removeListener,
-    fireEvent,
-  };
+const eventListener = {
+  addListener,
+  removeListener,
+  fireEvent,
 };
 
-export default useEventListener;
+export default eventListener;

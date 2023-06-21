@@ -13,10 +13,9 @@ import ColoredSafeAreaView from '../components/primitives/ColoredSafeAreaView';
 import Text from '../components/primitives/Text';
 import {useItemContent} from '../content/useItemContent';
 import {useTrackProgress} from '../content/useTrackProgress';
-import useEventListener from '../helpers/useEventListener';
+import eventListener from '../helpers/eventListener';
 
 const VideoScreen: AppScreen<'Video'> = ({route}) => {
-  const {fireEvent} = useEventListener();
   const [isLoading, setLoading] = useState(true);
   const [playedSeconds, setPlayedSeconds] = useState(0);
   const [tracked, setTracked] = useState(false);
@@ -63,10 +62,17 @@ const VideoScreen: AppScreen<'Video'> = ({route}) => {
         if (videoItem) {
           logEvent('Lesson completed', {lessonTitle: videoItem.name});
         }
-        fireEvent('refetch-progress');
+        eventListener.fireEvent('refetch-progress');
       });
     }
-  }, [playing, setPlayedSeconds, playedSeconds]);
+  }, [
+    playing,
+    playedSeconds,
+    route.params.id,
+    tracked,
+    trackProgressMutation,
+    videoItem,
+  ]);
 
   useEffect(() => {
     setLoading(true);

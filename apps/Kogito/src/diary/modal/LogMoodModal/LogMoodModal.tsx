@@ -13,19 +13,17 @@ import Modal from '../../../components/container/Modal/Modal';
 import ModalEmoticon from '../../../components/container/ModalEmoticon/ModalEmoticon';
 import ButtonIcon from '../../../components/primitives/ButtonIcon';
 import Text from '../../../components/primitives/Text';
-import useEventListener from '../../../helpers/useEventListener';
+import eventListener from '../../../helpers/eventListener';
 import {useLogMood} from '../../useLogMood';
 
 import S from './styles';
 
-// eslint-disable-next-line max-lines-per-function, max-statements
+// eslint-disable-next-line max-lines-per-function
 const LogMoodModal: React.FC = () => {
   const logMoodMutation = useLogMood();
   const [visibility, setVisibility] = useState(false);
   const [showResult, setShowResult] = useState<Mood>();
   const [closeTimer, setCloseTimer] = useState<NodeJS.Timeout>();
-
-  const {addListener, removeListener, fireEvent} = useEventListener();
 
   const logMood = async (mood: Mood) => {
     const result = await logMoodMutation({
@@ -41,11 +39,11 @@ const LogMoodModal: React.FC = () => {
       lastMood: result.data?.logMood.last ? result.data.logMood.last : '',
     });
     setShowResult(mood);
-    fireEvent('refetch-mood-list');
+    eventListener.fireEvent('refetch-mood-list');
 
     setCloseTimer(
       setTimeout(() => {
-        fireEvent('refetch-mood-list');
+        eventListener.fireEvent('refetch-mood-list');
         setVisibility(false);
         setShowResult(undefined);
       }, 3000),
@@ -66,10 +64,10 @@ const LogMoodModal: React.FC = () => {
       setVisibility(true);
     };
 
-    addListener('open-log-mood', openFunction);
+    eventListener.addListener('open-log-mood', openFunction);
 
     return () => {
-      removeListener(openFunction);
+      eventListener.removeListener(openFunction);
     };
   }, []);
 
