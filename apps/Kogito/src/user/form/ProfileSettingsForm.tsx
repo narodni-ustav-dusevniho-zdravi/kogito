@@ -50,7 +50,7 @@ const ProfileSettingsForm: React.FC<ProfileSettingsForm> = ({
             style={{marginTop: 16, marginBottom: 6}}
             value={value}
             onBlur={onBlur}
-            onChangeText={value => onChange(value)}
+            onChangeText={onChange}
           />
         )}
         rules={{required: true}}
@@ -64,7 +64,7 @@ const ProfileSettingsForm: React.FC<ProfileSettingsForm> = ({
             style={{marginTop: 6, marginBottom: 12}}
             value={value}
             onBlur={onBlur}
-            onChangeText={value => onChange(value)}
+            onChangeText={onChange}
           />
         )}
         rules={{required: true}}

@@ -49,8 +49,8 @@ const AuthProvider: React.FC<React.PropsWithChildren> = ({children}) => {
   // This patterns avoids unnecessary deep renders
   // https://reactjs.org/docs/context.html#caveats
   useEffect(() => {
-    setContextValue((contextValue: AuthContextState) => ({
-      ...contextValue,
+    setContextValue((current: AuthContextState) => ({
+      ...current,
       state,
     }));
   }, [state]);

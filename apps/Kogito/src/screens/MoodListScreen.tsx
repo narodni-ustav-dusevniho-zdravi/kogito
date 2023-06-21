@@ -156,8 +156,8 @@ const MoodListScreen: AppScreen<'MoodList'> = () => {
               </ButtonIcon>
             </View>
 
-            {groupedRecords.map(item => (
-              <React.Fragment key={item.title}>
+            {groupedRecords.map(record => (
+              <React.Fragment key={record.title}>
                 <Text
                   colorVariant="gray"
                   style={{
@@ -165,9 +165,9 @@ const MoodListScreen: AppScreen<'MoodList'> = () => {
                     marginBottom: 8,
                   }}
                   textVariant="text600">
-                  {item.title}
+                  {record.title}
                 </Text>
-                {item.items?.map(item => (
+                {record.items?.map(item => (
                   <MoodRecord
                     key={item.id}
                     type={item.mood}

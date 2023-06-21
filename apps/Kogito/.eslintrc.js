@@ -10,7 +10,6 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 'warn', //TODO: remove
     'require-await': 'warn', //TODO: remove
     'max-lines': 'warn', //TODO: remove
-    'no-shadow': 'warn', //TODO: remove
     'max-depth': 'warn', //TODO: remove
     '@typescript-eslint/no-unnecessary-condition': 'off', //TODO: remove
     'no-restricted-imports': [

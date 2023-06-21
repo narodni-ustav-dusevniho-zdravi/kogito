@@ -141,7 +141,7 @@ const FinishRegistrationForm: React.FC<FinishRegistrationForm> = ({
             textContentType="emailAddress"
             value={value}
             onBlur={onBlur}
-            onChangeText={value => onChange(value)}
+            onChangeText={onChange}
           />
         )}
         rules={{
@@ -161,8 +161,8 @@ const FinishRegistrationForm: React.FC<FinishRegistrationForm> = ({
             style={{marginTop: 16}}
             value={value?.toString()}
             onBlur={onBlur}
-            onChangeText={value =>
-              onChange(parseInt(value.replace(/[^0-9]/g, '')))
+            onChangeText={text =>
+              onChange(parseInt(text.replace(/[^0-9]/g, '')))
             }
           />
         )}
@@ -195,7 +195,7 @@ const FinishRegistrationForm: React.FC<FinishRegistrationForm> = ({
             items={MaritalStatusChoices}
             placeholder={{label: 'Váš rodinný stav', value: 0}}
             value={value}
-            onValueChange={value => onChange(value)}
+            onValueChange={onChange}
           />
         )}
         rules={{
@@ -215,7 +215,7 @@ const FinishRegistrationForm: React.FC<FinishRegistrationForm> = ({
                 style={{marginTop: 16}}
                 value={value}
                 onBlur={onBlur}
-                onChangeText={value => onChange(value)}
+                onChangeText={onChange}
               />
             )}
           />
@@ -235,8 +235,8 @@ const FinishRegistrationForm: React.FC<FinishRegistrationForm> = ({
             style={{marginTop: 16}}
             value={value?.toString()}
             onBlur={onBlur}
-            onChangeText={value =>
-              onChange(parseInt(value.replace(/[^0-9]/g, '')))
+            onChangeText={text =>
+              onChange(parseInt(text.replace(/[^0-9]/g, '')))
             }
           />
         )}
@@ -259,7 +259,7 @@ const FinishRegistrationForm: React.FC<FinishRegistrationForm> = ({
             items={EducationalAttainment}
             placeholder={{label: 'Dosažené vzdělání', value: 0}}
             value={value}
-            onValueChange={value => onChange(value)}
+            onValueChange={onChange}
           />
         )}
         rules={{
@@ -281,7 +281,7 @@ const FinishRegistrationForm: React.FC<FinishRegistrationForm> = ({
             items={Population}
             placeholder={{label: 'Počet obyvatel v místě bydliště', value: 0}}
             value={value}
-            onValueChange={value => onChange(value)}
+            onValueChange={onChange}
           />
         )}
         rules={{

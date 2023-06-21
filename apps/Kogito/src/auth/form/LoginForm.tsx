@@ -101,7 +101,7 @@ const LoginForm: React.FC<LoginForm> = ({type, onSuccess}) => {
             placeholder="Telefonní číslo"
             value={value}
             onBlur={onBlur}
-            onChangeText={value => onChange(value)}
+            onChangeText={onChange}
             onTouchStart={() => setError(null)}
           />
         )}
@@ -118,7 +118,7 @@ const LoginForm: React.FC<LoginForm> = ({type, onSuccess}) => {
             style={{marginTop: 16, marginBottom: 24}}
             value={value}
             onBlur={onBlur}
-            onChangeText={value => onChange(value)}
+            onChangeText={onChange}
             onTouchStart={() => setError(null)}
           />
         )}

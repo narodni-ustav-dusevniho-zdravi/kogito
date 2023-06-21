@@ -18,7 +18,7 @@ import images from '../helpers/images';
 import {redirectItem} from '../helpers/redirectItem';
 
 const RelaxationScreen: AppScreen<'Relaxation'> = () => {
-  const {bonusRelaxation, journeyRelaxation} = useContent();
+  const content = useContent();
 
   return (
     <SafeAreaView>
@@ -34,7 +34,7 @@ const RelaxationScreen: AppScreen<'Relaxation'> = () => {
               horizontal={true}
               showsHorizontalScrollIndicator={false}>
               <BoxWrapper>
-                {bonusRelaxation.map(item => (
+                {content.bonusRelaxation.map(item => (
                   <Box
                     key={item.id}
                     img={images(
@@ -58,7 +58,7 @@ const RelaxationScreen: AppScreen<'Relaxation'> = () => {
 
             <TabbedBox
               headerVariant="headers"
-              items={journeyRelaxation.map(journeyRelaxation => ({
+              items={content.journeyRelaxation.map(journeyRelaxation => ({
                 id: journeyRelaxation.id,
                 label: journeyRelaxation.name,
                 render: () => {
