@@ -13,7 +13,6 @@ import {useMeQuery} from '../../user/useMeQuery';
 type FinishRegistrationForm = {
   onSuccess: () => void;
 };
-
 const MaritalStatusChoices = [
   {label: 'Žiji s manželem', value: 1},
   {label: 'Žiji s partnerem', value: 2},
@@ -21,7 +20,6 @@ const MaritalStatusChoices = [
   {label: 'Vdova', value: 4},
   {label: 'Jiný - prosím doplňte', value: 5},
 ];
-
 const EducationalAttainment = [
   {label: 'Základní včetně neukončeného', value: 1},
   {label: 'Střední včetně vyučení bez maturity', value: 2},
@@ -31,7 +29,6 @@ const EducationalAttainment = [
   {label: 'Vysokoškolské magisterské', value: 6},
   {label: 'Vyšší', value: 7},
 ];
-
 const Population = [
   {label: '1 – 999', value: 1},
   {label: '1 000 - 4 999', value: 2},
@@ -40,14 +37,13 @@ const Population = [
   {label: '50 000 - 99 999', value: 5},
   {label: '100 000 a více', value: 6},
 ];
-
 const ActualState = [
   {label: 'Těhotná', value: 1},
   {label: 'V šestinedělí', value: 2},
   {label: 'Po šestinedělí do 1 roku dítěte', value: 3},
   {label: 'Od porodu uběhl víc jak rok', value: 4},
 ];
-
+// eslint-disable-next-line max-lines-per-function
 const FinishRegistrationForm: React.FC<FinishRegistrationForm> = ({
   onSuccess,
 }) => {
@@ -73,7 +69,6 @@ const FinishRegistrationForm: React.FC<FinishRegistrationForm> = ({
     },
   });
   const maritalStatusValue = watch('maritalStatus');
-
   const onSubmit: Parameters<typeof handleSubmit>[0] = async input => {
     console.log('Submit', input);
     try {
@@ -94,7 +89,6 @@ const FinishRegistrationForm: React.FC<FinishRegistrationForm> = ({
       console.log(e);
     }
   };
-
   return (
     <View>
       {/*<Controller*/}
@@ -112,7 +106,6 @@ const FinishRegistrationForm: React.FC<FinishRegistrationForm> = ({
       {/*  )}*/}
       {/*/>*/}
       {/*{errors.firstName && <Text>{errors.firstName.message}</Text>}*/}
-
       {/*<Controller*/}
       {/*  control={control}*/}
       {/*  name="lastName"*/}
@@ -128,7 +121,6 @@ const FinishRegistrationForm: React.FC<FinishRegistrationForm> = ({
       {/*  )}*/}
       {/*/>*/}
       {/*{errors.lastName && <Text>{errors.lastName.message}</Text>}*/}
-
       <Controller
         control={control}
         name="email"
@@ -150,7 +142,6 @@ const FinishRegistrationForm: React.FC<FinishRegistrationForm> = ({
         }}
       />
       {errors.email && <Text>{errors.email.message}</Text>}
-
       <Controller
         control={control}
         name="age"
@@ -169,7 +160,6 @@ const FinishRegistrationForm: React.FC<FinishRegistrationForm> = ({
         rules={{required: {value: true, message: 'Vyplň prosím svůj věk'}}}
       />
       {errors.age && <Text>{errors.age.message}</Text>}
-
       <Controller
         control={control}
         name="actualState"
@@ -186,7 +176,6 @@ const FinishRegistrationForm: React.FC<FinishRegistrationForm> = ({
         }}
       />
       {errors.actualState && <Text>{errors.actualState.message}</Text>}
-
       <Controller
         control={control}
         name="maritalStatus"
@@ -203,7 +192,6 @@ const FinishRegistrationForm: React.FC<FinishRegistrationForm> = ({
         }}
       />
       {errors.maritalStatus && <Text>{errors.maritalStatus.message}</Text>}
-
       {maritalStatusValue === 5 && (
         <>
           <Controller
@@ -224,7 +212,6 @@ const FinishRegistrationForm: React.FC<FinishRegistrationForm> = ({
           )}
         </>
       )}
-
       <Controller
         control={control}
         name="numberOfChildren"
@@ -250,7 +237,6 @@ const FinishRegistrationForm: React.FC<FinishRegistrationForm> = ({
       {errors.numberOfChildren && (
         <Text>{errors.numberOfChildren.message}</Text>
       )}
-
       <Controller
         control={control}
         name="educationalAttainment"
@@ -272,7 +258,6 @@ const FinishRegistrationForm: React.FC<FinishRegistrationForm> = ({
       {errors.educationalAttainment && (
         <Text>{errors.educationalAttainment.message}</Text>
       )}
-
       <Controller
         control={control}
         name="population"
@@ -292,7 +277,6 @@ const FinishRegistrationForm: React.FC<FinishRegistrationForm> = ({
         }}
       />
       {errors.population && <Text>{errors.population.message}</Text>}
-
       <Button
         style={{marginTop: 24}}
         title="Pokračovat"
@@ -301,5 +285,4 @@ const FinishRegistrationForm: React.FC<FinishRegistrationForm> = ({
     </View>
   );
 };
-
 export default FinishRegistrationForm;

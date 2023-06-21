@@ -15,6 +15,7 @@ import {useItemContent} from '../content/useItemContent';
 import {useTrackProgress} from '../content/useTrackProgress';
 import eventListener from '../helpers/eventListener';
 
+// eslint-disable-next-line max-lines-per-function
 const VideoScreen: AppScreen<'Video'> = ({route}) => {
   const [isLoading, setLoading] = useState(true);
   const [playedSeconds, setPlayedSeconds] = useState(0);

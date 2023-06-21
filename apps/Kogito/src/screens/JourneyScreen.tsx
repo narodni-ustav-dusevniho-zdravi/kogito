@@ -73,6 +73,7 @@ const colorSecond = (journey: Pick<Journey, 'id'> | null) => {
   }
 };
 
+// eslint-disable-next-line max-lines-per-function
 const JourneyScreen: AppScreen<'Journey'> = ({route}) => {
   const {journey, refetch} = useJourney(route.params.id);
 

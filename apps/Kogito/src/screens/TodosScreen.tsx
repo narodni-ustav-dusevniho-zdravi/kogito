@@ -58,6 +58,7 @@ const DayPartRender: React.FC<DayPartRender> = ({
   );
 };
 
+// eslint-disable-next-line max-lines-per-function
 const TodosScreen: AppScreen<'Todos'> = () => {
   const {todos, refetch, saveTodo, trackTodo, removeTodo} = useTodos();
   const [editor, setEditor] = useState<EditorSettings | null>(null);

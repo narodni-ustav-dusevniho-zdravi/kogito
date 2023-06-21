@@ -18,6 +18,7 @@ type LoginForm = {
   type: 'login' | 'registration';
 };
 
+// eslint-disable-next-line max-lines-per-function
 const LoginForm: React.FC<LoginForm> = ({type, onSuccess}) => {
   const {setTokens} = useAuth();
   const [useMasked, setUseMasked] = useState(true);

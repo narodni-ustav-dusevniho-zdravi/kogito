@@ -13,6 +13,7 @@ import QuestionnaireWidget from '../questionnaire/components/QuestionnaireWidget
 import {useAfterMonthQuestionnaireQuery} from '../questionnaire/useAfterMonthQuestionnaireQuery';
 import {useMeQuery} from '../user/useMeQuery';
 
+// eslint-disable-next-line max-lines-per-function
 const AfterMonthQuestionnaireScreen: AppScreen<'AfterMonthQuestionnaire'> = ({
   navigation: {replace, navigate},
 }) => {

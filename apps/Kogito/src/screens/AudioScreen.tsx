@@ -44,6 +44,7 @@ const styles = {
   },
 };
 
+// eslint-disable-next-line max-lines-per-function
 const AudioScreen: AppScreen<'Audio'> = ({navigation: {navigate}, route}) => {
   const {audioFile} = useItemContent(route.params.id);
   const {trackProgressMutation} = useTrackProgress();

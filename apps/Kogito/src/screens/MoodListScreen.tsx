@@ -36,6 +36,7 @@ const removeMoodRecordMutation = gql`
   }
 `;
 
+// eslint-disable-next-line max-lines-per-function
 const MoodListScreen: AppScreen<'MoodList'> = () => {
   const {records, moodsCount, refetch} = useMoodsList();
   const [removeMoodRecord] = useMutation<

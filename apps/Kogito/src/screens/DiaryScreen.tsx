@@ -41,18 +41,11 @@ const DiaryScreen: AppScreen<'Diary'> = ({navigation: {navigate}}) => {
 
   const handleLongPress = (id: string) => {
     Alert.alert('Smazat', 'Doopravdy chcete smazat záznam?', [
-      {
-        text: 'Ne',
-        style: 'cancel',
-      },
+      {text: 'Ne', style: 'cancel'},
       {
         text: 'Ano',
         onPress: async () => {
-          await removeDiaryEntry({
-            variables: {
-              id,
-            },
-          });
+          await removeDiaryEntry({variables: {id}});
           refetch();
         },
       },

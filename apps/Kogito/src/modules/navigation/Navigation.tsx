@@ -48,36 +48,29 @@ const DashboardStack = createStackNavigator<DashboardStackParamList>();
 
 const UnfinishedRegistrationScreens: React.FC = () => {
   return (
-    <RegistrationStack.Navigator initialRouteName="Register">
-      <RegistrationStack.Screen
-        component={RegisterScreen}
-        name="Register"
-        options={{headerShown: false}}
-      />
+    <RegistrationStack.Navigator
+      initialRouteName="Register"
+      screenOptions={{headerShown: false}}>
+      <RegistrationStack.Screen component={RegisterScreen} name="Register" />
       <RegistrationStack.Screen
         component={AvailableQuestionnairesScreen}
         name="AvailableQuestionnaires"
-        options={{headerShown: false}}
       />
       <RegistrationStack.Screen
         component={QuestionnaireScreen}
         name="QuestionnaireScreen"
-        options={{headerShown: false}}
       />
       <RegistrationStack.Screen
         component={QuestionnaireResultScreen}
         name="QuestionnaireResultScreen"
-        options={{headerShown: false}}
       />
       <RegistrationStack.Screen
         component={SelectJourneyScreen}
         name="SelectJourneyScreen"
-        options={{headerShown: false}}
       />
       <RegistrationStack.Screen
         component={FinishRegistrationScreen}
         name="FinishRegistrationScreen"
-        options={{headerShown: false}}
       />
     </RegistrationStack.Navigator>
   );
@@ -85,17 +78,11 @@ const UnfinishedRegistrationScreens: React.FC = () => {
 
 const DashboardScreens: React.FC = () => {
   return (
-    <DashboardStack.Navigator initialRouteName="MyDay">
-      <DashboardStack.Screen
-        component={DashboardScreen}
-        name="MyDay"
-        options={{headerShown: false}}
-      />
-      <DashboardStack.Screen
-        component={JourneyScreen}
-        name="Journey"
-        options={{headerShown: false}}
-      />
+    <DashboardStack.Navigator
+      initialRouteName="MyDay"
+      screenOptions={{headerShown: false}}>
+      <DashboardStack.Screen component={DashboardScreen} name="MyDay" />
+      <DashboardStack.Screen component={JourneyScreen} name="Journey" />
     </DashboardStack.Navigator>
   );
 };
@@ -148,117 +135,46 @@ const DashboardTabNavigation = () => {
 
 const Navigation: React.FC = () => {
   return (
-    <Stack.Navigator initialRouteName="Splash">
-      <Stack.Screen
-        component={SplashScreen}
-        name="Splash"
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        component={TermsScreen}
-        name="Terms"
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        component={LoginScreen}
-        name="Login"
-        options={{headerShown: false}}
-      />
+    <Stack.Navigator
+      initialRouteName="Splash"
+      screenOptions={{headerShown: false}}>
+      <Stack.Screen component={SplashScreen} name="Splash" />
+      <Stack.Screen component={TermsScreen} name="Terms" />
+      <Stack.Screen component={LoginScreen} name="Login" />
       <Stack.Screen
         component={UnfinishedRegistrationScreens}
         name="Registration"
-        options={{headerShown: false}}
       />
-      <Stack.Screen
-        component={DashboardTabNavigation}
-        name="Dashboard"
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        component={ProfileSettingsScreen}
-        name="ProfileSettings"
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        component={AudioScreen}
-        name="Audio"
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        component={VideoScreen}
-        name="Video"
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        component={ArticleScreen}
-        name="Article"
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        component={StoriesListScreen}
-        name="StoriesList"
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        component={StoryDetailScreen}
-        name="StoryDetail"
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        component={DiaryScreen}
-        name="Diary"
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        component={DiaryEditScreen}
-        name="DiaryEdit"
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        component={MoodListScreen}
-        name="MoodList"
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        component={ViciousCircleScreen}
-        name="ViciousCircle"
-        options={{headerShown: false}}
-      />
+      <Stack.Screen component={DashboardTabNavigation} name="Dashboard" />
+      <Stack.Screen component={ProfileSettingsScreen} name="ProfileSettings" />
+      <Stack.Screen component={AudioScreen} name="Audio" />
+      <Stack.Screen component={VideoScreen} name="Video" />
+      <Stack.Screen component={ArticleScreen} name="Article" />
+      <Stack.Screen component={StoriesListScreen} name="StoriesList" />
+      <Stack.Screen component={StoryDetailScreen} name="StoryDetail" />
+      <Stack.Screen component={DiaryScreen} name="Diary" />
+      <Stack.Screen component={DiaryEditScreen} name="DiaryEdit" />
+      <Stack.Screen component={MoodListScreen} name="MoodList" />
+      <Stack.Screen component={ViciousCircleScreen} name="ViciousCircle" />
       <Stack.Screen
         component={ViciousCircleEditScreen}
         name="ViciousCircleEdit"
-        options={{headerShown: false}}
       />
-      <Stack.Screen
-        component={ScheduleDayScreen}
-        name="ScheduleDay"
-        options={{headerShown: false}}
-      />
+      <Stack.Screen component={ScheduleDayScreen} name="ScheduleDay" />
       <Stack.Screen
         component={AfterMonthQuestionnaireScreen}
         name="AfterMonthQuestionnaire"
-        options={{headerShown: false}}
       />
       <Stack.Screen
         component={AfterMonthQuestionnaireDetailScreen}
         name="AfterMonthQuestionnaireDetail"
-        options={{headerShown: false}}
       />
       <Stack.Screen
         component={SelectJourneyScreen}
         name="SelectJourneyScreen"
-        options={{headerShown: false}}
       />
-      <Stack.Screen
-        component={JourneySwitchScreen}
-        name="JourneySwitch"
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        component={LogoutScreen}
-        name="Logout"
-        options={{headerShown: false}}
-      />
+      <Stack.Screen component={JourneySwitchScreen} name="JourneySwitch" />
+      <Stack.Screen component={LogoutScreen} name="Logout" />
     </Stack.Navigator>
   );
 };

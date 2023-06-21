@@ -39,7 +39,7 @@ import ImageRelaxWoods from '~assets/images/woods.png';
 
 type Placing = 'bonusRelaxationOverview' | 'audioDetail';
 
-// eslint-disable-next-line max-lines-per-function, complexity
+// eslint-disable-next-line complexity, max-lines-per-function
 export default (placing: Placing, image: string | null) => {
   if (placing === 'bonusRelaxationOverview') {
     switch (image) {

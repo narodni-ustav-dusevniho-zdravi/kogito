@@ -5,6 +5,7 @@ import type {Question, UserAnswer} from '~gql/graphql';
 import {useQuestionnaireDetail} from './useQuestionnaireDetail';
 import {useUpdateQuestionnaire} from './useUpdateQuestionnaire';
 
+// eslint-disable-next-line max-lines-per-function
 export const useQuestionnaire = (id: string) => {
   const {questionnaire} = useQuestionnaireDetail(id);
   const {saveUserQuestionnaire} = useUpdateQuestionnaire();
