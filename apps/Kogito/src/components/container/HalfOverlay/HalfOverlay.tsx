@@ -1,10 +1,5 @@
-import React, {FC} from 'react';
-import {
-  ContainerWrap,
-  ContainerInner,
-  StyledModal,
-  OutsideWrap,
-} from './styles';
+import React from 'react';
+import {ContainerInner, StyledModal, OutsideWrap} from './styles';
 import ReactNative, {
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
@@ -15,7 +10,7 @@ type HalfOverlayProps = {
   close: () => void | undefined;
 } & ReactNative.ModalProperties;
 
-const HalfOverlay: FC<HalfOverlayProps> = ({children, ...rest}) => {
+const HalfOverlay: React.FC<HalfOverlayProps> = ({children, ...rest}) => {
   return (
     <StyledModal animationType="slide" transparent={true} {...rest}>
       <TouchableWithoutFeedback onPress={() => rest.close()}>

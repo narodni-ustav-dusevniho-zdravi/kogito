@@ -1,7 +1,7 @@
 import React, {
   createContext,
   Dispatch,
-  FC,
+  PropsWithChildren,
   useContext,
   useEffect,
   useReducer,
@@ -13,9 +13,9 @@ import AuthReducer, {
   finishAuthenticating,
 } from './auth-reducer';
 import ApolloClient from '../../apollo/client';
-import {MeQuery} from '../user/graphql';
-import {getAccessToken} from './useAuth';
+import {getAccessToken} from './api';
 import useMixPanelTracking from '../../tracking/useMixPanelTracking';
+import {MeQuery} from '../user/useMeQuery';
 
 const initState = {
   accessToken: null,
@@ -35,7 +35,7 @@ const AuthContext = createContext<AuthContextState>({
 
 const useAuthContext = (): AuthContextState => useContext(AuthContext);
 
-const AuthProvider: FC = ({children}) => {
+const AuthProvider: React.FC<PropsWithChildren> = ({children}) => {
   const {identifyUser} = useMixPanelTracking();
   const [state, dispatch] = useReducer<React.Reducer<AuthState, AuthAction>>(
     AuthReducer,

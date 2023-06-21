@@ -1,3 +1,3 @@
-import EditViciousCircleModal from './EditViciousCircleModal';
+import EditTodoModal from './EditTodoModal';
 
-export default EditViciousCircleModal;
+export default EditTodoModal;

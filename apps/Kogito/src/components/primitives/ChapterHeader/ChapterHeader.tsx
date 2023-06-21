@@ -1,4 +1,4 @@
-import React, {FC, ReactElement} from 'react';
+import React, {ReactElement} from 'react';
 import {Wrapper, PullRight, Left, Line, Spacer} from './styles';
 
 type ChapterHeader = {
@@ -6,7 +6,7 @@ type ChapterHeader = {
   right: ReactElement;
 };
 
-const ChapterHeader: FC<ChapterHeader> = ({left, right}) => {
+const ChapterHeader: React.FC<ChapterHeader> = ({left, right}) => {
   return (
     <Wrapper>
       <Line>

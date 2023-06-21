@@ -1,3 +1,3 @@
-import HalfOverlay from './HalfOverlay';
+import HalfOverlay from '../HalfOverlay';
 
 export default HalfOverlay;

@@ -1,3 +1,3 @@
-import Text from './Text';
+import VicousCircle from './VicousCircle';
 
-export default Text;
+export default VicousCircle;

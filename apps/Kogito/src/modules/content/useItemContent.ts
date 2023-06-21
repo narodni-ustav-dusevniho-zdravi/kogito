@@ -1,35 +1,11 @@
 import {gql} from '@apollo/client';
 import {useQuery} from '@apollo/client';
+import {
+  ItemDetailQuery,
+  ItemDetailQueryVariables,
+} from '../../../gql/__generated__/graphql';
 
-type Item = {
-  id: string;
-  name: string;
-  subTitle: string;
-  image: string | null;
-  options: string | null;
-};
-
-type AudioItem = {
-  duration: number;
-  link: string;
-  image?: string;
-  transcript?: string;
-  previous?: string | null;
-  next?: string | null;
-} & Item;
-
-type ArticleItem = {
-  content: {
-    content: string;
-    continue: string;
-  }[];
-} & Item;
-
-type VideoItem = {
-  link: string;
-} & Item;
-
-export const ItemQuery = gql`
+const query = gql`
   query itemDetail($id: ID!) {
     itemDetail(id: $id) {
       id
@@ -57,19 +33,15 @@ export const ItemQuery = gql`
   }
 `;
 
-type UseItemContent = (id: string) => {
-  audioFile: AudioItem | null;
-  articleItem: ArticleItem | null;
-  videoItem: VideoItem | null;
-  loading: boolean;
-};
-
-export const useItemContent: UseItemContent = (id: string) => {
-  const {data, loading} = useQuery(ItemQuery, {
-    variables: {
-      id,
+export const useItemContent = (id: string) => {
+  const {data, loading} = useQuery<ItemDetailQuery, ItemDetailQueryVariables>(
+    query,
+    {
+      variables: {
+        id,
+      },
     },
-  });
+  );
 
   if (data) {
     return {

@@ -1,35 +1,29 @@
-import React, {FC} from 'react';
+import React from 'react';
 import Icon from '../../../assets/icon-chevron-left.svg';
 import S from './styles';
 import {useNavigation} from '@react-navigation/native';
 
 type ContainerProps = {
   title: string;
-  goTo: string;
   beforeBackButton?: () => Promise<void>;
 };
 
-const GoBack: FC<ContainerProps> = ({
-  goTo = '',
+const GoBack: React.FC<ContainerProps> = ({
   title,
-  beforeBackButton = () => {},
+  beforeBackButton,
   ...rest
 }) => {
   const navigation = useNavigation();
 
   const handlePress = async () => {
-    await beforeBackButton();
-    navigation.navigate(goTo);
+    await beforeBackButton?.();
+    navigation.navigate('Dashboard');
   };
 
   return (
     <S.Container {...rest} onPress={handlePress}>
       <S.Wrapper>
-        <Icon
-          style={{
-            color: '#1c1c1c',
-          }}
-        />
+        <Icon color={'#1c1c1c'} />
         <S.Text>{title}</S.Text>
       </S.Wrapper>
     </S.Container>

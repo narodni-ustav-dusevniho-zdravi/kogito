@@ -1,4 +1,4 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Modal from '../../../../components/container/Modal/Modal';
 import Text from '../../../../components/primitives/Text';
 import Button from '../../../../components/primitives/Button';
@@ -12,7 +12,7 @@ type EditTodoModal = {
   remove: () => void;
 };
 
-const EditViciousCircleModal: FC<EditTodoModal> = ({
+const EditViciousCircleModal: React.FC<EditTodoModal> = ({
   initText,
   save,
   close,

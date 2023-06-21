@@ -1,6 +1,6 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Modal from '../../../../components/container/Modal/Modal';
-import {Mood, useLogMood} from '../../useLogMood';
+import {useLogMood} from '../../useLogMood';
 import useEventListener from '../../../../helpers/useEventListener';
 import Text from '../../../../components/primitives/Text';
 import ButtonIcon from '../../../../components/primitives/ButtonIcon';
@@ -13,12 +13,13 @@ import EmoticonVerysad from '../../../../assets/emotions/verysad.png';
 import S from './styles';
 import ModalEmoticon from '../../../../components/container/ModalEmoticon/ModalEmoticon';
 import useMixPanelTracking from '../../../../tracking/useMixPanelTracking';
+import {Mood} from '../../../../../gql/__generated__/graphql';
 
-const LogMoodModal: FC = () => {
+const LogMoodModal: React.FC = () => {
   const logMoodMutation = useLogMood();
   const [visibility, setVisibility] = useState(false);
-  const [showResult, setShowResult] = useState<Mood | null>(null);
-  const [closeTimer, setCloseTimer] = useState<NodeJS.Timeout | null>(null);
+  const [showResult, setShowResult] = useState<Mood>();
+  const [closeTimer, setCloseTimer] = useState<NodeJS.Timeout>();
   const {trackEmotionEvaluated} = useMixPanelTracking();
 
   const {addListener, removeListener, fireEvent} = useEventListener();
@@ -43,7 +44,7 @@ const LogMoodModal: FC = () => {
       setTimeout(() => {
         fireEvent('refetch-mood-list');
         setVisibility(false);
-        setShowResult(null);
+        setShowResult(undefined);
       }, 3000),
     );
   };
@@ -51,14 +52,14 @@ const LogMoodModal: FC = () => {
   const handleClose = () => {
     if (closeTimer) {
       clearTimeout(closeTimer);
-      setCloseTimer(null);
+      setCloseTimer(undefined);
     }
     setVisibility(false);
   };
 
   useEffect(() => {
     const openFunction = () => {
-      setShowResult(null);
+      setShowResult(undefined);
       setVisibility(true);
     };
 

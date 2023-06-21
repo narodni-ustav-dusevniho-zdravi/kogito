@@ -1,13 +1,10 @@
 import {gql, useQuery} from '@apollo/client';
-import {MoodCount} from '../content/graphql';
+import {
+  MoodsListQuery,
+  MoodsListQueryVariables,
+} from '../../../gql/__generated__/graphql';
 
-export type MoodList = {
-  id: string;
-  date: Date;
-  mood: 'HAPPY' | 'SAD' | 'ANGRY' | 'OKAY';
-};
-
-export const MoodListQuery = gql`
+const query = gql`
   query moodsList($afterId: ID) {
     moodsList(afterId: $afterId) {
       records {
@@ -24,23 +21,11 @@ export const MoodListQuery = gql`
   }
 `;
 
-type MoodListQuery = {
-  moodsList: {
-    records: MoodList[];
-    moodsCount: MoodCount[];
-    haveNext: boolean;
-  };
-};
-
-type UseMoodsList = () => {
-  records: MoodList[];
-  moodsCount: MoodCount[];
-  haveNext: boolean;
-  refetch: () => void;
-};
-
-export const useMoodsList: UseMoodsList = () => {
-  const {data, error, refetch} = useQuery<MoodListQuery>(MoodListQuery, {
+export const useMoodsList = () => {
+  const {data, error, refetch} = useQuery<
+    MoodsListQuery,
+    MoodsListQueryVariables
+  >(query, {
     variables: {
       afterId: null,
     },

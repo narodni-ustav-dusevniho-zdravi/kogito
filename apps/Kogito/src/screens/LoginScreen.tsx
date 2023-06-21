@@ -1,4 +1,4 @@
-import React, {FC, useCallback, useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import {Image} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import Button from '../components/primitives/Button';
@@ -14,7 +14,7 @@ import {useApolloClient} from '@apollo/client';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import ColoredSafeAreaView from '../components/primitives/ColoredSafeAreaView';
 import {getReadableVersion} from 'react-native-device-info';
-import Config from 'react-native-config';
+import {ENV} from '../env';
 
 export const LogoFooterWrapper = styled.View`
   margin-top: auto;
@@ -23,7 +23,7 @@ export const LogoFooterWrapper = styled.View`
 
 type State = 'normal' | 'login' | 'registration';
 
-const LoginScreen: FC = () => {
+const LoginScreen: React.FC = () => {
   const navigation = useNavigation();
   const apolloClient = useApolloClient();
   const [state, setState] = useState<State>('normal');
@@ -70,7 +70,7 @@ const LoginScreen: FC = () => {
           <LogoFooterWrapper>
             <LogoFooter />
             <Text textVariant="textCopy" align={'center'}>
-              {Config.MODE[0]}
+              {ENV.MODE[0]}
               {getReadableVersion()}
             </Text>
           </LogoFooterWrapper>

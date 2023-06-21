@@ -1,10 +1,10 @@
-import React, {FC, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import {SafeAreaView} from 'react-native';
-import {StackScreenProps} from '@react-navigation/stack';
 import {useApolloClient} from '@apollo/client';
 import {useAuth} from '../modules/auth/useAuth';
+import type {AppScreen} from '../navigation/Navigation';
 
-const LogoutScreen: FC<StackScreenProps<any>> = ({navigation}) => {
+const LogoutScreen: AppScreen<'Logout'> = ({navigation}) => {
   const {clearTokens} = useAuth();
   const apolloClient = useApolloClient();
 

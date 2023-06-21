@@ -1,16 +1,16 @@
-import React, {FC} from 'react';
+import React from 'react';
 import {Alert, SafeAreaView, ToastAndroid, View} from 'react-native';
 import MainContainerWrapper from '../components/container/MainContainerWrapper/MainContainerWrapper';
 import MainContainer from '../components/container/MainContainer/MainContainer';
 import Text from '../components/primitives/Text';
 import Button from '../components/primitives/Button/Button';
-import {StackScreenProps} from '@react-navigation/stack';
 import {getReadableVersion} from 'react-native-device-info';
 import Divider from '../components/primitives/Divider';
 import ProfileSettingsForm from '../modules/user/form/ProfileSettingsForm';
-import {MODE} from '@env';
+import type {AppScreen} from '../navigation/Navigation';
+import {ENV} from '../env';
 
-const ProfileSettingsScreen: FC<StackScreenProps<any>> = ({navigation}) => {
+const ProfileSettingsScreen: AppScreen<'ProfileSettings'> = ({navigation}) => {
   const confirmLogoutModal = () => {
     Alert.alert('Doopravdy odhlásit?', undefined, [
       {
@@ -29,7 +29,6 @@ const ProfileSettingsScreen: FC<StackScreenProps<any>> = ({navigation}) => {
     <SafeAreaView>
       <MainContainerWrapper>
         <MainContainer
-          align={null}
           alignVertical="between"
           style={{paddingTop: 24, paddingBottom: 56}}>
           <View>
@@ -54,7 +53,7 @@ const ProfileSettingsScreen: FC<StackScreenProps<any>> = ({navigation}) => {
               onPress={confirmLogoutModal}
             />
             <Text align="center" textVariant="textMini">
-              Verze: {MODE[0]}
+              Verze: {ENV.MODE[0]}
               {getReadableVersion()}
             </Text>
           </View>

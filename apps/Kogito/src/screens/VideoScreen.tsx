@@ -1,11 +1,9 @@
-import React, {FC, useCallback, useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {SafeAreaView, ToastAndroid, TouchableOpacity, View} from 'react-native';
 import MainContainer from '../components/container/MainContainer/MainContainer';
 import MainHeader from '../components/container/MainHeader/MainHeader';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import Text from '../components/primitives/Text';
-import GradientBackground from '../components/primitives/GradientBackground';
-import {StackScreenProps} from '@react-navigation/stack';
 import {RootStackParamList} from '../navigation/Navigation';
 import {RouteProp, useRoute} from '@react-navigation/native';
 import {useItemContent} from '../modules/content/useItemContent';
@@ -15,10 +13,11 @@ import useEventListener from '../helpers/useEventListener';
 import useInterval from '../helpers/useInterval';
 import ColoredSafeAreaView from '../components/primitives/ColoredSafeAreaView';
 import useMixPanelTracking from '../tracking/useMixPanelTracking';
+import type {AppScreen} from '../navigation/Navigation';
 
 export type AudioScreenProps = RouteProp<RootStackParamList, 'Audio'>;
 
-const VideoScreen: FC<StackScreenProps<any>> = ({navigation}) => {
+const VideoScreen: AppScreen<'Video'> = () => {
   const route = useRoute<AudioScreenProps>();
   const {fireEvent} = useEventListener();
   const {trackLessonCompleted} = useMixPanelTracking();
@@ -86,7 +85,7 @@ const VideoScreen: FC<StackScreenProps<any>> = ({navigation}) => {
         angle={180}>
         <MainContainerWrapper>
           <MainHeader />
-          <MainContainer align={null} page={'sub'} color={'white'}>
+          <MainContainer page={'sub'} color={'white'}>
             <Text textVariant={'header'}>{videoItem.name}</Text>
             <View>
               <YoutubePlayer

@@ -1,12 +1,10 @@
-import React, {FC, useCallback, useEffect} from 'react';
+import React, {useCallback} from 'react';
 import {SafeAreaView, ScrollView, Text} from 'react-native';
 import MainContainer from '../components/container/MainContainer/MainContainer';
 import MainHeader from '../components/container/MainHeader/MainHeader';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
-import GradientBackground from '../components/primitives/GradientBackground';
-import {StackScreenProps} from '@react-navigation/stack';
 import BoxMedia from '../components/primitives/BoxMedia';
-import {Item, UserJourney} from '../modules/content/graphql';
+import {ContentItem} from '../modules/content/types';
 import {StackNavigationProp} from '@react-navigation/stack/src/types';
 import {RouteProp, useFocusEffect, useRoute} from '@react-navigation/native';
 import {DashboardStackParamList} from '../navigation/Navigation';
@@ -16,29 +14,29 @@ import TabbedBox from '../components/primitives/TabbedBox/TabbedBox';
 import {redirectItem} from '../helpers/redirectItem';
 import ColoredSafeAreaView from '../components/primitives/ColoredSafeAreaView';
 import useMixPanelTracking from '../tracking/useMixPanelTracking';
+import type {AppScreen} from '../navigation/Navigation';
+import {Journey} from '../../gql/__generated__/graphql';
 
 type Items = {
   type?: string;
   level: number;
-  items: [Item];
+  items: Omit<ContentItem, 'content'>[];
   navigation: StackNavigationProp<any, any>;
 };
 
 type RoadPhaseNavigationProp = RouteProp<DashboardStackParamList, 'Journey'>;
 
-const Items: FC<Items> = ({type, level, items, navigation}) => {
+const Items: React.FC<Items> = ({type, level, items, navigation}) => {
   const {trackRelaxationOpened, trackLessonOpened} = useMixPanelTracking();
 
-  const trackAndRedirect = (item: Item) => {
+  const trackAndRedirect = (item: Items['items'][0]) => {
+    redirectItem(navigation, item);
     switch (type) {
       case 'lesson':
-        trackLessonOpened(item.name, level);
+        return trackLessonOpened(item.name, level);
       case 'relaxation':
-        trackRelaxationOpened(item.name, level);
-        break;
+        return trackRelaxationOpened(item.name, level);
     }
-
-    redirectItem(navigation, item);
   };
 
   return (
@@ -52,21 +50,21 @@ const Items: FC<Items> = ({type, level, items, navigation}) => {
             item.__typename === 'AudioItem' || item.__typename === 'VideoItem'
           }
           isLocked={item.locked}
-          isCompleted={item.progress >= 80}
+          isCompleted={(item.progress || 0) >= 80}
         />
       ))}
     </>
   );
 };
 
-const colorFirst = (journey: UserJourney | null) => {
+const colorFirst = (journey: Pick<Journey, 'id'> | null) => {
   if (journey && journey.id === 'Sm91cm5leTox') {
     return '#FFCE8F';
   } else {
     return '#BF9BE8';
   }
 };
-const colorSecond = (journey: UserJourney | null) => {
+const colorSecond = (journey: Pick<Journey, 'id'> | null) => {
   if (journey && journey.id === 'Sm91cm5leTox') {
     return '#FFA38F';
   } else {
@@ -74,7 +72,7 @@ const colorSecond = (journey: UserJourney | null) => {
   }
 };
 
-const JourneyScreen: FC<StackScreenProps<any>> = ({navigation}) => {
+const JourneyScreen: AppScreen<'Journey'> = ({navigation}) => {
   const route = useRoute<RoadPhaseNavigationProp>();
   const {journey, refetch} = useJourney(route.params.id);
 
@@ -112,7 +110,7 @@ const JourneyScreen: FC<StackScreenProps<any>> = ({navigation}) => {
       angle={138}>
       <MainContainerWrapper>
         <MainHeader />
-        <MainContainer align={null} page={'dashboard'}>
+        <MainContainer page={'dashboard'}>
           <ScrollView showsVerticalScrollIndicator={false}>
             <Hero
               subTitle={`Úroveň ${selectedLevel.level}`}

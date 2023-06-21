@@ -1,9 +1,9 @@
-import React, {FC} from 'react';
+import React, {PropsWithChildren} from 'react';
 import {Container} from './styles';
 
-type ContainerProps = {};
+type ContainerProps = PropsWithChildren;
 
-const BoxWrapper: FC<ContainerProps> = ({children, ...rest}) => {
+const BoxWrapper: React.FC<ContainerProps> = ({children, ...rest}) => {
   return <Container {...rest}>{children}</Container>;
 };
 

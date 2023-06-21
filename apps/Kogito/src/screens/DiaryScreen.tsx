@@ -1,4 +1,4 @@
-import React, {FC, useCallback, useMemo} from 'react';
+import React, {useCallback, useMemo} from 'react';
 import {SafeAreaView, ScrollView, Alert} from 'react-native';
 import MainContainer from '../components/container/MainContainer/MainContainer';
 import MainHeader from '../components/container/MainHeader/MainHeader';
@@ -6,14 +6,14 @@ import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import Text from '../components/primitives/Text';
 import DayInfoBox from '../components/primitives/DayInfoBox';
 import {useDiaryList} from '../modules/diary/useDiaryList';
-import {StackScreenProps} from '@react-navigation/stack';
 import {groupBy, capitalize} from 'lodash';
 import moment from 'moment';
 import {useFocusEffect} from '@react-navigation/native';
 import {useDiaryEntry} from '../modules/diary/useDiaryEntry';
 import useMixPanelTracking from '../tracking/useMixPanelTracking';
+import type {AppScreen} from '../navigation/Navigation';
 
-const DiaryScreen: FC<StackScreenProps<any>> = ({navigation}) => {
+const DiaryScreen: AppScreen<'Diary'> = ({navigation}) => {
   const {records, refetch} = useDiaryList();
   const {removeDiaryEntry} = useDiaryEntry(null);
   const {trackJournalOpened} = useMixPanelTracking();
@@ -73,7 +73,7 @@ const DiaryScreen: FC<StackScreenProps<any>> = ({navigation}) => {
       <MainContainerWrapper>
         <MainHeader />
         <ScrollView contentContainerStyle={{flexGrow: 1}}>
-          <MainContainer align={null} page={'dashboard'} color={'white'}>
+          <MainContainer page={'dashboard'} color={'white'}>
             <Text
               textVariant={'bigHeader'}
               onPressPlus={() => navigation.navigate('DiaryEdit', {id: null})}

@@ -1,13 +1,15 @@
-import React, {FC} from 'react';
+import React from 'react';
 import {SafeAreaView} from 'react-native';
 import {useSelectJourney} from '../modules/content/useSelectJourney';
-import {StackScreenProps} from '@react-navigation/stack';
 import JourneyBig from '../components/primitives/JourneyBig';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import MainContainer from '../components/container/MainContainer';
 import Text from '../components/primitives/Text';
+import type {AppScreen} from '../navigation/Navigation';
 
-const SelectJourneyScreen: FC<StackScreenProps<any>> = ({navigation}) => {
+const SelectJourneyScreen: AppScreen<'SelectJourneyScreen'> = ({
+  navigation,
+}) => {
   const {selectJourneyMutation} = useSelectJourney();
 
   const handleSelect = async (journeyId: string) => {
@@ -23,8 +25,8 @@ const SelectJourneyScreen: FC<StackScreenProps<any>> = ({navigation}) => {
   return (
     <SafeAreaView>
       <MainContainerWrapper>
-        <MainContainer align={null} page={'dashboard'} color={'white'}>
-          <MainContainer align={null} page={'subWithoutFooter'}>
+        <MainContainer page={'dashboard'} color={'white'}>
+          <MainContainer page={'subWithoutFooter'}>
             <Text textVariant="bigHeader">Vyberte si svou cestu</Text>
             <JourneyBig
               title="Cesta deprese"

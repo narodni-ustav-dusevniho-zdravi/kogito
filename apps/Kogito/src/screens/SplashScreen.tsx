@@ -1,12 +1,13 @@
-import React, {FC, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import {SafeAreaView} from 'react-native';
-import * as NativeSplashScreen from 'react-native-splash-screen';
 import {useAuth} from '../modules/auth/useAuth';
 import {useMeQuery} from '../modules/user/useMeQuery';
-import {StackScreenProps} from '@react-navigation/stack';
-import {useTerms} from '../modules/user/useTerms';
+import BootSplash from 'react-native-bootsplash';
 
-const SplashScreen: FC<StackScreenProps<any>> = ({navigation}) => {
+import {useTerms} from '../modules/user/useTerms';
+import type {AppScreen} from '../navigation/Navigation';
+
+const SplashScreen: AppScreen<'Splash'> = ({navigation}) => {
   const {status} = useAuth();
   const {haveSeenTerms} = useTerms();
   const {me, haveActiveQuestionnaire} = useMeQuery();
@@ -19,7 +20,7 @@ const SplashScreen: FC<StackScreenProps<any>> = ({navigation}) => {
         navigation.replace('Terms');
       }
 
-      NativeSplashScreen.default.hide();
+      BootSplash.hide();
     }
   }, [status]);
 
@@ -34,7 +35,7 @@ const SplashScreen: FC<StackScreenProps<any>> = ({navigation}) => {
         navigation.replace('Dashboard');
       }
 
-      NativeSplashScreen.default.hide();
+      BootSplash.hide();
     }
   }, [me]);
 

@@ -4,9 +4,9 @@ apps/mobile/android/gradle.properties
 !files/static/.gitkeep
 files
 update.sh
-!.env.example
 .env
 .env.*
+!.env.example
 # OS X
 .DS_Store
 ._.DS_Store

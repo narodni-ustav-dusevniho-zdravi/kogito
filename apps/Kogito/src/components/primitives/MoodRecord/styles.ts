@@ -1,8 +1,9 @@
 import styled from 'styled-components/native';
 import {variant} from 'styled-system';
+import {Mood} from '../../../../gql/__generated__/graphql';
 
 const S = {
-  Container: styled.TouchableOpacity`
+  Container: styled.TouchableOpacity<{type: Mood}>`
     border-radius: 6px;
     margin-bottom: 4px;
     padding: 4px 12px;

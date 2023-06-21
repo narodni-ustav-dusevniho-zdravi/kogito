@@ -1,21 +1,17 @@
-import React, {FC} from 'react';
-import {Container, ContainerInner, Title, Text} from './styles';
+import React from 'react';
+import {Container, ContainerInner, Title} from './styles';
 import Button from '../Button';
-import {View} from 'react-native';
-import Moment from 'react-moment';
 import LinearGradient from 'react-native-linear-gradient';
 
 type BoxBigProps = {
   title: string;
   buttonText: string;
-  date: Date;
   onPress?: () => void;
 };
 
-const ArticleListBox: FC<BoxBigProps> = ({
+const ArticleListBox: React.FC<BoxBigProps> = ({
   title,
   buttonText,
-  date,
   onPress = () => {},
 }) => {
   return (

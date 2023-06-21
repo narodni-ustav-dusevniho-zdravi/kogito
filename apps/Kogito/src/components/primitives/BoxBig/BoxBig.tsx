@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React from 'react';
 import {Container, ContainerInner, Title, Text} from './styles';
 import Button from '../Button';
 import Woman from '../../../assets/woman-2.svg';
@@ -12,7 +12,7 @@ type BoxBigProps = {
   onPress?: () => void;
 };
 
-const BoxBig: FC<BoxBigProps> = ({
+const BoxBig: React.FC<BoxBigProps> = ({
   title,
   buttonText,
   date,

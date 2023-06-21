@@ -1,10 +1,10 @@
-import React, {FC} from 'react';
+import React from 'react';
 import S from './styles';
-import {TouchableOpacity, useWindowDimensions} from 'react-native';
+import {ViewProps, useWindowDimensions} from 'react-native';
 import DropShadow from 'react-native-drop-shadow';
 import IconPlus from '../../../assets/icon-plus.svg';
 
-type ViciousCircle = {
+type ViciousCircle = ViewProps & {
   name: string;
   items: string[];
   onPress: () => void;
@@ -12,7 +12,7 @@ type ViciousCircle = {
   onPressItem: (index?: number, text?: string) => void;
 };
 
-const ViciousCircle: FC<ViciousCircle> = ({
+const ViciousCircle: React.FC<ViciousCircle> = ({
   name,
   items,
   onPress,

@@ -1,3 +1,3 @@
-import DiaryScreen from './MoodRecord';
+import MoodRecord from './MoodRecord';
 
 export default MoodRecord;

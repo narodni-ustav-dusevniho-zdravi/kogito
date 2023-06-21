@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React from 'react';
 import S from './styles';
 import {TouchableWithoutFeedback} from 'react-native';
 
@@ -30,7 +30,7 @@ const toDayString = (day: number): string => {
   }
 };
 
-const DayInfoBox: FC<ContainerProps> = ({
+const DayInfoBox: React.FC<ContainerProps> = ({
   date,
   title = '',
   onPress = () => {},

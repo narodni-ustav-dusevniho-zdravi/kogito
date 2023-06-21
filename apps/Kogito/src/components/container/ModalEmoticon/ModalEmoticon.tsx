@@ -1,9 +1,9 @@
-import React, {FC} from 'react';
+import React from 'react';
 import S from './styles';
 import ReactNative from 'react-native';
 import Text from '../../primitives/Text';
 import IconClose from '../../../assets/icon-cross.svg';
-import {Mood} from '../../../modules/diary/useLogMood';
+
 import Moment from 'react-moment';
 
 import ResultSatisfied from '../../../assets/emotions/satisfied_result.png';
@@ -16,6 +16,7 @@ import EmoticonHappy from '../../../assets/emotions/happy_big.png';
 import EmoticonOkay from '../../../assets/emotions/okay_big.png';
 import EmoticonSad from '../../../assets/emotions/sad_big.png';
 import EmoticonVerysad from '../../../assets/emotions/verysad_big.png';
+import {Mood} from '../../../../gql/__generated__/graphql';
 
 type HalfOverlayProps = {
   close?: () => void;
@@ -24,11 +25,11 @@ type HalfOverlayProps = {
 
 type Settings = {
   title: string;
-  icon: string;
-  iconBig: string;
+  icon: number;
+  iconBig: number;
 };
 
-const getSettings = (type: Mood): Settings => {
+const getSettings = (type: HalfOverlayProps['type']): Settings => {
   switch (type) {
     case 'SATISFIED':
       return {
@@ -63,7 +64,7 @@ const getSettings = (type: Mood): Settings => {
   }
 };
 
-const ModalEmoticon: FC<HalfOverlayProps> = ({
+const ModalEmoticon: React.FC<HalfOverlayProps> = ({
   close = () => {},
   type,
   ...rest
@@ -71,7 +72,7 @@ const ModalEmoticon: FC<HalfOverlayProps> = ({
   const settings = getSettings(type);
 
   return (
-    <S.Modal animationType="fade" transparent={true} type={type} {...rest}>
+    <S.Modal animationType="fade" transparent={true} {...rest}>
       <S.Close onPress={() => close()}>
         <IconClose />
       </S.Close>

@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React from 'react';
 import ReactNative, {TouchableOpacity} from 'react-native';
 import S from './styles';
 import IconPlus from '../../../assets/icon-plus.svg';
@@ -29,7 +29,7 @@ type TextProps = {
   onPressPlus?: () => void;
 } & ReactNative.TextProps;
 
-const Text: FC<TextProps> = ({
+const Text: React.FC<TextProps> = ({
   textVariant = 'text',
   colorVariant = null,
   align = null,

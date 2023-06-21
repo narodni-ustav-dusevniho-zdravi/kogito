@@ -3,10 +3,10 @@ import {Align, AlignVertical, Color, Page} from './MainContainer';
 import {variant} from 'styled-system';
 
 type View = {
-  align: Align;
-  alignVertical: AlignVertical;
-  page: Page;
-  color: Color;
+  align?: Align;
+  alignVertical?: AlignVertical;
+  page?: Page;
+  color?: Color;
 };
 
 export const Container = styled.View<View>`

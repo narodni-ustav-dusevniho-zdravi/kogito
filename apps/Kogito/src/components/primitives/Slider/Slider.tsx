@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React from 'react';
 import S from './styles';
 import * as NativeSlider from '@react-native-community/slider';
 
@@ -8,7 +8,7 @@ type Slider = {
   onSeek?: (progress: number) => void;
 };
 
-const Slider: FC<Slider> = ({
+const Slider: React.FC<Slider> = ({
   progress,
   onSlidingStart = () => {},
   onSeek = () => {},

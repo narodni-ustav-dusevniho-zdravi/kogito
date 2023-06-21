@@ -1,4 +1,4 @@
-import React, {FC, ReactInstance, useEffect, useState} from 'react';
+import React, {ReactNode, useEffect, useState} from 'react';
 import S from './styles';
 
 type HeaderVariant = 'boxed' | 'headers';
@@ -6,7 +6,7 @@ type HeaderVariant = 'boxed' | 'headers';
 type Item = {
   label: string;
   id: string;
-  render: () => ReactInstance;
+  render: () => ReactNode;
 };
 
 type TabbedBox = {
@@ -20,7 +20,7 @@ type NavigationItem = {
   onPress: () => void;
 };
 
-const NavigationItem: FC<NavigationItem> = ({title, active, onPress}) => {
+const NavigationItem: React.FC<NavigationItem> = ({title, active, onPress}) => {
   return (
     <S.Navigation.Button active={active} onPress={onPress}>
       <S.Navigation.Text active={active}>{title}</S.Navigation.Text>
@@ -28,7 +28,7 @@ const NavigationItem: FC<NavigationItem> = ({title, active, onPress}) => {
   );
 };
 
-const LinkItem: FC<NavigationItem> = ({title, active, onPress}) => {
+const LinkItem: React.FC<NavigationItem> = ({title, active, onPress}) => {
   return (
     <S.LinkItem.Link active={active} onPress={onPress}>
       <S.LinkItem.Text active={active}>{title}</S.LinkItem.Text>
@@ -37,7 +37,7 @@ const LinkItem: FC<NavigationItem> = ({title, active, onPress}) => {
   );
 };
 
-const TabbedBox: FC<TabbedBox> = ({items, headerVariant = 'boxed'}) => {
+const TabbedBox: React.FC<TabbedBox> = ({items, headerVariant = 'boxed'}) => {
   const [selected, setSelected] = useState<Item | null>(null);
 
   useEffect(() => {
@@ -65,7 +65,7 @@ const TabbedBox: FC<TabbedBox> = ({items, headerVariant = 'boxed'}) => {
             {headerVariant === 'boxed' &&
               items.map(item => (
                 <NavigationItem
-                  key={item.label}
+                  key={item.id}
                   title={item.label}
                   active={item === selected}
                   onPress={() => setSelected(item)}
@@ -74,7 +74,7 @@ const TabbedBox: FC<TabbedBox> = ({items, headerVariant = 'boxed'}) => {
             {headerVariant === 'headers' &&
               items.map(item => (
                 <LinkItem
-                  key={item.label}
+                  key={item.id}
                   title={item.label}
                   active={item === selected}
                   onPress={() => setSelected(item)}

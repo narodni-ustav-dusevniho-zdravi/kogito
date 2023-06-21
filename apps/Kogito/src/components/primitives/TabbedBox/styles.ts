@@ -49,7 +49,7 @@ const S = {
     `,
   },
   LinkItem: {
-    Link: styled.TouchableOpacity`
+    Link: styled.TouchableOpacity<{active: boolean}>`
       position: relative;
       padding: 8px 15px;
     `,

@@ -1,4 +1,4 @@
-import React, {FC, useCallback, useEffect, useMemo} from 'react';
+import React, {useCallback, useEffect, useMemo} from 'react';
 import {Alert, Image, SafeAreaView, ScrollView, View} from 'react-native';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import MainHeader from '../components/container/MainHeader/MainHeader';
@@ -7,8 +7,6 @@ import MainContainer from '../components/container/MainContainer/MainContainer';
 import {useMoodsList} from '../modules/diary/useMoodsList';
 import MoodRecord from '../components/primitives/MoodRecord/MoodRecord';
 import useEventListener from '../helpers/useEventListener';
-import {MoodCount} from '../modules/content/graphql';
-import {Mood} from '../modules/diary/useLogMood';
 import {groupBy} from 'lodash';
 import moment from 'moment';
 import ButtonIcon from '../components/primitives/ButtonIcon';
@@ -21,21 +19,30 @@ import EmoticonSad from '../assets/emotions/sad.png';
 import EmoticonVerysad from '../assets/emotions/verysad.png';
 import {gql, useMutation} from '@apollo/client';
 import useMixPanelTracking from '../tracking/useMixPanelTracking';
+import {
+  Mood,
+  MoodCount,
+  RemoveMoodRecordMutation,
+  RemoveMoodRecordMutationVariables,
+} from '../../gql/__generated__/graphql';
 
 const prepareCount = (items: MoodCount[], mood: Mood): number => {
   return items.find(item => item.mood === mood)?.count || 0;
 };
 
-const RemoveMoodRecordMutation = gql`
+const removeMoodRecordMutation = gql`
   mutation removeMoodRecord($id: ID!) {
     removeMoodRecord(id: $id)
   }
 `;
 
-const MoodListScreen: FC = () => {
+const MoodListScreen: React.FC = () => {
   const {records, moodsCount, refetch} = useMoodsList();
   const {fireEvent, addListener, removeListener} = useEventListener();
-  const [removeMoodRecord] = useMutation(RemoveMoodRecordMutation);
+  const [removeMoodRecord] = useMutation<
+    RemoveMoodRecordMutation,
+    RemoveMoodRecordMutationVariables
+  >(removeMoodRecordMutation);
   const {trackEmotionTrackingOpened} = useMixPanelTracking();
 
   const groupedRecords = useMemo(() => {
@@ -108,7 +115,7 @@ const MoodListScreen: FC = () => {
       <MainContainerWrapper>
         <MainHeader />
         <ScrollView contentContainerStyle={{flexGrow: 1}}>
-          <MainContainer align={null} page={'subWithoutFooter'} color={'white'}>
+          <MainContainer page={'subWithoutFooter'} color={'white'}>
             <Text textVariant={'bigHeader'} onPressPlus={pressAdd}>
               Hodnocení nálady
             </Text>

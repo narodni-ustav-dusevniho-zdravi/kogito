@@ -3,23 +3,20 @@ import {
   ApolloLink,
   createHttpLink,
   fromPromise,
+  gql,
   InMemoryCache,
   NormalizedCacheObject,
 } from '@apollo/client';
 import {onError} from 'apollo-link-error';
-import Config from 'react-native-config';
-import {
-  getAccessToken,
-  getRefreshToken,
-  saveTokens,
-} from '../modules/auth/useAuth';
+import {getAccessToken, getRefreshToken, saveTokens} from '../modules/auth/api';
 import {setContext} from '@apollo/client/link/context';
-import {RefreshTokensAction} from '../modules/auth/graphql';
+import {
+  RefreshAccessTokenMutation,
+  RefreshAccessTokenMutationVariables,
+} from '../../gql/__generated__/graphql';
+import {ENV} from '../env';
 
-const uri = Config.API_CORE; //'https://prod-api.kogito.cz/graphql';
-//('http://127.0.0.1:3001/graphql'); //'https://prod-api.kogito.cz/graphql'; //'https://prod-api.kogito.cz/graphql', // API_CORE,
-
-console.log('APOLLO USING:', uri);
+console.log('APOLLO USING:', ENV.API_URL);
 
 let isRefreshing = false;
 // @ts-ignore
@@ -32,13 +29,31 @@ const resolvePendingRequests = () => {
   pendingRequests = [];
 };
 
+const refreshTokensAction = gql`
+  mutation refreshAccessToken($input: RefreshTokensInput!) {
+    refreshAccessToken(input: $input) {
+      accessToken
+      refreshToken
+    }
+  }
+`;
+
 const refreshAuthToken = async () => {
   console.log('refreshing token');
   const accessToken = await getAccessToken();
   const refreshToken = await getRefreshToken();
+  if (!accessToken) {
+    throw new Error('Cant refresh token, accessToken missing');
+  }
+  if (!refreshToken) {
+    throw new Error('Cant refresh token, refreshToken missing');
+  }
 
-  const response = await apolloClient.mutate({
-    mutation: RefreshTokensAction,
+  const response = await apolloClient.mutate<
+    RefreshAccessTokenMutation,
+    RefreshAccessTokenMutationVariables
+  >({
+    mutation: refreshTokensAction,
     variables: {
       input: {
         accessToken,
@@ -61,7 +76,7 @@ const refreshAuthToken = async () => {
 };
 
 const targetEndPointLink = createHttpLink({
-  uri,
+  uri: ENV.API_URL,
 });
 
 const authLink = setContext(async () => {

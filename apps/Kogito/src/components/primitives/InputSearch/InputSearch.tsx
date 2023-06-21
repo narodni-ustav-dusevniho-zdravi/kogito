@@ -1,10 +1,10 @@
-import React, {FC} from 'react';
+import React from 'react';
 import IconSearch from '../../../assets/icon-search.svg';
 import S from './styles';
 
 type ContainerProps = {};
 
-const InputSearch: FC<ContainerProps> = ({...rest}) => {
+const InputSearch: React.FC<ContainerProps> = ({...rest}) => {
   return (
     <S.Container {...rest}>
       <S.Wrapper>

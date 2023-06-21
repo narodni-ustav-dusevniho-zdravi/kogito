@@ -6,12 +6,12 @@ const useMixPanelTracking = () => {
 
   const track = (eventName: string, properties?: MixpanelProperties) => {
     console.log(`Tracking ${eventName} with properties`, properties);
-    mixPanel.track(eventName, properties);
+    mixPanel?.track(eventName, properties);
   };
 
   const identifyUser = async (userId: string) => {
-    mixPanel.alias(userId, await mixPanel.getDistinctId());
-    mixPanel.identify(userId);
+    mixPanel?.alias(userId, await mixPanel.getDistinctId());
+    mixPanel?.identify(userId);
     // mixPanel.getPeople().set('$email', email);
   };
 
@@ -25,7 +25,7 @@ const useMixPanelTracking = () => {
     },
     trackRelaxationOpened: (
       relaxationTitle: string,
-      relaxationLevel?: number,
+      relaxationLevel?: string | number,
     ) => {
       track('Relaxation opened', {
         relaxationTitle,

@@ -1,9 +1,9 @@
-import {Item} from '../modules/content/graphql';
+import {ContentItem} from '../modules/content/types';
 import {StackNavigationProp} from '@react-navigation/stack/src/types';
 
 export const redirectItem = (
   navigation: StackNavigationProp<any>,
-  item: Item,
+  item: Pick<ContentItem, 'options' | '__typename' | 'progress' | 'id'>,
 ): void => {
   if (item.options && item.progress === 100) {
     const options = JSON.parse(item.options);
@@ -15,13 +15,10 @@ export const redirectItem = (
 
   switch (item.__typename) {
     case 'AudioItem':
-      navigation.navigate('Audio', {id: item.id});
-      break;
+      return navigation.navigate('Audio', {id: item.id});
     case 'VideoItem':
-      navigation.navigate('Video', {id: item.id});
-      break;
+      return navigation.navigate('Video', {id: item.id});
     case 'ArticleItem':
-      navigation.navigate('Article', {id: item.id});
-      break;
+      return navigation.navigate('Article', {id: item.id});
   }
 };

@@ -1,18 +1,10 @@
-import {gql, MutationFunction, useMutation} from '@apollo/client';
+import {gql, useMutation} from '@apollo/client';
+import {
+  LogMoodMutation,
+  LogMoodMutationVariables,
+} from '../../../gql/__generated__/graphql';
 
-export type Mood = 'SATISFIED' | 'HAPPY' | 'OKAY' | 'SAD' | 'VERYSAD';
-
-type LogMoodInput = {
-  mood: Mood;
-};
-
-type LogMoodResult = {
-  logMood: {
-    last: null | Mood;
-  };
-};
-
-const LogMoodAction = gql`
+const mutation = gql`
   mutation logMood($input: LogMoodInput!) {
     logMood(input: $input) {
       last
@@ -20,10 +12,11 @@ const LogMoodAction = gql`
   }
 `;
 
-type UseLogMood = MutationFunction<LogMoodResult, {input: LogMoodInput}>;
-
-export const useLogMood = (): UseLogMood => {
-  const [logMoodMutation] = useMutation<UseLogMood>(LogMoodAction);
+export const useLogMood = () => {
+  const [logMoodMutation] = useMutation<
+    LogMoodMutation,
+    LogMoodMutationVariables
+  >(mutation);
 
   return logMoodMutation;
 };

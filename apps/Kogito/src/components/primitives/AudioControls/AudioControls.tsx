@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React from 'react';
 import IconPrev from '../../../assets/icon-audio-prev.svg';
 import IconNext from '../../../assets/icon-audio-next.svg';
 import IconPlay from '../../../assets/icon-audio-play.svg';
@@ -15,7 +15,7 @@ type AudioControls = {
   onPressPlay?: () => void;
 };
 
-const AudioControls: FC<AudioControls> = ({
+const AudioControls: React.FC<AudioControls> = ({
   isPlaying,
   disablePrevButton,
   disableNextButton,

@@ -1,8 +1,12 @@
 import {gql, useMutation} from '@apollo/client';
 import {useCallback} from 'react';
-import {UserAnswer} from './useQuestionnaireDetail';
+import {
+  UpdateQuestionnaireMutation,
+  UpdateQuestionnaireMutationVariables,
+  UserAnswer,
+} from '../../../gql/__generated__/graphql';
 
-const UpdateQuestionnaireMutation = gql`
+const mutation = gql`
   mutation updateQuestionnaire($input: UserQuestionnaireInput!) {
     updateQuestionnaire(input: $input) {
       id
@@ -12,7 +16,10 @@ const UpdateQuestionnaireMutation = gql`
 `;
 
 export const useUpdateQuestionnaire = () => {
-  const [save] = useMutation(UpdateQuestionnaireMutation);
+  const [save] = useMutation<
+    UpdateQuestionnaireMutation,
+    UpdateQuestionnaireMutationVariables
+  >(mutation);
 
   const saveUserQuestionnaire = useCallback(
     async (id: string, answers: UserAnswer[]) => {
