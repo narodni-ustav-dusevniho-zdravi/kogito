@@ -1,6 +1,10 @@
 import {gql, useQuery} from '@apollo/client';
 
-import type {MeQueryQuery, MeQueryQueryVariables} from '~gql/graphql';
+import type {
+  FinishRegistrationMutation,
+  MeQueryQuery,
+  MeQueryQueryVariables,
+} from '~gql/graphql';
 
 export const MeQuery = gql`
   query MeQuery {
@@ -35,7 +39,9 @@ export const useMeQuery = () => {
 
   console.log({error, data});
 
-  const updateCacheValue = (_: any) => {
+  const updateCacheValue = (
+    _: FinishRegistrationMutation['finishRegistration']['viewer']['me'],
+  ) => {
     // client.writeQuery({
     //   query: MeQuery,
     //   data: {

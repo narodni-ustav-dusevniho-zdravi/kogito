@@ -3,7 +3,7 @@ type EventName =
   | 'open-log-mood'
   | 'refetch-progress'
   | 'refetch-user-diary';
-type Callable = (payload: any | null) => void;
+type Callable = () => void;
 
 const events: Record<EventName, Callable[]> = {
   'open-log-mood': [],
@@ -27,9 +27,9 @@ const removeListener = (callback: Callable) => {
   });
 };
 
-const fireEvent = (event: EventName, payload: any | null = null) => {
+const fireEvent = (event: EventName) => {
   events[event].forEach(callbacks => {
-    callbacks(payload);
+    callbacks();
   });
 };
 

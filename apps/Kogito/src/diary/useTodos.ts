@@ -5,6 +5,7 @@ import type {
   EditTodoMutationVariables,
   RemoveTodoMutation,
   RemoveTodoMutationVariables,
+  TodoInput,
   TodosQuery,
   TodosQueryVariables,
   TrackTodoMutation,
@@ -81,7 +82,7 @@ export const useTodos = () => {
     RemoveTodoMutationVariables
   >(removeTodoMutation);
 
-  const saveTodo = async (input: any) => {
+  const saveTodo = async (input: TodoInput) => {
     await editTodo({
       variables: {
         input,
