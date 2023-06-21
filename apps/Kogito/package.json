@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.7.15",
-    "@mkraina/eslint-config-base": "^1.0.1",
+    "@mkraina/eslint-config-base": "^1.0.2",
     "@react-native-community/hooks": "^3.0.0",
     "@react-native-community/slider": "^4.4.2",
     "@react-native-picker/picker": "^2.4.10",

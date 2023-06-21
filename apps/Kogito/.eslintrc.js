@@ -2,13 +2,8 @@ module.exports = {
   root: true,
   extends: ['@react-native-community', '@mkraina/eslint-config-base'],
   rules: {
-    'max-lines-per-function': [
-      'error',
-      {max: 75, skipBlankLines: true, skipComments: true},
-    ],
     'react-native/no-inline-styles': 'warn', //TODO: remove
     'react/jsx-no-literals': 'warn', //TODO: remove
-    'max-statements': ['error', 15],
     '@typescript-eslint/no-floating-promises': 'off', //TODO: remove
     'no-restricted-imports': [
       'error',
