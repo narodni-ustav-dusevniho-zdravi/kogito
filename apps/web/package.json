@@ -34,7 +34,7 @@
     "jshint": "^2.11.0",
     "postcss-flexbugs-fixes": "^4.2.0",
     "postcss-pxtorem": "^5.1.1",
-    "stylelint": "^13.3.2",
+    "stylelint": "^15.10.1",
     "stylelint-config-standard": "^20.0.0",
     "stylelint-scss": "^3.19.0",
     "through2": "^3.0.1",
