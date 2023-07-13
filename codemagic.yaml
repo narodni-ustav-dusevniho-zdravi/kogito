@@ -67,7 +67,6 @@ workflows:
           app_store_connect: appleStoreConnectApiKeyKogito
         environment:
           ios_signing:
-            bundle_identifier: cz.nudz.kogito.kogito
             certificates:
               - kogitoSigningIos
           vars:
