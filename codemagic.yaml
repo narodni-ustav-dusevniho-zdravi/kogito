@@ -69,6 +69,8 @@ workflows:
           ios_signing:
             distribution_type: development
             bundle_identifier: cz.nudz.kogito.kogito
+            certificates:
+              - kogitoSigningIos
           vars:
             XCODE_WORKSPACE: "CodemagicSample.xcworkspace" # <-- Put the name of your Xcode workspace here
             XCODE_SCHEME: "CodemagicSample" # <-- Put the name of your Xcode scheme here
