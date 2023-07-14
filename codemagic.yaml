@@ -109,7 +109,7 @@ workflows:
             - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
         publishing:
           slack:
-            channel: '#run-kogito-nudz_codemagic'
+            channel: '#run-kogito-nudz'
             notify:
               success: true 
               failure: true 
