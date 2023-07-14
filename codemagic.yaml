@@ -107,7 +107,12 @@ workflows:
             - /tmp/xcodebuild_logs/*.log
             - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
             - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
-#        publishing:
+        publishing:
+          slack:
+            channel: '#run-kogito-nudz_codemagic'
+            notify:
+              success: true 
+              failure: true 
 #          email:
 #            recipients:
 #              - user_1@example.com
