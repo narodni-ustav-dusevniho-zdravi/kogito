@@ -68,7 +68,7 @@ workflows:
         environment:
           vars:
             XCODE_WORKSPACE: "Kogito.xcworkspace" # <-- Put the name of your Xcode workspace here
-            XCODE_SCHEME: "CodemagicSample" # <-- Put the name of your Xcode scheme here
+            XCODE_SCHEME: "Kogito" # <-- Put the name of your Xcode scheme here
             APP_ID: 1582637411 # <-- Put the app id number here. This is found in App Store Connect > App > General > App Information
             node: v16.11.1
             xcode: latest
@@ -83,7 +83,7 @@ workflows:
             - name: Set Info.plist values
               script: |
                 # This allows publishing without manually answering the question about encryption
-                PLIST=$CM_BUILD_DIR/apps/Kogito/$XCODE_SCHEME/Info.plist
+                PLIST=$CM_BUILD_DIR/apps/Kogito/ios/$XCODE_SCHEME/Info.plist
                 PLIST_BUDDY=/usr/libexec/PlistBuddy
                 $PLIST_BUDDY -c "Add :ITSAppUsesNonExemptEncryption bool false" $PLIST
             - name: Set up code signing settings on Xcode project
