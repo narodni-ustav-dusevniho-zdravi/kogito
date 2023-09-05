@@ -1,11 +1,17 @@
 export type NoParamsEvent =
   | 'Registration Phone Number Entered'
+  | 'Login Phone Number Entered'
   | 'Application opened'
   | 'Journal Entry Added'
   | 'Todo Created'
   | 'Todo Completed'
   | 'Todo Deleted'
-  | 'Vicious cycle edited';
+  | 'Vicious cycle edited'
+  | 'click_login'
+  | 'click_register'
+  | 'click_reminder_finish'
+  | 'click_profile_open'
+  | ScreenEvent;
 
 export type ScreenEvent =
   | 'Journal Opened'
@@ -17,7 +23,14 @@ export type ScreenEvent =
   | 'Day Planner Opened'
   | 'Emotion Tracking opened'
   | 'Journal Entry Opened'
-  | 'Todo Screen Opened';
+  | 'Todo Screen Opened'
+  | 'page_intro_open'
+  | 'page_default_open'
+  | 'page_registration_open'
+  | 'page_login_open'
+  | 'page_home_open'
+  | 'page_questionnaire_reminder_open'
+  | `page_questionnaire${number}_open`;
 
 export type Events = Record<NoParamsEvent, undefined> & {
   'Emotion Evaluated': {lastMood: string; mood: string};

@@ -1,6 +1,7 @@
 import React from 'react';
 import {ScrollView, View} from 'react-native';
 
+import {logEvent} from '~modules/analytics';
 import {type AppScreen, useOnScreenFocus} from '~modules/navigation';
 
 import MainContainer from '../components/container/MainContainer';
@@ -32,7 +33,8 @@ const AfterMonthQuestionnaireScreen: AppScreen<'AfterMonthQuestionnaire'> = ({
   const allFinished =
     questionnaire?.questionnaires.filter(item => !item.finished).length === 0;
 
-  const handlePress = async () => {
+  const onFinish = async () => {
+    logEvent('click_reminder_finish');
     if (haveToChooseJourney) {
       navigate('SelectJourneyScreen');
     } else {
@@ -94,7 +96,7 @@ const AfterMonthQuestionnaireScreen: AppScreen<'AfterMonthQuestionnaire'> = ({
                   marginTop: 14,
                 }}
                 title="Dokončit"
-                onPress={handlePress}
+                onPress={onFinish}
               />
             )}
           </MainContainer>

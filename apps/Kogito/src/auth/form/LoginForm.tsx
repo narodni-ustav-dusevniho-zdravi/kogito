@@ -30,7 +30,6 @@ const LoginForm: React.FC<LoginForm> = ({type, onSuccess}) => {
     },
   });
   const phoneNumberWatch = watch('phoneNumber');
-
   useEffect(() => {
     setUseMasked(true);
     (async () => {
@@ -62,6 +61,7 @@ const LoginForm: React.FC<LoginForm> = ({type, onSuccess}) => {
 
   const onSubmit = async (input: LoginInput) => {
     console.log('Submit');
+    logEvent(type === 'login' ? 'click_login' : 'click_register');
     try {
       const result = await loginMutation({
         variables: {
@@ -72,7 +72,11 @@ const LoginForm: React.FC<LoginForm> = ({type, onSuccess}) => {
       console.log(result);
 
       if (result.data) {
-        logEvent('Registration Phone Number Entered');
+        logEvent(
+          type === 'login'
+            ? 'Login Phone Number Entered'
+            : 'Registration Phone Number Entered',
+        );
         await setTokens(
           result.data.login.accessToken,
           result.data.login.refreshToken,

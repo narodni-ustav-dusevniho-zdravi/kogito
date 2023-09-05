@@ -16,7 +16,7 @@ const getNextScreen = (props: {
   me?: {finishedRegistration?: boolean | null};
 }): AppScreenName | undefined => {
   if (props.status === 'unauthenticated')
-    return props.haveSeenTerms ? 'Login' : 'Terms';
+    return props.haveSeenTerms ? 'LoginOrRegister' : 'Intro';
   if (!props.me) return;
   if (props.haveActiveQuestionnaire) {
     return 'AfterMonthQuestionnaire';

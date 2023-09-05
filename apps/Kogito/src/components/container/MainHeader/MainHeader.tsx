@@ -1,5 +1,6 @@
 import React from 'react';
 
+import {logEvent} from '~modules/analytics';
 import {useNavigation} from '~modules/navigation';
 import {Icon} from '~modules/ui';
 
@@ -33,7 +34,10 @@ const MainHeader: React.FC<MainContainerProps> = ({
           color="#1d1d1b"
           name="user"
           size={32}
-          onPress={() => navigate('ProfileSettings')}
+          onPress={() => {
+            navigate('ProfileSettings');
+            logEvent('click_profile_open');
+          }}
         />
       )}
       {/* NOT USED NOW */}

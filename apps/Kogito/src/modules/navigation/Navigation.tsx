@@ -13,6 +13,7 @@ import DashboardScreen from '../../screens/DashboardScreen';
 import DiaryEditScreen from '../../screens/DiaryEditScreen';
 import DiaryScreen from '../../screens/DiaryScreen';
 import FinishRegistrationScreen from '../../screens/FinishRegistrationScreen';
+import IntroScreen from '../../screens/IntroScreen';
 import JourneyProgressScreen from '../../screens/JourneyProgressScreen';
 import JourneyScreen from '../../screens/JourneyScreen';
 import JourneySwitchScreen from '../../screens/JourneySwitchScreen';
@@ -29,7 +30,6 @@ import SelectJourneyScreen from '../../screens/SelectJourneyScreen';
 import SplashScreen from '../../screens/SplashScreen';
 import StoriesListScreen from '../../screens/StoriesListScreen';
 import StoryDetailScreen from '../../screens/StoryDetailScreen';
-import TermsScreen from '../../screens/TermsScreen';
 import TodosScreen from '../../screens/TodosScreen';
 import ViciousCircleEditScreen from '../../screens/ViciousCircleEditScreen';
 import ViciousCircleScreen from '../../screens/ViciousCircleScreen';
@@ -48,9 +48,7 @@ const DashboardStack = createStackNavigator<DashboardStackParamList>();
 
 const UnfinishedRegistrationScreens: React.FC = () => {
   return (
-    <RegistrationStack.Navigator
-      initialRouteName="Register"
-      screenOptions={{headerShown: false}}>
+    <RegistrationStack.Navigator screenOptions={{headerShown: false}}>
       <RegistrationStack.Screen component={RegisterScreen} name="Register" />
       <RegistrationStack.Screen
         component={AvailableQuestionnairesScreen}
@@ -139,8 +137,8 @@ const Navigation: React.FC = () => {
       initialRouteName="Splash"
       screenOptions={{headerShown: false}}>
       <Stack.Screen component={SplashScreen} name="Splash" />
-      <Stack.Screen component={TermsScreen} name="Terms" />
-      <Stack.Screen component={LoginScreen} name="Login" />
+      <Stack.Screen component={IntroScreen} name="Intro" />
+      <Stack.Screen component={LoginScreen} name="LoginOrRegister" />
       <Stack.Screen
         component={UnfinishedRegistrationScreens}
         name="Registration"

@@ -41,7 +41,8 @@ export const identifyUser = async (userId: string) => {
   // mixPanel.getPeople().set('$email', email);
 };
 
-export const logScreen = <T extends AppScreenName>(screen: T) => {
+export const logScreen = (screen: AppScreenName) => {
+  console.warn(screen);
   const event = getScreenOpenedEvent(screen);
   event && track(event, undefined);
 };

@@ -13,25 +13,27 @@ export type RootStackParamList = {
   Dashboard: undefined;
   Diary: undefined;
   DiaryEdit: {id: string | null};
+  Intro: undefined;
   JourneySwitch: undefined;
-  Login: undefined;
+  LoginOrRegister: undefined;
+  LoginPopup: undefined;
   Logout: undefined;
   MoodList: undefined;
   ProfileSettings: undefined;
 
+  RegisterPopup: undefined;
   Registration: undefined;
+
   ScheduleDay: undefined;
 
   SelectJourneyScreen: undefined;
-
   Signpost: undefined;
+
   Splash: undefined;
 
   StoriesList: undefined;
 
   StoryDetail: {id: string};
-
-  Terms: undefined;
   Todos: undefined;
   ViciousCircle: undefined;
 

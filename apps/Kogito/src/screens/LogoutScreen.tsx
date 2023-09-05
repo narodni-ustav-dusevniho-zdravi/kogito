@@ -18,7 +18,7 @@ const LogoutScreen: AppScreen<'Logout'> = ({navigation: {replace}}) => {
 
       await clearTokens();
 
-      replace('Login');
+      replace('LoginOrRegister');
     })();
   });
 

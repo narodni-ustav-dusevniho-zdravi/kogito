@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react';
 
 import type {Question, UserAnswer} from '~gql/graphql';
+import {logEvent} from '~modules/analytics';
 
 import {useQuestionnaireDetail} from './useQuestionnaireDetail';
 import {useUpdateQuestionnaire} from './useUpdateQuestionnaire';
@@ -21,6 +22,10 @@ export const useQuestionnaire = (id: string) => {
 
   const [questionCount, setQuestionCount] = useState(0);
   const [actualIndex, setActualIndex] = useState(0);
+
+  useEffect(() => {
+    logEvent(`page_questionnaire${actualIndex + 1}_open`);
+  }, [actualIndex]);
 
   const saveProgress = async () => {
     if (userAnswers.length) {

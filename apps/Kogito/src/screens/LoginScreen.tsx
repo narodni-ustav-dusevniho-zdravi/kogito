@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {Image} from 'react-native';
 import {getReadableVersion} from 'react-native-device-info';
 import {useApolloClient} from '@apollo/client';
@@ -7,6 +7,7 @@ import styled from 'styled-components/native';
 import GirlImage from '~assets/girl-isolated.svg';
 import LogoFooter from '~assets/login-logo-footer.svg';
 import Logo from '~assets/logo.png';
+import {logEvent, logScreen} from '~modules/analytics';
 import ENV from '~modules/env';
 import type {AppScreen} from '~modules/navigation';
 
@@ -25,9 +26,23 @@ export const LogoFooterWrapper = styled.View`
 
 type State = 'normal' | 'login' | 'registration';
 
-const LoginScreen: AppScreen<'Login'> = ({navigation: {navigate}}) => {
+// eslint-disable-next-line max-lines-per-function
+const LoginScreen: AppScreen<'LoginOrRegister'> = ({
+  navigation: {navigate},
+}) => {
   const apolloClient = useApolloClient();
   const [state, setState] = useState<State>('normal');
+
+  useEffect(() => {
+    switch (state) {
+      case 'login':
+        return logScreen('LoginPopup');
+      case 'registration':
+        return logScreen('RegisterPopup');
+      case 'normal':
+        return logScreen('LoginOrRegister');
+    }
+  }, [state]);
 
   const loginSuccess = useCallback(async () => {
     await apolloClient.clearStore();
@@ -58,7 +73,10 @@ const LoginScreen: AppScreen<'Login'> = ({navigation: {navigate}}) => {
               marginTop: 40,
             }}
             title="Přihlásit"
-            onPress={() => setState('login')}
+            onPress={() => {
+              logEvent('click_login');
+              setState('login');
+            }}
           />
           <Button
             colorVariant="white"
@@ -66,7 +84,10 @@ const LoginScreen: AppScreen<'Login'> = ({navigation: {navigate}}) => {
               marginTop: 14,
             }}
             title="Registrovat"
-            onPress={() => setState('registration')}
+            onPress={() => {
+              logEvent('click_login');
+              setState('registration');
+            }}
           />
           <LogoFooterWrapper>
             <LogoFooter />

@@ -12,18 +12,18 @@ import ColoredSafeAreaView from '../components/primitives/ColoredSafeAreaView';
 import terms from '../user/data/terms';
 import {useTerms} from '../user/useTerms';
 
-const TermsScreen: AppScreen<'Terms'> = ({navigation: {replace}}) => {
+const IntroScreen: AppScreen<'Intro'> = ({navigation: {replace}}) => {
   const {setSeenTerms, haveSeenTerms} = useTerms();
 
   useEffect(() => {
     if (haveSeenTerms) {
-      replace('Login');
+      replace('LoginOrRegister');
     }
   }, [haveSeenTerms, replace]);
 
   const handleAgreePress = async () => {
     await setSeenTerms();
-    replace('Login');
+    replace('LoginOrRegister');
   };
 
   const handleDeclinePress = () => {
@@ -55,4 +55,4 @@ const TermsScreen: AppScreen<'Terms'> = ({navigation: {replace}}) => {
   );
 };
 
-export default TermsScreen;
+export default IntroScreen;
