@@ -6,6 +6,8 @@ import {StatusBar} from 'react-native';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {ApolloProvider} from '@apollo/client';
 import {NavigationContainer} from '@react-navigation/native';
+import {useFonts} from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen';
 
 import {
   AnalyticsProvider,
@@ -20,6 +22,8 @@ import ApolloClient from './src/apollo/client';
 import {AuthProvider} from './src/auth/auth-context';
 import LogMoodModal from './src/diary/modal/LogMoodModal/LogMoodModal';
 
+SplashScreen.preventAutoHideAsync();
+
 Moment.globalLocale = 'cs';
 Moment.globalFormat = 'Do MMMM YYYY';
 
@@ -29,6 +33,9 @@ const onNavigationStateChange = () => {
 };
 // TODO PROSTE SE SNAZ VIC HERMANE
 const App = () => {
+  const [fontsLoaded] = useFonts({
+    icons: require('./assets/fonts/icons.ttf'),
+  });
   console.log(`
   ----------------------------------------------------
   ----------------------------------------------------
@@ -37,13 +44,14 @@ const App = () => {
   ----------------------------------------------------
   ----------------------------------------------------  
   `);
-
+  if (!fontsLoaded) return null;
   return (
     <GestureHandlerRootView style={{flex: 1}}>
       <AnalyticsProvider>
         <AppStateTracking />
         <NavigationContainer
           ref={navigationRef}
+          onReady={() => SplashScreen.hideAsync()}
           onStateChange={onNavigationStateChange}>
           <AuthProvider>
             <ApolloProvider client={ApolloClient}>

@@ -18,7 +18,7 @@ export const Container = styled.View<{background: string}>`
   position: relative;
   border-radius: 15px;
   background: #ffe7e7;
-  background: ${props => props.background};
+  background: ${(props: {background: string}) => props.background};
   margin-bottom: 10px;
 `;
 export const ContainerInner = styled.View`

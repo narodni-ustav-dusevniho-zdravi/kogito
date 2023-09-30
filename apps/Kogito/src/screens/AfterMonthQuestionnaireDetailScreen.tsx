@@ -22,80 +22,79 @@ export const AnswerWrapper = styled.View`
   margin-top: 20px;
 `;
 
-const AfterMonthQuestionnaireDetailScreen: AppScreen<
-  'AfterMonthQuestionnaireDetail'
-> = ({navigation: {navigate}, route}) => {
-  const {
-    actualQuestion,
-    actualAnswer,
-    previousQuestion,
-    nextQuestion,
-    havePrevious,
-    haveNext,
-    saveAnswer,
-    finished,
-    questionCount,
-    actualIndex,
-  } = useQuestionnaire(route.params.id);
+const AfterMonthQuestionnaireDetailScreen: AppScreen<'AfterMonthQuestionnaireDetail'> =
+  ({navigation: {navigate}, route}) => {
+    const {
+      actualQuestion,
+      actualAnswer,
+      previousQuestion,
+      nextQuestion,
+      havePrevious,
+      haveNext,
+      saveAnswer,
+      finished,
+      questionCount,
+      actualIndex,
+    } = useQuestionnaire(route.params.id);
 
-  useEffect(() => {
-    if (finished) {
-      navigate('AfterMonthQuestionnaire');
+    useEffect(() => {
+      if (finished) {
+        navigate('AfterMonthQuestionnaire');
+      }
+    }, [finished, navigate]);
+
+    if (!actualQuestion) {
+      return <Text>Loading</Text>;
     }
-  }, [finished, navigate]);
 
-  if (!actualQuestion) {
-    return <Text>Loading</Text>;
-  }
-
-  return (
-    <SafeAreaView>
-      <MainContainerWrapper>
-        <ProgressBar max={questionCount} value={actualIndex} />
-        <MainContainer
-          alignVertical="between"
-          style={{paddingTop: 24, paddingBottom: 56}}>
-          <ChapterHeader
-            left={
-              <Text textVariant="questionNumber">
-                {(actualIndex + 1).toString()}
-              </Text>
-            }
-            right={
-              <Text textVariant="textSmall">{`zbývá ${
-                questionCount - 1 - actualIndex
-              } otázek`}</Text>
-            }
-          />
-          <ScrollView>
-            <Questions>
-              <Text textVariant="header">{actualQuestion.question}</Text>
-              <AnswerWrapper>
-                {actualQuestion.answers.map((answer, index) => (
-                  <Answer
-                    key={index}
-                    answer={answer.answer}
-                    index={index}
-                    press={i => saveAnswer(i)}
-                    selected={actualAnswer === index}
-                  />
-                ))}
-              </AnswerWrapper>
-            </Questions>
-          </ScrollView>
-          <Footer>
-            {havePrevious && (
-              <ButtonBack
-                style={{marginRight: 16}}
-                onPress={previousQuestion}
-              />
-            )}
-            {haveNext && <Button title="Pokračovat" onPress={nextQuestion} />}
-          </Footer>
-        </MainContainer>
-      </MainContainerWrapper>
-    </SafeAreaView>
-  );
-};
+    return (
+      <SafeAreaView>
+        <MainContainerWrapper>
+          <ProgressBar max={questionCount} value={actualIndex} />
+          <MainContainer
+            alignVertical="between"
+            style={{paddingTop: 24, paddingBottom: 56}}>
+            <ChapterHeader
+              left={
+                <Text textVariant="questionNumber">
+                  {(actualIndex + 1).toString()}
+                </Text>
+              }
+              right={
+                <Text textVariant="textSmall">{`zbývá ${
+                  questionCount - 1 - actualIndex
+                } otázek`}</Text>
+              }
+            />
+            <ScrollView>
+              <Questions>
+                <Text textVariant="header">{actualQuestion.question}</Text>
+                <AnswerWrapper>
+                  {actualQuestion.answers.map((answer, index) => (
+                    <Answer
+                      key={index}
+                      answer={answer.answer}
+                      index={index}
+                      press={i => saveAnswer(i)}
+                      selected={actualAnswer === index}
+                    />
+                  ))}
+                </AnswerWrapper>
+              </Questions>
+            </ScrollView>
+            <Footer>
+              {havePrevious && (
+                <ButtonBack
+                  style={{marginRight: 16}}
+                  onPress={previousQuestion}
+                />
+              )}
+              {haveNext && <Button title="Pokračovat" onPress={nextQuestion} />}
+            </Footer>
+          </MainContainer>
+        </MainContainerWrapper>
+      </SafeAreaView>
+    );
+  };
 
 export default AfterMonthQuestionnaireDetailScreen;

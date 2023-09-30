@@ -8,13 +8,6 @@ module.exports = {
     'no-restricted-imports': [
       'error',
       {
-        paths: [
-          {
-            name: 'react-native-config',
-            message:
-              'Please use ENV from src/env which uses react-native-config internally instead',
-          },
-        ],
         patterns: [
           {
             group: ['@react-navigation/*'],

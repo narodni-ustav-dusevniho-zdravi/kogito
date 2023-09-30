@@ -1,7 +1,8 @@
 import React from 'react';
 import {SafeAreaView, ScrollView, TouchableOpacity, View} from 'react-native';
 
-import {type AppScreen, useOnScreenFocus} from '~modules/navigation';
+import type {AppScreen} from '~modules/navigation';
+import {useOnScreenFocus} from '~modules/navigation';
 
 import MainContainer from '../components/container/MainContainer/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';

@@ -12,7 +12,8 @@ const S = {
     border-radius: 20px;
     padding: 32px;
     padding-left: 24px;
-    background-color: ${props => (props.active ? '#FFFFFF' : 'transparent')};
+    background-color: ${(props: ActiveProps) =>
+      props.active ? '#FFFFFF' : 'transparent'};
   `,
   Number: styled.View`
     width: 43px;
@@ -76,7 +77,7 @@ const S = {
     font-weight: 600;
     font-size: 15px;
     line-height: 22px;
-    color: ${props => (props.active ? '#CA4233' : '#000')};
+    color: ${(props: ActiveProps) => (props.active ? '#CA4233' : '#000')};
   `,
 };
 

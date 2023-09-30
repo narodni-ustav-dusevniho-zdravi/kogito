@@ -2,7 +2,8 @@ import React from 'react';
 import {ScrollView, View} from 'react-native';
 
 import {logEvent} from '~modules/analytics';
-import {type AppScreen, useOnScreenFocus} from '~modules/navigation';
+import type {AppScreen} from '~modules/navigation';
+import {useOnScreenFocus} from '~modules/navigation';
 
 import MainContainer from '../components/container/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';

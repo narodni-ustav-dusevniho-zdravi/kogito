@@ -34,7 +34,7 @@ const S = {
         },
       },
     })};
-    background-color: ${props => boxBackgroundColor(props)};
+    background-color: ${(props: Props) => boxBackgroundColor(props)};
   `,
   Image: styled.Image`
     flex: 0 0 72px;

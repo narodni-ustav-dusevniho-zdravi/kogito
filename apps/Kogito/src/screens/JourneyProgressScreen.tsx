@@ -2,7 +2,8 @@ import React, {useRef} from 'react';
 import {ScrollView, TouchableOpacity, View} from 'react-native';
 
 import type {Journey} from '~gql/graphql';
-import {type AppScreen, useOnScreenFocus} from '~modules/navigation';
+import type {AppScreen} from '~modules/navigation';
+import {useOnScreenFocus} from '~modules/navigation';
 
 import MainContainer from '../components/container/MainContainer/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';

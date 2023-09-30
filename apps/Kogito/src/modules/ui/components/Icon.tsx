@@ -1,8 +1,8 @@
+import type {ComponentProps} from 'react';
 import React from 'react';
 import type {StyleProp, TextStyle, ViewStyle} from 'react-native';
 import {StyleSheet} from 'react-native';
-import {createIconSet} from 'react-native-vector-icons';
-import type {IconProps as VectorIconProps} from 'react-native-vector-icons/Icon';
+import {createIconSet} from '@expo/vector-icons';
 
 import type {PartialNever} from '~modules/common';
 
@@ -13,7 +13,9 @@ import type {TouchableProps} from './Touchable';
 import {Touchable} from './Touchable';
 
 const IconSet = createIconSet(icons, 'icons', 'icons.ttf');
-const VectorIcon = React.memo<VectorIconProps>(props => <IconSet {...props} />);
+const VectorIcon = React.memo<ComponentProps<typeof IconSet>>(props => (
+  <IconSet {...props} />
+));
 
 type IconProps = (TouchableProps | PartialNever<TouchableProps>) & {
   color: string;

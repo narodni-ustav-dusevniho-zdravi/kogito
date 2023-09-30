@@ -37,12 +37,11 @@ export const logEvent = <T extends keyof Events>(
 
 export const identifyUser = async (userId: string) => {
   mixPanel?.alias(userId, await mixPanel.getDistinctId());
-  mixPanel?.identify(userId);
+  return mixPanel?.identify(userId);
   // mixPanel.getPeople().set('$email', email);
 };
 
 export const logScreen = (screen: AppScreenName) => {
-  console.warn(screen);
   const event = getScreenOpenedEvent(screen);
   event && track(event, undefined);
 };

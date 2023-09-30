@@ -14,9 +14,8 @@ import type {
   RefreshAccessTokenMutation,
   RefreshAccessTokenMutationVariables,
 } from '~gql/graphql';
+import {useAuthStore} from '~modules/auth';
 import ENV from '~modules/env';
-
-import {getAccessToken, getRefreshToken, saveTokens} from '../auth/api';
 
 console.log('APOLLO USING:', ENV.API_URL);
 
@@ -41,8 +40,8 @@ const refreshTokensAction = gql`
 
 const refreshAuthToken = async () => {
   console.log('refreshing token');
-  const accessToken = await getAccessToken();
-  const refreshToken = await getRefreshToken();
+  const accessToken = useAuthStore.getState().actions.getAccessToken();
+  const refreshToken = useAuthStore.getState().actions.getRefreshToken();
   if (!accessToken) {
     throw new Error('Cant refresh token, accessToken missing');
   }
@@ -66,10 +65,7 @@ const refreshAuthToken = async () => {
   console.log('response from refreshing', refreshToken);
 
   if (response.data?.refreshAccessToken) {
-    await saveTokens(
-      response.data.refreshAccessToken.accessToken,
-      response.data.refreshAccessToken.refreshToken,
-    );
+    useAuthStore.getState().actions.setTokens(response.data.refreshAccessToken);
     return;
   }
 
@@ -80,8 +76,8 @@ const targetEndPointLink = createHttpLink({
   uri: ENV.API_URL,
 });
 
-const authLink = setContext(async () => {
-  const accessToken = await getAccessToken();
+const authLink = setContext(() => {
+  const accessToken = useAuthStore.getState().accessToken;
   console.log('USING ACCESS TOKEN', accessToken);
   return {
     headers: {

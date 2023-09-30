@@ -3,7 +3,8 @@ import {SafeAreaView, ScrollView, useWindowDimensions} from 'react-native';
 import moment from 'moment';
 
 import {logEvent} from '~modules/analytics';
-import {type AppScreen, useNavigationListener} from '~modules/navigation';
+import type {AppScreen} from '~modules/navigation';
+import {useNavigationListener} from '~modules/navigation';
 
 import MainContainer from '../components/container/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';

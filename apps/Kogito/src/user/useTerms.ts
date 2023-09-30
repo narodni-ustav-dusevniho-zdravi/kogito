@@ -1,24 +1,15 @@
-import {useEffect, useState} from 'react';
-import RNSecureStorage, {ACCESSIBLE} from 'rn-secure-storage';
+import {createPersistedStore} from '~modules/common';
 
-export const useTerms = () => {
-  const [haveSeenTerms, setHaveSeenTerms] = useState(false);
-
-  const setSeenTerms = async () => {
-    setHaveSeenTerms(true);
-    await RNSecureStorage.set('user.terms', '1', {
-      accessible: ACCESSIBLE.ALWAYS,
-    });
-  };
-
-  useEffect(() => {
-    RNSecureStorage.get('user.terms').then(value => {
-      setHaveSeenTerms(value === '1');
-    });
-  }, []);
-
-  return {
-    setSeenTerms,
-    haveSeenTerms,
-  };
+type State = {
+  haveSeenTerms: boolean;
 };
+
+type Actions = {
+  setTermsSeen: (seen: boolean) => void;
+};
+
+export const useTerms = createPersistedStore<State, Actions>({
+  name: 'terms',
+  defaultState: {haveSeenTerms: false},
+  actions: set => ({setTermsSeen: seen => set({haveSeenTerms: seen})}),
+});

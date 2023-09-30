@@ -1,28 +1,30 @@
 import {useCallback} from 'react';
 
-import {removeTokens, saveTokens} from './api';
+import {useAuthStore} from '~modules/auth';
+
 import {useAuthContext} from './auth-context';
 import {finishAuthenticating, reset} from './auth-reducer';
 
 export const useAuth = () => {
   const {state, dispatch} = useAuthContext();
-
+  const saveTokens = useAuthStore(s => s.actions.setTokens);
+  const removeTokens = useAuthStore(s => s.actions.clearTokens);
   const setTokens = useCallback(
-    async (accessToken: string, refreshToken: string) => {
+    (accessToken: string, refreshToken: string) => {
       dispatch(finishAuthenticating(accessToken));
 
-      await saveTokens(accessToken, refreshToken);
+      saveTokens({accessToken, refreshToken});
 
       return;
     },
-    [dispatch],
+    [dispatch, saveTokens],
   );
 
-  const clearTokens = useCallback(async () => {
-    await removeTokens();
+  const clearTokens = useCallback(() => {
+    removeTokens();
 
     dispatch(reset());
-  }, [dispatch]);
+  }, [dispatch, removeTokens]);
 
   return {
     setTokens,

@@ -1,24 +1,26 @@
 import styled from 'styled-components/native';
 
+type Props = {size: number};
+
 const S = {
-  Container: styled.TouchableOpacity<{size: number}>`
+  Container: styled.TouchableOpacity<Props>`
     margin: 0 8px;
-    width: ${props => `${props.size}px`};
+    width: ${(props: Props) => `${props.size}px`};
   `,
-  Circle: styled.View<{size: number}>`
-    width: ${props => `${props.size}px`};
-    height: ${props => `${props.size}px`};
-    border-radius: ${props => `${props.size / 2}px`};
+  Circle: styled.View<Props>`
+    width: ${(props: Props) => `${props.size}px`};
+    height: ${(props: Props) => `${props.size}px`};
+    border-radius: ${(props: Props) => `${props.size / 2}px`};
     overflow: hidden;
     align-items: center;
     justify-content: center;
     font-size: 20px;
     margin: 0 0 54px;
   `,
-  CircleInner: styled.View<{size: number}>`
+  CircleInner: styled.View<Props>`
     width: 90%;
     height: 90%;
-    border-radius: ${props => `${props.size / 2}px`};
+    border-radius: ${(props: Props) => `${props.size / 2}px`};
     overflow: hidden;
     align-items: center;
     justify-content: center;

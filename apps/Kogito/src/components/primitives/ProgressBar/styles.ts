@@ -44,7 +44,7 @@ export const Barrier = styled.View<Barrier>`
 `;
 
 export const ProgressLine = styled.View<ProgressLine>`
-  width: ${props => `${props.value}%`};
+  width: ${(props: ProgressLine) => `${props.value}%`};
   height: 4px;
   border-radius: 2px;
   background-color: #f2ac33;

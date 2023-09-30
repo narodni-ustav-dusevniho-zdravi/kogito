@@ -77,7 +77,7 @@ const LoginForm: React.FC<LoginForm> = ({type, onSuccess}) => {
             ? 'Login Phone Number Entered'
             : 'Registration Phone Number Entered',
         );
-        await setTokens(
+        setTokens(
           result.data.login.accessToken,
           result.data.login.refreshToken,
         );

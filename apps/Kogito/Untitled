@@ -1,0 +1,13 @@
+
+
+@babel/core
+@babel/preset-env
+@babel/runtime
+@bam.tech/react-native-make
+babel-jest
+babel-plugin-module-resolver
+metro-react-native-babel-preset
+react-native-asset
+react-native-version
+ts-node
+typescript

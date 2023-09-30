@@ -16,7 +16,7 @@ const LogoutScreen: AppScreen<'Logout'> = ({navigation: {replace}}) => {
       await apolloClient.clearStore();
       await apolloClient.resetStore();
 
-      await clearTokens();
+      clearTokens();
 
       replace('LoginOrRegister');
     })();

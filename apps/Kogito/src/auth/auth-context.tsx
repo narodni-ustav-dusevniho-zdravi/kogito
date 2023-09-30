@@ -8,11 +8,11 @@ import React, {
 } from 'react';
 
 import {identifyUser} from '~modules/analytics';
+import {useAuthStore} from '~modules/auth';
 
 import ApolloClient from '../apollo/client';
 import {MeQuery} from '../user/useMeQuery';
 
-import {getAccessToken} from './api';
 import type {AuthAction, AuthState} from './auth-reducer';
 import AuthReducer, {finishAuthenticating} from './auth-reducer';
 
@@ -58,7 +58,7 @@ const AuthProvider: React.FC<React.PropsWithChildren> = ({children}) => {
   useEffect(() => {
     (async (): Promise<void> => {
       try {
-        const accessToken = await getAccessToken();
+        const accessToken = useAuthStore.getState().accessToken;
 
         if (accessToken) {
           const result = await ApolloClient.query({

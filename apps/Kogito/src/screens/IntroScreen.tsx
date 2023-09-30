@@ -13,7 +13,8 @@ import terms from '../user/data/terms';
 import {useTerms} from '../user/useTerms';
 
 const IntroScreen: AppScreen<'Intro'> = ({navigation: {replace}}) => {
-  const {setSeenTerms, haveSeenTerms} = useTerms();
+  const haveSeenTerms = useTerms(s => s.haveSeenTerms);
+  const setSeenTerms = useTerms(s => s.actions.setTermsSeen);
 
   useEffect(() => {
     if (haveSeenTerms) {
@@ -21,8 +22,8 @@ const IntroScreen: AppScreen<'Intro'> = ({navigation: {replace}}) => {
     }
   }, [haveSeenTerms, replace]);
 
-  const handleAgreePress = async () => {
-    await setSeenTerms();
+  const handleAgreePress = () => {
+    setSeenTerms(true);
     replace('LoginOrRegister');
   };
 

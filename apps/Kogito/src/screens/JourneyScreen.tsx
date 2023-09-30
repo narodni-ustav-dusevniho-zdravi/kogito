@@ -3,7 +3,8 @@ import {SafeAreaView, ScrollView, Text} from 'react-native';
 
 import type {Journey} from '~gql/graphql';
 import {logEvent} from '~modules/analytics';
-import {type AppScreen, useOnScreenFocus} from '~modules/navigation';
+import type {AppScreen} from '~modules/navigation';
+import {useOnScreenFocus} from '~modules/navigation';
 
 import MainContainer from '../components/container/MainContainer/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
