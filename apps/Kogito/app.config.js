@@ -5,11 +5,22 @@ module.exports = {
   name: 'Kogito',
   slug: 'kogito',
   version,
+  extra: {
+    eas: {
+      projectId: '038d9016-53b5-4fe1-9ef6-b7a88c91098e',
+    },
+  },
+  updates: {
+    url: 'https://u.expo.dev/038d9016-53b5-4fe1-9ef6-b7a88c91098e',
+  },
+  runtimeVersion: {
+    policy: 'appVersion',
+  },
   orientation: 'portrait',
   userInterfaceStyle: 'light',
   splash: {
     image: './assets/splash.png',
-    resizeMode: 'contain',
+    resizeMode: 'cover',
     backgroundColor: '#ffffff',
   },
   assetBundlePatterns: ['**/*'],

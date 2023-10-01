@@ -51,7 +51,6 @@ const App = () => {
         <AppStateTracking />
         <NavigationContainer
           ref={navigationRef}
-          onReady={() => SplashScreen.hideAsync()}
           onStateChange={onNavigationStateChange}>
           <AuthProvider>
             <ApolloProvider client={ApolloClient}>

@@ -2,6 +2,7 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
 
+import ENV from '~modules/env';
 import {Icon} from '~modules/ui';
 
 import AfterMonthQuestionnaireDetailScreen from '../../screens/AfterMonthQuestionnaireDetailScreen';
@@ -10,6 +11,7 @@ import ArticleScreen from '../../screens/ArticleScreen';
 import AudioScreen from '../../screens/AudioScreen';
 import AvailableQuestionnairesScreen from '../../screens/AvailableQuestionnairesScreen';
 import DashboardScreen from '../../screens/DashboardScreen';
+import {DevScreen} from '../../screens/DevScreen';
 import DiaryEditScreen from '../../screens/DiaryEditScreen';
 import DiaryScreen from '../../screens/DiaryScreen';
 import FinishRegistrationScreen from '../../screens/FinishRegistrationScreen';
@@ -104,6 +106,8 @@ const DashboardTabNavigation = () => {
               return <Icon color={iconColor} name="sun" size={32} />;
             case 'Todos':
               return <Icon color={iconColor} name="todo" size={32} />;
+            case 'Dev':
+              return <Icon color={iconColor} name="lock" size={32} />;
           }
         },
       })}>
@@ -127,6 +131,7 @@ const DashboardTabNavigation = () => {
         name="Todos"
         options={{title: 'Plánovač'}}
       />
+      {ENV.IS_DEV && <Tab.Screen component={DevScreen} name="Dev" />}
     </Tab.Navigator>
   );
 };

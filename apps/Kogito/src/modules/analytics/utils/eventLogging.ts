@@ -8,8 +8,8 @@ import type {Events, NoParamsEvent} from '../types';
 
 import {getScreenOpenedEvent} from './screenEventMapping';
 
-const mixPanel = ENV.MIXPANEL_API_KEY
-  ? new Mixpanel(ENV.MIXPANEL_API_KEY, true)
+const mixPanel = ENV.MIXPANEL_TOKEN
+  ? new Mixpanel(ENV.MIXPANEL_TOKEN, true)
   : null;
 
 export const initEventLogging = async () => {

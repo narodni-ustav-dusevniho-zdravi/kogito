@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {SafeAreaView} from 'react-native';
-import BootSplash from 'react-native-bootsplash';
+import * as Splash from 'expo-splash-screen';
 
 import type {AppScreen, AppScreenName} from '~modules/navigation';
 
@@ -39,7 +39,7 @@ const SplashScreen: AppScreen<'Splash'> = ({navigation: {replace}}) => {
   useEffect(() => {
     if (!nextScreen) return;
     replace(nextScreen);
-    BootSplash.hide();
+    Splash.hideAsync();
   }, [nextScreen, replace]);
 
   return <SafeAreaView />;

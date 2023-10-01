@@ -57,7 +57,7 @@ export type DashboardStackParamList = {
 };
 
 export type DashboardTabParamList = Record<
-  'DashboardTab' | 'JourneyProgress' | 'Relaxation' | 'Todos',
+  'DashboardTab' | 'JourneyProgress' | 'Relaxation' | 'Todos' | 'Dev',
   undefined
 >;
 

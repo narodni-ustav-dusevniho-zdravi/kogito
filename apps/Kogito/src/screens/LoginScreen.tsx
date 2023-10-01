@@ -1,6 +1,5 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {Image} from 'react-native';
-import {getReadableVersion} from 'react-native-device-info';
 import {useApolloClient} from '@apollo/client';
 import styled from 'styled-components/native';
 
@@ -92,8 +91,7 @@ const LoginScreen: AppScreen<'LoginOrRegister'> = ({
           <LogoFooterWrapper>
             <LogoFooter />
             <Text align="center" textVariant="textCopy">
-              {ENV.MODE[0]}
-              {getReadableVersion()}
+              {ENV.VERSION}
             </Text>
           </LogoFooterWrapper>
           {/*</ScrollView>*/}

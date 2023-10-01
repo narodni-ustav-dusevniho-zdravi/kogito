@@ -1,6 +1,5 @@
 import React from 'react';
 import {Alert, SafeAreaView, ToastAndroid, View} from 'react-native';
-import {getReadableVersion} from 'react-native-device-info';
 
 import ENV from '~modules/env';
 import type {AppScreen} from '~modules/navigation';
@@ -57,8 +56,7 @@ const ProfileSettingsScreen: AppScreen<'ProfileSettings'> = ({
               onPress={confirmLogoutModal}
             />
             <Text align="center" textVariant="textMini">
-              Verze: {ENV.MODE[0]}
-              {getReadableVersion()}
+              Verze: {ENV.VERSION}
             </Text>
           </View>
         </MainContainer>
