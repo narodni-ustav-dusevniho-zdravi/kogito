@@ -92,6 +92,10 @@ const errorLink: ApolloLink = onError(({graphQLErrors, operation, forward}) => {
   if (graphQLErrors) {
     for (const err of graphQLErrors) {
       switch (err.message) {
+        case 'Bad token': {
+          useAuthStore.getState().actions.clearTokens();
+          return forward(operation);
+        }
         case 'Unauthorized':
           // eslint-disable-next-line no-case-declarations
           let forward$;
