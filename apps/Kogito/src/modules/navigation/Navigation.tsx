@@ -129,7 +129,7 @@ const DashboardTabNavigation = () => {
       <Tab.Screen
         component={TodosScreen}
         name="Todos"
-        options={{title: 'Plánovač'}}
+        options={{headerShown: false}}
       />
       {ENV.IS_DEV && <Tab.Screen component={DevScreen} name="Dev" />}
     </Tab.Navigator>
