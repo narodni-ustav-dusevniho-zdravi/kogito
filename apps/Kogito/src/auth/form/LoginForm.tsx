@@ -33,7 +33,7 @@ const LoginForm: React.FC<LoginForm> = ({type, onSuccess}) => {
   useEffect(() => {
     setUseMasked(true);
     (async () => {
-      const phoneNumber = phoneNumberWatch.replace(' ', '');
+      const phoneNumber = phoneNumberWatch.replace(/\s/gi, '');
       console.log(phoneNumber.length);
       console.log(phoneNumber.match(PHONE_NUMBER_REGEX));
 
@@ -65,7 +65,10 @@ const LoginForm: React.FC<LoginForm> = ({type, onSuccess}) => {
     try {
       const result = await loginMutation({
         variables: {
-          input,
+          input: {
+            phoneNumber: input.phoneNumber.replace(/\s/gi, ''),
+            password: input.password,
+          },
         },
       });
 
