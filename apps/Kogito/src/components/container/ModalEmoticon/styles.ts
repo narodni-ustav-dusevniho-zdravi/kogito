@@ -2,9 +2,10 @@ import styled from 'styled-components/native';
 import {variant} from 'styled-system';
 
 import type {Mood} from '~gql/graphql';
+import {Modal} from '~modules/ui';
 
 const S = {
-  Modal: styled.Modal`
+  Modal: styled(Modal)`
     margin: 0;
   `,
   ContainerWrap: styled.View<{type: Mood}>`

@@ -1,6 +1,8 @@
 import styled from 'styled-components/native';
 
-export const StyledModal = styled.Modal`
+import {Modal} from '~modules/ui';
+
+export const StyledModal = styled(Modal)`
   margin: 0;
   justify-content: flex-end;
 `;

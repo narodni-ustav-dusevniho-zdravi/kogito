@@ -10,7 +10,11 @@ type HalfOverlayProps = {
 
 const Modal: React.FC<HalfOverlayProps> = ({children, ...rest}) => {
   return (
-    <S.Modal animationType="fade" transparent={true} {...rest}>
+    <S.Modal
+      animationType="fade"
+      transparent={true}
+      onRequestClose={rest.close}
+      {...rest}>
       <TouchableWithoutFeedback onPress={() => rest.close()}>
         <S.OpacityBackground />
       </TouchableWithoutFeedback>

@@ -1,7 +1,9 @@
 import styled from 'styled-components/native';
 
+import {Modal} from '~modules/ui';
+
 const S = {
-  Modal: styled.Modal`
+  Modal: styled(Modal)`
     margin: 0;
     justify-content: flex-end;
     background-color: black;

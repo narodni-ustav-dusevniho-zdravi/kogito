@@ -16,15 +16,10 @@ const S = {
     justify-content: center;
     font-size: 20px;
     margin: 0 0 54px;
-  `,
-  CircleInner: styled.View<Props>`
-    width: 90%;
-    height: 90%;
-    border-radius: ${(props: Props) => `${props.size / 2}px`};
-    overflow: hidden;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
+    border-width: 20px;
+    border-color: rgba(231, 231, 231, 0.5);
+    background: white;
+    overflow: visible;
   `,
   Text: styled.Text`
     text-align: center;
@@ -34,7 +29,6 @@ const S = {
     text-transform: capitalize;
   `,
   CircleInnerWrapper: styled.View`
-    height: 100%;
     flex-direction: row;
     align-items: center;
     justify-content: center;
@@ -43,8 +37,6 @@ const S = {
   `,
   ButtonAdd: styled.TouchableOpacity`
     position: absolute;
-    top: 50%;
-    left: 50%;
     margin: -27px 0 0 -27px;
     padding: 18px;
     background: #fff;
@@ -55,7 +47,7 @@ const S = {
     margin: 6px 8px;
     padding: 6px 16px;
     border-radius: 24px;
-    background: rgba(231, 238, 248, 0.5);
+    background: rgba(231, 238, 248, 1);
   `,
   Item: styled.Text`
     font-size: 14px;

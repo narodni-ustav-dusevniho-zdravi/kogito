@@ -1,5 +1,5 @@
 import React from 'react';
-import type ReactNative from 'react-native';
+import type {ModalProps} from 'react-native';
 import {
   KeyboardAvoidingView,
   Platform,
@@ -10,7 +10,7 @@ import {ContainerInner, OutsideWrap, StyledModal} from './styles';
 
 type HalfOverlayProps = {
   close: () => void | undefined;
-} & ReactNative.ModalProperties;
+} & ModalProps;
 
 const HalfOverlay: React.FC<HalfOverlayProps> = ({children, ...rest}) => {
   return (

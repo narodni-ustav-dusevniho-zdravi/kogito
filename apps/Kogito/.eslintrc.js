@@ -8,6 +8,13 @@ module.exports = {
     'no-restricted-imports': [
       'error',
       {
+        paths: [
+          {
+            name: 'react-native',
+            importNames: ['Modal'],
+            message: 'Please use Modal from ui lib instead.',
+          },
+        ],
         patterns: [
           {
             group: ['@react-navigation/*'],

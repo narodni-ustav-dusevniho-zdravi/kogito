@@ -1,8 +1,11 @@
+import type {ModalProps} from 'react-native';
 import styled from 'styled-components/native';
 import {variant} from 'styled-system';
 
+import {Modal} from '~modules/ui';
+
 const S = {
-  Modal: styled.Modal`
+  Modal: styled(Modal)<ModalProps>`
     margin: 0;
     justify-content: flex-end;
     background-color: black;
