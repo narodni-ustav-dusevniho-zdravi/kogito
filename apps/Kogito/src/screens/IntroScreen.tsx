@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react';
 import {BackHandler, Image, ScrollView} from 'react-native';
-import HTML from 'react-native-render-html';
 
 import Logo from '~assets/logo.png';
 import type {AppScreen} from '~modules/navigation';
+import {Html} from '~modules/ui';
 
 import MainContainer from '../components/container/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
@@ -37,7 +37,7 @@ const IntroScreen: AppScreen<'Intro'> = ({navigation: {replace}}) => {
         <ScrollView>
           <MainContainer align="center">
             <Image source={Logo} />
-            <HTML source={{html: terms}} />
+            <Html source={terms} />
             <Button
               style={{marginTop: -50}}
               title="Souhlasím"

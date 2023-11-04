@@ -1,10 +1,10 @@
 /* eslint-disable max-len */
 import React, {useEffect, useState} from 'react';
 import {ScrollView} from 'react-native';
-import HTML from 'react-native-render-html';
 
 import RegisterImg from '~assets/register-img.svg';
 import type {AppScreen} from '~modules/navigation';
+import {Html} from '~modules/ui';
 
 import MainContainer from '../components/container/MainContainer';
 import Button from '../components/primitives/Button';
@@ -13,19 +13,6 @@ import Text from '../components/primitives/Text';
 import {useRegistrationStatus} from '../user/useRegistrationStatus';
 
 import {RegisterImgWrapper} from './RegisterScreen';
-
-const styles = {
-  p: {
-    marginBottom: 12,
-    fontSize: 18,
-  },
-  li: {
-    fontSize: 18,
-    margin: 0,
-    padding: 0,
-    lineHeight: 20,
-  },
-};
 
 const resultTexts: Record<
   string,
@@ -167,13 +154,11 @@ const QuestionnaireResultScreen: AppScreen<'QuestionnaireResultScreen'> = ({
           <Text textVariant="header">Vyhodnocení</Text>
           <Text />
           {status && (
-            <HTML
-              source={{
-                html:
-                  resultTexts[status.group]?.[status.userLabel]?.[page]?.text ||
-                  '',
-              }}
-              tagsStyles={styles}
+            <Html
+              source={
+                resultTexts[status.group]?.[status.userLabel]?.[page]?.text ||
+                ''
+              }
             />
           )}
 

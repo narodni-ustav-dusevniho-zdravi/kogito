@@ -8,8 +8,8 @@ import EmoticonSatisfied from '~assets/emotions/satisfied.png';
 import EmoticonVerysad from '~assets/emotions/verysad.png';
 import type {Mood} from '~gql/graphql';
 import {logEvent} from '~modules/analytics';
+import {Dialog} from '~modules/ui';
 
-import Modal from '../../../components/container/Modal/Modal';
 import ModalEmoticon from '../../../components/container/ModalEmoticon/ModalEmoticon';
 import ButtonIcon from '../../../components/primitives/ButtonIcon';
 import Text from '../../../components/primitives/Text';
@@ -74,10 +74,10 @@ const LogMoodModal: React.FC = () => {
   if (visibility) {
     // eslint-disable-next-line no-negated-condition
     return !showResult ? (
-      <Modal close={() => setVisibility(false)}>
-        <Text align="center" textVariant="bigHeader">
-          Jak se cítíte?
-        </Text>
+      <Dialog
+        title="Jak se cítíte?"
+        visible
+        onHide={() => setVisibility(false)}>
         <Text align="center" textVariant="textMini">
           Zaznamejte svou náladu
         </Text>
@@ -108,7 +108,7 @@ const LogMoodModal: React.FC = () => {
             </ButtonIcon>
           </S.EmoticonItem>
         </S.EmoticonWrapper>
-      </Modal>
+      </Dialog>
     ) : (
       <ModalEmoticon close={handleClose} type={showResult} />
     );

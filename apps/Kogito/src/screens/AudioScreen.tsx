@@ -1,24 +1,17 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {
-  Image,
-  SafeAreaView,
-  ScrollView,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {Image, SafeAreaView, TouchableOpacity, View} from 'react-native';
 import DropShadow from 'react-native-drop-shadow';
-import HTML from 'react-native-render-html';
 import {useEventCallback, useInterval} from 'usehooks-ts';
 
 import {logEvent} from '~modules/analytics';
 import type {AppScreen} from '~modules/navigation';
 import {useNavigationListener} from '~modules/navigation';
 import {SoundPlayer, useTrack} from '~modules/trackPlayer';
+import {Dialog, Html} from '~modules/ui';
 
 import MainContainer from '../components/container/MainContainer/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import MainHeader from '../components/container/MainHeader/MainHeader';
-import Modal from '../components/container/Modal/Modal';
 import AudioControls from '../components/primitives/AudioControls';
 import Button from '../components/primitives/Button';
 import GradientBackground from '../components/primitives/GradientBackground';
@@ -29,20 +22,6 @@ import {useTrackProgressMutation} from '../content/useTrackProgressMutation';
 import eventListener from '../helpers/eventListener';
 import images from '../helpers/images';
 import {secondsToTime} from '../helpers/secondsToTime';
-
-const styles = {
-  p: {
-    textAlign: 'justify' as const,
-    marginBottom: 12,
-    fontSize: 18,
-  },
-  li: {
-    fontSize: 18,
-    margin: 0,
-    padding: 0,
-    lineHeight: 20,
-  },
-};
 
 // eslint-disable-next-line max-lines-per-function
 const AudioScreen: AppScreen<'Audio'> = ({navigation: {navigate}, route}) => {
@@ -175,44 +154,36 @@ const AudioScreen: AppScreen<'Audio'> = ({navigation: {navigate}, route}) => {
               />
 
               {audioFile.transcript && (
-                <View>
-                  <TouchableOpacity
-                    style={{
-                      width: '100%',
-                    }}
-                    onPress={() => setVisibleTranscript(!visibleTranscript)}>
-                    <Text align="center">
-                      {visibleTranscript ? 'Zpět k audiu' : 'Chci raději číst'}
-                    </Text>
-                  </TouchableOpacity>
-                </View>
+                <>
+                  <View>
+                    <TouchableOpacity
+                      style={{
+                        width: '100%',
+                      }}
+                      onPress={() => setVisibleTranscript(!visibleTranscript)}>
+                      <Text align="center">
+                        {visibleTranscript
+                          ? 'Zpět k audiu'
+                          : 'Chci raději číst'}
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
+                  <Dialog
+                    title={audioFile.name}
+                    visible={visibleTranscript}
+                    onHide={() => setVisibleTranscript(!visibleTranscript)}>
+                    <Html source={audioFile.transcript} />
+                    <Button
+                      title="Zavřít"
+                      onPress={() => setVisibleTranscript(false)}
+                    />
+                  </Dialog>
+                </>
               )}
             </View>
           </MainContainer>
         </MainContainerWrapper>
       </GradientBackground>
-
-      {visibleTranscript && !!audioFile.transcript && (
-        <Modal
-          close={() => setVisibleTranscript(!visibleTranscript)}
-          onRequestClose={() => setVisibleTranscript(!visibleTranscript)}>
-          <ScrollView>
-            <Text align="center" textVariant="bigHeader">
-              {audioFile.name}
-            </Text>
-            <HTML
-              source={{html: audioFile.transcript}}
-              tagsStyles={{
-                ...styles,
-              }}
-            />
-            <Button
-              title="Zavřít"
-              onPress={() => setVisibleTranscript(false)}
-            />
-          </ScrollView>
-        </Modal>
-      )}
     </SafeAreaView>
   );
 };

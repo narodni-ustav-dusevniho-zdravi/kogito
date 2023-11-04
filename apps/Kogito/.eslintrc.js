@@ -22,6 +22,9 @@ module.exports = {
             message:
               'Import from project `navigation` module as there is better type coverage :)',
           },
+          {
+            group: ['react-native-render-html'],
+          },
         ],
       },
     ],

@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import {View} from 'react-native';
 
-import Modal from '../../../components/container/Modal/Modal';
+import {Dialog} from '~modules/ui';
+
 import TextInput from '../../../components/form/TextInput';
 import Button from '../../../components/primitives/Button';
-import Text from '../../../components/primitives/Text';
 
 type EditTodoModal = {
   close: () => void;
@@ -26,10 +26,7 @@ const EditViciousCircleModal: React.FC<EditTodoModal> = ({
   }, [initText]);
 
   return (
-    <Modal close={() => close()}>
-      <Text align="center" textVariant="bigHeader">
-        Můj úkol
-      </Text>
+    <Dialog title="Můj úkol" visible onHide={close}>
       <TextInput
         style={{
           marginVertical: 32,
@@ -50,7 +47,7 @@ const EditViciousCircleModal: React.FC<EditTodoModal> = ({
         />
         <Button title="Uložit" type="small" onPress={() => save(text)} />
       </View>
-    </Modal>
+    </Dialog>
   );
 };
 

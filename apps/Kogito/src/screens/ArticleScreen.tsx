@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import {SafeAreaView, ScrollView, useWindowDimensions} from 'react-native';
-import HTML from 'react-native-render-html';
+import {SafeAreaView, ScrollView} from 'react-native';
 
 import {logEvent} from '~modules/analytics';
 import type {AppScreen} from '~modules/navigation';
+import {Html} from '~modules/ui';
 
 import MainContainer from '../components/container/MainContainer/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
@@ -14,27 +14,11 @@ import {useItemContent} from '../content/useItemContent';
 import {useTrackProgressMutation} from '../content/useTrackProgressMutation';
 import eventListener from '../helpers/eventListener';
 
-const styles = {
-  p: {
-    // textAlign: 'justify',
-    // textJustify: 'inter-character',
-    marginBottom: 12,
-    fontSize: 18,
-  },
-  li: {
-    fontSize: 18,
-    margin: 0,
-    padding: 0,
-    lineHeight: 20,
-  },
-};
-
 const ArticleScreen: AppScreen<'Article'> = ({
   navigation: {replace, goBack},
   route,
 }) => {
   const {articleItem} = useItemContent(route.params.id);
-  const windowWidth = useWindowDimensions().width;
 
   const trackProgressMutation = useTrackProgressMutation();
   const [position, setPosition] = useState(0);
@@ -75,15 +59,7 @@ const ArticleScreen: AppScreen<'Article'> = ({
               <Text space="mainY" textVariant="header">
                 {articleItem.name}
               </Text>
-              <HTML
-                source={{html: articleItem.content[position]?.content || ''}}
-                tagsStyles={{
-                  ...styles,
-                  img: {
-                    width: windowWidth - 84,
-                  },
-                }}
-              />
+              <Html source={articleItem.content[position]?.content || ''} />
               <Button
                 style={{
                   marginTop: 'auto',

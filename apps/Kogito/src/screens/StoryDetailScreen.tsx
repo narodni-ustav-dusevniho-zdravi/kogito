@@ -1,36 +1,16 @@
 import React, {useEffect, useState} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-import HTML from 'react-native-render-html';
+import {SafeAreaView, ScrollView, TouchableOpacity, View} from 'react-native';
 import YoutubePlayer from 'react-native-youtube-iframe';
 
 import {logEvent} from '~modules/analytics';
 import type {AppScreen} from '~modules/navigation';
+import {Html} from '~modules/ui';
 
 import MainContainer from '../components/container/MainContainer/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import MainHeader from '../components/container/MainHeader/MainHeader';
 import Text from '../components/primitives/Text';
 import {useStoryContent} from '../content/useStoryContent';
-
-const styles = StyleSheet.create({
-  p: {
-    textAlign: 'justify',
-    marginBottom: 12,
-    fontSize: 18,
-  },
-  li: {
-    fontSize: 18,
-    margin: 0,
-    padding: 0,
-    lineHeight: 20,
-  },
-});
 
 const StoryDetailScreen: AppScreen<'StoryDetail'> = ({route}) => {
   const [playing, setPlaying] = useState(false);
@@ -81,7 +61,7 @@ const StoryDetailScreen: AppScreen<'StoryDetail'> = ({route}) => {
                   />
                 </View>
               )}
-              <HTML source={{html: story.content}} tagsStyles={styles} />
+              <Html source={story.content} />
             </MainContainer>
           </ScrollView>
         </MainContainerWrapper>
