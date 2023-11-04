@@ -7,23 +7,13 @@ import S from './styles';
 
 type ContainerProps = {
   title: string;
-  beforeBackButton?: () => Promise<void>;
 };
 
-const GoBack: React.FC<ContainerProps> = ({
-  title,
-  beforeBackButton,
-  ...rest
-}) => {
-  const {navigate} = useNavigation();
-
-  const handlePress = async () => {
-    await beforeBackButton?.();
-    navigate('Dashboard');
-  };
+const GoBack: React.FC<ContainerProps> = ({title, ...rest}) => {
+  const {goBack} = useNavigation();
 
   return (
-    <S.Container {...rest} onPress={handlePress}>
+    <S.Container {...rest} onPress={goBack}>
       <S.Wrapper>
         <Icon color="#1c1c1c" name="chevron-left" size={32} />
         <S.Text>{title}</S.Text>

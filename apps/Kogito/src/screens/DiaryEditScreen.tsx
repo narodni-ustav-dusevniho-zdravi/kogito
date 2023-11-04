@@ -4,7 +4,7 @@ import moment from 'moment';
 
 import {logEvent} from '~modules/analytics';
 import type {AppScreen} from '~modules/navigation';
-import {useNavigationListener} from '~modules/navigation';
+import {useSaveOnClose} from '~modules/navigation';
 
 import MainContainer from '../components/container/MainContainer/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
@@ -20,29 +20,14 @@ const DiaryEditScreen: AppScreen<'DiaryEdit'> = ({route}) => {
   const {diaryEntry, saveDiaryEntry} = useDiaryEntry(id);
 
   const handleSave = useCallback(async () => {
-    if (content !== '') {
-      try {
-        const result = await saveDiaryEntry({
-          variables: {
-            input: {
-              id,
-              content,
-            },
-          },
-        });
+    if (!content) return;
+    const result = await saveDiaryEntry({variables: {input: {id, content}}});
 
-        if (id === null) {
-          logEvent('Journal Entry Added');
-          eventListener.fireEvent('refetch-user-diary');
-        }
-
-        setId(result.data?.editDiaryEntry?.id ?? null);
-      } catch (e) {
-        console.log(e, 'ee');
-      }
+    if (id === null) {
+      logEvent('Journal Entry Added');
+      eventListener.fireEvent('refetch-user-diary');
     }
-
-    return;
+    setId(result.data?.editDiaryEntry?.id ?? null);
   }, [content, id, saveDiaryEntry]);
 
   useEffect(() => {
@@ -58,12 +43,12 @@ const DiaryEditScreen: AppScreen<'DiaryEdit'> = ({route}) => {
     setContent('');
   }, [route.params.id]);
 
-  useNavigationListener('beforeRemove', handleSave);
+  useSaveOnClose(handleSave);
 
   return (
     <SafeAreaView>
       <MainContainerWrapper>
-        <MainHeader beforeBackButton={handleSave} title="Deník" />
+        <MainHeader title="Deník" />
         <MainContainer color="white" page="sub">
           {diaryEntry && (
             <Text textVariant="textMini">

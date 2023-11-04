@@ -12,7 +12,6 @@ export type Align = 'left' | 'right';
 export type BgColor = 'transparent';
 
 type MainContainerProps = {
-  beforeBackButton?: () => Promise<void>;
   title?: string;
   useTransparent?: boolean;
 };
@@ -20,7 +19,6 @@ type MainContainerProps = {
 const MainHeader: React.FC<MainContainerProps> = ({
   title,
   useTransparent = false,
-  beforeBackButton,
   // ...rest
 }) => {
   const {navigate} = useNavigation();
@@ -28,7 +26,7 @@ const MainHeader: React.FC<MainContainerProps> = ({
   return (
     <S.Container bgColor={useTransparent ? 'transparent' : undefined}>
       {title ? (
-        <GoBack beforeBackButton={beforeBackButton} title={title} />
+        <GoBack title={title} />
       ) : (
         <Icon
           color="#1d1d1b"

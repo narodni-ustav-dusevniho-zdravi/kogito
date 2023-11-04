@@ -4,7 +4,7 @@ import moment from 'moment';
 
 import {logEvent} from '~modules/analytics';
 import type {AppScreen} from '~modules/navigation';
-import {useNavigationListener} from '~modules/navigation';
+import {useSaveOnClose} from '~modules/navigation';
 
 import MainContainer from '../components/container/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
@@ -103,22 +103,17 @@ const ViciousCircleEditScreen: AppScreen<'ViciousCircleEdit'> = () => {
   };
 
   const handleSave = useCallback(async () => {
-    if (viciousCircle) {
-      try {
-        await save({
-          variables: {
-            input: {
-              id: viciousCircle.id,
-              name: '',
-              ...data,
-            },
-          },
-        });
-        logEvent('Vicious cycle edited');
-      } catch (e) {
-        console.error({e});
-      }
-    }
+    if (!viciousCircle) return;
+    await save({
+      variables: {
+        input: {
+          id: viciousCircle.id,
+          name: '',
+          ...data,
+        },
+      },
+    });
+    logEvent('Vicious cycle edited');
   }, [viciousCircle, data, save]);
 
   const windowWidth = useWindowDimensions().width;
@@ -126,12 +121,12 @@ const ViciousCircleEditScreen: AppScreen<'ViciousCircleEdit'> = () => {
   const size =
     ((windowWidth > windowHeight ? windowHeight : windowWidth) * 0.2) / 2;
 
-  useNavigationListener('beforeRemove', () => handleSave());
+  useSaveOnClose(handleSave);
 
   return (
     <SafeAreaView>
       <MainContainerWrapper color="white">
-        <MainHeader beforeBackButton={handleSave} title={' '} />
+        <MainHeader title={' '} />
         <MainContainer color="white" page="sub" style={{flexGrow: 0}}>
           <Text textVariant="bigHeader">Bludný kruh</Text>
           {viciousCircle && (
