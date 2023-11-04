@@ -1,7 +1,8 @@
 import React, {useEffect} from 'react';
-import {BackHandler, Image, ScrollView} from 'react-native';
+import {Alert, BackHandler, Image, ScrollView} from 'react-native';
 
 import Logo from '~assets/logo.png';
+import ENV from '~modules/env';
 import type {AppScreen} from '~modules/navigation';
 import {Html} from '~modules/ui';
 
@@ -28,6 +29,7 @@ const IntroScreen: AppScreen<'Intro'> = ({navigation: {replace}}) => {
   };
 
   const handleDeclinePress = () => {
+    if (ENV.IS_IOS) return Alert.alert('Bez souhlasu to bohužel nepujde :(');
     BackHandler.exitApp();
   };
 
