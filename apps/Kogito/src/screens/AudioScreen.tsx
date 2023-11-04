@@ -29,8 +29,7 @@ const AudioScreen: AppScreen<'Audio'> = ({navigation: {navigate}, route}) => {
   const trackProgressMutation = useTrackProgressMutation();
   const track = useTrack(audioFile?.link);
   const progressPercents = track.progress?.percents ?? 0;
-  useNavigationListener('blur', SoundPlayer.stop);
-  useNavigationListener('beforeRemove', SoundPlayer.stop);
+  useNavigationListener('blur', SoundPlayer.reset);
   useEffect(() => {
     if (!audioFile?.link) return;
     SoundPlayer.play(audioFile);
