@@ -40,6 +40,7 @@ export const Text = styled.Text<Selected>`
   font-size: 15px;
   text-align: left;
   margin-left: 10px;
+  flex: 1;
   color: #243936;
   font-weight: ${(props: Selected) => (props.selected ? 'bold' : 'normal')};
 `;
