@@ -16,7 +16,6 @@ module.exports = {
   runtimeVersion: {
     policy: 'appVersion',
   },
-  orientation: 'portrait',
   userInterfaceStyle: 'light',
   splash: {
     image: './assets/splash.png',
