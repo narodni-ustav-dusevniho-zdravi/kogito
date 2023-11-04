@@ -12,7 +12,7 @@ import MainHeader from '../components/container/MainHeader/MainHeader';
 import ColoredSafeAreaView from '../components/primitives/ColoredSafeAreaView';
 import Text from '../components/primitives/Text';
 import {useItemContent} from '../content/useItemContent';
-import {useTrackProgress} from '../content/useTrackProgress';
+import {useTrackProgressMutation} from '../content/useTrackProgressMutation';
 import eventListener from '../helpers/eventListener';
 
 // eslint-disable-next-line max-lines-per-function
@@ -38,7 +38,7 @@ const VideoScreen: AppScreen<'Video'> = ({route}) => {
     }
   };
 
-  const {trackProgressMutation} = useTrackProgress();
+  const trackProgressMutation = useTrackProgressMutation();
 
   const handleInterval = useCallback(() => {
     console.log({playing, playedSeconds, id: route.params.id});

@@ -11,7 +11,7 @@ import Button from '../components/primitives/Button';
 import ProgressBar from '../components/primitives/ProgressBar/ProgressBar';
 import Text from '../components/primitives/Text';
 import {useItemContent} from '../content/useItemContent';
-import {useTrackProgress} from '../content/useTrackProgress';
+import {useTrackProgressMutation} from '../content/useTrackProgressMutation';
 import eventListener from '../helpers/eventListener';
 
 const styles = {
@@ -36,7 +36,7 @@ const ArticleScreen: AppScreen<'Article'> = ({
   const {articleItem} = useItemContent(route.params.id);
   const windowWidth = useWindowDimensions().width;
 
-  const {trackProgressMutation} = useTrackProgress();
+  const trackProgressMutation = useTrackProgressMutation();
   const [position, setPosition] = useState(0);
 
   useEffect(() => {

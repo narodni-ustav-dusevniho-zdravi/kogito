@@ -1,4 +1,4 @@
-import React, {useEffect, useMemo, useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
   Image,
   SafeAreaView,
@@ -8,12 +8,12 @@ import {
 } from 'react-native';
 import DropShadow from 'react-native-drop-shadow';
 import HTML from 'react-native-render-html';
-import SoundPlayer from 'react-native-sound-player';
 import {useEventCallback, useInterval} from 'usehooks-ts';
 
 import {logEvent} from '~modules/analytics';
 import type {AppScreen} from '~modules/navigation';
 import {useNavigationListener} from '~modules/navigation';
+import {SoundPlayer, useTrack} from '~modules/trackPlayer';
 
 import MainContainer from '../components/container/MainContainer/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
@@ -25,7 +25,7 @@ import GradientBackground from '../components/primitives/GradientBackground';
 import Slider from '../components/primitives/Slider';
 import Text from '../components/primitives/Text';
 import {useItemContent} from '../content/useItemContent';
-import {useTrackProgress} from '../content/useTrackProgress';
+import {useTrackProgressMutation} from '../content/useTrackProgressMutation';
 import eventListener from '../helpers/eventListener';
 import images from '../helpers/images';
 import {secondsToTime} from '../helpers/secondsToTime';
@@ -44,134 +44,55 @@ const styles = {
   },
 };
 
-// eslint-disable-next-line max-lines-per-function, max-statements
+// eslint-disable-next-line max-lines-per-function
 const AudioScreen: AppScreen<'Audio'> = ({navigation: {navigate}, route}) => {
   const {audioFile} = useItemContent(route.params.id);
-  const {trackProgressMutation} = useTrackProgress();
+  const trackProgressMutation = useTrackProgressMutation();
+  const track = useTrack(audioFile?.link);
+  const progressPercents = track.progress?.percents ?? 0;
+  useNavigationListener('blur', SoundPlayer.stop);
+  useNavigationListener('beforeRemove', SoundPlayer.stop);
+  useEffect(() => {
+    if (!audioFile?.link) return;
+    SoundPlayer.play(audioFile);
+  }, [audioFile]);
 
   const [visibleTranscript, setVisibleTranscript] = useState<boolean>(false);
-  const [audioPlaying, setAudioPlaying] = useState(false);
-  const [lastInfo, setLastInfo] = useState<{
-    currentTime: number;
-    duration: number;
-    progress: number;
-  }>({currentTime: 0, duration: 0, progress: 0});
+  useEffect(() => {
+    if (visibleTranscript) SoundPlayer.pause();
+  }, [visibleTranscript]);
+
   const lastTrackedProgress = useRef(0);
 
-  const pause = () => {
-    if (!audioPlaying) return;
-    SoundPlayer.pause();
-    setAudioPlaying(false);
-  };
-  const play = () => {
-    if (audioPlaying) return;
-    SoundPlayer.resume();
-    setAudioPlaying(true);
-  };
   const seek = (progress: number) => {
-    if (!audioFile?.link) return;
-    SoundPlayer.seek(Math.floor(lastInfo.duration * (progress / 100)));
-    play();
-  };
-  const togglePlay = () => {
-    if (audioPlaying) {
-      pause();
-    } else {
-      play();
-    }
+    if (!track.progress) return;
+    SoundPlayer.seekTo(Math.floor(track.progress.duration * (progress / 100)));
   };
 
-  useEffect(() => {
-    if (audioFile?.link) {
-      SoundPlayer.playUrl(audioFile.link);
-      setAudioPlaying(true);
-    } else {
-      setAudioPlaying(false);
-    }
-  }, [audioFile?.link]);
-
-  const currentPercents = useMemo(() => {
-    const result = Math.floor(100 * (lastInfo.currentTime / lastInfo.duration));
-    return result - (result % 10);
-  }, [lastInfo.currentTime, lastInfo.duration]);
-
-  const trackProgress = useEventCallback(async () => {
+  const trackProgress = useEventCallback(() => {
+    const progress = Math.round(progressPercents);
     try {
-      const info = await SoundPlayer.getInfo();
-      setLastInfo({
-        ...info,
-        progress: Math.floor(100 * (info.currentTime / info.duration)),
-      });
-      if (
-        currentPercents <= lastTrackedProgress.current ||
-        currentPercents < 10
-      )
-        return;
+      if (progress <= lastTrackedProgress.current || progress < 10) return;
       trackProgressMutation({
         variables: {
           input: {
             id: route.params.id,
-            progress: currentPercents,
+            progress,
           },
         },
       }).then(() => {
-        lastTrackedProgress.current = currentPercents;
+        lastTrackedProgress.current = progress;
         eventListener.fireEvent('refetch-progress');
       });
-      if (audioFile && currentPercents > 80) {
+      if (audioFile && progress > 80) {
         logEvent('Lesson completed', {lessonTitle: audioFile.name});
       }
     } catch (e) {
       console.log(e);
-      setLastInfo({currentTime: 0, duration: 0, progress: 0});
     }
   });
 
-  useNavigationListener('blur', () => SoundPlayer.stop());
-  useNavigationListener('beforeRemove', () => SoundPlayer.stop());
-
-  useEffect(() => {
-    const finishedLoadingSubscription = SoundPlayer.addEventListener(
-      'FinishedLoadingURL',
-      () => {
-        SoundPlayer.play();
-        setAudioPlaying(true);
-      },
-    );
-    const finishedPlayingSubscription = SoundPlayer.addEventListener(
-      'FinishedPlaying',
-      () => {
-        SoundPlayer.seek(0);
-        setAudioPlaying(false);
-      },
-    );
-    return () => {
-      finishedLoadingSubscription.remove();
-      finishedPlayingSubscription.remove();
-    };
-  }, []);
-
   useInterval(trackProgress, 500);
-
-  // useEffect(() => {
-  //   const onBackPress = () => {
-  //     console.log('back', visibleTranscript);
-  //
-  //     // if (visibleTranscript) {
-  //     setVisibleTranscript(false);
-  //     // return false;
-  //     // }
-  //
-  //     return false;
-  //   };
-  //
-  //   BackHandler.addEventListener('hardwareBackPress', onBackPress);
-  //
-  //   return () =>
-  //     BackHandler.removeEventListener('hardwareBackPress', onBackPress);
-  // }, []);
-
-  console.log({duration: lastInfo.duration});
 
   if (!audioFile)
     return (
@@ -180,10 +101,7 @@ const AudioScreen: AppScreen<'Audio'> = ({navigation: {navigate}, route}) => {
       </SafeAreaView>
     );
   return (
-    <SafeAreaView
-      style={{
-        backgroundColor: '#fff',
-      }}>
+    <SafeAreaView style={{backgroundColor: '#fff'}}>
       <GradientBackground
         angle={180}
         color1="rgba(255,255,255,0.29)"
@@ -223,30 +141,33 @@ const AudioScreen: AppScreen<'Audio'> = ({navigation: {navigate}, route}) => {
               </Text>
             </View>
 
-            <View style={{display: 'flex', flexDirection: 'row'}}>
-              <Text>{secondsToTime(lastInfo.currentTime)}</Text>
-              <View style={{flex: 1}} />
-              <Text>
-                {secondsToTime(
-                  lastInfo.duration > 300000 ? 0 : lastInfo.duration,
-                )}
-              </Text>
+            <View
+              style={{
+                alignSelf: 'stretch',
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+              }}>
+              {track.progress && (
+                <>
+                  <Text>{secondsToTime(track.progress.position)}</Text>
+                  <Text>{secondsToTime(track.progress.duration)}</Text>
+                </>
+              )}
             </View>
-            <Slider
-              progress={lastInfo.progress}
-              onSeek={seek}
-              onSlidingStart={() => pause()}
-            />
+            <Slider progress={progressPercents} onValueChange={seek} />
 
             <View>
               <AudioControls
                 disableNextButton={!audioFile.next}
                 disablePrevButton={!audioFile.previous}
-                isPlaying={audioPlaying}
+                isPlaying={track.isPlaying}
                 onPressNext={() =>
                   audioFile.next && navigate('Audio', {id: audioFile.next})
                 }
-                onPressPlay={() => togglePlay()} //setAudioPlaying(!audioPlaying)}
+                onPressPlay={() => {
+                  if (track.isPlaying) return SoundPlayer.pause();
+                  SoundPlayer.play(audioFile);
+                }}
                 onPressPrev={() =>
                   audioFile.previous &&
                   navigate('Audio', {id: audioFile.previous})

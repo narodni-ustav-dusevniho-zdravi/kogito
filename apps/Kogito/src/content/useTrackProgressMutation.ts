@@ -13,13 +13,11 @@ const mutation = gql`
   }
 `;
 
-export const useTrackProgress = () => {
+export const useTrackProgressMutation = () => {
   const [trackProgressMutation] = useMutation<
     TrackProgressMutation,
     TrackProgressMutationVariables
   >(mutation);
 
-  return {
-    trackProgressMutation,
-  };
+  return trackProgressMutation;
 };

@@ -4,15 +4,15 @@ import * as NativeSlider from '@react-native-community/slider';
 import S from './styles';
 
 type Slider = {
+  onValueChange: (progress: number) => void;
   progress: number;
-  onSeek?: (progress: number) => void;
   onSlidingStart?: () => void;
 };
 
 const Slider: React.FC<Slider> = ({
   progress,
   onSlidingStart = () => {},
-  onSeek = () => {},
+  onValueChange = () => {},
 }) => {
   return (
     <S.Wrapper>
@@ -24,8 +24,8 @@ const Slider: React.FC<Slider> = ({
         style={{width: '100%', height: 5}}
         thumbTintColor="#E0E0E0"
         value={progress}
-        onSlidingComplete={onSeek}
         onSlidingStart={onSlidingStart}
+        onValueChange={onValueChange}
       />
     </S.Wrapper>
   );
