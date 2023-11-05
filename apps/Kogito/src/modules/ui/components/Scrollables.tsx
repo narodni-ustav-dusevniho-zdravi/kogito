@@ -2,13 +2,7 @@ import type {ComponentProps} from 'react';
 import React from 'react';
 import type {
   // eslint-disable-next-line no-restricted-imports
-  FlatList as RNFlatList,
-  // eslint-disable-next-line no-restricted-imports
   FlatListProps as RNFlatListProps,
-  // eslint-disable-next-line no-restricted-imports
-  ScrollView as RNScrollView,
-  // eslint-disable-next-line no-restricted-imports
-  SectionList as RNSectionList,
   // eslint-disable-next-line no-restricted-imports
   SectionListProps as RNSectionListProps,
 } from 'react-native';
@@ -52,12 +46,12 @@ const withScrollableContext = <T extends KeyboardAwareScrollViewProps>(
 
 export const ScrollView = withScrollableContext(KeyboardAwareScrollView);
 export type ScrollViewProps = ComponentProps<typeof ScrollView>;
-export type ScrollView = RNScrollView;
+export type ScrollView = KeyboardAwareScrollView;
 
 export const FlatList = withScrollableContext(KeyboardAwareFlatList);
 export type FlatListProps<T> = RNFlatListProps<T>;
-export type FlatList<T> = RNFlatList<T>;
+export type FlatList = KeyboardAwareFlatList;
 
 export const SectionList = withScrollableContext(KeyboardAwareSectionList);
 export type SectionListProps<T, S> = RNSectionListProps<T, S>;
-export type SectionList<T, S> = RNSectionList<T, S>;
+export type SectionList = KeyboardAwareSectionList;

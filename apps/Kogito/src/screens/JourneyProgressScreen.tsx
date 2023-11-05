@@ -88,10 +88,7 @@ const JourneyProgressScreen: AppScreen<'JourneyProgress'> = ({
                 <TouchableOpacity
                   style={{marginBottom: 40, marginTop: 20}}
                   onPress={() => {
-                    scrollRef.current?.scrollTo({
-                      y: 0,
-                      animated: false,
-                    });
+                    scrollRef.current?.scrollToPosition(0, 0, false);
                     navigate('JourneySwitch');
                   }}>
                   <Text align="center">Chci změnit cestu</Text>
