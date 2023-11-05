@@ -7,8 +7,7 @@ interface Props {
   hidden?: boolean;
 }
 
-const transparentBackgroundSupported =
-  Platform.OS === 'ios' || Number(Platform.Version) >= 23;
+const transparentBackgroundSupported = Platform.OS === 'ios'; //TODO: support on android || Number(Platform.Version) >= 23;
 
 export const StatusBar = React.memo<Props>(
   ({content = 'dark', hidden = false}) => {
