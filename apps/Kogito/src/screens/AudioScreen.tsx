@@ -77,6 +77,7 @@ const AudioScreen: AppScreen<'Audio'> = ({navigation: {navigate}, route}) => {
         justifyContent: 'center',
         flexGrow: 1,
       }}
+      gradientBackground
       type="static">
       {audioFile.image && (
         <Image

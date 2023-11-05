@@ -11,7 +11,7 @@ export const Modal: React.FC<ModalProps> = ({
   ...props
 }) => {
   return (
-    <RNModal {...props} onRequestClose={onRequestClose}>
+    <RNModal statusBarTranslucent {...props} onRequestClose={onRequestClose}>
       <SafeAreaProvider>
         <Pressable
           style={[StyleSheet.absoluteFillObject, style]}

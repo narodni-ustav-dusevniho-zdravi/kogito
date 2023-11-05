@@ -11,7 +11,6 @@ import ENV from '~modules/env';
 import type {AppScreen} from '~modules/navigation';
 
 import LoginForm from '../auth/form/LoginForm';
-import HalfOverlay from '../components/container/HalfOverlay';
 import MainContainer from '../components/container/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';
 import Button from '../components/primitives/Button';
@@ -25,7 +24,6 @@ export const LogoFooterWrapper = styled.View`
 
 type State = 'normal' | 'login' | 'registration';
 
-// eslint-disable-next-line max-lines-per-function
 const LoginScreen: AppScreen<'LoginOrRegister'> = ({
   navigation: {navigate},
 }) => {
@@ -94,14 +92,13 @@ const LoginScreen: AppScreen<'LoginOrRegister'> = ({
               {ENV.VERSION}
             </Text>
           </LogoFooterWrapper>
-          {/*</ScrollView>*/}
-          <HalfOverlay
-            close={() => setState('normal')}
-            visible={state !== 'normal'}>
-            {(state === 'login' || state === 'registration') && (
-              <LoginForm type={state} onSuccess={loginSuccess} />
-            )}
-          </HalfOverlay>
+          {(state === 'login' || state === 'registration') && (
+            <LoginForm
+              type={state}
+              onClose={() => setState('normal')}
+              onSuccess={loginSuccess}
+            />
+          )}
         </MainContainer>
       </MainContainerWrapper>
     </ColoredSafeAreaView>

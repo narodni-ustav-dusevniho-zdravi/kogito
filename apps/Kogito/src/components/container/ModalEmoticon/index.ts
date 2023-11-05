@@ -1,3 +1,3 @@
-import HalfOverlay from '../HalfOverlay';
+import ModalEmoticon from './ModalEmoticon';
 
-export default HalfOverlay;
+export default ModalEmoticon;

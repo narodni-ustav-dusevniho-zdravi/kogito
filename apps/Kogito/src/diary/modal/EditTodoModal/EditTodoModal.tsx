@@ -43,7 +43,7 @@ const EditViciousCircleModal: React.FC<EditTodoModal> = ({
           colorVariant="transparentBlack"
           title="Zahodit"
           type="small"
-          onPress={() => remove()}
+          onPress={remove}
         />
         <Button title="Uložit" type="small" onPress={() => save(text)} />
       </View>

@@ -19,7 +19,7 @@ import Text from '../../primitives/Text';
 
 import S from './styles';
 
-type HalfOverlayProps = {
+type ModalEmoticonProps = {
   type: Mood;
   close?: () => void;
 } & ReactNative.ModalProperties;
@@ -30,7 +30,7 @@ type Settings = {
   title: string;
 };
 
-const getSettings = (type: HalfOverlayProps['type']): Settings => {
+const getSettings = (type: ModalEmoticonProps['type']): Settings => {
   switch (type) {
     case 'SATISFIED':
       return {
@@ -65,7 +65,7 @@ const getSettings = (type: HalfOverlayProps['type']): Settings => {
   }
 };
 
-const ModalEmoticon: React.FC<HalfOverlayProps> = ({
+const ModalEmoticon: React.FC<ModalEmoticonProps> = ({
   close = () => {},
   type,
   ...rest

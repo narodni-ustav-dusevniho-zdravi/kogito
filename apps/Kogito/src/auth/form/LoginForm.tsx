@@ -1,25 +1,26 @@
 import React, {useEffect, useState} from 'react';
 import {Controller, useForm} from 'react-hook-form';
-import {ToastAndroid, View} from 'react-native';
+import {ToastAndroid} from 'react-native';
 
 import type {LoginInput} from '~gql/graphql';
 import {logEvent} from '~modules/analytics';
+import {Dialog} from '~modules/ui';
 
 import TextInput from '../../components/form/TextInput';
 import {ValidationMessage} from '../../components/form/ValidationMessage';
 import Button from '../../components/primitives/Button';
-import Text from '../../components/primitives/Text';
 import {PHONE_NUMBER_REGEX} from '../../helpers/regexp';
 import {useAuth} from '../useAuth';
 import {useLogin} from '../useLogin';
 
 type LoginForm = {
+  onClose: () => void;
   onSuccess: () => void;
   type: 'login' | 'registration';
 };
 
 // eslint-disable-next-line max-lines-per-function
-const LoginForm: React.FC<LoginForm> = ({type, onSuccess}) => {
+const LoginForm: React.FC<LoginForm> = ({type, onSuccess, onClose}) => {
   const {setTokens} = useAuth();
   const [useMasked, setUseMasked] = useState(true);
   const {initializeLoginMutation, loginMutation} = useLogin();
@@ -93,13 +94,10 @@ const LoginForm: React.FC<LoginForm> = ({type, onSuccess}) => {
   };
 
   return (
-    <View>
-      <View style={{marginBottom: 35}}>
-        {type === 'login' && <Text textVariant="bigHeader">Přihlášení</Text>}
-        {type === 'registration' && (
-          <Text textVariant="bigHeader">Registrace</Text>
-        )}
-      </View>
+    <Dialog
+      title={type === 'login' ? 'Přihlášení' : 'Registrace'}
+      visible
+      onHide={onClose}>
       <Controller
         control={control}
         defaultValue=""
@@ -142,7 +140,7 @@ const LoginForm: React.FC<LoginForm> = ({type, onSuccess}) => {
         title="Přihlásit se"
         onPress={handleSubmit(onSubmit)}
       />
-    </View>
+    </Dialog>
   );
 };
 

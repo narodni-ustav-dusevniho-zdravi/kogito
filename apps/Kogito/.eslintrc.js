@@ -1,3 +1,12 @@
+const scrollables = [
+  'ScrollView',
+  'FlatList',
+  'SectionList',
+  'ScrollViewProps',
+  'FlatListProps',
+  'SectionListProps',
+];
+
 module.exports = {
   root: true,
   extends: ['@react-native-community', '@mkraina/eslint-config-base'],
@@ -11,8 +20,18 @@ module.exports = {
         paths: [
           {
             name: 'react-native',
-            importNames: ['Modal'],
-            message: 'Please use Modal from ui lib instead.',
+            importNames: [
+              'Modal',
+              'KeyboardAvoidingView',
+              'StatusBar',
+              ...scrollables,
+            ],
+            message: 'Please import from ui lib instead.',
+          },
+          {
+            name: 'react-native-gesture-handler',
+            importNames: scrollables,
+            message: 'Please import from ui lib instead.',
           },
         ],
         patterns: [

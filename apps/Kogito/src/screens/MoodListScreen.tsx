@@ -1,5 +1,5 @@
 import React, {useEffect, useMemo} from 'react';
-import {Alert, Image, SafeAreaView, ScrollView, View} from 'react-native';
+import {Alert, Image, SafeAreaView, View} from 'react-native';
 import {gql, useMutation} from '@apollo/client';
 import {groupBy} from 'lodash';
 import moment from 'moment';
@@ -17,6 +17,7 @@ import type {
 } from '~gql/graphql';
 import type {AppScreen} from '~modules/navigation';
 import {useOnScreenFocus} from '~modules/navigation';
+import {ScrollView} from '~modules/ui';
 
 import MainContainer from '../components/container/MainContainer/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';

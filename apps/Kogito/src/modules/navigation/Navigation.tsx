@@ -95,7 +95,7 @@ const DashboardTabNavigation = () => {
       screenOptions={({route}) => ({
         tabBarActiveTintColor: '#F2AC33',
         tabBarInactiveTintColor: '#8e8e93',
-        tabBarStyle: {height: 80, paddingTop: 12, paddingBottom: 22},
+        tabBarHideOnKeyboard: true,
         tabBarIcon: ({color: iconColor}) => {
           switch (route.name) {
             case 'DashboardTab':
@@ -131,7 +131,13 @@ const DashboardTabNavigation = () => {
         name="Todos"
         options={{headerShown: false}}
       />
-      {ENV.IS_DEV && <Tab.Screen component={DevScreen} name="Dev" />}
+      {ENV.IS_DEV && (
+        <Tab.Screen
+          component={DevScreen}
+          name="Dev"
+          options={{headerShown: false}}
+        />
+      )}
     </Tab.Navigator>
   );
 };

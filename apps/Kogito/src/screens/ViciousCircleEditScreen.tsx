@@ -1,10 +1,11 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import {SafeAreaView, ScrollView, useWindowDimensions} from 'react-native';
+import {SafeAreaView, useWindowDimensions} from 'react-native';
 import moment from 'moment';
 
 import {logEvent} from '~modules/analytics';
 import type {AppScreen} from '~modules/navigation';
 import {useSaveOnClose} from '~modules/navigation';
+import {ScrollView} from '~modules/ui';
 
 import MainContainer from '../components/container/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';

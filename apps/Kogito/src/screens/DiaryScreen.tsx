@@ -1,10 +1,11 @@
 import React, {useMemo} from 'react';
-import {Alert, SafeAreaView, ScrollView} from 'react-native';
+import {Alert, SafeAreaView} from 'react-native';
 import {capitalize, groupBy} from 'lodash';
 import moment from 'moment';
 
 import type {AppScreen} from '~modules/navigation';
 import {useOnScreenFocus} from '~modules/navigation';
+import {ScrollView} from '~modules/ui';
 
 import MainContainer from '../components/container/MainContainer/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';

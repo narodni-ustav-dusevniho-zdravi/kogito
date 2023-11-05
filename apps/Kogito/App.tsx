@@ -2,7 +2,6 @@ import 'moment/locale/cs';
 
 import React from 'react';
 import Moment from 'react-moment';
-import {StatusBar} from 'react-native';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {ApolloProvider} from '@apollo/client';
 import {NavigationContainer} from '@react-navigation/native';
@@ -17,6 +16,7 @@ import {
 import ENV from '~modules/env';
 import {getCurrentRoute, navigationRef} from '~modules/navigation';
 import Navigation from '~modules/navigation/Navigation';
+import {StatusBar} from '~modules/ui';
 
 import ApolloClient from './src/apollo/client';
 import {AuthProvider} from './src/auth/auth-context';
@@ -54,7 +54,7 @@ const App = () => {
           onStateChange={onNavigationStateChange}>
           <AuthProvider>
             <ApolloProvider client={ApolloClient}>
-              <StatusBar barStyle="dark-content" />
+              <StatusBar content="dark" />
               <Navigation />
               <LogMoodModal />
             </ApolloProvider>

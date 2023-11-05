@@ -1,14 +1,11 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import {SafeAreaView} from 'react-native';
 import moment from 'moment';
 
 import {logEvent} from '~modules/analytics';
 import type {AppScreen} from '~modules/navigation';
 import {useSaveOnClose} from '~modules/navigation';
+import {ScreenContainer} from '~modules/ui';
 
-import MainContainer from '../components/container/MainContainer/MainContainer';
-import MainContainerWrapper from '../components/container/MainContainerWrapper';
-import MainHeader from '../components/container/MainHeader/MainHeader';
 import TextArea from '../components/form/TextArea';
 import Text from '../components/primitives/Text';
 import {useDiaryEntry} from '../diary/useDiaryEntry';
@@ -46,25 +43,22 @@ const DiaryEditScreen: AppScreen<'DiaryEdit'> = ({route}) => {
   useSaveOnClose(handleSave);
 
   return (
-    <SafeAreaView>
-      <MainContainerWrapper>
-        <MainHeader title="Deník" />
-        <MainContainer color="white" page="sub">
-          {diaryEntry && (
-            <Text textVariant="textMini">
-              {moment(diaryEntry.date).format('Do MMMM YYYY, HH:mm')}
-            </Text>
-          )}
-          <TextArea
-            style={{
-              paddingTop: 48,
-            }}
-            value={content}
-            onChangeText={text => setContent(text)}
-          />
-        </MainContainer>
-      </MainContainerWrapper>
-    </SafeAreaView>
+    <ScreenContainer
+      contentContainerStyle={{paddingHorizontal: 16}}
+      title="Deník"
+      type="static">
+      {diaryEntry && (
+        <Text textVariant="textMini">
+          {moment(diaryEntry.date).format('Do MMMM YYYY, HH:mm')}
+        </Text>
+      )}
+      <TextArea
+        scrollEnabled={false}
+        style={{paddingTop: 48, paddingBottom: 48}}
+        value={content}
+        onChangeText={text => setContent(text)}
+      />
+    </ScreenContainer>
   );
 };
 

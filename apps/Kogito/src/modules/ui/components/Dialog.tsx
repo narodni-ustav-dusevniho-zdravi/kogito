@@ -1,14 +1,10 @@
 import React from 'react';
-import {
-  KeyboardAvoidingView,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 
+import {KeyboardAvoidingView} from './KeyboardAvoidingView';
 import {Modal} from './Modal';
 import {SafeArea} from './SafeArea';
+import {ScrollView} from './Scrollables';
 
 type Props = {
   children: React.ReactNode;
@@ -36,13 +32,13 @@ export const Dialog: React.FC<Props> = ({visible, title, onHide, children}) => {
       onRequestClose={onHide}>
       <SafeArea.Top />
       <KeyboardAvoidingView
-        enabled
         pointerEvents="box-none"
         style={styles.modalContent}>
         <View>
           <ScrollView
             alwaysBounceVertical={false}
             contentContainerStyle={styles.contentContainer}
+            enableAutomaticScroll={false}
             style={styles.container}>
             <Text style={styles.title}>{title}</Text>
             {children}

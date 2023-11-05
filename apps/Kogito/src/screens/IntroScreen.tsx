@@ -1,10 +1,10 @@
 import React, {useEffect} from 'react';
-import {Alert, BackHandler, Image, ScrollView} from 'react-native';
+import {Alert, BackHandler, Image} from 'react-native';
 
 import Logo from '~assets/logo.png';
 import ENV from '~modules/env';
 import type {AppScreen} from '~modules/navigation';
-import {Html} from '~modules/ui';
+import {Html, ScrollView} from '~modules/ui';
 
 import MainContainer from '../components/container/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';

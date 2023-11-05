@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
-import {Alert, SafeAreaView, ScrollView} from 'react-native';
+import {Alert, SafeAreaView} from 'react-native';
 
 import type {DayPart, Todo} from '~gql/graphql';
 import {logEvent} from '~modules/analytics';
 import type {AppScreen} from '~modules/navigation';
+import {ScrollView} from '~modules/ui';
 
 import MainContainer from '../components/container/MainContainer';
 import MainContainerWrapper from '../components/container/MainContainerWrapper';

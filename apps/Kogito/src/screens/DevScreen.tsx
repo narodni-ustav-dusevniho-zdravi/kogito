@@ -1,12 +1,13 @@
 import React from 'react';
-import {ScrollView, Text} from 'react-native';
+import {Text} from 'react-native';
 
 import ENV from '~modules/env';
+import {ScreenContainer} from '~modules/ui';
 
 export const DevScreen = () => {
   return (
-    <ScrollView>
+    <ScreenContainer title="Dev" type="static">
       <Text>{JSON.stringify(ENV, null, 2)}</Text>
-    </ScrollView>
+    </ScreenContainer>
   );
 };

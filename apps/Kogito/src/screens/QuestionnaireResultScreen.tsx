@@ -1,10 +1,9 @@
 /* eslint-disable max-len */
 import React, {useEffect, useState} from 'react';
-import {ScrollView} from 'react-native';
 
 import RegisterImg from '~assets/register-img.svg';
 import type {AppScreen} from '~modules/navigation';
-import {Html} from '~modules/ui';
+import {Html, ScrollView} from '~modules/ui';
 
 import MainContainer from '../components/container/MainContainer';
 import Button from '../components/primitives/Button';
