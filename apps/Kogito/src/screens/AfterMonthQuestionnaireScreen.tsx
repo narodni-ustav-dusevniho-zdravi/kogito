@@ -84,10 +84,7 @@ const AfterMonthQuestionnaireScreen: AppScreen<'AfterMonthQuestionnaire'> = ({
                   finished={item.finished}
                   name={item.questionnaire.name}
                   press={() =>
-                    !item.finished &&
-                    navigate('AfterMonthQuestionnaireDetail', {
-                      id: item.id,
-                    })
+                    navigate('AfterMonthQuestionnaireDetail', {id: item.id})
                   }
                 />
               ))}

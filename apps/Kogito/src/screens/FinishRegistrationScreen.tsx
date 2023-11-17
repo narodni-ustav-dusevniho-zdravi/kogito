@@ -19,10 +19,9 @@ const FinishRegistrationScreen: AppScreen<'FinishRegistrationScreen'> = ({
   return (
     <SafeAreaView>
       <MainContainerWrapper>
-        <MainContainer
-          alignVertical="between"
-          style={{paddingTop: 24, paddingBottom: 56}}>
-          <ScrollView>
+        <MainContainer alignVertical="between">
+          <ScrollView
+            contentContainerStyle={{paddingTop: 24, paddingBottom: 56}}>
             <Text textVariant="header">
               Abychom mohli vyhodnocovat jak Kogito funguje tak o Vás
               potřebujeme znát Vaše základní demografické údaje.

@@ -55,7 +55,7 @@ const QuestionnaireWidget: React.FC<QuestionnaireWidget> = ({
   press,
 }) => {
   return (
-    <StyledButton onPress={press}>
+    <StyledButton onPress={finished ? undefined : press}>
       {finished && (
         <DropShadow
           style={{

@@ -44,10 +44,7 @@ const AvailableQuestionnairesScreen: AppScreen<'AvailableQuestionnaires'> = ({
                 count={10}
                 finished={!!userState?.userInfoCompleted}
                 name="Základní údaje"
-                press={() =>
-                  !userState?.userInfoCompleted &&
-                  navigate('FinishRegistrationScreen')
-                }
+                press={() => navigate('FinishRegistrationScreen')}
               />
 
               {userQuestionnaires?.map(item => (
@@ -56,12 +53,7 @@ const AvailableQuestionnairesScreen: AppScreen<'AvailableQuestionnaires'> = ({
                   count={item.questionnaire.questionCount}
                   finished={item.finished}
                   name={item.questionnaire.name}
-                  press={() =>
-                    !item.finished &&
-                    navigate('QuestionnaireScreen', {
-                      id: item.id,
-                    })
-                  }
+                  press={() => navigate('QuestionnaireScreen', {id: item.id})}
                 />
               ))}
             </View>

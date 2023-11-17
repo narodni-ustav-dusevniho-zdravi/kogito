@@ -113,5 +113,10 @@
     "prettier": "2.4.1",
     "react-test-renderer": "^18.2.0",
     "typescript": "^5.1.3"
+  },
+  "overrides": {
+    "react-native-picker-select": {
+      "@react-native-picker/picker": "$@react-native-picker/picker"
+    }
   }
 }
