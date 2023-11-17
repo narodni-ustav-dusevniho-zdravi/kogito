@@ -40,41 +40,11 @@ import VideoScreen from '../../screens/VideoScreen';
 import type {
   DashboardStackParamList,
   DashboardTabParamList,
-  RegistrationStackParamList,
   RootStackParamList,
 } from './types';
 
 const Stack = createStackNavigator<RootStackParamList>();
-const RegistrationStack = createStackNavigator<RegistrationStackParamList>();
 const DashboardStack = createStackNavigator<DashboardStackParamList>();
-
-const UnfinishedRegistrationScreens: React.FC = () => {
-  return (
-    <RegistrationStack.Navigator screenOptions={{headerShown: false}}>
-      <RegistrationStack.Screen component={RegisterScreen} name="Register" />
-      <RegistrationStack.Screen
-        component={AvailableQuestionnairesScreen}
-        name="AvailableQuestionnaires"
-      />
-      <RegistrationStack.Screen
-        component={QuestionnaireScreen}
-        name="QuestionnaireScreen"
-      />
-      <RegistrationStack.Screen
-        component={QuestionnaireResultScreen}
-        name="QuestionnaireResultScreen"
-      />
-      <RegistrationStack.Screen
-        component={SelectJourneyScreen}
-        name="SelectJourneyScreen"
-      />
-      <RegistrationStack.Screen
-        component={FinishRegistrationScreen}
-        name="FinishRegistrationScreen"
-      />
-    </RegistrationStack.Navigator>
-  );
-};
 
 const DashboardScreens: React.FC = () => {
   return (
@@ -95,6 +65,7 @@ const DashboardTabNavigation = () => {
       screenOptions={({route}) => ({
         tabBarActiveTintColor: '#F2AC33',
         tabBarInactiveTintColor: '#8e8e93',
+        lazy: false,
         tabBarHideOnKeyboard: true,
         tabBarIcon: ({color: iconColor}) => {
           switch (route.name) {
@@ -150,10 +121,6 @@ const Navigation: React.FC = () => {
       <Stack.Screen component={SplashScreen} name="Splash" />
       <Stack.Screen component={IntroScreen} name="Intro" />
       <Stack.Screen component={LoginScreen} name="LoginOrRegister" />
-      <Stack.Screen
-        component={UnfinishedRegistrationScreens}
-        name="Registration"
-      />
       <Stack.Screen component={DashboardTabNavigation} name="Dashboard" />
       <Stack.Screen component={ProfileSettingsScreen} name="ProfileSettings" />
       <Stack.Screen component={AudioScreen} name="Audio" />
@@ -184,6 +151,23 @@ const Navigation: React.FC = () => {
       />
       <Stack.Screen component={JourneySwitchScreen} name="JourneySwitch" />
       <Stack.Screen component={LogoutScreen} name="Logout" />
+      <Stack.Screen component={RegisterScreen} name="Register" />
+      <Stack.Screen
+        component={AvailableQuestionnairesScreen}
+        name="AvailableQuestionnaires"
+      />
+      <Stack.Screen
+        component={QuestionnaireScreen}
+        name="QuestionnaireScreen"
+      />
+      <Stack.Screen
+        component={QuestionnaireResultScreen}
+        name="QuestionnaireResultScreen"
+      />
+      <Stack.Screen
+        component={FinishRegistrationScreen}
+        name="FinishRegistrationScreen"
+      />
     </Stack.Navigator>
   );
 };

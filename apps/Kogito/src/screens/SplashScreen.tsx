@@ -21,7 +21,7 @@ const getNextScreen = (props: {
   if (props.haveActiveQuestionnaire) {
     return 'AfterMonthQuestionnaire';
   }
-  return props.me.finishedRegistration ? 'Dashboard' : 'Registration';
+  return props.me.finishedRegistration ? 'Dashboard' : 'Register';
 };
 
 const SplashScreen: AppScreen<'Splash'> = ({navigation: {replace}}) => {

@@ -10,45 +10,39 @@ export type RootStackParamList = {
   AfterMonthQuestionnaireDetail: {id: string};
   Article: {id: string};
   Audio: {id: string};
+  AvailableQuestionnaires: undefined;
   Dashboard: undefined;
   Diary: undefined;
   DiaryEdit: {id: string | null};
+  FinishRegistrationScreen: undefined;
   Intro: undefined;
   JourneySwitch: undefined;
   LoginOrRegister: undefined;
   LoginPopup: undefined;
   Logout: undefined;
+
   MoodList: undefined;
   ProfileSettings: undefined;
 
+  QuestionnaireResultScreen: undefined;
+  QuestionnaireScreen: {id: string};
+
+  Register: undefined;
+
   RegisterPopup: undefined;
-  Registration: undefined;
 
   ScheduleDay: undefined;
-
   SelectJourneyScreen: undefined;
+
   Signpost: undefined;
 
   Splash: undefined;
-
   StoriesList: undefined;
-
   StoryDetail: {id: string};
   Todos: undefined;
   ViciousCircle: undefined;
-
   ViciousCircleEdit: {id: string | null};
-
   Video: {id: string};
-};
-
-export type RegistrationStackParamList = {
-  AvailableQuestionnaires: undefined;
-  FinishRegistrationScreen: undefined;
-  QuestionnaireResultScreen: undefined;
-  QuestionnaireScreen: {id: string};
-  Register: undefined;
-  SelectJourneyScreen: undefined;
 };
 
 export type DashboardStackParamList = {
@@ -62,7 +56,6 @@ export type DashboardTabParamList = Record<
 >;
 
 export type AppParamList = DashboardStackParamList &
-  RegistrationStackParamList &
   RootStackParamList &
   DashboardTabParamList;
 
